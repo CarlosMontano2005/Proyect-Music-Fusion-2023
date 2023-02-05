@@ -1,0 +1,209 @@
+/* Google Fonts Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  overflow: hidden;
+}
+
+:root{
+  /* ===== Colors ===== */
+  --body-color: #fff;
+  --sidebar-color: linear-gradient(to top,  #793A81 0%, #7080E8 100%);
+  --primary-color: #695CFE;
+  --primary-color-light: #7080E8;
+  --toggle-color: #DDD;
+  --text-color: #fff;
+  /* ====== Transition ====== */
+  --tran-03: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.3s ease;
+}
+
+::selection{
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+body.dark{
+  --body-color: #3a3b3c;
+  --sidebar-color: #242526;
+  --primary-color: #3a3b3c;
+  --primary-color-light: #3a3b3c;
+  --toggle-color: #fff;
+  --text-color: #ccc;
+}
+
+
+.home-section{
+  position: relative;
+  background: #E4E9F7;
+  height: 100vh;
+  left: 260px;
+  width: calc(100% - 260px);
+  transition: all 0.5s ease;
+  padding: 12px;
+}
+.sidebar.close ~ .home-section{
+  left: 78px;
+  width: calc(100% - 78px);
+}
+.home-content{
+  align-items: center;
+  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 250px 250px;
+}
+.home-section .home-content .bx-menu,
+.home-section .home-content .text{
+  color: #11101d;
+  font-size: 35px;
+}
+.home-section .home-content .bx-menu{
+  cursor: pointer;
+  margin-right: 10px;
+}
+.home-section .home-content .text{
+  font-size: 26px;
+  font-weight: 600;
+}
+
+/*cartas*/
+
+
+.card {
+	display: flex;	
+	margin: .5rem;
+	overflow: hidden;
+	width: 15rem;
+	height: 2rem;
+  
+
+}
+
+
+.right-column {
+	padding: 10px;
+	width: 100%;
+	display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+	
+}
+
+.right-column p{	
+	font-size: 10px;
+	color: white;
+}
+
+.right-column h5{	
+	color: white;
+}
+
+.right-column h6{	
+	color: white;
+}
+
+/*table*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.header_fixed {
+    max-height: 100vh;
+    width: 100%;
+    overflow: auto;
+    border: 1px solid #fff;
+}
+
+.header_fixed thead th {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    color: black;
+    font-size: 15px;
+}
+
+th,
+td {
+    border-bottom: 1px solid #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+td img {
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    border: 5px solid #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #fff;
+}
+
+tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+tr:hover td {
+    color: #44b478;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+td button {
+    border: none;
+    padding: 7px 20px;
+    border-radius: 20px;
+    color: #e6e7e8;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 400px){
+ 
+  .home-section{
+    left: 240px;
+    width: calc(100% - 240px);
+  }
+  .sidebar.close ~ .home-section{
+    left: 78px;
+    width: calc(100% - 78px);
+  }
+}
