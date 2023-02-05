@@ -6,8 +6,20 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
 body{
   overflow: hidden;
+}
+.home-section::-webkit-scrollbar {
+  width: 10px;
+}
+.home-section::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #695CFE 0%, #7080E8 74%) ;
+  border-radius: 30px;
+}
+
+.home-section::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 .sidebar{
   position: fixed;
@@ -268,6 +280,7 @@ body.dark{
   width: calc(100% - 260px);
   transition: all 0.5s ease;
   padding: 12px;
+  overflow: auto;
 }
 .sidebar.close ~ .home-section{
   left: 78px;

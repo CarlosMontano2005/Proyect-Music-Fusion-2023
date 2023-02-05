@@ -1,3 +1,21 @@
 *{
     background-color: rebeccapurple;
 }
+
+div{
+    background: #695CFE;
+    border: rosybrown solid;
+}
+.contenedor{
+    height: 100px;
+    overflow: auto;
+}
+.contenedor::-webkit-scrollbar {
+    width: 05px;
+    
+}
+.contenedor::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right, #695CFE 0%, #7080E8 74%) ;
+    border-radius: 30px;
+}
+ 
