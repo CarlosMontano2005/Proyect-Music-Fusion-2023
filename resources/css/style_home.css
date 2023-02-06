@@ -96,12 +96,20 @@ body.dark{
 
 .card {
 	display: flex;	
-	margin: .5rem;
+	margin: 5px;
 	overflow: hidden;
-	width: 15rem;
-	height: 2rem;
-  
+	width: 250px;
+	height: 150px;
+}
 
+.card .card-icon{
+  height: auto;
+  width: 50px;
+  font-size:30px;
+  text-align: center;
+  background-color: #DFEBE9;
+  border-radius: 7px;
+  color: #7080E8;
 }
 
 
@@ -165,13 +173,20 @@ td {
     border-bottom: 1px solid #fff;
     padding: 10px 20px;
     font-size: 14px;
+    
 }
 
 td img {
-    height: 60px;
-    width: 60px;
-    border-radius: 100%;
-    border: 5px solid #fff;
+  height: 100px;
+  width: 100px;
+  border: 5px solid #fff;
+  object-fit:contain;
+  border-radius: 16px;
+  margin: 0 14px 0 12px;
+  transition: all 0.5s ease;
+}
+td img:hover{
+  border: solid #3D54E7;
 }
 
 tr:nth-child(even) {
@@ -190,11 +205,29 @@ tr:hover td {
 
 td button {
     border: none;
-    padding: 7px 20px;
-    border-radius: 20px;
+    padding: 7px 10px;
+    margin: 3px;
+    border-radius: 5px;
     color: #e6e7e8;
+   
+   
+}
+.td-button{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  
+}
+.button_delet {
+  background-color: #fb2e2e;
 }
 
+.button_edit {
+  background-color: #3D54E7;
+}
+.button_updet{
+  background-color: #695CFE;
+}
 ::-webkit-scrollbar {
     width: 10px;
 }
