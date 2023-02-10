@@ -118,8 +118,17 @@ body.dark{
   background-color: #DFEBE9;
   border-radius: 7px;
   color: #7080E8;
+  margin-bottom: 10px;
 }
-
+.img-card-column {
+  font-size:110px;
+  color: #DFEBE9;
+  opacity: 30%;
+  position: absolute;
+  right: -15px;
+  padding: 0;
+  margin: 0;
+}
 
 .right-column {
 	padding: 10px;
@@ -258,43 +267,61 @@ td button {
   background-color: unset;
   border: none;
 }
+.star-img{
+  width: 9em;
+}
+
 .star-img  img{
   height: 7em;
   width: 7em;
-  background-color: rebeccapurple;
+  background-color: #286B8C;
   object-fit:contain;
   border-radius: 100%;
-  margin: 0 14px 0 12px;
   transition: all 0.5s ease;
+  margin-top: -40px;
+}
+
+.star-img p {
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: bold;
+  
 }
 .star:hover{
   cursor: pointer;
 }
 .valoraciones{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  background: lightgray;
   user-select: none;
   border-radius: .4rem;
   text-align: center;
-  padding: 1rem 1rem;
+  padding: 1.8rem 1rem;
+  width: 100%;
   animation: scale-up 1s ease;
+  
 }
 .stard_rating{
   display: flex;
-  flex-direction: row;
+  height: 150px;
+  padding: 15px;
+  background: #F2FBFF;
+  border-radius: 15px;
+  
 }
 .container-star{
-  padding-top: 40px;
   justify-content: center;
   margin: 10px;
   
 }
+
+.current_rating {
+  font-size: 22px;
+}
 .star-line {
-  border-left: 0.1px solid gray;
-  
+  border-left: 2px solid #EBE9E9;
 }
  
 
