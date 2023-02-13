@@ -1,21 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="es" dir="ltr">
 
 <head>
   <meta charset="utf-8">
   <title>Login</title>
-  <link rel="stylesheet" href="/resources/css/style_login.css">
+  <link rel="stylesheet" href="/resources/css/dashboard/style_login.css">
+  <!-- Llamada de archivo como icono -->
+  <link type="image/png" rel="icon" href="/img/logos/logo.png">
+  <!--Import Google Icon Font-->
+  <link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+<!--Import materialize.css-->
+<link
+  type="text/css"
+  rel="stylesheet"
+  href="/resources/css/materialize.min.css"
+  media="screen,projection"
+/>
+<!--Let browser know website is optimized for mobile-->
 </head>
 
 <body>
   <section class="form-login">
     <div class="imagen">
-      <img src="/img/logos/logo.png" alt="logo">
+      <img src="/img/logos/logo.png" alt="logo" width="200px" height="200px">
     </div>
-    <h6><a href="">Nombre de usuario</a></h6>
+    <h6>Nombre de usuario</h6>
     <input class="controls" type="text" name="usuario" value="" placeholder="">
-    <h5><a href="">Contraseña</a></h5>
+    <h6>Contraseña</h6>
     <input class="controls" type="password" name="contrasena" value="" placeholder="">
+    <a href="/views/dashboard/home.html" class="buttons">Continuar</a>
     <input class="buttons" type="submit" name="" value="Continuar">
     <p><a href="#">¿Has olvidado tu contraseña?</a></p>
     <p><a href="#">¿Todavia no es miembro? <b>Crea una cuenta</b></a></p>
@@ -24,11 +40,15 @@
 
   <section class="image-logo">
     <div>
-      <img src="/img/logos/logo_blanco.png" alt="logo-blanco">
+      <img src="/img/logos/logo_blanco.png" alt="logo-blanco" width="50px" height="50px">
     </div>
 
   </section>
-
+  
+  <script
+  type="text/javascript"
+  src="/resources/js/materialize.min.js"
+></script>
 </body>
 
 </html>

@@ -231,7 +231,7 @@ body.dark{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #1d1b31;
+  background: var(--sidebar-color);
   padding: 12px 0;
   transition: all 0.5s ease;
 }
@@ -251,7 +251,7 @@ body.dark{
   object-fit: cover;
   border-radius: 16px;
   margin: 0 14px 0 12px;
-  background: #1d1b31;
+  background: var(--primary-color-light);
   transition: all 0.5s ease;
 }
 .sidebar.close .profile-details img{
@@ -280,7 +280,7 @@ body.dark{
   width: calc(100% - 260px);
   transition: all 0.5s ease;
   padding: 12px;
-  overflow: auto;
+ /* overflow: auto; scroll*/
 }
 .sidebar.close ~ .home-section{
   left: 78px;
@@ -425,6 +425,12 @@ body.dark .switch::before{
 }
 
 /***/
+
+/*ifreme*/
+.ifreme{
+  width: 100% !important;
+  height: 100% !important;
+}
 @media screen and (max-width: 400px){
   .sidebar{
     width: 240px;

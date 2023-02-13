@@ -29,15 +29,17 @@ body{
   --sidebar-color: linear-gradient(to top,  #793A81 0%, #7080E8 100%);
   --primary-color: #695CFE;
   --primary-color-light: #7080E8;
-  --toggle-color: #DDD;
+  --toggle-color: #979494;
   --text-color: #fff;
+  --nav-color: #fff;
+  --nav-text-color: #000;
+  --main-text-color: #000;
   /* ====== Transition ====== */
   --tran-03: all 0.2s ease;
   --tran-03: all 0.3s ease;
   --tran-04: all 0.3s ease;
   --tran-05: all 0.3s ease;
 }
-
 ::selection{
   background-color: var(--primary-color);
   color: #fff;
@@ -49,19 +51,21 @@ body.dark{
   --primary-color: #3a3b3c;
   --primary-color-light: #3a3b3c;
   --toggle-color: #fff;
-  --text-color: #ccc;
+  --text-color: #fff;
+  --nav-color: #242526;
+  --nav-text-color: #fff;
+  --main-text-color: #fff;
 }
+
 
 
 .home-section{
   position: relative;
-  background: #E4E9F7;
+  background: var(--nav-color);
   height: 100vh;
-  left: 260px;
-  width: calc(100% - 260px);
   transition: all 0.5s ease;
   padding: 12px;
-  overflow: auto;
+  overflow:scroll;
   
 
 }
