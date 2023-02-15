@@ -1,0 +1,255 @@
+/* Google Fonts Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  overflow: hidden;
+}
+.home-section::-webkit-scrollbar {
+  width: 10px;
+}
+.home-section::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, rgb(112, 128, 232) 0%, #695CFE 74%) ;
+  border-radius: 30px;
+}
+
+
+
+.home-section::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 30px;
+}
+:root{
+  /* ===== Colors ===== */
+  --body-color: #fff;
+  --sidebar-color: linear-gradient(to top,  #793A81 0%, #7080E8 100%);
+  --primary-color: #695CFE;
+  --primary-color-light: #7080E8;
+  --toggle-color: #DDD;
+  --text-color: #fff;
+  /* ====== Transition ====== */
+  --tran-03: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.3s ease;
+}
+
+::selection{
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+body.dark{
+  --body-color: #3a3b3c;
+  --sidebar-color: #242526;
+  --primary-color: #3a3b3c;
+  --primary-color-light: #3a3b3c;
+  --toggle-color: #fff;
+  --text-color: #ccc;
+}
+
+
+.home-section{
+  position: relative;
+  background: #E4E9F7;
+  height: 100vh;
+  left: 260px;
+  width: calc(100% - 260px);
+  transition: all 0.5s ease;
+  padding: 12px;
+  overflow: auto;
+}
+
+.sidebar.close ~ .home-section{
+  left: 78px;
+  width: calc(100% - 78px);
+}
+.home-content{
+  align-items: center;
+  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 250px 250px;
+}
+.home-section .home-content .bx-menu,
+.home-section .home-content .text{
+  color: #11101d;
+  font-size: 35px;
+}
+.home-section .home-content .bx-menu{
+  cursor: pointer;
+  margin-right: 10px;
+}
+.home-section .home-content .text{
+  font-size: 26px;
+  font-weight: 600;
+}
+
+
+
+
+/*cartas*/
+
+
+.card {
+	display: flex;	
+	margin: 5px;
+	overflow: hidden;
+	width: 250px;
+	height: 150px;
+}
+
+.card .card-icon{
+  height: auto;
+  width: 50px;
+  font-size:30px;
+  text-align: center;
+  background-color: #DFEBE9;
+  border-radius: 7px;
+  color: #7080E8;
+}
+
+
+.right-column {
+	padding: 10px;
+	width: 100%;
+	display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+	
+}
+
+.right-column p{	
+	font-size: 10px;
+	color: white;
+}
+
+.right-column h5{	
+	color: white;
+}
+
+.right-column h6{	
+	color: white;
+}
+
+
+
+/*table*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+
+.header_fixed {
+    max-height: 100vh;
+    width: 100%;
+    overflow: auto;
+    box-shadow: 10px;
+    border: 1px solid #CCCCCC;
+    border-radius: 25px;
+}
+
+.header_fixed thead th {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    color: black;
+    font-size: 15px;
+}
+
+th,
+td {
+    border-bottom: 1px solid #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+    
+}
+
+td img {
+  height: 100px;
+  width: 100px;
+  border: 5px solid #fff;
+  object-fit:contain;
+  border-radius: 16px;
+  margin: 0 14px 0 12px;
+  transition: all 0.5s ease;
+}
+td img:hover{
+  border: solid #3D54E7;
+}
+
+tr:nth-child(even) {
+    background-color: #fff;
+}
+
+tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+tr:hover td {
+    color: #8886FF;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+td button {
+    border: none;
+    padding: 7px 10px;
+    margin: 3px;
+    border-radius: 5px;
+    color: #e6e7e8;
+   
+   
+}
+.td-button{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  
+}
+.button_delet {
+  background-color: #fb2e2e;
+}
+
+.button_edit {
+  background-color: #3D54E7;
+}
+.button_updet{
+  background-color: #695CFE;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+}
+
+@media screen and (max-width: 400px){
+ 
+  .home-section{
+    left: 240px;
+    width: calc(100% - 240px);
+  }
+  .sidebar.close ~ .home-section{
+    left: 78px;
+    width: calc(100% - 78px);
+  }
+}
