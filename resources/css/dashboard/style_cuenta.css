@@ -113,9 +113,3 @@
   .form-login p a:hover {
     text-decoration: underline;
   }
-
-  .image-logo{
-
-    display: flex;
-    margin-top: 80px;
-  }
