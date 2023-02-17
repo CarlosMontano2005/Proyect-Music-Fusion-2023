@@ -69,10 +69,9 @@
 
 .imagen-footer{
 
-  position: absolute;
-bottom: 0px;
+position: absolute;
+bottom: 0%s;
 left: 0px;
-
 }
   
   .form-login p{
