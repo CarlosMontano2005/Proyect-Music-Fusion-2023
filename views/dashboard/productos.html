@@ -129,190 +129,258 @@
   <main class="main home-section">
     <div class="Titulo">
       <!-- Button trigger modal -->
-<button type="button" class="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  <i class='bx bxs-alarm-add'></i>
-  Agregar producto
-</button>
+      <button type="button" class="button-modal" data-bs-toggle="modal" data-bs-target="#Add">
+        <i class='bx bxs-alarm-add'></i>
+        Agregar producto
+      </button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Producto</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <!-- Modal para agregar -->
+      <div class="modal fade" id="Add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Producto</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form class="row g-3">
+                <div class="col-md-6">
+                  <p>Nombre</p>
+                  <input type="text" class="form-control" placeholder="Nombre" aria-label="First name">
+                </div>
+                <div class="col-md-6">
+                  <p>Descripcion</p>
+                  <input type="text" class="form-control" placeholder="Descripcion" aria-label="Last name">
+                </div>
+                <div class="col-md-6">
+                  <p>Imagen</p>
+                  <input type="text" class="form-control" placeholder="Formatos JPG y PNG" aria-label="First name">
+                </div>
+                <div class="col-md-6">
+                  <p>Categoria</p>
+                  <select class="form-select" id="autoSizingSelect">
+                    <option selected></option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <p>Estado</p>
+                  <select class="form-select" id="autoSizingSelect">
+                    <option selected></option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <p>Marca</p>
+                  <select class="form-select" id="autoSizingSelect">
+                    <option selected></option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <p>Precio</p>
+                  <input type="text" class="form-control" placeholder="" aria-label="First name">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Acción</button>
+              <button type="button" class="btn btn-primary">Guardar Acción</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-        <form class="row g-3">
-          <div class="col-md-6">
-            <p>Nombre</p>
-            <input type="text" class="form-control" placeholder="Nombre" aria-label="First name">
+
+      <!-- Modal para actualizar -->
+      <div class="modal fade" id="Edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar Producto</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form class="row g-3">
+                <div class="col-md-6">
+                  <p>Nombre</p>
+                  <input type="text" class="form-control" placeholder="Nombre" aria-label="First name">
+                </div>
+                <div class="col-md-6">
+                  <p>Descripcion</p>
+                  <input type="text" class="form-control" placeholder="Descripcion" aria-label="Last name">
+                </div>
+                <div class="col-md-6">
+                  <p>Imagen</p>
+                  <input type="text" class="form-control" placeholder="Formatos JPG y PNG" aria-label="First name">
+                </div>
+                <div class="col-md-6">
+                  <p>Categoria</p>
+                  <select class="form-select" id="autoSizingSelect">
+                    <option selected></option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <p>Estado</p>
+                  <select class="form-select" id="autoSizingSelect">
+                    <option selected></option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <p>Marca</p>
+                  <select class="form-select" id="autoSizingSelect">
+                    <option selected></option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <p>Precio</p>
+                  <input type="text" class="form-control" placeholder="" aria-label="First name">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Acción</button>
+              <button type="button" class="btn btn-primary">Guardar Acción</button>
+            </div>
           </div>
-          <div class="col-md-6">
-            <p>Apellido</p>
-            <input type="text" class="form-control" placeholder="Apellido" aria-label="Last name">
-          </div>
-          <div class="col-md-6">
-            <p>Imagen</p>
-            <input type="text" class="form-control" placeholder="Formatos JPG y PNG" aria-label="First name">
-          </div>
-          <div class="col-md-6">
-            <p>Telefono</p>
-            <input type="text" class="form-control" placeholder="Telefono" aria-label="First name">
-          </div>
-          <div class="col-md-6">
-            <p>correo</p>
-            <input type="text" class="form-control" placeholder="Correo" aria-label="First name">
-          </div>
-          <div class="col-md-6">
-            <p>Tipo Usuario</p>
-            <select class="form-select" id="autoSizingSelect">
-              <option selected></option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-          <div class="col-md-6">
-            <p>Estado Usuario</p>
-            <select class="form-select" id="autoSizingSelect">
-              <option selected></option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-        </form>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Acción</button>
-        <button type="button" class="btn btn-primary">Guardar Acción</button>
-      </div>
-    </div>
-  </div>
-</div>
-        <h3>Admnistrar Pedidos</h3>
+      <h3>Admnistrar Pedidos</h3>
     </div>
     <div class="header_fixed">
       <table>
-          <thead>
-              <tr>
-                  <th>No.</th>
-                  <th>Imagen</th>
-                  <th>Nombre</th>
-                  <th style="text-align: center;">Descripcion</th>
-                  <th>Action</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>1</td>
-                  <td><img src="/img/productos/bateria-negra.png"></td>
-                  <td>Guitarra clasica</td>
-                  <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptatum officiis,
-                      magni recusandae, laudantium consectetur repellat rerum iste, laborum eligendi
-                      earum. Magni aliquid aut tenetur dignissimos ad eaque repellat deserunt.</td>
-                  <td class="td-button">
-                      <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
-                      <button class="button_delet"><i class='bx bx-trash'></i></button><button
-                          class="button_updet"><i class='bx bx-refresh'></i></button>
-                  </td>
-              </tr>
-              <tr>
-                  <td>2</td>
-                  <td><img src="/img/productos/bateria-negra.png"></td>
-                  <td>Piano clasico</td>
-                  <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate non ducimus quam
-                      quod voluptatem excepturi deleniti animi laboriosam quo quaerat voluptatum maiores
-                      sit, eligendi ipsa aliquid minima velit quos modi?</td>
-                  <td class="td-button">
-                      <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
-                      <button class="button_delet"><i class='bx bx-trash'></i></button><button
-                          class="button_updet"><i class='bx bx-refresh'></i></button>
-                  </td>
-              </tr>
-              <tr>
-                  <td>3</td>
-                  <td><img src="/img/productos/violin.png"></td>
-                  <td>Guitarra clasica</td>
-                  <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam eligendi maiores
-                      saepe non ipsum id dignissimos, placeat omnis optio fugit, itaque obcaecati maxime
-                      eum eos quidem earum numquam laudantium! Voluptate?</td>
-                  <td class="td-button">
-                      <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
-                      <button class="button_delet"><i class='bx bx-trash'></i></button><button
-                          class="button_updet"><i class='bx bx-refresh'></i></button>
-                  </td>
-              </tr>
-              <tr>
-                  <td>4</td>
-                  <td><img src="/img/productos/violin.png"></td>
-                  <td>Guitarra clasica</td>
-                  <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam eligendi maiores
-                      saepe non ipsum id dignissimos, placeat omnis optio fugit, itaque obcaecati maxime
-                      eum eos quidem earum numquam laudantium! Voluptate?</td>
-                  <td class="td-button">
-                      <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
-                      <button class="button_delet"><i class='bx bx-trash'></i></button><button
-                          class="button_updet"><i class='bx bx-refresh'></i></button>
-                  </td>
-              </tr>
-              <tr>
-                  <td>5</td>
-                  <td><img src="/img/productos/guitarra.com.png"></td>
-                  <td>Piano clasico</td>
-                  <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis inventore
-                      perferendis alias aperiam debitis nihil quod hic, ad blanditiis et reprehenderit
-                      sapiente soluta maxime? Non consectetur corporis reprehenderit necessitatibus saepe.
-                  </td>
-                  <td class="td-button">
-                      <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
-                      <button class="button_delet"><i class='bx bx-trash'></i></button><button
-                          class="button_updet"><i class='bx bx-refresh'></i></button>
-                  </td>
-              </tr>
-              <tr>
-                  <td>6</td>
-                  <td><img src="/img/productos/guitarra-electrica.png"></td>
-                  <td>Guitarra electrica</td>
-                  <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At fuga, maiores placeat,
-                      voluptate facere labore ea repellendus velit veniam officia quis commodi molestias
-                      aperiam omnis ab suscipit voluptatum dolore beatae.</td>
-                  <td class="td-button">
-                      <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
-                      <button class="button_delet"><i class='bx bx-trash'></i></button><button
-                          class="button_updet"><i class='bx bx-refresh'></i></button>
-                  </td>
-              </tr>
-              <tr>
-                  <td>7</td>
-                  <td><img src="/img/productos/guitarra-electrica.png"></td>
-                  <td>Guitarra electrica</td>
-                  <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At fuga, maiores placeat,
-                      voluptate facere labore ea repellendus velit veniam officia quis commodi molestias
-                      aperiam omnis ab suscipit voluptatum dolore beatae.</td>
-                  <td class="td-button">
-                      <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
-                      <button class="button_delet"><i class='bx bx-trash'></i></button><button
-                          class="button_updet"><i class='bx bx-refresh'></i></button>
-                  </td>
-              </tr>
-              <tr>
-                  <td>8</td>
-                  <td><img src="/img/productos/guitarra-electrica.png"></td>
-                  <td>Guitarra electrica</td>
-                  <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At fuga, maiores placeat,
-                      voluptate facere labore ea repellendus velit veniam officia quis commodi molestias
-                      aperiam omnis ab suscipit voluptatum dolore beatae.</td>
-                  <td class="td-button">
-                      <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
-                      <button class="button_delet"><i class='bx bx-trash'></i></button><button
-                          class="button_updet"><i class='bx bx-refresh'></i></button>
-                  </td>
-              </tr>
-          </tbody>
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th style="text-align: center;">Descripcion</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><img src="/img/productos/bateria-negra.png"></td>
+            <td>Guitarra clasica</td>
+            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptatum officiis,
+              magni recusandae, laudantium consectetur repellat rerum iste, laborum eligendi
+              earum. Magni aliquid aut tenetur dignissimos ad eaque repellat deserunt.</td>
+            <td class="td-button">
+              <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal" data-bs-target="#Edit"><i class='bx bxs-edit-alt'></i></button>
+              <button class="button_delet"><i class='bx bx-trash'></i></button><button class="button_updet"><i
+                  class='bx bx-refresh'></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><img src="/img/productos/bateria-negra.png"></td>
+            <td>Piano clasico</td>
+            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate non ducimus quam
+              quod voluptatem excepturi deleniti animi laboriosam quo quaerat voluptatum maiores
+              sit, eligendi ipsa aliquid minima velit quos modi?</td>
+            <td class="td-button">
+              <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModalEdit"><i class='bx bxs-edit-alt'></i></button>
+              <button class="button_delet"><i class='bx bx-trash'></i></button><button class="button_updet"><i
+                  class='bx bx-refresh'></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><img src="/img/productos/violin.png"></td>
+            <td>Guitarra clasica</td>
+            <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam eligendi maiores
+              saepe non ipsum id dignissimos, placeat omnis optio fugit, itaque obcaecati maxime
+              eum eos quidem earum numquam laudantium! Voluptate?</td>
+            <td class="td-button">
+              <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
+              <button class="button_delet"><i class='bx bx-trash'></i></button><button class="button_updet"><i
+                  class='bx bx-refresh'></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><img src="/img/productos/violin.png"></td>
+            <td>Guitarra clasica</td>
+            <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam eligendi maiores
+              saepe non ipsum id dignissimos, placeat omnis optio fugit, itaque obcaecati maxime
+              eum eos quidem earum numquam laudantium! Voluptate?</td>
+            <td class="td-button">
+              <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
+              <button class="button_delet"><i class='bx bx-trash'></i></button><button class="button_updet"><i
+                  class='bx bx-refresh'></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><img src="/img/productos/guitarra.com.png"></td>
+            <td>Piano clasico</td>
+            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis inventore
+              perferendis alias aperiam debitis nihil quod hic, ad blanditiis et reprehenderit
+              sapiente soluta maxime? Non consectetur corporis reprehenderit necessitatibus saepe.
+            </td>
+            <td class="td-button">
+              <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
+              <button class="button_delet"><i class='bx bx-trash'></i></button><button class="button_updet"><i
+                  class='bx bx-refresh'></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><img src="/img/productos/guitarra-electrica.png"></td>
+            <td>Guitarra electrica</td>
+            <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At fuga, maiores placeat,
+              voluptate facere labore ea repellendus velit veniam officia quis commodi molestias
+              aperiam omnis ab suscipit voluptatum dolore beatae.</td>
+            <td class="td-button">
+              <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
+              <button class="button_delet"><i class='bx bx-trash'></i></button><button class="button_updet"><i
+                  class='bx bx-refresh'></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><img src="/img/productos/guitarra-electrica.png"></td>
+            <td>Guitarra electrica</td>
+            <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At fuga, maiores placeat,
+              voluptate facere labore ea repellendus velit veniam officia quis commodi molestias
+              aperiam omnis ab suscipit voluptatum dolore beatae.</td>
+            <td class="td-button">
+              <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
+              <button class="button_delet"><i class='bx bx-trash'></i></button><button class="button_updet"><i
+                  class='bx bx-refresh'></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td><img src="/img/productos/guitarra-electrica.png"></td>
+            <td>Guitarra electrica</td>
+            <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At fuga, maiores placeat,
+              voluptate facere labore ea repellendus velit veniam officia quis commodi molestias
+              aperiam omnis ab suscipit voluptatum dolore beatae.</td>
+            <td class="td-button">
+              <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
+              <button class="button_delet"><i class='bx bx-trash'></i></button><button class="button_updet"><i
+                  class='bx bx-refresh'></i></button>
+            </td>
+          </tr>
+        </tbody>
       </table>
-  </div>
+    </div>
   </main>
   <script src="/resources/js/dashboard/script_dashboard.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
