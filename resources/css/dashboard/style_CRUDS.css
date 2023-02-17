@@ -452,7 +452,17 @@ body.dark .switch::before{
 
 /*Modal*/
 
+.button-modal{
+  margin-left: 85%;
+  border: none;
+  background-color: white;
+  color: #3D54E7;
+}
 
+.modal-body p{
+text-align: left;
+
+}
 
 /*table*/
 
