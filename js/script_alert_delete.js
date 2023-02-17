@@ -12,7 +12,9 @@
             icon: "success",
           });
         } else {
-          swal("Acción cancelada");
+          swal("Accion cancelada", {
+            icon: "error",
+          });
         }
       });
   }

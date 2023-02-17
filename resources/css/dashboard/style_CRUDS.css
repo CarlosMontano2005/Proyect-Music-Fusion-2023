@@ -427,7 +427,6 @@ body.dark .switch::before{
 /*barra de busqueda*/
 
 .buscar {
-    position: relative;
     padding: 15px;
     padding-left: 100px;
   }
@@ -443,6 +442,8 @@ body.dark .switch::before{
     border-radius: 30px;
     transition: all 0.6s ease;
   }
+
+  
   
   .Titulo{
 

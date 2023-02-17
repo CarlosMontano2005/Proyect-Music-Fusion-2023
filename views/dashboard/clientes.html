@@ -98,6 +98,13 @@
       <i class='bx bx-menu'></i>
       <span class="text">Drop Down Sidebar</span>
       <label class="info">parte principal</label>
+      <div class="buscar">
+        <input type="text" placeholder="Buscar" required />
+    
+        <div class="btn">
+          <i class='bx bx-search'></i>
+        </div>
+      </div>
     </div>
 
 
@@ -119,13 +126,6 @@
     </div>
 
   </section>
-  <div class="buscar">
-    <input type="text" placeholder="Buscar" required />
-
-    <div class="btn">
-      <i class='bx bx-search'></i>
-    </div>
-  </div>
   <main class="main home-section">
     <div class="Titulo">
       <!-- Button trigger modal -->
@@ -181,7 +181,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Acción</button>
-              <button type="button" class="btn btn-primary">Guardar Acción</button>
+              <button type="button" onclick="succesAdd()" class="btn btn-primary">Guardar Acción</button>
             </div>
           </div>
         </div>
@@ -234,7 +234,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Acción</button>
-              <button type="button" class="btn btn-primary">Guardar Acción</button>
+              <button type="button" onclick="succesEdit()" class="btn btn-primary">Guardar Acción</button>
             </div>
           </div>
         </div>
@@ -371,6 +371,7 @@
   </main>
   <script src="/resources/js/dashboard/script_dashboard.js"></script>
   <script src="/js/script_alert_delete.js"></script>
+  <script src="/js/script_aler_succes.js"></script>
   <!-- Script libreria sweetslert -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
