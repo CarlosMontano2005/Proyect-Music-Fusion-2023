@@ -427,6 +427,7 @@ body.dark .switch::before{
 /*barra de busqueda*/
 
 .buscar {
+  padding-top: 100px;
     padding: 15px;
     padding-left: 100px;
   }
