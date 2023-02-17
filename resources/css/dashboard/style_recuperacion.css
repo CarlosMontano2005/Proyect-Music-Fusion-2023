@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: arial;
+    background: rgb(81, 78, 233);
+    background: linear-gradient(90deg, rgba(81, 78, 233, 1) 10%, rgba(164,52,244,1) 48%, rgba(228,33,253,1) 100%);
+  }
+
+
+.Titulo h1{
+
+    text-align: center;
+    color: #fff;
+    margin-top: 150px;
+    font-size: 50px;
+  }
+
+  .recuperacion h3{
+    color: #fff;
+    margin-left: 100px;
+    margin-top: 150px;
+    font-size: 40px;
+
+  }
+
+  .recuperacion p{
+    color: #fff;
+    margin-left: 100px;
+    margin-top: 20px;
+    font-size: 25px;
+
+  }
+
+  .recuperacion p a{
+    color: #fff;
+    margin-top: 200px;
+    font-size: 25px;
+    text-decoration: none;
+
+  }
+
+  .controls {
+    margin-top: 50px;
+    width: 1000px;
+    margin-left: 100px;
+    border: 1px solid #fff;
+    margin-bottom: 30px;
+    padding: 11px 10px;
+    background: #fff;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .buttons{
+    width: 200px;
+    margin-left: 100px;
+    height: 40px;
+    background: rgb(121, 58, 129);
+    background: linear-gradient(90deg, rgba(121, 58, 129, 1) 0%, rgba(164,52,244,1) 48%, rgba(228,33,253,1) 100%);
+    border-radius: 50px;
+    border: none;
+    color: white;
+    margin-bottom: 16px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+.buttons:active{
+
+  background: linear-gradient(90deg, rgb(194, 114, 204) 0%, rgb(139, 89, 174) 48%, rgb(176, 55, 232) 100%);
+}
+
+.imagen-footer{
+
+    position: absolute;
+  bottom: 0%
+  left: 0px;
+  
+  }
