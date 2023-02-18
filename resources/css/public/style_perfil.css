@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root{
+    --purple:#A434F4;
+    --black: #192a56; 
+    --light-color: #666;
+    --box-shadow:0 .5rem 1.5rem rgba(0,0,0,.1);
+}
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin:0; padding: 0; 
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none; border: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+
+html{
+   
+    overflow-x: hidden;
+    scroll-padding-top: 5.5rem;
+    scroll-behavior: smooth;
+}
+
+
+section{
+    background: lightgrey;
+    height: 100%;
+
+}
+.perfil-fondo{
+    height: 20rem;
+    background: linear-gradient(90deg, rgba(81, 78, 233, 1) 10%, rgba(164,52,244,1) 48%, rgba(228,33,253,1) 100%);
+    margin: 0;
+    padding: 0;
+}
+.perfil-info{
+    align-items: center;
+    background: #F0EEF0;
+    text-align: center;
+}
+
+.perfil-info-texto-img {
+    border-radius: 50%;
+    height: 15rem;
+    width: 15rem;
+    object-fit: cover;
+    margin-top:-120px;
+}
+
+.perfil-info-texto h1{
+}
+.perfil-info-texto p{
+    color: #444C50;
+    font-size: 15px;
+    text-transform: lowercase;
+}
+.perfil-info-button a{
+    text-decoration: none;
+    color: #A434F4;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px;
+}
+.perfil-info-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 10px;
+    
+}
+
+.perfil-info-button i{
+    font-size: 25px;
+
+}
+.perfil-info-button-action{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.perfil-info-button-edit{
+    padding: 30px;
+}
+.perfil-info-button-edit a:hover{
+    background-color: #b04df7;
+    text-decoration: none;
+    color: #fff;
+}
+.perfil-info-button-edit a{
+    color: #fff;
+    background-color: #A434F4;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 1px 5px 10px #000 ;
+    margin-bottom: 30px;
+    text-decoration: none;
+
+}
+
+@media screen and (max-width: 400px){
+    .perfil-info-texto-img {
+        border-radius: 50%;
+        height: 10rem;
+        width: 10rem;
+        object-fit: cover;
+        margin-top:-120px;
+    }
+    
+    
+  }

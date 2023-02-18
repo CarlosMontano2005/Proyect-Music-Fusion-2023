@@ -68,11 +68,10 @@
 
 .imagen-footer{
 
-    position: absolute;
-  bottom: 0px;
+  position: absolute;
+  bottom: 0%s;
   left: 0px;
-  
-  }
+}
 
 
   
@@ -112,10 +111,4 @@
   
   .form-login p a:hover {
     text-decoration: underline;
-  }
-
-  .image-logo{
-
-    display: flex;
-    margin-top: 80px;
   }
