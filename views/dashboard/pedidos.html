@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title> Music Fusion </title>
-  <link rel="stylesheet" href="/resources/css/dashboard/style_CRUDS.css">
+  <link rel="stylesheet" href="/resources/css/dashboard/style_pedidos.css">
   <!-- Llamada de archivo como icono -->
   <link type="image/png" rel="icon" href="/img/logos/logo.png">
   <!-- Boxiocns CDN Link -->
@@ -96,23 +96,12 @@
   <section class="home-section nav-barra">
     <div class="home-content">
       <i class='bx bx-menu'></i>
-      <span class="text">Pedidos</span>
+      <span class="text">Clientes</span>
       <label class="info">parte principal</label>
     </div>
-    <div class="buscar">
-      <input type="text" placeholder="Buscar" required />
   
-      <div class="btn">
-        <i class='bx bx-search'></i>
-      </div>
-    </div>
     <div class="filter">
-      <select class="form-select" style="border-radius: 20px;" aria-label="Default select example">
-        <option selected>Categoria</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
+     
     </div>
     <div class="bottom-content">
       <div class="nav-barra-time">
@@ -132,139 +121,53 @@
     </div>
 
   </section>
-  <div class="buscar">
-    <input type="text" placeholder="Buscar" required />
-
-    <div class="btn">
-      <i class='bx bx-search'></i>
-    </div>
-  </div>
   <main class="main home-section">
+    <div class="">
+      <div class="buscar">
+        <div class="btn">
+          <i class='bx bx-search'></i>
+        </div>
+        <input type="text" placeholder="Buscar" required />
+    
+        
+      </div>
+    </div>
     <div class="Titulo">
-        <h3>Administrar Pedidos</h3>
+      <!-- Button trigger modal -->
+      <h3>Pedidos</h3>
     </div>
     <div class="header_fixed">
       <table>
-          <thead>
-              <tr>
-                  <th>No.</th>
-                  <th>Imagen</th>
-                  <th>Nombre</th>
-                  <th style="text-align: center;">Descripcion</th>
-                  <th>Action</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>1</td>
-                  <td><img src="/img/productos/bateria-negra.png"></td>
-                  <td>Guitarra clasica</td>
-                  <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptatum officiis,
-                      magni recusandae, laudantium consectetur repellat rerum iste, laborum eligendi
-                      earum. Magni aliquid aut tenetur dignissimos ad eaque repellat deserunt.</td>
-                  <td class="td-button">
-                      <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
-                      <button class="button_delet"><i class='bx bx-trash'></i></button><button
-                          class="button_updet"><i class='bx bx-refresh'></i></button>
-                  </td>
-              </tr>
-              <tr>
-                  <td>2</td>
-                  <td><img src="/img/productos/bateria-negra.png"></td>
-                  <td>Piano clasico</td>
-                  <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate non ducimus quam
-                      quod voluptatem excepturi deleniti animi laboriosam quo quaerat voluptatum maiores
-                      sit, eligendi ipsa aliquid minima velit quos modi?</td>
-                  <td class="td-button">
-                      <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
-                      <button class="button_delet"><i class='bx bx-trash'></i></button><button
-                          class="button_updet"><i class='bx bx-refresh'></i></button>
-                  </td>
-              </tr>
-              <tr>
-                  <td>3</td>
-                  <td><img src="/img/productos/violin.png"></td>
-                  <td>Guitarra clasica</td>
-                  <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam eligendi maiores
-                      saepe non ipsum id dignissimos, placeat omnis optio fugit, itaque obcaecati maxime
-                      eum eos quidem earum numquam laudantium! Voluptate?</td>
-                  <td class="td-button">
-                      <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
-                      <button class="button_delet"><i class='bx bx-trash'></i></button><button
-                          class="button_updet"><i class='bx bx-refresh'></i></button>
-                  </td>
-              </tr>
-              <tr>
-                  <td>4</td>
-                  <td><img src="/img/productos/violin.png"></td>
-                  <td>Guitarra clasica</td>
-                  <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam eligendi maiores
-                      saepe non ipsum id dignissimos, placeat omnis optio fugit, itaque obcaecati maxime
-                      eum eos quidem earum numquam laudantium! Voluptate?</td>
-                  <td class="td-button">
-                      <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
-                      <button class="button_delet"><i class='bx bx-trash'></i></button><button
-                          class="button_updet"><i class='bx bx-refresh'></i></button>
-                  </td>
-              </tr>
-              <tr>
-                  <td>5</td>
-                  <td><img src="/img/productos/guitarra.com.png"></td>
-                  <td>Piano clasico</td>
-                  <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis inventore
-                      perferendis alias aperiam debitis nihil quod hic, ad blanditiis et reprehenderit
-                      sapiente soluta maxime? Non consectetur corporis reprehenderit necessitatibus saepe.
-                  </td>
-                  <td class="td-button">
-                      <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
-                      <button class="button_delet"><i class='bx bx-trash'></i></button><button
-                          class="button_updet"><i class='bx bx-refresh'></i></button>
-                  </td>
-              </tr>
-              <tr>
-                  <td>6</td>
-                  <td><img src="/img/productos/guitarra-electrica.png"></td>
-                  <td>Guitarra electrica</td>
-                  <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At fuga, maiores placeat,
-                      voluptate facere labore ea repellendus velit veniam officia quis commodi molestias
-                      aperiam omnis ab suscipit voluptatum dolore beatae.</td>
-                  <td class="td-button">
-                      <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
-                      <button class="button_delet"><i class='bx bx-trash'></i></button><button
-                          class="button_updet"><i class='bx bx-refresh'></i></button>
-                  </td>
-              </tr>
-              <tr>
-                  <td>7</td>
-                  <td><img src="/img/productos/guitarra-electrica.png"></td>
-                  <td>Guitarra electrica</td>
-                  <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At fuga, maiores placeat,
-                      voluptate facere labore ea repellendus velit veniam officia quis commodi molestias
-                      aperiam omnis ab suscipit voluptatum dolore beatae.</td>
-                  <td class="td-button">
-                      <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
-                      <button class="button_delet"><i class='bx bx-trash'></i></button><button
-                          class="button_updet"><i class='bx bx-refresh'></i></button>
-                  </td>
-              </tr>
-              <tr>
-                  <td>8</td>
-                  <td><img src="/img/productos/guitarra-electrica.png"></td>
-                  <td>Guitarra electrica</td>
-                  <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At fuga, maiores placeat,
-                      voluptate facere labore ea repellendus velit veniam officia quis commodi molestias
-                      aperiam omnis ab suscipit voluptatum dolore beatae.</td>
-                  <td class="td-button">
-                      <button class="button_edit"><i class='bx bxs-edit-alt'></i></button>
-                      <button class="button_delet"><i class='bx bx-trash'></i></button><button
-                          class="button_updet"><i class='bx bx-refresh'></i></button>
-                  </td>
-              </tr>
-          </tbody>
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Estado</th>
+            <th>Fecha</th>
+            <th>Dirección</th>
+            <th>Mapa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>En Camino</td>
+            <td>19/02/2021</td>
+            <td>Avenida Masferrer Norte 11A, San Salvador
+              Las Cumbres Pupuseria, dirección</td>
+          </tr>
+        
+            
+          
+          
+        </tbody>
       </table>
-  </div>
+    </div>
   </main>
   <script src="/resources/js/dashboard/script_dashboard.js"></script>
+  <script src="/js/script_alert_delete.js"></script>
+  <script src="/js/script_aler_succes.js"></script>
+  <!-- Script libreria sweetslert -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
     crossorigin="anonymous"></script>
