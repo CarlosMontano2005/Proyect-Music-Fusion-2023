@@ -46,11 +46,14 @@ section{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    
 }
 .img-perfil img{
     border-radius: 50%;
     height: 15rem;
     width: 15rem;
+    margin: 5px;
     object-fit: cover;
 }
 
@@ -78,4 +81,29 @@ section{
 .datos-perfil label{
     margin-bottom: 0;
     margin-top: 5px;
+}
+
+.button{
+    text-decoration: none;
+    background: #A434F4;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    text-align: center;
+    padding: 5px 5px;
+    width: 70%;
+    border-radius: 5px;
+    
+}
+.button:hover{
+    background-color: #b04df7;
+    text-decoration: none;
+    color: #fff;
+}
+
+.btn-guradar-datos-perfil{
+    display: flex;
+    margin: 5px;
+    padding: 5px;
+    justify-content: center;
+
 }
