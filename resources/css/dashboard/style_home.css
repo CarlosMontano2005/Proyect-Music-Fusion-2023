@@ -16,9 +16,6 @@ body{
   background: linear-gradient(to right, rgb(112, 128, 232) 0%, #695CFE 74%) ;
   border-radius: 30px;
 }
-
-
-
 .home-section::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 30px;
@@ -99,10 +96,6 @@ body.dark{
   font-size: 26px;
   font-weight: 600;
 }
-
-
-
-
 /*cartas*/
 
 
