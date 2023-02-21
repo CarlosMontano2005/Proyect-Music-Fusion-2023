@@ -10,6 +10,9 @@
 body{
   overflow: hidden;
 }
+main{
+  overflow: scroll;
+}
 .home-section::-webkit-scrollbar {
   width: 10px;
 }
@@ -20,6 +23,9 @@ body{
 
 .home-section::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+#active-btn{
+  background: var(--primary-color);
 }
 .sidebar{
   position: fixed;
@@ -42,6 +48,11 @@ body{
   --nav-color: #fff;
   --nav-text-color: #000;
   --main-text-color: #000;
+  --car-backgroud-color:#F2FBFF;
+  --car-calculo-1-backgroud-color:#3d54e7;
+  --car-calculo-2-backgroud-color:#d15ed3;
+  --car-calculo-3-backgroud-color:#4f4cd4;
+  --car-calculo-4-backgroud-color:#b780ef;
   /* ====== Transition ====== */
   --tran-03: all 0.2s ease;
   --tran-03: all 0.3s ease;
@@ -64,8 +75,12 @@ body.dark{
   --nav-color: #242526;
   --nav-text-color: #fff;
   --main-text-color: #fff;
+  --car-backgroud-color:#242526;
+  --car-calculo-1-backgroud-color:#242526;
+  --car-calculo-2-backgroud-color:#242526;
+  --car-calculo-3-backgroud-color:#242526;
+  --car-calculo-4-backgroud-color:#242526;
 }
-
 
 .sidebar  .logo-details{
   display: flex;

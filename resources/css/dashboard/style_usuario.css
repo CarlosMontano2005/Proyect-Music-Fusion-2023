@@ -47,6 +47,11 @@ main{
   --nav-color: #fff;
   --nav-text-color: #000;
   --main-text-color: #000;
+  --car-backgroud-color:#F2FBFF;
+  --car-calculo-1-backgroud-color:#3d54e7;
+  --car-calculo-2-backgroud-color:#d15ed3;
+  --car-calculo-3-backgroud-color:#4f4cd4;
+  --car-calculo-4-backgroud-color:#b780ef;
   /* ====== Transition ====== */
   --tran-03: all 0.2s ease;
   --tran-03: all 0.3s ease;
@@ -59,16 +64,6 @@ main{
   color: #fff;
 }
 
-
-
-/*.home-section{
-  position: relative;
-  background: var(--nav-color);
-  transition: all 0.5s ease;
-  overflow:scroll;
-
-}*/
-
 body.dark{
   --body-color: #3a3b3c;
   --sidebar-color: #242526;
@@ -79,7 +74,26 @@ body.dark{
   --nav-color: #242526;
   --nav-text-color: #fff;
   --main-text-color: #fff;
+  --car-backgroud-color:#242526;
+  --car-calculo-1-backgroud-color:#242526;
+  --car-calculo-2-backgroud-color:#242526;
+  --car-calculo-3-backgroud-color:#242526;
+  --car-calculo-4-backgroud-color:#242526;
 }
+
+#active-btn{
+  background: var(--primary-color);
+}
+
+/*.home-section{
+  position: relative;
+  background: var(--nav-color);
+  transition: all 0.5s ease;
+  overflow:scroll;
+
+}*/
+
+
 
 
 .sidebar  .logo-details{
@@ -490,6 +504,10 @@ body.dark .switch::before{
   }
 
 /*Modal*/
+.modal-body, .modal-header, .modal-footer{
+  background: var(--body-color);
+}
+
 .btn-agregar{
     display: flex;
     align-items: center;
