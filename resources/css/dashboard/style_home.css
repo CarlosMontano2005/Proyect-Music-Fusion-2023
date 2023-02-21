@@ -78,10 +78,7 @@ body.dark{
   grid-template-columns: 250px 250px;*/
   display: flex;
 }
-.cards{
-  display: grid;
-  grid-template-columns: 260px 260px;
-}
+
 
 .home-section .home-content .bx-menu,
 .home-section .home-content .text{
@@ -98,7 +95,10 @@ body.dark{
 }
 /*cartas*/
 
-
+.cards{
+  display: grid;
+  grid-template-columns: 260px 260px;
+}
 .card {
 	display: flex;	
 	margin: 5px;

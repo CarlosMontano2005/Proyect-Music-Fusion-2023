@@ -9,6 +9,9 @@
 body{
   overflow: hidden;
 }
+/*
+*/
+
 .home-section::-webkit-scrollbar {
   width: 10px;
 }
