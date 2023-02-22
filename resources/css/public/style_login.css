@@ -1,0 +1,124 @@
+/* Google Fonts Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+  
+body {
+    background-color: #383068;
+    background-image: url(/img/picture/banda-musicos.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.img-pregunta{
+  position: fixed;
+  /*background: red;*/
+  right: 0;
+}
+
+.img-pregunta a i{
+  font-size: 30px;
+}
+.img-pregunta a{
+  text-decoration: none;
+  color: #F3F2FD;
+}
+.img-logo-min{
+  position: fixed;
+  /*background: red;*/
+  right: 0;
+  bottom: 10px;
+}
+.img-logo-min img{
+  width: 10rem;
+  
+}
+.form-login{
+  display: flex;
+  justify-content: flex-start;
+}
+.cont-login{
+  background: rgb(26, 26, 26 , .9);
+  width: 40%;
+  height: 100vh;
+  padding: 30px;
+}
+.form-text{
+  padding-top: 30px;
+}
+.form-text .mb-3 input{
+  border-radius: 50px;
+}
+.label-user , .label-pass{
+  font-size: 20px;
+  color: #F3F2FD;
+}
+.form-text-preguntas{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.form-text-preguntas a{
+  font-size: 12px;
+  text-decoration: none;
+
+}
+.img-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.img-logo img{
+  width: 10rem;
+}
+
+.btn-login{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.btn-login a{
+  text-decoration: none;
+  background: linear-gradient(90deg, rgba(81, 78, 233, 1) 10%, rgba(164,52,244,1) 48%, rgba(228,33,253,1) 100%);  width: 50%;
+  padding: 10px;
+  text-align: center;
+  border-radius: 100px;
+  color: #F3F2FD;
+}
+.btn-login a:hover{
+  color: #F3F2FD;
+  transition: 0.5s;
+}
+.btn-login a:active{
+  transition: 0.5s;
+  background: #514ee9;
+}
+@media screen and (max-width: 850px){
+  .cont-login{
+    width: 50%;
+    height: 100vh;
+  }
+  .btn-login a{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 450px){
+  .cont-login{
+    width: 100%;
+    height: 100vh;
+  }
+  .btn-login a{
+    width: 100%;
+  }
+}
+
+
+
