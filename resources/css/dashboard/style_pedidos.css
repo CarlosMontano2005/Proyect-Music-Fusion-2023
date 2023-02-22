@@ -326,6 +326,10 @@ body.dark{
   font-size: 26px;
   font-weight: 600;
 }
+#active-btn{
+  background: var(--primary-color);
+}
+
 
 
 /**/
