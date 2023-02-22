@@ -26,6 +26,7 @@ body {
 }
 .img-logo-min{
   position: fixed;
+  bottom: 0;
 }
 .img-logo-min img{
   width: 10rem;
@@ -34,7 +35,6 @@ body {
   display: flex;
   justify-content: center;
   padding-top: 5rem;
-  padding-bottom: 10px;
 }
 .cont-login{
   background: rgb(243, 242, 253, 0.8);
