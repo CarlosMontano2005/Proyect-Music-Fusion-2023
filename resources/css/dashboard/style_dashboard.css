@@ -704,4 +704,9 @@ td button {
     left: 78px;
     width: calc(100% - 78px);
   }
+
+  .nav-barra .home-content .text , .nav-barra .home-content .info{
+    color: #286B8C;
+    font-size: 2rem;
+  }
 }
