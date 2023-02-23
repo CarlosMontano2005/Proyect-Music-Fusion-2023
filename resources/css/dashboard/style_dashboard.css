@@ -456,6 +456,7 @@ body.dark .switch::before{
 	overflow: hidden;
 	width: 250px;
 	height: 150px;
+  
 }
 
 .card .card-icon{
@@ -706,7 +707,14 @@ td button {
   }
 
   .nav-barra .home-content .text , .nav-barra .home-content .info{
-    color: #286B8C;
-    font-size: 2rem;
+    font-size: 1rem;
+  }
+
+
+  .nav-barra {
+    font-size: 10px;
+  }
+  .nav-barra-time{
+    
   }
 }
