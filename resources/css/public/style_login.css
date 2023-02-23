@@ -8,13 +8,18 @@
 }
   
 body {
-  font-family: arial;
-  background: rgb(81, 78, 233);
-  background: linear-gradient(90deg, rgba(81, 78, 233, 1) 10%, rgba(164,52,244,1) 48%, rgba(228,33,253,1) 100%);
+    background-color: #383068;
+    background-image: url(/img/picture/banda-musicos.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
+
 .img-pregunta{
-  display: flex;
-  justify-content: flex-end;
+  position: fixed;
+  /*background: red;*/
+  right: 0;
 }
 
 .img-pregunta a i{
@@ -26,21 +31,23 @@ body {
 }
 .img-logo-min{
   position: fixed;
-  bottom: 0;
+  /*background: red;*/
+  right: 0;
+  bottom: 10px;
 }
 .img-logo-min img{
   width: 10rem;
+  
 }
 .form-login{
   display: flex;
-  justify-content: center;
-  padding-top: 5rem;
+  justify-content: flex-start;
 }
 .cont-login{
-  background: rgb(243, 242, 253, 0.8);
-  width: 28%;
+  background: rgb(26, 26, 26 , .9);
+  width: 40%;
+  height: 100vh;
   padding: 30px;
-  border-radius: 10px;
 }
 .form-text{
   padding-top: 30px;
@@ -50,12 +57,12 @@ body {
 }
 .label-user , .label-pass{
   font-size: 20px;
-  color: #272727;
+  color: #F3F2FD;
 }
 .form-text-preguntas{
   display: flex;
   flex-direction: column;
-text-align: center;
+  text-align: center;
 }
 .form-text-preguntas a{
   font-size: 12px;
@@ -69,9 +76,7 @@ text-align: center;
     text-align: center;
 }
 .img-logo img{
-  position: absolute;
   width: 10rem;
-  margin-top:-120px;
 }
 
 .btn-login{
@@ -96,3 +101,24 @@ text-align: center;
   transition: 0.5s;
   background: #514ee9;
 }
+@media screen and (max-width: 850px){
+  .cont-login{
+    width: 50%;
+    height: 100vh;
+  }
+  .btn-login a{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 450px){
+  .cont-login{
+    width: 100%;
+    height: 100vh;
+  }
+  .btn-login a{
+    width: 100%;
+  }
+}
+
+
+
