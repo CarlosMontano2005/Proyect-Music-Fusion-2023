@@ -277,76 +277,78 @@
       <h3>Administrar Usuarios</h3>
     </div>
     <div class="header_fixed">
-      <table>
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>Foto</th>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Telefono</th>
-            <th>Tipo</th>
-            <th>Estado</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td><img src="/img/people/charlie.jpg"></td>
-            <td>Carlos Montano</td>
-            <td>20210042@ricaldone.edu.sv</td>
-            <td>6068-9508</td>
-            <td>Administrador</td>
-            <td class="td-estado"><button class="td-estado-usuario rounded-circle" id="estado-activo"></button></td>
-            <td class="td-button">
-              <!--Boton Editar-->
-              <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal"
-                data-bs-target="#Edit"><i class='bx bxs-edit-alt'></i></button>
-              <!--Boton Eliminar-->
-              <button onclick="mostrar()" class="button_delet"><i class='bx bx-trash'></i></button>
-              <!--Boton examinar-->
-              <button class="button_updet"><i class='bx bx-refresh'></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td><img src="/img/people/Diego.jpg"></td>
-            <td>Diego Vasconcelos</td>
-            <td>20210338@ricaldone.edu.sv</td>
-            <td>7640-6996</td>
-            <td>Administrador</td>
-            <td class="td-estado"><button class="td-estado-usuario rounded-circle" id="estado-ocupado"></button></td>
-            <td class="td-button">
-              <!--Boton Editar-->
-              <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal"
-                data-bs-target="#Edit"><i class='bx bxs-edit-alt'></i></button>
-              <!--Boton Eliminar-->
-              <button onclick="mostrar()" class="button_delet"><i class='bx bx-trash'></i></button>
-              <!--Boton examinar-->
-              <button class="button_updet"><i class='bx bx-refresh'></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td><img src="/img/people/Gerardo.jpg"></td>
-            <td>Gerardo Mendez</td>
-            <td>20180111@ricaldone.edu.sv</td>
-            <td>7443-7404</td>
-            <td>Administrador</td>
-            <td class="td-estado"><button class="td-estado-usuario rounded-circle" id="estado-bloqueado"></button></td>
-            <td class="td-button">
-              <!--Boton Editar-->
-              <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal"
-                data-bs-target="#Edit"><i class='bx bxs-edit-alt'></i></button>
-              <!--Boton Eliminar-->
-              <button onclick="mostrar()" class="button_delet"><i class='bx bx-trash'></i></button>
-              <!--Boton examinar-->
-              <button class="button_updet"><i class='bx bx-refresh'></i></button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Foto</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Telefono</th>
+              <th>Tipo</th>
+              <th>Estado</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><img src="/img/people/charlie.jpg"></td>
+              <td>Carlos Montano</td>
+              <td>20210042@ricaldone.edu.sv</td>
+              <td>6068-9508</td>
+              <td>Administrador</td>
+              <td class="td-estado"><button class="td-estado-usuario rounded-circle" id="estado-activo"></button></td>
+              <td class="td-button">
+                <!--Boton Editar-->
+                <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal"
+                  data-bs-target="#Edit"><i class='bx bxs-edit-alt'></i></button>
+                <!--Boton Eliminar-->
+                <button onclick="mostrar()" class="button_delet"><i class='bx bx-trash'></i></button>
+                <!--Boton examinar-->
+                <button class="button_updet"><i class='bx bx-refresh'></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><img src="/img/people/Diego.jpg"></td>
+              <td>Diego Vasconcelos</td>
+              <td>20210338@ricaldone.edu.sv</td>
+              <td>7640-6996</td>
+              <td>Administrador</td>
+              <td class="td-estado"><button class="td-estado-usuario rounded-circle" id="estado-ocupado"></button></td>
+              <td class="td-button">
+                <!--Boton Editar-->
+                <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal"
+                  data-bs-target="#Edit"><i class='bx bxs-edit-alt'></i></button>
+                <!--Boton Eliminar-->
+                <button onclick="mostrar()" class="button_delet"><i class='bx bx-trash'></i></button>
+                <!--Boton examinar-->
+                <button class="button_updet"><i class='bx bx-refresh'></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><img src="/img/people/Gerardo.jpg"></td>
+              <td>Gerardo Mendez</td>
+              <td>20180111@ricaldone.edu.sv</td>
+              <td>7443-7404</td>
+              <td>Administrador</td>
+              <td class="td-estado"><button class="td-estado-usuario rounded-circle" id="estado-bloqueado"></button></td>
+              <td class="td-button">
+                <!--Boton Editar-->
+                <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal"
+                  data-bs-target="#Edit"><i class='bx bxs-edit-alt'></i></button>
+                <!--Boton Eliminar-->
+                <button onclick="mostrar()" class="button_delet"><i class='bx bx-trash'></i></button>
+                <!--Boton examinar-->
+                <button class="button_updet"><i class='bx bx-refresh'></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </main>
   <script src="/resources/js/dashboard/script_dashboard.js"></script>
