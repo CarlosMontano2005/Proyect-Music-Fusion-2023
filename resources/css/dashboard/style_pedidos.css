@@ -514,6 +514,7 @@ table {
     box-shadow: 10px;
     border: 1px solid #CCCCCC;
     border-radius: 25px;
+    margin-bottom: 150px;
 }
 
 .header_fixed thead th {

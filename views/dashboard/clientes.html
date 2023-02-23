@@ -279,58 +279,60 @@
     <h3>Administrar Cliente</h3>
     </div>
     <div class="header_fixed">
-      <table>
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>Correo</th>
-            <th>Fecha Nacimiento</th>
-            <th>Sexo</th>
-            <th>Telefono</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Carlos Roberto</td>
-            <td>Montano Hernadez</td>
-            <td>elcachetom@gmail.com</td>
-            <td>19 Feb. 2005</td>
-            <td>Superman</td>
-            <td>6068-9508</td>
-            <td class="td-button">
-              <!--Boton Editar-->
-              <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal"
-                data-bs-target="#Edit"><i class='bx bxs-edit-alt'></i></button>
-              <!--Boton Eliminar-->
-              <button onclick="mostrar()" class="button_delet"><i class='bx bx-trash'></i></button>
-              <!--Boton examinar-->
-              <button class="button_updet"><i class='bx bx-refresh'></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Diego Alberto</td>
-            <td>Vasconcelos Baisa</td>
-            <td>20210338@ricaldone.edu.sv</td>
-            <td>7 Maz. 2005</td>
-            <td>Batman</td>
-            <td>6068-9508</td>
-            <td class="td-button">
-              <!--Boton Editar-->
-              <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal"
-                data-bs-target="#Edit"><i class='bx bxs-edit-alt'></i></button>
-              <!--Boton Eliminar-->
-              <button onclick="mostrar()" class="button_delet"><i class='bx bx-trash'></i></button>
-              <!--Boton examinar-->
-              <button class="button_updet"><i class='bx bx-refresh'></i></button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Correo</th>
+              <th>Fecha Nacimiento</th>
+              <th>Sexo</th>
+              <th>Telefono</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Carlos Roberto</td>
+              <td>Montano Hernadez</td>
+              <td>elcachetom@gmail.com</td>
+              <td>19 Feb. 2005</td>
+              <td>Superman</td>
+              <td>6068-9508</td>
+              <td class="td-button">
+                <!--Boton Editar-->
+                <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal"
+                  data-bs-target="#Edit"><i class='bx bxs-edit-alt'></i></button>
+                <!--Boton Eliminar-->
+                <button onclick="mostrar()" class="button_delet"><i class='bx bx-trash'></i></button>
+                <!--Boton examinar-->
+                <button class="button_updet"><i class='bx bx-refresh'></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Diego Alberto</td>
+              <td>Vasconcelos Baisa</td>
+              <td>20210338@ricaldone.edu.sv</td>
+              <td>7 Maz. 2005</td>
+              <td>Batman</td>
+              <td>6068-9508</td>
+              <td class="td-button">
+                <!--Boton Editar-->
+                <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal"
+                  data-bs-target="#Edit"><i class='bx bxs-edit-alt'></i></button>
+                <!--Boton Eliminar-->
+                <button onclick="mostrar()" class="button_delet"><i class='bx bx-trash'></i></button>
+                <!--Boton examinar-->
+                <button class="button_updet"><i class='bx bx-refresh'></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </main>
   <script src="/resources/js/dashboard/script_dashboard.js"></script>

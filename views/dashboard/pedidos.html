@@ -17,7 +17,8 @@
 </head>
 
 <body>
-  <div class="sidebar close">
+  <!--Seccion del sidebar-->
+  <div class="sidebar close"> S
     <div class="logo-details">
       <img src="/img/logos/logo_blanco_horizontal.png" alt="logo">
     </div>
@@ -101,8 +102,8 @@
     <div class="home-content">
       <i class='bx bx-menu'></i>
       <!--comentario 15/02/2023-->
-      <span class="text">Drop Down Sidebar</span>
-      <label class="info">parte principal</label>
+      <span class="text">Pedidos</span>
+      <label class="info">parte pedidos</label>
     </div>
 
 
@@ -140,37 +141,39 @@
       <h3>Pedidos</h3>
     </div>
     <div class="header_fixed">
-      <table>
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>Estado</th>
-            <th>Fecha</th>
-            <th>Dirección</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>En Camino</td>
-            <td>19/02/2021</td>
-            <td>Avenida Masferrer Norte 11A, San Salvador
-              Las Cumbres Pupuseria, dirección</td>
-            <td cl ass="td-button">
-              <!--Boton VER DETALLES PEDIDOS-->
-              <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal"
-                data-bs-target="#Edit"><i class='bx bx-show'></i></button>
-
-
-            </td>
-          </tr>
-
-
-
-
-        </tbody>
-      </table>
+      <div table-responsive>
+        <table>
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Estado</th>
+              <th>Fecha</th>
+              <th>Dirección</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>En Camino</td>
+              <td>19/02/2021</td>
+              <td>Avenida Masferrer Norte 11A, San Salvador
+                Las Cumbres Pupuseria, dirección</td>
+              <td cl ass="td-button">
+                <!--Boton VER DETALLES PEDIDOS-->
+                <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal"
+                  data-bs-target="#Edit"><i class='bx bx-show'></i></button>
+  
+  
+              </td>
+            </tr>
+  
+  
+  
+  
+          </tbody>
+        </table>
+      </div>
     </div>
   </main>
   <script src="/resources/js/dashboard/script_dashboard.js"></script>
