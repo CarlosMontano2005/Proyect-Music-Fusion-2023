@@ -107,8 +107,8 @@
         <div class="home-content">
             <i class='bx bx-menu'></i>
             <!--comentario 15/02/2023-->
-            <span class="text">Drop Down Sidebar</span>
-            <label class="info">parte principal</label>
+            <span class="text">Dashboard</span>
+            <label class="info">Dashboard</label>
         </div>
         <div class="bottom-content">
             <div class="nav-barra-time">
@@ -131,7 +131,7 @@
         <section>
             <div class="home-content">
                 <!-- Seccion de tarjetas -->
-                <div class="cards">
+                <div class="cards col-6">
                     <div class="card">
                         <div class="right-column" id="car-1">
                             <div class="card-icon"><i class='bx bx-calendar'></i></div>
@@ -142,7 +142,6 @@
                             <div class="img-card-column"><i class='bx bx-calendar'></i></div>
                         </div>
                     </div>
-
                     <div class="card">
                         <div class="right-column" id="car-2">
                             <div class="card-icon"><i class='bx bx-calendar'></i></div>
@@ -174,8 +173,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="grafica">
-                    <h1>grafica</h1>
+                <div class="grafica col-6 ">
                     <canvas id="myChart"></canvas>
                 </div>
 
@@ -362,6 +360,8 @@
     </main>
     <script src="/resources/js/dashboard/script_dashboard.js"></script>
     <script src="/resources/js/dashboard/script_home.js"></script>
+    <!--Grafica-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/controllers/dashboard/grafica.js"></script>
     <!---->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
