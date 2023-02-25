@@ -589,6 +589,7 @@ table {
     box-shadow: 10px;
     border: 1px solid #CCCCCC;
     border-radius: 25px;
+    margin-bottom: 180px;
 }
 
 .header_fixed thead th {
