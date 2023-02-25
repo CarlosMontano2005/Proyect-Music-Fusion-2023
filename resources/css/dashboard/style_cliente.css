@@ -94,7 +94,9 @@ body.dark{
 }*/
 
 
-
+.box-text{
+  border-radius: 20px;
+}
 
 .sidebar  .logo-details{
   display: flex;

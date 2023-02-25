@@ -343,6 +343,10 @@ body.dark{
 
 
 /**/
+
+.box-text{
+  border-radius: 20px;
+}
 .nav-barra {
   /*background-color: #695CFE;*/
   display: flex;
