@@ -456,6 +456,7 @@ body.dark .switch::before{
 	overflow: hidden;
 	width: 250px;
 	height: 150px;
+  
 }
 
 .card .card-icon{
@@ -566,8 +567,16 @@ body.dark .switch::before{
 }
  
 
-
-
+/*Grafica*/
+.grafica {
+  background: var(--body-color);
+  height: 50vh;
+  border: solid #CCCCCC 2px;
+  border-radius: 20px
+}
+canvas{
+  
+}
 /**/
 /*table*/
 
@@ -705,4 +714,44 @@ td button {
     left: 78px;
     width: calc(100% - 78px);
   }
+  .nav-barra{
+    height: 50px;
+  }
+  .nav-barra .home-content{
+  }
+  
+  .home-section .info{
+    font-size: 0;
+    padding: 0;
+    bottom: 10rem;
+  }
+  .nav-barra .home-content .text , .nav-barra .home-content .info{
+    font-size: 1rem;
+    
+  }
+
+
+  .bottom-content .nav-barra-time label{
+    font-size: 0px;
+    padding: 0;
+    margin: 0;
+  }
+  .bottom-content .mode .mode-text{
+    font-size: 0;
+  }
+
+
+  .bottom-content .mode .sun-moon{
+    position: absolute;
+  }
+  .bottom-content .mode .sun-moon .bx-sun, .bottom-content .mode .sun-moon .bx-moon{
+    position: absolute;
+    left: -10px;
+    bottom: -5px;
+    z-index: 100;
+    
+  }
+ 
+ 
+
 }
