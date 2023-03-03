@@ -53,6 +53,7 @@ body {
   color: #272727;
 }
 .form-text-preguntas{
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
 text-align: center;
@@ -74,13 +75,11 @@ text-align: center;
   margin-top:-120px;
 }
 
-.btn-login{
+.btn-btn-primary{
   display: flex;
   justify-content: center;
+  border: none;
   padding: 10px;
-}
-
-.btn-login a{
   text-decoration: none;
   background: linear-gradient(90deg, rgba(81, 78, 233, 1) 10%, rgba(164,52,244,1) 48%, rgba(228,33,253,1) 100%);  width: 50%;
   padding: 10px;
@@ -88,11 +87,12 @@ text-align: center;
   border-radius: 100px;
   color: #F3F2FD;
 }
-.btn-login a:hover{
+
+.btn-login :hover{
   color: #F3F2FD;
   transition: 0.5s;
 }
-.btn-login a:active{
+.btn-login :active{
   transition: 0.5s;
   background: #514ee9;
 }
