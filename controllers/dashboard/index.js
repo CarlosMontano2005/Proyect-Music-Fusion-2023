@@ -48,7 +48,7 @@ LOGIN_FORM.addEventListener('submit', async (event) => {
     const JSON = await dataFetch(USER_API, 'login', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
-        sweetAlert(1, JSON.message, true, 'main.html');
+        sweetAlert(1, JSON.message, true, 'http://localhost/Proyect-Music-Fusion-2023/views/dashboard/dashboard.html');
     } else {
         sweetAlert(2, JSON.exception, false);
     }
