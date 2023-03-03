@@ -13,3 +13,13 @@ function succesEdit(){
         icon: "success",
       });
 }
+
+function succesEnter(){
+
+  swal({
+    title: "Exito",
+    text: "Autenticación correcta!",
+    icon: "success",
+    button: "Continuar!",
+  });
+}

@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <title>Login</title>
-  <link rel="stylesheet" href="/resources/css/dashboard/style_login.css" />
+  <link rel="stylesheet" href="../../resources/css/dashboard/style_login.css" />
   <!-- Llamada de archivo como icono -->
-  <link type="image/png" rel="icon" href="/img/logos/logo.png" />
+  <link type="image/png" rel="icon" href="../../img/logos/logo.png" />
   <!-- Boxiocns CDN Link -->
   <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
@@ -22,34 +22,32 @@
   <div class="img-pregunta">
     <a href="#"><i class='bx bx-question-mark'></i></a>
   </div>
-  <section class="form-login">
+  <form class="form-login" action="../../api/helpers/sesion.php" method="post">
     <div class="cont-login">
       <div class="img-logo">
-        <img src="/img/logos/logo.png" alt="">
+        <img src="../../img/logos/logo.png" alt="">
       </div>
       <div class="form-text">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label label-user">Nombre de usuario</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input name="user" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label label-pass">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <input name="pass" type="password" class="form-control" id="exampleInputPassword1">
         </div>
         <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input " id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Mostrar clave</label>
         </div>
       </div>
-      <div class="btn-login">
-        <a href="/views/dashboard/dashboard.html">Continuar</a>
-      </div>
+      <button type="submit" class="btn-login">Continuar</button>
       <div class="form-text-preguntas">
         <a href="/views/dashboard/recuperacion.html">¿Ha olvidado su contraseña?</a>
         <a href="#">¿Todavia no es miembro? Crea una cuenta</a>
       </div>
     </div>
-  </section>
+  </form>
   <div class="img-logo-min">
     <img src="/img/logos/logo_blanco_horizontal.png" alt="logo-blancohorizontal">
   </div>
