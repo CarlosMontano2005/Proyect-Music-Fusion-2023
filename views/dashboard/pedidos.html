@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <title> Pedidos </title>
-  <link rel="stylesheet" href="/resources/css/dashboard/style_pedidos.css">
+  <link rel="stylesheet" href="../../resources/css/dashboard/style_pedidos.css">
   <!-- Llamada de archivo como icono -->
-  <link type="image/png" rel="icon" href="/img/logos/logo.png">
+  <link type="image/png" rel="icon" href="../../img/logos/logo.png">
   <!-- Boxiocns CDN Link -->
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -17,36 +17,37 @@
 </head>
 
 <body>
+  <!--Seccion del sidebar-->
   <div class="sidebar close">
     <div class="logo-details">
-      <img src="/img/logos/logo_blanco_horizontal.png" alt="logo">
+      <img src="../../img/logos/logo_blanco_horizontal.png" alt="logo">
     </div>
     <ul class="nav-links">
       <li>
-        <a href="/views/dashboard/dashboard.html">
+        <a href="../../views/dashboard/dashboard.html">
           <i class='bx bxs-home-alt-2'></i>
           <span class="link_name">Inicio</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a class="link_name" href="/views/dashboard/dashboard.html">Inicio</a></li>
+          <li><a class="link_name" href="../../views/dashboard/dashboard.html">Inicio</a></li>
         </ul>
       </li>
       <li>
-        <a href="/views/dashboard/usuarios.html">
+        <a href="../../views/dashboard/usuarios.html">
           <i class='bx bx-user'></i>
           <span class="link_name">Usuario</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a class="link_name" href="/views/dashboard/usuarios.html">Usuario</a></li>
+          <li><a class="link_name" href="../../views/dashboard/usuarios.html">Usuario</a></li>
         </ul>
       </li>
       <li id="active-btn">
-        <a href="/views/dashboard/pedidos.html">
+        <a href="../../views/dashboard/pedidos.html">
           <i class='bx bxs-package'></i>
           <span class="link_name">Pedidos</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a class="link_name" href="/views/dashboard/pedidos.html">Pedidos</a></li>
+          <li><a class="link_name" href="../../views/dashboard/pedidos.html">Pedidos</a></li>
         </ul>
       </li>
       <li>
@@ -59,17 +60,17 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Productos</a></li>
-          <li><a href="/views/dashboard/productos.html">Productos</a></li>
-          <li><a href="/views/dashboard/marcas.html">Marcas</a></li>
+          <li><a href="../../views/dashboard/productos.html">Productos</a></li>
+          <li><a href="../../views/dashboard/marcas.html">Marcas</a></li>
         </ul>
       </li>
       <li>
-        <a href="/views/dashboard/clientes.html">
+        <a href="../../views/dashboard/clientes.html">
           <i class='bx bxs-user-account'></i>
           <span class="link_name">Clientes</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a class="link_name" href="/views/dashboard/clientes.html">Clientes</a></li>
+          <li><a class="link_name" href="../../views/dashboard/clientes.html">Clientes</a></li>
         </ul>
       </li>
       <li>
@@ -86,13 +87,13 @@
         <!-- -->
         <div class="profile-details">
           <div class="profile-content">
-            <img src="/img/people/charlie.jpg" alt="profileImg">
+            <img src="../../img/people/charlie.jpg" alt="profileImg">
           </div>
           <div class="name-job">
             <div class="profile_name">Charlie</div>
             <div class="job">Vendedor</div>
           </div>
-          <a href="/views/dashboard/login.html"><i class='bx bx-log-out'></i></a>
+          <a href="../../views/dashboard/login.html"><i class='bx bx-log-out'></i></a>
         </div>
       </li>
     </ul>
@@ -101,8 +102,8 @@
     <div class="home-content">
       <i class='bx bx-menu'></i>
       <!--comentario 15/02/2023-->
-      <span class="text">Drop Down Sidebar</span>
-      <label class="info">parte principal</label>
+      <span class="text">Pedidos</span>
+      <label class="info">parte pedidos</label>
     </div>
 
 
@@ -140,42 +141,44 @@
       <h3>Pedidos</h3>
     </div>
     <div class="header_fixed">
-      <table>
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>Estado</th>
-            <th>Fecha</th>
-            <th>Dirección</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>En Camino</td>
-            <td>19/02/2021</td>
-            <td>Avenida Masferrer Norte 11A, San Salvador
-              Las Cumbres Pupuseria, dirección</td>
-            <td cl ass="td-button">
-              <!--Boton VER DETALLES PEDIDOS-->
-              <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal"
-                data-bs-target="#Edit"><i class='bx bx-show'></i></button>
-
-
-            </td>
-          </tr>
-
-
-
-
-        </tbody>
-      </table>
+      <div table-responsive>
+        <table>
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Estado</th>
+              <th>Fecha</th>
+              <th>Dirección</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>En Camino</td>
+              <td>19/02/2021</td>
+              <td>Avenida Masferrer Norte 11A, San Salvador
+                Las Cumbres Pupuseria, dirección</td>
+              <td cl ass="td-button">
+                <!--Boton VER DETALLES PEDIDOS-->
+                <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal"
+                  data-bs-target="#Edit"><i class='bx bx-show'></i></button>
+  
+  
+              </td>
+            </tr>
+  
+  
+  
+  
+          </tbody>
+        </table>
+      </div>
     </div>
   </main>
-  <script src="/resources/js/dashboard/script_dashboard.js"></script>
-  <script src="/js/script_alert_delete.js"></script>
-  <script src="/js/script_aler_succes.js"></script>
+  <script src="../../resources/js/dashboard/script_dashboard.js"></script>
+  <script src="../../js/script_alert_delete.js"></script>
+  <script src="../../js/script_aler_succes.js"></script>
   <!-- Script libreria sweetslert -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
