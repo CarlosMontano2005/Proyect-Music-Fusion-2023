@@ -441,12 +441,12 @@ header .icons #menu-bars{
 }
 
 .order form{
-    width: 90rem;
+    max-width: 90rem;
     border-radius: .5rem;
     box-shadow: var(--box-shadow);
     border: .1rem solid rgba(0,0,0,.2);
     background: #fff;
-    padding: 1.5;
+    padding: 1.5rem;
     margin: 0 auto;
 }
 
@@ -607,4 +607,8 @@ header .icons #menu-bars{
 }
 .swiper-pagination-bullet-active{
     background:var(--purple);
+}
+
+.order form .inputbox .input{
+    width: 100%;
 }
