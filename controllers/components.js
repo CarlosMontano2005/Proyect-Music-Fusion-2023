@@ -1,5 +1,3 @@
-// Constante para establecer la ruta del servidor.
-const SERVER_URL = 'http://localhost/Proyect-Music-Fusion-2023/api/';
 
 /*
 *   Función para mostrar un mensaje de confirmación. Requiere la librería sweetalert para funcionar.

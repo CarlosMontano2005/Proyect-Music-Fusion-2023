@@ -1,8 +1,8 @@
 <?php
+
+// Constantes para establecer las credenciales de conexión con el servidor de bases de datos.
 define('SERVER', 'localhost');
 define('DATABASE', 'Music_Fusion');
 define('USERNAME', 'postgres');
 define('PASSWORD', '123');
-
-$conexion = pg_connect("host=localhost dbname=Music_Fusion user=postgres password=123");
 ?>
