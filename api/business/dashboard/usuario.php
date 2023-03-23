@@ -99,9 +99,9 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$usuario->setNombres($_POST['nombres'])) {
+                if (!$usuario->setNombres($_POST['nombre'])) {
                     $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
+                } elseif (!$usuario->setApellidos($_POST['apellido'])) {
                     $result['exception'] = 'Apellidos incorrectos';
                 } elseif (!$usuario->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo incorrecto';
@@ -111,7 +111,10 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Claves diferentes';
                 } elseif (!$usuario->setClave($_POST['clave'])) {
                     $result['exception'] = Validator::getPasswordError();
-                } elseif ($usuario->createRow()) {
+                } elseif (!$usuario->setTelefono($_POST['telefono'])){
+                    $result['exception'] = Validato::getValidatePhone();
+                }
+                 elseif ($usuario->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Usuario creado correctamente';
                 } else {

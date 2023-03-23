@@ -13,6 +13,9 @@ class Usuario extends UsuarioQueries
     protected $correo = null;
     protected $alias = null;
     protected $clave = null;
+    protected $telefono = null;
+    protected $id_tipo_usuario = null;
+    protected $id_estado_usuario = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -77,6 +80,38 @@ class Usuario extends UsuarioQueries
         }
     }
 
+    public function setTelefono($value){
+
+        if(validator::validatePhone($value)){
+            $this->telefono = $value;
+            return true;
+        }else{
+
+            return false;
+        }
+
+    }
+
+    public function setId_tipo_usuario($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->id_tipo_usuario = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setId_estado_usuario($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->id_estado_usuario = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -108,5 +143,20 @@ class Usuario extends UsuarioQueries
     public function getClave()
     {
         return $this->clave;
+    }
+
+    public function getTelefono(){
+
+        return $this ->telefono;
+    }
+
+    public function getId_tipo_usuario(){
+
+        return $this ->id_tipo_usuario;
+    }
+
+    public function getId_estado_usuario(){
+
+        return $this ->id_estado_usuario;
     }
 }  
