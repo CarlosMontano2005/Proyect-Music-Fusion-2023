@@ -91,6 +91,7 @@ body {
   .content{
     display: flex;
     flex-direction: column;
+
   }
   .content-img img{
     width: 0;
@@ -103,3 +104,4 @@ body {
     border-radius: 0;
   }
 }
+

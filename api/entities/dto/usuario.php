@@ -8,11 +8,13 @@ class Usuario extends UsuarioQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
-    protected $nombres = null;
-    protected $apellidos = null;
-    protected $correo = null;
-    protected $telefono = null;
-    protected $clave = null;
+    protected $nombre_usuario = null;
+    protected $apellido_usuario = null;
+    protected $correo_usuario = null;
+    protected $clave_usuario = null;
+    protected $telefono_usuario = null;
+    protected $id_tipo_usuario = null;
+    protected $id_estado_usuario = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -56,26 +58,20 @@ class Usuario extends UsuarioQueries
             return false;
         }
     }
-
-    public function setTelefono($value)
-    {
-        if (Validator::validateAlphanumeric($value, 1, 50)) {
-            $this->telefono = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
+    
     public function setClave($value)
     {
         if (Validator::validatePassword($value)) {
-            $this->clave = password_hash($value, PASSWORD_DEFAULT);
+            $this->clave = $value;
             return true;
         } else {
             return false;
         }
     }
+
+    
+
+    
 
     /*
     *   Métodos para obtener valores de los atributos.
@@ -100,10 +96,6 @@ class Usuario extends UsuarioQueries
         return $this->correo;
     }
 
-    public function getTelefono()
-    {
-        return $this->telefono;
-    }
 
     public function getClave()
     {

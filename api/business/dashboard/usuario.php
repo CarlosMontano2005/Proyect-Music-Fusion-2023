@@ -19,7 +19,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['username'] = $_SESSION['nombre_usuario'];
                 } else {
-                    $result['exception'] = 'Alias de usuario indefinido';
+                    $result['exception'] = 'Nombre de usuario indefinido';
                 }
                 break;
             case 'logOut':
@@ -199,13 +199,13 @@ if (isset($_GET['action'])) {
                 break;
             case 'login':
                 $_POST = Validator::validateForm($_POST);
-                if (!$usuario->checkUser($_POST['alias'])) {
-                    $result['exception'] = 'Alias incorrecto';
+                if (!$nombre_usuario->checkUser($_POST['nombre_usuario'])) {
+                    $result['exception'] = 'Nombre de usuario incorrecto';
                 } elseif ($usuario->checkPassword($_POST['clave'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
-                    $_SESSION['id_usuario'] = $usuario->getId();
-                    $_SESSION['nombre_usuario'] = $usuario->getAlias();
+                    $_SESSION['id_usuario'] = $nombre_usuario->getId();
+                    $_SESSION['nombre_usuario'] = $nombre_usuario->getNombres();
                 } else {
                     $result['exception'] = 'Clave incorrecta';
                 }

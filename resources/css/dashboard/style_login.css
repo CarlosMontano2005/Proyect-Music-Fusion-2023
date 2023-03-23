@@ -38,9 +38,10 @@ body {
 }
 .cont-login{
   background: rgb(243, 242, 253, 0.8);
+  box-shadow: 10px 10px 20px;
   width: 28%;
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 15px;
 }
 .form-text{
   padding-top: 30px;
@@ -97,3 +98,74 @@ text-align: center;
   transition: 0.5s;
   background: #514ee9;
 }
+
+@media only screen and (max-width: 600px) {
+  .cont-login{
+    margin-top: 40px;
+    width: 300px;
+    height: 420px;
+  }
+
+  .img-logo{
+    position: absolute;
+    margin-top: 8px;
+    margin-left: 120px;
+  }
+
+  .img-logo img{
+    width: 130px;
+  }
+
+  .img-logo-min img{
+    width: 120px;
+    margin-bottom: 10px;
+  }
+}
+
+@media all and (min-width: 700px) and (max-width: 900px){
+  .cont-login{
+    margin-top: 60px;
+    width: 460px;
+    height: 575px;
+  }
+
+  .img-logo{
+    position: absolute;
+    margin-top: 8px;
+    margin-left: 190px;
+  }
+
+  .img-logo img{
+    width: 170px;
+  }
+
+  .img-logo-min img{
+    width: 170px;
+    margin-bottom: 10px;
+  }
+
+  .form-text{
+    padding-top: 60px;
+  }
+  .form-text .mb-3 input{
+    border-radius: 50px;
+  }
+  .label-user , .label-pass{
+    font-size: 30px;
+  }
+  .form-text-preguntas{
+    margin-top: 30px;
+  }
+  .form-text-preguntas a{
+    font-size: 20px;
+    text-decoration: none;
+  }
+
+  .btn_primary{
+
+    margin-top: 30px;
+  }
+  
+}
+
+

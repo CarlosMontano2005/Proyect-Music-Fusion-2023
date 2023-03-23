@@ -34,20 +34,6 @@ class Database
         }
     }
 
-    /*
-    *   Método para obtener el valor de la llave primaria del último registro insertado.
-    *   Parámetros: $query (sentencia SQL) y $values (arreglo con los valores para la sentencia SQL).
-    *   Retorno: numérico entero (último valor de la llave primaria si la sentencia se ejecuta satisfactoriamente o 0 en caso contrario).
-    */
-    public static function getLastRow($query, $values)
-    {
-        if (self::executeRow($query, $values)) {
-            $id = self::$connection->lastInsertId();
-        } else {
-            $id = 0;
-        }
-        return $id;
-    }
 
     /*
     *   Método para obtener un registro de una sentencia SQL tipo SELECT.
