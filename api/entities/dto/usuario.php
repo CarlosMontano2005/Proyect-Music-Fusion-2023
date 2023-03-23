@@ -69,9 +69,6 @@ class Usuario extends UsuarioQueries
         }
     }
 
-    
-
-    
 
     /*
     *   Métodos para obtener valores de los atributos.
