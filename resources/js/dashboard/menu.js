@@ -5,19 +5,18 @@ for (var i = 0; i < arrow.length; i++) {
  arrowParent.classList.toggle("showMenu");
   });
 }
-
-let sidebar = document.querySelector(".sidebar");
-let sidebarBtn = document.querySelector(".bx-menu");
-console.log(sidebarBtn);
-sidebarBtn.addEventListener("click", ()=>{
-  sidebar.classList.toggle("close");
-});
-
 const body = document.querySelector('body'),
       toggle = body.querySelector(".toggle"),
       searchBtn = body.querySelector(".search-box"),
       modeSwitch = body.querySelector(".toggle-switch"),
       modeText = body.querySelector(".mode-text");
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".bx-menu");
+      console.log(sidebarBtn);
+      
+sidebarBtn.addEventListener("click" , ()=>{
+  sidebar.classList.toggle("close");
+});
 
 
 modeSwitch.addEventListener("click" , () =>{

@@ -17,116 +17,12 @@
 </head>
 
 <body>
-    <div class="sidebar close">
-        <div class="logo-details">
-            <img src="../../img/logos/logo_blanco_horizontal.png" alt="logo">
-        </div>
-        <ul class="nav-links">
-            <li>
-                <a href="../../views/dashboard/dashboard.html" id="active-btn">
-                    <i class='bx bxs-home-alt-2'></i>
-                    <span class="link_name">Inicio</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="../../views/dashboard/dashboard.html">Inicio</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="../../views/dashboard/usuarios.html">
-                    <i class='bx bx-user'></i>
-                    <span class="link_name">Usuario</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="../../views/dashboard/usuarios.html">Usuario</a></li>
-                </ul>
-            </li>
-            <li>
-                <div class="iocn-link">
-                    <a href="#">
-                        <i class='bx bxs-package'></i>
-                        <span class="link_name">Pedidos</span>
-                    </a>
-                    <i class='bx bxs-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Pedidos</a></li>
-                    <li><a href="../../views/dashboard/pedidos.html">Pedidos</a></li>
-                    <li><a href="../../views/dashboard/detalles_pedidos.html">Detalles Pedidost</a></li>
-                </ul>
-            </li>
-
-            <li>
-                <div class="iocn-link">
-                    <a href="#">
-                        <i class='bx bx-book-alt'></i>
-                        <span class="link_name">Productos</span>
-                    </a>
-                    <i class='bx bxs-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Productos</a></li>
-                    <li><a href="../../views/dashboard/productos.html">Productos</a></li>
-                    <li><a href="../../views/dashboard/marcas.html">Marcas</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="../../views/dashboard/clientes.html">
-                    <i class='bx bxs-user-account'></i>
-                    <span class="link_name">Clientes</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="../../views/dashboard/clientes.html">Clientes</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-cog'></i>
-                    <span class="link_name">Sobre el sistema</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Sobre el sistema</a></li>
-                </ul>
-            </li>
-            <li>
-
-                <!-- -->
-                <div class="profile-details">
-                    <div class="profile-content">
-                        <img src="../../img/people/charlie.jpg" alt="profileImg">
-                    </div>
-                    <div class="name-job">
-                        <div class="profile_name">Charlie</div>
-                        <div class="job">Vendedor</div>
-                    </div>
-                    <a href="../../views/dashboard/index.html"><i class='bx bx-log-out'></i></a>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <section class="home-section nav-barra">
-        <div class="home-content">
-            <i class='bx bx-menu'></i>
-            <!--comentario 15/02/2023-->
-            <span class="text">Dashboard</span>
-            <label class="info">Dashboard</label>
-        </div>
-        <div class="bottom-content">
-            <div class="nav-barra-time">
-                <label>lunes feb. 30 2022</label>
-            </div>
-            <li class="mode">
-                <div class="sun-moon">
-                    <i class='bx bx-moon icon moon'></i>
-                    <i class='bx bx-sun icon sun'></i>
-                </div>
-                <span class="mode-text text">Modo Dark</span>
-
-                <div class="toggle-switch">
-                    <span class="switch"></span>
-                </div>
-            </li>
-        </div>
-    </section>
+    <nav class="sidebar sidebar">
+        
+    </nav>
+    <header class="home-section nav-barra">
+       
+    </header>
     <main class="main home-section">
         <section>
             <div class="home-content">
@@ -358,9 +254,13 @@
                 </div>
         </section>
     </main>
-    <script src="../../resources/js/dashboard/script_dashboard.js"></script>
-    <script src="../../resources/js/dashboard/script_home.js"></script>
+    <!--llamar el menu-->
+    <script src="../../controllers/dashboard/account.js"></script>
     <!--Grafica-->
+    <script src="../../resources/js/dashboard/menu.js"></script>
+    <!--funsion para las estrallas del home -->
+    <script src="../../resources/js/dashboard/script_home.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../../controllers/dashboard/grafica.js"></script>
     <!---->
@@ -374,9 +274,6 @@
     <!--grafica-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js"></script>
-
-
-
 
 </body>
 
