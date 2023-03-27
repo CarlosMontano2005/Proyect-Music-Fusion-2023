@@ -35,7 +35,7 @@
       <div class="titulo">
         <h1>Crear Cuenta</h1>
       </div>
-      <form class="content">
+      <form class="content" id="signup-form">
         <!-- formulario -->
         <div class="content-info">
           <div class="content-text">
@@ -136,12 +136,13 @@
                 class="form-check-input"
                 type="checkbox"
                 value=""
-                id="ver-repetir-clave"
+                id="ver-clave"
               />
-              <label class="form-check-label" for="ver-repetir-clave"
+              <label class="form-check-label" for="ver-clave"
                 >ver contraseña</label
               >
             </div>
+            
             <div class="col-auto">
               <label for="formGroupExampleInput" class="form-label"
                 >Repetir Contraseña</label
@@ -204,7 +205,7 @@
           </div>
         </div>
         <div class="content-img">
-          <img src="/img/picture/crear_cuenta.png" alt="crear_cuenta" />
+          <img src="../../img/picture/crear_cuenta.png" alt="crear_cuenta" />
         </div>
       </form>
       <!-- logo esquina -->
@@ -224,6 +225,7 @@
     crossorigin="anonymous"></script>
     <!--controlador-->
     <script type="text/javascript" src="/controllers/components.js"></script>
-
+    <script src="../../controllers/dashboard/index.js"></script>
+    <script src="../../controllers/components.js"></script>
   </body>
 </html>
