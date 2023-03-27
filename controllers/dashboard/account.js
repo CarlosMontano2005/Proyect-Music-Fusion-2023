@@ -4,6 +4,8 @@
 */
 
 // Constante para completar la ruta de la API.
+const USER_API = 'business/dashboard/usuario.php';
+
 // const USER_API = 'business/dashboard/usuario.php';
 // Constantes para establecer las etiquetas de encabezado y pie de la página web.
 const HEADER = document.querySelector('header');
@@ -11,13 +13,13 @@ const NAV = document.querySelector('nav');
 const FOOTER = document.querySelector('footer');
 
 // Método manejador de eventos para cuando el documento ha cargado.
-//document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', async () => {
     // Petición para obtener en nombre del usuario que ha iniciado sesión.
-    //const JSON = await dataFetch(USER_API, 'getUser');
+    const JSON = await dataFetch(USER_API, 'getUser');
     // Se verifica si el usuario está autenticado, de lo contrario se envía a iniciar sesión.
-    //if (JSON.session) {
+    if (JSON.session) {
         // Se comprueba si existe un alias definido para el usuario, de lo contrario se muestra un mensaje con la excepción.
-       // if (JSON.status) {
+       if (JSON.status) {
             NAV.innerHTML = `<div class="logo-details">
             <img src="../../img/logos/logo_blanco_horizontal.png" alt="logo">
         </div>
@@ -95,7 +97,7 @@ const FOOTER = document.querySelector('footer');
                         <img src="../../img/people/charlie.jpg" alt="profileImg">
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">Charlie</div>
+                        <div class="profile_name">${JSON.username}</div>
                         <div class="job">Vendedor</div>
                     </div>
                     <a onclick="logOut()"><i class='bx bx-log-out'></i></a>
@@ -124,7 +126,7 @@ const FOOTER = document.querySelector('footer');
                 </div>
             </li>
         </div>`;
-          /*  // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
+           // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
             M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'));
             // Se inicializa el componente Sidenav para que funcione la navegación lateral.
             M.Sidenav.init(document.querySelectorAll('.sidenav'));
@@ -133,7 +135,7 @@ const FOOTER = document.querySelector('footer');
         }
     } else {
         // Se comprueba si la página web es la principal, de lo contrario se direcciona a iniciar sesión.
-        if (location.pathname == '/coffeeshop/views/dashboard/index.html') {
+        if (location.pathname == '/proyect-music-fusion-2023/views/dashboard/index.html') {
             HEADER.innerHTML = `
                 <div class="navbar-fixed">
                     <nav>
@@ -166,4 +168,4 @@ const FOOTER = document.querySelector('footer');
             location.href = 'index.html';
         }
     }
-});*/
+});
