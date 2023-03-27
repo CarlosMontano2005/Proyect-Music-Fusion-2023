@@ -567,7 +567,7 @@ td {
     padding: 10px 20px;
     font-size: 14px;
     text-align: center;
-    
+    align-items: center;
     
 }
 
@@ -612,6 +612,7 @@ td button {
   margin: 30px;
   flex-direction: row;
   justify-content: center;
+  border: none;
   
 }
 .button_delet {

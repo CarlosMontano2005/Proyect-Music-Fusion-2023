@@ -23,40 +23,36 @@
         <div class="titulo">
             <h1>Crear Cuenta</h1>
         </div>
-        <div class="content">
+        <form class="content">
              <!-- formulario -->
             <div class="content-info">
                 <div class="content-text">
                     <div class="col-auto">
                          <!-- formulario -->
                         <label for="formGroupExampleInput" class="form-label">Nombres</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput"
-                            placeholder="Nombres Completo" />
+                        <input type="text" class="form-control validate" id="nombres"
+                            placeholder="Nombres Completo" required>
                     </div>
                     <div class="col-auto">
                         <label for="formGroupExampleInput" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput"
-                            placeholder="Apellidos Completo" />
+                        <input type="text" class="form-control validate" id="apellidos" name="apellidos"
+                            placeholder="Apellidos Completo" required>
                     </div>
                     <div class="col-auto">
-                        <label for="formGroupExampleInput" class="form-label">DUI</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="12345678-9" />
+                        <label for="formGroupExampleInput" class="form-label validate">Correo</label>
+                        <input type="email" id="correo" name="correo" class="form-control" id="formGroupExampleInput" placeholder="correo@local.com" required>
                     </div>
                     <div class="col-auto">
-                        <label for="formGroupExampleInput" class="form-label">Telefono</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="1234-1234" />
+                        <label for="formGroupExampleInput" class="form-label validate">Telefono</label>
+                        <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="0000-0000" required>
                     </div>
                     <div class="col-auto">
-                        <label for="formGroupExampleInput" class="form-label">Fecha Nacimiento</label>
-                        <input type="date" id="date" class="form-control" />
+                        <label for="formGroupExampleInput" class="form-label validate">Alias</label>
+                        <input type="text" class="form-control" id="alias" name="alias" placeholder="Alias" required>
                     </div>
                     <div class="col-auto">
-                        <label for="formGroupExampleInput" class="form-label">Sexo</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Sexo</option>
-                            <option value="1">Masculino</option>
-                            <option value="2">Femenino</option>
-                        </select>
+                        <label for="formGroupExampleInput" class="form-label validate">foto</label>
+                        <input type="file" id="foto" class="form-control"  accept="image/png,image/jpeg"  required>
                     </div>
                 </div>
             </div>
@@ -90,6 +86,20 @@
                             </button>
                         </div>
                     </div>
+                    <div class="col-auto">
+                        <label for="formGroupExampleInput" class="form-label">Estado</label>
+                        <select class="form-select validate"  id="estado" aria-label="estado usuario">
+                            <option selected>Estado</option>
+                            <option value="1">Activo</option>
+                        </select required>
+                    </div>
+                    <div class="col-auto">
+                        <label for="formGroupExampleInput" class="form-label">Tipo</label>
+                        <select class="form-select validate"  id="tipo" aria-label="tipo usuario">
+                            <option selected>Tipo</option>
+                            <option value="1">Administrador</option>
+                        </select required>
+                    </div>
                     <div class="content-terminos">
                         <p>
                             Marca para aceptar las condiciones de uso y el aviso de
@@ -105,7 +115,7 @@
             <div class="content-img">
                 <img src="/img/picture/crear_cuenta.png" alt="crear_cuenta" />
             </div>
-        </div>
+        </form>
          <!-- logo esquina -->
         <div class="img-logo-min">
             <img src="/img/logos/logo_blanco_horizontal.png" alt="logo-blancohorizontal" />
