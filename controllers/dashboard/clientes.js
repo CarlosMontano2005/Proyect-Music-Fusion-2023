@@ -1,5 +1,6 @@
 // Constante para completar la ruta de la API.
 const CLIENTE_API = 'business/dashboard/clientes.php';
+const GENERO_API = 'business/dashboard/genero.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -85,6 +86,8 @@ async function fillTable(form = null) {
                     <td>${row.dui}</td>
                     <td>${row.id_genero}</td>
                     <td>${row.telefono_cliente}</td>
+                    <td>${row.direccion_cliente}</td>
+                    <td>${row.estado_cliente}</td>
                     <td class="td-button">
                         <!--Boton Editar-->
                         <button  onclick="openDelete(${row.id_cliente})" class="button_edit" type="button" class="button-modal" data-bs-toggle="modal  data-tooltip="Actualizar""
@@ -119,9 +122,9 @@ function openCreate() {
     // Se asigna título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Agregar cliente';
     // Se habilitan los campos necesarios.
-    /*document.getElementById('alias').disabled = false;
+    document.getElementById('id').disabled = false;
     document.getElementById('clave').disabled = false;
-    document.getElementById('confirmar').disabled = false;*/
+    /*document.getElementById('confirmar').disabled = false;*/
     /*campos obligatorios*/
     document.getElementById('nombres').required = true;
     document.getElementById('apellidos').required = true;
@@ -129,7 +132,8 @@ function openCreate() {
     document.getElementById('nacimiento').required = true;
     document.getElementById('generos').required = true;
     document.getElementById('telefono').required = true;
-    document.getElementById('telefono').required = true;
+    document.getElementById('direccion').required = true;
+    document.getElementById('estado').required = true;
 }
 
 /*
@@ -153,7 +157,9 @@ async function openUpdate(id) {
         MODAL_TITLE.textContent = 'Actualizar Cliente';
         // Se deshabilitan los campos necesarios.
        document.getElementById('id').disabled = true;
+       document.getElementById('clave').disabled = true;
        /*  document.getElementById('clave').disabled = true;
+    
         document.getElementById('confirmar').disabled = true;*/
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.id_cliente;
@@ -162,8 +168,14 @@ async function openUpdate(id) {
         document.getElementById('correo').value = JSON.dataset.correo_cliente;
         document.getElementById('nacimiento').value = JSON.dataset.nacimiento_cliente;
         document.getElementById('dui').value = JSON.dataset.dui;
-        document.getElementById('id_genero').value = JSON.dataset.id_genero_cliente;
-        document.getElementById('telefono_cliente').value = JSON.dataset.telefono_cliente;
+        fillSelect(GENERO_API, 'readAll', 'generos', JSON.dataset.id_genero);
+        document.getElementById('telefono').value = JSON.dataset.telefono_cliente;
+        document.getElementById('direccion').value = JSON.dataset.direccion_cliente;
+        if (JSON.dataset.estado_cliente) {
+            document.getElementById('estado').checked = true;
+        } else {
+            document.getElementById('estado').checked = false;
+        }
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
         M.updateTextFields();
     } else {

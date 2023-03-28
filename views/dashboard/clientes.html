@@ -48,8 +48,8 @@
     </div>
 
     <!-- Modal para agregar y actualizar mas el id=add-modal -->
-    <div class="modal fade" id="add-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+    <div class="modal fade " id="add-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <!--Titulo del modal id= modal-tile-->
@@ -58,44 +58,59 @@
           </div>
           <div class="modal-body">
             <form class="row g-3" id="save-form">
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <p>ID</p>
-                <input type="text" class="form-control validate" placeholder="id" aria-label="Los Nombres"
+                <input type="number" class="form-control validate" placeholder="id" aria-label="id"
                   id="id" name="id" required>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
+                <p>contraseña</p>
+                <input type="password" id="clave" name="clave" class="form-control validate" required
+                  placeholder="contraseña">
+              </div>
+              <div class="col-md-4">
                 <p>Nombres</p>
                 <input type="text" class="form-control validate" placeholder="Nombres" aria-label="Los Nombres"
                   id="nombres" name="nombres" required>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <p>Apellidos</p>
                 <input type="text" class="form-control validate" placeholder="Apellidos" aria-label="Los Apellidos"
                   id="apellidos" name="apellidos" required>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <p>Correo</p>
                 <input id="correo" type="email" name="correo" class="form-control validate"
                   placeholder="correo@local.com" aria-label="aqui correo" required>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <p>Fecha de nacimiento</p>
                 <input type="date" id="nacimiento" name="nacimiento" class="form-control validate" required>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <p>Sexo</p>
-                <select class="form-select" id="generos">
+                <select class="form-select" id="generos" name="generos">
                   <option selected>Seleccionar</option>
                   <option value="1">Masculino</option>
                   <option value="2">Femenino</option>
                 </select>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <p>Telefono</p>
                 <input type="tel" id="telefono" name="telefono" class="form-control validate" required
                   placeholder="0000-0000">
               </div>
 
+              <div class="col-md-4">
+                <p>Estado del cliente</p>
+                <input class="form-check-input" name="estado"  type="checkbox" id="estado" checked>
+  <label class="form-check-label" for="estado">Activo</label>
+              </div>
+              <div class="col-md-12">
+                <p>Estado del cliente</p>
+                <input type="text" id="direccion" name="direccion" class="form-control validate" required
+                placeholder="Direccion">
+              </div>
           </div>
           </form>
         </div>
@@ -143,14 +158,15 @@
                 <button class="button_updet"><i class='bx bx-refresh'></i></button>
               </td>
             </tr>
-
           </tbody>
         </table>
       </div>
     </div>
   </main>
-  <!--llamar el menu-->
+  <!--llamar el menu y controlador-->
+  <script src="/controllers/components.js"></script>
   <script src="../../controllers/dashboard/account.js"></script>
+  <script src="/controllers/dashboard/clientes.js"></script>
   <!--Grafica-->
   <script src="../../resources/js/dashboard/menu.js"></script>
   <!--funsion para las estrellas del home -->
@@ -163,8 +179,8 @@
   <!--grafica-->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!--controlador-->
-  <script src="/controllers/dashboard/clientes.js"></script>
-  <script src="/controllers/components.js"></script>
+ 
+  
 
 </body>
 
