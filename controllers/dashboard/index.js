@@ -16,19 +16,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         location.href = 'dashboard.html';
     } else if (JSON.status) {
         // Se muestra el formulario para iniciar sesión.
-        /*document.getElementById('login-container').classList.remove('hide');
-        sweetAlert(4, JSON.message, true);*/
-        location.href = 'index.html';
+        /*document.getElementById('login-container').classList.remove('hide');*/
+        sweetAlert(4, JSON.message, true);
     } else {
         // Se muestra el formulario para registrar el primer usuario.
-        /*document.getElementById('signup-container').classList.remove('hide');
-        sweetAlert(4, JSON.exception, true);*/
-        location.href = 'crear_cuenta.html';
+        /*document.getElementById('signup-container').classList.remove('hide');*/
+        sweetAlert(4, JSON.exception, true,'crear_cuenta.html');
     }
 });
 
 // Método manejador de eventos para cuando se envía el formulario de registro del primer usuario.
-SIGNUP_FORM.addEventListener('submit', async (event) => {
+/*SIGNUP_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Constante tipo objeto con los datos del formulario.
@@ -41,7 +39,7 @@ SIGNUP_FORM.addEventListener('submit', async (event) => {
     } else {
         sweetAlert(2, JSON.exception, false);
     }
-});
+});*/
 
 
 // Método manejador de eventos para cuando se envía el formulario de inicio de sesión.

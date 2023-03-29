@@ -127,9 +127,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             </li>
         </div>`;
            // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
-            M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'));
+            //M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'));
             // Se inicializa el componente Sidenav para que funcione la navegación lateral.
-            M.Sidenav.init(document.querySelectorAll('.sidenav'));
+           // M.Sidenav.init(document.querySelectorAll('.sidenav'));
         } else {
             sweetAlert(3, JSON.exception, false, 'index.html');
         }
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
             `;
             // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-            M.Tooltip.init(document.querySelectorAll('.tooltipped'));
+           // M.Tooltip.init(document.querySelectorAll('.tooltipped'));
         } else {
             location.href = 'index.html';
         }
