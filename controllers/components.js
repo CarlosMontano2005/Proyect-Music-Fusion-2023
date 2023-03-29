@@ -1,3 +1,4 @@
+const SERVER_URL = 'http://http://localhost/proyect-music-fusion-2023/api/';
 
 /*
 *   Función para mostrar un mensaje de confirmación. Requiere la librería sweetalert para funcionar.

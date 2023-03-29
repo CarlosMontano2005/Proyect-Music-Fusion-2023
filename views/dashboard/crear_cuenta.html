@@ -1,129 +1,231 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crear Cuenta</title>
-    <link rel="stylesheet" href="../../resources/css/public/style_crear_cuenta.css" />
+    <link
+      rel="stylesheet"
+      href="../../resources/css/public/style_crear_cuenta.css"
+    />
     <!-- Llamada de archivo como icono -->
     <link type="image/png" rel="icon" href="/img/logos/logo.png" />
     <!-- Boxiocns CDN Link -->
-    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-</head>
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<body>
+  <body>
     <!-- section -->
     <!--  -->
     <section>
-        <div class="titulo">
-            <h1>Crear Cuenta</h1>
-        </div>
-        <div class="content">
-             <!-- formulario -->
-            <div class="content-info">
-                <div class="content-text">
-                    <div class="col-auto">
-                         <!-- formulario -->
-                        <label for="formGroupExampleInput" class="form-label">Nombres</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput"
-                            placeholder="Nombres Completo" />
-                    </div>
-                    <div class="col-auto">
-                        <label for="formGroupExampleInput" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput"
-                            placeholder="Apellidos Completo" />
-                    </div>
-                    <div class="col-auto">
-                        <label for="formGroupExampleInput" class="form-label">DUI</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="12345678-9" />
-                    </div>
-                    <div class="col-auto">
-                        <label for="formGroupExampleInput" class="form-label">Telefono</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="1234-1234" />
-                    </div>
-                    <div class="col-auto">
-                        <label for="formGroupExampleInput" class="form-label">Fecha Nacimiento</label>
-                        <input type="date" id="date" class="form-control" />
-                    </div>
-                    <div class="col-auto">
-                        <label for="formGroupExampleInput" class="form-label">Sexo</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Sexo</option>
-                            <option value="1">Masculino</option>
-                            <option value="2">Femenino</option>
-                        </select>
-                    </div>
-                </div>
+      <div class="titulo">
+        <h1>Crear Cuenta</h1>
+      </div>
+      <form class="content" id="signup-form">
+        <!-- formulario -->
+        <div class="content-info">
+          <div class="content-text">
+            <div class="col-auto">
+              <!-- formulario -->
+              <label for="formGroupExampleInput" class="form-label"
+                >Nombres</label
+              >
+              <input
+                type="text"
+                class="form-control validate"
+                id="nombres"
+                placeholder="Nombres Completo"
+                required
+              />
             </div>
-            <div class="content-info">
-                <div class="content-text">
-                    <div class="col-auto">
-                        <label for="formGroupExampleInput" class="form-label">Correo Electrónico</label>
-                        <div class="input-group">
-                            <div class="input-group-text">@</div>
-                            <input type="text" class="form-control" id="autoSizingInputGroup"
-                                placeholder="Correo@Electrónico.com" />
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <label for="formGroupExampleInput" class="form-label">Contraseña</label>
-                        <div class="input-group">
-                            <input type="password" class="form-control" id="autoSizingInputGroup"
-                                placeholder="contraseña" />
-                            <button type="submit" class="btn btn-primary">
-                                <i class="bx bx-show"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <label for="formGroupExampleInput" class="form-label">Repetir Contraseña</label>
-                        <div class="input-group">
-                            <input type="password" class="form-control" id="autoSizingInputGroup"
-                                placeholder="contraseña" />
-                            <button type="submit" class="btn btn-primary">
-                                <i class="bx bx-show"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="content-terminos">
-                        <p>
-                            Marca para aceptar las condiciones de uso y el aviso de
-                            privacidad
-                        </p>
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                    </div>
-                    <div class="content-btn">
-                        <a href="#">Crear</a>
-                    </div>
-                </div>
+            <div class="col-auto">
+              <label for="formGroupExampleInput" class="form-label"
+                >Apellidos</label
+              >
+              <input
+                type="text"
+                class="form-control validate"
+                id="apellidos"
+                name="apellidos"
+                placeholder="Apellidos Completo"
+                required
+              />
             </div>
-            <div class="content-img">
-                <img src="/img/picture/crear_cuenta.png" alt="crear_cuenta" />
+            <div class="col-auto">
+              <label for="formGroupExampleInput" class="form-label validate"
+                >Correo</label
+              >
+              <input
+                type="email"
+                id="correo"
+                name="correo"
+                class="form-control"
+                id="formGroupExampleInput"
+                placeholder="correo@local.com"
+                required
+              />
             </div>
+            <div class="col-auto">
+              <label for="formGroupExampleInput" class="form-label validate"
+                >Telefono</label
+              >
+              <input
+                type="tel"
+                class="form-control"
+                id="telefono"
+                name="telefono"
+                placeholder="0000-0000"
+                required
+              />
+            </div>
+            <div class="col-auto">
+              <label for="formGroupExampleInput" class="form-label validate"
+                >Alias</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="alias"
+                name="alias"
+                placeholder="Alias"
+                required
+              />
+            </div>
+            <div class="col-auto">
+              <label for="formGroupExampleInput" class="form-label validate"
+                >foto</label
+              >
+              <input
+                type="file"
+                id="foto"
+                class="form-control"
+                accept="image/png,image/jpeg"
+                required
+              />
+            </div>
+          </div>
         </div>
-         <!-- logo esquina -->
-        <div class="img-logo-min">
-            <img src="/img/logos/logo_blanco_horizontal.png" alt="logo-blancohorizontal" />
+        <div class="content-info">
+          <div class="content-text">
+            <div class="col-auto">
+              <label for="formGroupExampleInput" class="form-label"
+                >Contraseña</label
+              >
+              <input
+                type="password"
+                class="form-control validate"
+                id="clave"
+                placeholder="contraseña"
+                required
+              />
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="ver-clave"
+              />
+              <label class="form-check-label" for="ver-clave"
+                >ver contraseña</label
+              >
+            </div>
+            
+            <div class="col-auto">
+              <label for="formGroupExampleInput" class="form-label"
+                >Repetir Contraseña</label
+              >
+              <input
+                type="password"
+                class="form-control validate"
+                id="autoSizingInputGroup"
+                placeholder="repetir contraseña"
+                name="repetir-clave"
+                required
+              />
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="ver-repetir-clave"
+              />
+              <label class="form-check-label" for="ver-repetir-clave"
+                >ver contraseña</label
+              >
+            </div>
+            <div class="col-auto">
+              <label for="formGroupExampleInput" class="form-label"
+                >Estado</label
+              >
+              <select
+                class="form-select validate"
+                id="estado"
+                aria-label="estado usuario"
+              >
+                <option selected>Estado</option>
+                <option value="1">Activo</option>
+              </select>
+            </div>
+            <div class="col-auto">
+              <label for="formGroupExampleInput" class="form-label">Tipo</label>
+              <select
+                class="form-select validate"
+                id="tipo"
+                aria-label="tipo usuario"
+              >
+                <option selected>Tipo</option>
+                <option value="1">Administrador</option>
+              </select>
+            </div>
+            <div class="content-terminos">
+              <p>
+                Marca para aceptar las condiciones de uso y el aviso de
+                privacidad
+              </p>
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="condicion" name="condicion" required/>
+            </div>
+            <div class="content-btn">
+                <button type="submit" data-tooltip="Guardar">crear cuenta</button>
+            </div>
+          </div>
         </div>
+        <div class="content-img">
+          <img src="../../img/picture/crear_cuenta.png" alt="crear_cuenta" />
+        </div>
+      </form>
+      <!-- logo esquina -->
+      <div class="img-logo-min">
+        <img
+          src="/img/logos/logo_blanco_horizontal.png"
+          alt="logo-blancohorizontal"
+        />
+      </div>
     </section>
     <div></div>
-     <!-- script js -->
-    <script src="/resources/js/dashboard/script_dashboard.js"></script>
-    <script src="/js/script_alert_delete.js"></script>
-    <script src="/js/script_aler_succes.js"></script>
-    <!-- Script libreria sweetslert -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"></script>
-</body>
-
+    <!--mensajes-->
+  <script type="text/javascript" src="/js/sweetalert.min.js"></script>
+  <!--boostrap-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+    <!--controlador-->
+    <script type="text/javascript" src="/controllers/components.js"></script>
+    <script src="../../controllers/dashboard/index.js"></script>
+    <script src="../../controllers/components.js"></script>
+  </body>
 </html>
