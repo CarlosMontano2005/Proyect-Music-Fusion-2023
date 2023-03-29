@@ -1,5 +1,5 @@
 <?php
-require_once('../../entities/dto/usuario.php');
+require_once('../../entities/Controller/Controller_Usuarios.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -112,7 +112,11 @@ if (isset($_GET['action'])) {
                 } elseif (!$usuario->setClave($_POST['clave'])) {
                     $result['exception'] = Validator::getPasswordError();
                 } elseif (!$usuario->setTelefono($_POST['telefono'])){
-                    $result['exception'] = Validato::getValidatePhone();
+                    $result['exception'] = Validator::getValidatePhone();
+                } elseif(!$usuario->setId_tipo_usuario($_POST['id_tipo_usuario'])){
+                    $result['exception'] = 'Tipo de usuario incorrecto';
+                } elseif(!$usuario->setId_estado_usuario($_POST['id_estado_usuario'])){
+                    $result['exception'] = 'Tipo de estado incorrecto';
                 }
                  elseif ($usuario->createRow()) {
                     $result['status'] = 1;
@@ -144,7 +148,14 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Apellidos incorrectos';
                 } elseif (!$usuario->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo incorrecto';
-                } elseif ($usuario->updateRow()) {
+                } elseif (!$usuario->setTelefono($_POST['telefono'])){
+                    $result['exception'] = Validato::getValidatePhone();
+                } elseif(!$usuario->setId_tipo_usuario($_POST['id_tipo_usuario'])){
+                    $result['exception'] = 'Tipo de usuario incorrecto';
+                } elseif(!$usuario->setId_estado_usuario($_POST['id_estado_usuario'])){
+                    $result['exception'] = 'Tipo de estado incorrecto';
+                }
+                 elseif ($usuario->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Usuario modificado correctamente';
                 } else {
