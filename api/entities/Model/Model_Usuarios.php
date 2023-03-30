@@ -57,7 +57,7 @@ class UsuarioQueries
 
     public function readAll()
     {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario, telefono_usuario, id_tipo_usuario, id_estado_usuario
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, telefono_usuario, id_tipo_usuario, id_estado_usuario
                 FROM usuarios
                 ORDER BY apellido_usuario';
         return Database::getRows($sql);
@@ -65,7 +65,7 @@ class UsuarioQueries
 
     public function readOne()
     {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario
                 FROM usuarios
                 WHERE id_usuario = ?';
         $params = array($this->id);
