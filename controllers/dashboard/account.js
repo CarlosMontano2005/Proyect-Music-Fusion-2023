@@ -104,11 +104,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
             </li>
         </ul>`;
-            HEADER.innerHTML = ` <div class="home-content">
+            HEADER.innerHTML = `<div class="home-content">
             <i class='bx bx-menu'></i>
             <!--comentario 15/02/2023-->
             <span class="text">Dashboard</span>
-            <label class="info">Dashboard</label>
+            <label class="info" id="greeting"></label>
         </div>
         <div class="bottom-content">
             <div class="nav-barra-time">
@@ -135,8 +135,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     } else {
         // Se comprueba si la página web es la principal, de lo contrario se direcciona a iniciar sesión.
-        if (location.pathname == '/proyect-music-fusion-2023/views/dashboard/index.html') {
-            HEADER.innerHTML = `
+       if (location.pathname == '/proyect-music-fusion-2023/views/dashboard/index.html') {
+            /* HEADER.innerHTML = `
                 <div class="navbar-fixed">
                     <nav>
                         <div class="nav-wrapper center-align">
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         </span>
                     </div>
                 </div>
-            `;
+            `;*/
             // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
            // M.Tooltip.init(document.querySelectorAll('.tooltipped'));
         } else {
