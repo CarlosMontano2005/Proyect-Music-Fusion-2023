@@ -104,11 +104,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
             </li>
         </ul>`;
-            HEADER.innerHTML = ` <div class="home-content">
+            HEADER.innerHTML = `<div class="home-content">
             <i class='bx bx-menu'></i>
             <!--comentario 15/02/2023-->
             <span class="text">Dashboard</span>
-            <label class="info">Dashboard</label>
+            <label class="info" id="greeting"></label>
         </div>
         <div class="bottom-content">
             <div class="nav-barra-time">
@@ -127,16 +127,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             </li>
         </div>`;
            // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
-            M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'));
+            //M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'));
             // Se inicializa el componente Sidenav para que funcione la navegación lateral.
-            M.Sidenav.init(document.querySelectorAll('.sidenav'));
+           // M.Sidenav.init(document.querySelectorAll('.sidenav'));
         } else {
             sweetAlert(3, JSON.exception, false, 'index.html');
         }
     } else {
         // Se comprueba si la página web es la principal, de lo contrario se direcciona a iniciar sesión.
-        if (location.pathname == '/proyect-music-fusion-2023/views/dashboard/index.html') {
-            HEADER.innerHTML = `
+       if (location.pathname == '/proyect-music-fusion-2023/views/dashboard/index.html') {
+            /* HEADER.innerHTML = `
                 <div class="navbar-fixed">
                     <nav>
                         <div class="nav-wrapper center-align">
@@ -161,9 +161,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                         </span>
                     </div>
                 </div>
-            `;
+            `;*/
             // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-            M.Tooltip.init(document.querySelectorAll('.tooltipped'));
+           // M.Tooltip.init(document.querySelectorAll('.tooltipped'));
         } else {
             location.href = 'index.html';
         }
