@@ -37,14 +37,13 @@
           <option value="3">Three</option>
         </select>
       </form>
-
+      <!--Agregar Cliente -->
       <div class="btn-agregar">
         <button type="button" class="button-modal" data-bs-toggle="modal" data-bs-target="#add-modal">
           <i class='bx bxs-alarm-add'></i>
           Agregar Cliente
         </button>
       </div>
-
     </div>
 
     <!-- Modal para agregar y actualizar mas el id=add-modal -->
@@ -53,7 +52,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <!--Titulo del modal id= modal-tile-->
-            <h1 class="modal-title fs-5" id="modal-title">Agregar Cliente</h1>
+            <h1 class="modal-title fs-5" id="modal-title"></h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -100,14 +99,18 @@
                 <input type="tel" id="telefono" name="telefono" class="form-control validate" required
                   placeholder="0000-0000">
               </div>
-
+              <div class="col-md-4">
+                <p>DUI</p>
+                <input type="text" id="dui" name="dui" class="form-control validate" required
+                  placeholder="000000000-0">
+              </div>
               <div class="col-md-4">
                 <p>Estado del cliente</p>
                 <input class="form-check-input" name="estado"  type="checkbox" id="estado" checked>
   <label class="form-check-label" for="estado">Activo</label>
               </div>
-              <div class="col-md-12">
-                <p>Estado del cliente</p>
+              <div class="col-md-8">
+                <p>Dirección</p>
                 <input type="text" id="direccion" name="direccion" class="form-control validate" required
                 placeholder="Direccion">
               </div>
@@ -136,6 +139,9 @@
               <th>Fecha Nacimiento</th>
               <th>Sexo</th>
               <th>Telefono</th>
+              <th>DUI</th>
+              <th>Estado</th>
+              <th>Direccion</th>
               <th>Action</th>
             </tr>
           </thead>

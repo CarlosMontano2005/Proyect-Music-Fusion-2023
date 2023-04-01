@@ -1,5 +1,5 @@
 <?php
-require_once('../../entities/dto/clientes_dto.php');
+require_once('../../entities/Controller/clientes_dto.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {

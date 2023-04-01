@@ -3,7 +3,7 @@ require_once('../../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad PRODUCTO.
 */
-class ProductoQueries
+class ClienteQueries
 {
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
@@ -28,7 +28,7 @@ class ProductoQueries
 
     public function readAll()
     {
-        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, fecha_nacimiento, dui, genero, telefono_cliente, estado, direccion_cliente
+        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, fecha_nacimiento, genero, telefono_cliente,dui,  estado, direccion_cliente
         FROM clientes INNER JOIN generos USING(id_genero) ORDER BY nombre_cliente';
         return Database::getRows($sql);
     }

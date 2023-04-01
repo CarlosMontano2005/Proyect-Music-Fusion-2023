@@ -1,11 +1,11 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/dao/clientes_queries.php');
+require_once('../../entities/Model/clientes_queries.php');
 
 /*
 *	Clase para manejar la transferencia de datos de la entidad Clientes.
 */
-class Producto extends ClienteQueries
+class Cliente extends ClienteQueries
 {
     //declaracion de atributos 
     protected $id = null;

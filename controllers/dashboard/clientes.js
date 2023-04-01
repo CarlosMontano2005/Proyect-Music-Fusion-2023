@@ -19,6 +19,8 @@ const OPTIONS = {
 // Constante para establecer la modal de guardar.
 //const SAVE_MODAL = M.Modal.getInstance(document.getElementById('save-modal'));
 
+const SAVE_MODAL = document.getElementById('add-modal');
+
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
@@ -78,21 +80,21 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML +=  `
                 <tr>
-                    <td>${row.id}</td>
+                    <td>${row.id_cliente}</td>
                     <td>${row.nombre_cliente}</td>
                     <td>${row.apellido_cliente}</td>
                     <td>${row.correo_cliente}</td>
                     <td>${row.fecha_nacimiento}</td>
-                    <td>${row.dui_cliente}</td>
-                    <td>${row.id_genero}</td>
+                    <td>${row.genero}</td>
                     <td>${row.telefono_cliente}</td>
-                    <td>${row.estado_cliente}</td>
+                    <td>${row.dui}</td>
+                    <td>${row.estado}</td>
                     <td>${row.direccion_cliente}</td>
                     <td class="td-button">
-                        <button  onclick="openUpdate(${row.id})" class="button_edit button-modal" type="button" data-bs-toggle="modal"  data-tooltip="Actualizar"
-                        data-bs-target="#add-modal"><i class='bx bxs-edit-alt'></i></button>
-                        <button onclick="openDelete(${row.id})" class="button_delet" data-tooltip="Eliminar"><i class='bx bx-trash'></i></button>
-                        <button onclick="openUpdate(${row.id})" class="button_updet"><i class='bx bx-refresh'></i></button>
+                        <button  onclick="openUpdate(${row.id_cliente})" class="button_edit button-modal" type="button" data-bs-toggle="modal"  data-tooltip="Actualizar"
+                        data-bs-target="#add-modal"><i class='bx bxs-edit'></i></button>
+                        <button onclick="openDelete(${row.id_cliente})" class="button_delet" data-tooltip="Eliminar"><i class='bx bx-trash'></i></button>
+                        <button onclick="openUpdate(${row.id_cliente})" class="button_updet"><i class='bx bx-refresh'></i></button>
                     </td>
                 </tr>
                 `;
@@ -119,7 +121,7 @@ function openCreate() {
     // Se asigna título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Agregar cliente';
     // Se habilitan los campos necesarios.
-    document.getElementById('id').disabled = false;
+    document.getElementById('readOne').disabled = false;
     document.getElementById('clave').disabled = false;
     /*document.getElementById('confirmar').disabled = false;*/
     /*campos obligatorios*/
@@ -141,13 +143,13 @@ function openCreate() {
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id_cliente', id);
+    FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
     const JSON = await dataFetch(CLIENTE_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
-        SAVE_MODAL.open();
+       // SAVE_MODAL.open();
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
@@ -163,12 +165,12 @@ async function openUpdate(id) {
         document.getElementById('nombres').value = JSON.dataset.nombre_cliente;
         document.getElementById('apellidos').value = JSON.dataset.apellido_cliente;
         document.getElementById('correo').value = JSON.dataset.correo_cliente;
-        document.getElementById('nacimiento').value = JSON.dataset.nacimiento_cliente;
+        document.getElementById('nacimiento').value = JSON.dataset.fecha_nacimiento;
         document.getElementById('dui').value = JSON.dataset.dui;
         fillSelect(GENERO_API, 'readAll', 'generos', JSON.dataset.id_genero);
         document.getElementById('telefono').value = JSON.dataset.telefono_cliente;
         document.getElementById('direccion').value = JSON.dataset.direccion_cliente;
-        if (JSON.dataset.estado_cliente) {
+        if (JSON.dataset.estado) {
             document.getElementById('estado').checked = true;
         } else {
             document.getElementById('estado').checked = false;
