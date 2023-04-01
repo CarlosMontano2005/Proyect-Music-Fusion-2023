@@ -65,7 +65,7 @@ class UsuarioQueries
 
     public function readOne()
     {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario
                 FROM usuarios
                 WHERE id_usuario = ?';
         $params = array($this->id);

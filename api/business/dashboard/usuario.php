@@ -99,9 +99,9 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$usuario->setNombres($_POST['nombre'])) {
+                if (!$usuario->setNombres($_POST['nombres'])) {
                     $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$usuario->setApellidos($_POST['apellido'])) {
+                } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
                     $result['exception'] = 'Apellidos incorrectos';
                 } elseif (!$usuario->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo incorrecto';

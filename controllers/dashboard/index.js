@@ -1,6 +1,4 @@
 
-//const SERVER_URL = 'http://localhost/Proyect-Music-Fusion-2023/api/';
-
 // Constante para establecer el formulario de registro del primer usuario.
 const SIGNUP_FORM = document.getElementById('signup-form');
 // Constante para establecer el formulario de inicio de sesión.
