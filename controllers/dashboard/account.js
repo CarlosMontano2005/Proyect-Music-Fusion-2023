@@ -20,6 +20,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (JSON.session) {
         // Se comprueba si existe un alias definido para el usuario, de lo contrario se muestra un mensaje con la excepción.
        if (JSON.status) {
+       /* HEADER.innerHTML = `<div class="home-content">
+        <i class='bx bx-menu' id="btn"></i>
+        <!--comentario 15/02/2023-->
+        <span class="text">Dashboard</span>
+        <label class="info" id="greeting"></label>
+    </div>
+    <div class="bottom-content">
+        <div class="nav-barra-time">
+            <label>lunes feb. 30 2022</label>
+        </div>
+        <li class="mode">
+            <div class="sun-moon">
+                <i class='bx bx-moon icon moon'></i>
+                <i class='bx bx-sun icon sun'></i>
+            </div>
+            <span class="mode-text text">Modo Dark</span>
+
+            <div class="toggle-switch">
+                <span class="switch"></span>
+            </div>
+        </li>
+    </div>`;*/
             NAV.innerHTML = `<div class="logo-details">
             <img src="../../img/logos/logo_blanco_horizontal.png" alt="logo">
         </div>
@@ -104,28 +126,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
             </li>
         </ul>`;
-            HEADER.innerHTML = `<div class="home-content">
-            <i class='bx bx-menu'></i>
-            <!--comentario 15/02/2023-->
-            <span class="text">Dashboard</span>
-            <label class="info" id="greeting"></label>
-        </div>
-        <div class="bottom-content">
-            <div class="nav-barra-time">
-                <label>lunes feb. 30 2022</label>
-            </div>
-            <li class="mode">
-                <div class="sun-moon">
-                    <i class='bx bx-moon icon moon'></i>
-                    <i class='bx bx-sun icon sun'></i>
-                </div>
-                <span class="mode-text text">Modo Dark</span>
-
-                <div class="toggle-switch">
-                    <span class="switch"></span>
-                </div>
-            </li>
-        </div>`;
+           
            // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
             //M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'));
             // Se inicializa el componente Sidenav para que funcione la navegación lateral.

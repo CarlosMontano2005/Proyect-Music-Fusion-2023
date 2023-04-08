@@ -112,6 +112,8 @@ body.dark{
 
 .sidebar.close{
   width: 78px;
+  opacity: 100%;
+  transition: all 0.5s ease;
 }
 .sidebar .logo-details{
   height: 80px;
@@ -568,7 +570,7 @@ td {
     font-size: 14px;
     text-align: center;
     align-items: center;
-    
+    color: var(--main-text-color);
 }
 
 td img {

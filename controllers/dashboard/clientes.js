@@ -1,5 +1,6 @@
 // Constante para completar la ruta de la API.
 const CLIENTE_API = 'business/dashboard/clientes.php';
+
 const GENERO_API = 'business/dashboard/genero.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
@@ -16,10 +17,19 @@ const OPTIONS = {
 }
 // Inicialización del componente Modal para que funcionen las cajas de diálogo.
 //M.Modal.init(document.querySelectorAll('.modal'), OPTIONS);
-// Constante para establecer la modal de guardar.
+//Constante para establecer la modal de guardar.
 //const SAVE_MODAL = M.Modal.getInstance(document.getElementById('save-modal'));
 
 const SAVE_MODAL = document.getElementById('add-modal');
+
+/*//////////// 
+const myModal = document.getElementById('myModal')
+const myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', () => {
+  myInput.focus()
+})
+//////////// */
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -41,6 +51,7 @@ SEARCH_FORM.addEventListener('submit', (event) => {
 SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
+    console.log("proceso submit");
     // Se verifica la acción a realizar.
     (document.getElementById('id').value) ? action = 'update' : action = 'create';
     // Constante tipo objeto con los datos del formulario.
@@ -58,7 +69,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     } else {
         sweetAlert(2, JSON.exception, false);
     }
-});
+}); 
 
 /*
 *   Función asíncrona para llenar la tabla con los registros disponibles.
@@ -92,7 +103,7 @@ async function fillTable(form = null) {
                     <td>${row.direccion_cliente}</td>
                     <td class="td-button">
                         <button  onclick="openUpdate(${row.id_cliente})" class="button_edit button-modal" type="button" data-bs-toggle="modal"  data-tooltip="Actualizar"
-                        data-bs-target="#add-modal"><i class='bx bxs-edit'></i></button>
+                        data-bs-target="#add-modal"><i class='bx bxs-edit'  style="color: white;"></i></button>
                         <button onclick="openDelete(${row.id_cliente})" class="button_delet" data-tooltip="Eliminar"><i class='bx bx-trash'></i></button>
                         <button onclick="openUpdate(${row.id_cliente})" class="button_updet"><i class='bx bx-refresh'></i></button>
                     </td>
@@ -115,16 +126,20 @@ async function fillTable(form = null) {
 */
 function openCreate() {
     // Se abre la caja de diálogo que contiene el formulario.
-    SAVE_MODAL.open();
+    //SAVE_MODAL.open();
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Se asigna título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Agregar cliente';
     // Se habilitan los campos necesarios.
-    document.getElementById('readOne').disabled = false;
+    //document.getElementById('readOne').disabled = false;
+    document.getElementById('id').disabled = true;
     document.getElementById('clave').disabled = false;
     /*document.getElementById('confirmar').disabled = false;*/
+    // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
+    fillSelect(GENERO_API, 'readAll', 'generos');
     /*campos obligatorios*/
+    document.getElementById('clave').required = true;
     document.getElementById('nombres').required = true;
     document.getElementById('apellidos').required = true;
     document.getElementById('correo').required = true;
@@ -133,6 +148,7 @@ function openCreate() {
     document.getElementById('telefono').required = true;
     document.getElementById('direccion').required = true;
     document.getElementById('estado').required = true;
+    console.log("proceso de abrir modal agregar");
 }
 
 /*
@@ -167,7 +183,9 @@ async function openUpdate(id) {
         document.getElementById('correo').value = JSON.dataset.correo_cliente;
         document.getElementById('nacimiento').value = JSON.dataset.fecha_nacimiento;
         document.getElementById('dui').value = JSON.dataset.dui;
+
         fillSelect(GENERO_API, 'readAll', 'generos', JSON.dataset.id_genero);
+        
         document.getElementById('telefono').value = JSON.dataset.telefono_cliente;
         document.getElementById('direccion').value = JSON.dataset.direccion_cliente;
         if (JSON.dataset.estado) {
@@ -175,6 +193,7 @@ async function openUpdate(id) {
         } else {
             document.getElementById('estado').checked = false;
         }
+        console.log("proceso abri caja modal de actualizar");//mensaje 
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
         //M.updateTextFields();
     } else {

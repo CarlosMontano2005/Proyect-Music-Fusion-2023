@@ -112,7 +112,7 @@ async function fillSelect(filename, action, select, selected = null) {
     // Se agregan las opciones a la etiqueta select mediante el id.
     document.getElementById(select).innerHTML = content;
     // Se inicializa el componente Select del formulario para que funcione el menú de opciones.
-    M.FormSelect.init(document.querySelectorAll('select'));
+    //M.FormSelect.init(document.querySelectorAll('select'));
 }
 
 /*
