@@ -14,7 +14,7 @@ class MarcasQueries
                 FROM marcas
                 WHERE nombre_marca ILIKE ?
                 ORDER BY nombre_marca';
-        $params = array("%$value%", "%$value%");
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
