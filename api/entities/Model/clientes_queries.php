@@ -42,12 +42,12 @@ class ClienteQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function updateRow($current_image)
+    public function updateRow()/*$current_image*/
     {
         // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
-        ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
+        /*($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;*/
 
-        $sql = 'UPDATE public.clientes
+        $sql = 'UPDATE clientes
         SET  nombre_cliente=?, apellido_cliente=?, correo_cliente=?, fecha_nacimiento=?, dui=?, id_genero=?, telefono_cliente=?, clave=?, estado=?, direccion_cliente=?
         WHERE id_cliente=?';
         $params = array($this->nombre_cliente, $this->apellido_cliente, $this->correo_cliente, $this->fecha_nacimiento, $this->dui_cliente, $this->id_genero, $this->telefono_cliente, $this->clave,$this->estado,$this->direccion_cliente, $this->id);
@@ -56,8 +56,8 @@ class ClienteQueries
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM productos
-                WHERE id_producto = ?';
+        $sql = 'DELETE FROM clientes
+                WHERE id_cliente = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }

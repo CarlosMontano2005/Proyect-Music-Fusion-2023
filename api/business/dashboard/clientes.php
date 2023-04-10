@@ -103,6 +103,7 @@ if (isset($_GET['action'])) {
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$cliente->setId($_POST['id'])) {
+                    
                     $result['exception'] = 'Cliente incorrecto';
                 } 
                 elseif (!$data = $cliente->readOne()) {
@@ -165,18 +166,10 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'delete':
-                if (!$cliente->setId($_POST['id_producto'])) {
+                if (!$cliente->setId($_POST['id_cliente'])) {
                     $result['exception'] = 'Cliente incorrecto';
-                } elseif (!$data = $cliente->readOne()) {
-                    $result['exception'] = 'Cliente inexistente';
-                } elseif ($cliente->deleteRow()) {
-                    $result['status'] = 1;
-                    if (Validator::deleteFile($cliente->getRuta(), $data['imagen_producto'])) {
-                        $result['message'] = 'Cliente eliminado correctamente';
-                    } else {
-                        $result['message'] = 'Cliente eliminado pero no se borró la imagen';
-                    }
-                } else {
+                } 
+                else {
                     $result['exception'] = Database::getException();
                 }
                 break;

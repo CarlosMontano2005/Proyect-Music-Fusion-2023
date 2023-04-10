@@ -51,14 +51,16 @@ SEARCH_FORM.addEventListener('submit', (event) => {
 SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
-    console.log("proceso submit");
+    
     // Se verifica la acción a realizar.
     (document.getElementById('id').value) ? action = 'update' : action = 'create';
+    console.log(document.getElementById('id').value);//id que se toma y ver en consola 
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
     const JSON = await dataFetch(CLIENTE_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    console.log("proceso submit");
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
@@ -208,7 +210,7 @@ async function openUpdate(id) {
 */
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar el usuario de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar el cliente de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
