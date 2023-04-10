@@ -95,7 +95,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'delete':
-                if (!$marca->setId($_POST['id_marca_producto'])) {
+                if (!$marca->setId($_POST['id_categoria'])) {
                     $result['exception'] = 'Marca incorrecta';
                 } elseif (!$data = $marca->readOne()) {
                     $result['exception'] = 'Marca inexistente';
