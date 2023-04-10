@@ -21,7 +21,7 @@ class ClienteQueries
     public function readAll()
     {
         $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, fecha_nacimiento, genero, telefono_cliente,dui,  estado, direccion_cliente
-        FROM clientes INNER JOIN generos USING(id_genero) ORDER BY nombre_cliente';
+        FROM clientes INNER JOIN generos USING(id_genero) ORDER BY  (id_cliente) asc ';
         return Database::getRows($sql);
     }
 

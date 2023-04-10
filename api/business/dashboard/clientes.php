@@ -71,20 +71,10 @@ if (isset($_GET['action'])) {
                 elseif (!$cliente->setClave($_POST['clave'])) {
                     $result['exception'] = 'Clave incorrecta';
                 } 
-                /*elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-                    $result['exception'] = 'Seleccione una imagen';
-                } 
-                elseif (!$cliente->setImagen($_FILES['archivo'])) {
-                    $result['exception'] = Validator::getFileError();
-                } 
                 elseif ($cliente->createRow()) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $cliente->getRuta(), $cliente->getImagen())) {
-                        $result['message'] = 'Cliente creado correctamente';
-                    } else {
-                        $result['message'] = 'Cliente creado pero no se guardó la imagen';
-                    }
-                }*/
+                    $result['message'] = 'Cliente creado correctamente';
+                }
                 else {
                     $result['exception'] = Database::getException();;
                 }
@@ -133,34 +123,16 @@ if (isset($_GET['action'])) {
                 elseif (!$cliente->setTelefono($_POST['telefono'])) {
                     $result['exception'] = 'Telefono incorrecto';
                 } 
-                elseif (!$cliente->setTelefono($_POST['telefono'])) {
-                    $result['exception'] = 'Telefono incorrecto';
-                } 
                 elseif(!$cliente->setDUI($_POST['dui'])){
                     $result['exception'] = 'DUI incorrecto';
                 }
                 elseif(!$cliente->setDireccion($_POST['direccion'])){
                     $result['exception'] = 'Dirección incorrecto';
                 }
-               /* elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-                    if ($cliente->updateRow($data['imagen_producto'])) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Cliente modificado correctamente';
-                    } else {
-                        $result['exception'] = Database::getException();
-                    }
-                } 
-                elseif (!$cliente->setImagen($_FILES['archivo'])) {
-                    $result['exception'] = Validator::getFileError();
-                } 
-                elseif ($cliente->updateRow($data['imagen_producto'])) {
+                elseif ($cliente->updateRow()) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $cliente->getRuta(), $cliente->getImagen())) {
-                        $result['message'] = 'Cliente modificado correctamente';
-                    } else {
-                        $result['message'] = 'Cliente modificado pero no se guardó la imagen';
-                    }
-                }*/
+                    $result['message'] = 'Cliente modificado correctamente';
+                } 
                 else {
                     $result['exception'] = Database::getException();
                 }
@@ -169,6 +141,10 @@ if (isset($_GET['action'])) {
                 if (!$cliente->setId($_POST['id_cliente'])) {
                     $result['exception'] = 'Cliente incorrecto';
                 } 
+                elseif ($cliente->deleteRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Cliente eliminado correctamente';
+                }
                 else {
                     $result['exception'] = Database::getException();
                 }
