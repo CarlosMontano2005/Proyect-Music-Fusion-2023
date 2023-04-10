@@ -10,10 +10,10 @@ class MarcasQueries
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_categoria, nombre_categoria, imagen_categoria, descripcion_categoria
-                FROM categorias
-                WHERE nombre_categoria ILIKE ? OR descripcion_categoria ILIKE ?
-                ORDER BY nombre_categoria';
+        $sql = 'SELECT id_marca_producto, nombre_marca, logo_marca
+                FROM marcas
+                WHERE nombre_marca ILIKE ?
+                ORDER BY nombre_marca';
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }

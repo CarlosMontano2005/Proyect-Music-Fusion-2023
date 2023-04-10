@@ -48,9 +48,12 @@
     <div class="contenedor-elemntos-scrud">
       <form class="buscar" id="search-form" >
         <div class="btn" onclick="">
-          <i class='bx bx-search'></i>
+          <button class="btn button" type="submit" data-tooltip="Buscar">
+            <i class='bx bx-search'></i>
+          </button>
+          
         </div>
-        <input type="search" id="search" placeholder="Buscar" required />
+        <input type="search" id="search" name="search" placeholder="Buscar" data-tooltip="Buscar" required />
         <select class="box-text col-2" aria-label="Default select example">
           <option selected>Categoria</option>
           <option value="1">One</option>
