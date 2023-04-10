@@ -115,7 +115,7 @@ async function fillTable(form = null) {
         // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
        //M.Tooltip.init(document.querySelectorAll('.tooltipped'));
         // Se muestra un mensaje de acuerdo con el resultado.
-        //RECORDS.textContent = JSON.message;
+        RECORDS.textContent = JSON.message;
     } else {
         sweetAlert(4, JSON.exception, true);
     }
@@ -135,12 +135,13 @@ function openCreate() {
     MODAL_TITLE.textContent = 'Agregar cliente';
     // Se habilitan los campos necesarios.
     //document.getElementById('readOne').disabled = false;
-    document.getElementById('id').disabled = true;
-    document.getElementById('clave').disabled = false;
+   // document.getElementById('id').disabled = true;
+   // document.getElementById('clave').disabled = false;
     /*document.getElementById('confirmar').disabled = false;*/
     // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
     fillSelect(GENERO_API, 'readAll', 'generos');
     /*campos obligatorios*/
+    document.getElementById('id').required = false;
     document.getElementById('clave').required = true;
     document.getElementById('nombres').required = true;
     document.getElementById('apellidos').required = true;
@@ -173,8 +174,8 @@ async function openUpdate(id) {
         // Se asigna título a la caja de diálogo.
         MODAL_TITLE.textContent = 'Actualizar Cliente';
         // Se deshabilitan los campos necesarios.
-       document.getElementById('id').disabled = true;
-       document.getElementById('clave').disabled = true;
+     //  document.getElementById('id').disabled = true;
+      // document.getElementById('clave').disabled = true;
        /*  document.getElementById('clave').disabled = true;
     
         document.getElementById('confirmar').disabled = true;*/
@@ -185,7 +186,7 @@ async function openUpdate(id) {
         document.getElementById('correo').value = JSON.dataset.correo_cliente;
         document.getElementById('nacimiento').value = JSON.dataset.fecha_nacimiento;
         document.getElementById('dui').value = JSON.dataset.dui;
-
+        document.getElementById('clave').value = JSON.dataset.clave
         fillSelect(GENERO_API, 'readAll', 'generos', JSON.dataset.id_genero);
         
         document.getElementById('telefono').value = JSON.dataset.telefono_cliente;

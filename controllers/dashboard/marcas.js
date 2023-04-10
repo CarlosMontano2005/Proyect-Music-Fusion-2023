@@ -140,7 +140,7 @@ async function openUpdate(id) {
         MODAL_TITLE.textContent = 'Actualizar marca';
         // Se establece el campo de archivo como opcional.
         document.getElementById('archivo').required = false;
-        document.getElementById('id').disabled = true;
+        //document.getElementById('id').disabled = true;
 
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.id_marca_producto;

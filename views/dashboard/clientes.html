@@ -48,9 +48,12 @@
     <div class="contenedor-elemntos-scrud">
       <form class="buscar" id="search-form" >
         <div class="btn" onclick="">
-          <i class='bx bx-search'></i>
+          <button class="btn button" type="submit" data-tooltip="Buscar">
+            <i class='bx bx-search'></i>
+          </button>
+          
         </div>
-        <input type="search" id="search" placeholder="Buscar" required />
+        <input type="search" id="search" name="search" placeholder="Buscar" data-tooltip="Buscar" required />
         <select class="box-text col-2" aria-label="Default select example">
           <option selected>Categoria</option>
           <option value="1">One</option>
@@ -58,7 +61,7 @@
           <option value="3">Three</option>
         </select>
       </form>
-      <!--Agregar Cliente -->
+      <!--Agregar Marca -->
       <div class="btn-agregar">
         <button type="button" class="button-modal" data-bs-toggle="modal" onclick="openCreate()" data-bs-target="#add-modal">
           <i class='bx bxs-alarm-add'></i>
@@ -85,7 +88,7 @@
               </div>
               <div class="col-md-4">
                 <p>contraseña</p>
-                <input type="password" id="clave" name="clave" class="form-control validate" required
+                <input type="password" id="clave" name="clave" class="form-control validate" 
                   placeholder="contraseña" >
               </div>
               <div class="col-md-4">
@@ -147,7 +150,7 @@
       </div>
     </div>
     </div>
-    <h3>Administrar Cliente</h3>
+    <h3 id="records">Administrar Cliente</h3>
     </div>
     <div class="header_fixed">
       <div class="table-responsive">

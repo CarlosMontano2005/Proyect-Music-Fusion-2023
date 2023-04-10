@@ -12,7 +12,7 @@ class ClienteQueries
     {
         $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, fecha_nacimiento, dui, genero, telefono_cliente, estado, direccion_cliente
         FROM clientes INNER JOIN generos USING(id_genero) 
-                WHERE nombre_cliente ILIKE ? OR apellido_cliente ILIKE ? OR correo_cliente ? OR dui ?
+                WHERE nombre_cliente ILIKE ? OR apellido_cliente ILIKE ? OR correo_cliente ILIKE ? OR dui ILIKE ?
                 ORDER BY nombre_cliente';
         $params = array("%$value%", "%$value%","%$value%", "%$value%");
         return Database::getRows($sql, $params);
@@ -36,7 +36,7 @@ class ClienteQueries
 
     public function createRow()
     {
-        $sql = 'INSERT INTO public.clientes(nombre_cliente, apellido_cliente, correo_cliente, fecha_nacimiento, dui, id_genero, telefono_cliente, clave, estado, direccion_cliente)
+        $sql = 'INSERT INTO clientes(nombre_cliente, apellido_cliente, correo_cliente, fecha_nacimiento, dui, id_genero, telefono_cliente, clave, estado, direccion_cliente)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->nombre_cliente, $this->apellido_cliente, $this->correo_cliente, $this->fecha_nacimiento, $this->dui_cliente, $this->id_genero, $this->telefono_cliente, $this->clave, $this->estado, $this->direccion_cliente, $_SESSION['id_usuario']);
         return Database::executeRow($sql, $params);
