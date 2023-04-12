@@ -20,7 +20,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (JSON.session) {
         // Se comprueba si existe un alias definido para el usuario, de lo contrario se muestra un mensaje con la excepción.
        if (JSON.status) {
-       /* HEADER.innerHTML = `<div class="home-content">
+        HEADER.innerHTML = `
+        
+        <div class="home-content">
         <i class='bx bx-menu' id="btn"></i>
         <!--comentario 15/02/2023-->
         <span class="text">Dashboard</span>
@@ -41,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <span class="switch"></span>
             </div>
         </li>
-    </div>`;*/
+    </div>`;
             NAV.innerHTML = `<div class="logo-details">
             <img src="../../img/logos/logo_blanco_horizontal.png" alt="logo">
         </div>
@@ -125,8 +127,43 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <a onclick="logOut()"><i class='bx bx-log-out'></i></a>
                 </div>
             </li>
-        </ul>`;
+        </ul>
+        
+        `;
            
+            
+  let arrow = document.querySelectorAll(".arrow");
+  for (var i = 0; i < arrow.length; i++) {
+    arrow[i].addEventListener("click", (e) => {
+      let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+      arrowParent.classList.toggle("showMenu");
+    });
+  }
+    var sidebarBtn = document.querySelector(".bx-menu");
+    var sidebar = document.querySelector(".sidebar");
+    const body = document.querySelector('body');
+  
+    toggle = body.querySelector(".toggle");
+    searchBtn = body.querySelector(".search-box"),
+    modeSwitch = body.querySelector(".toggle-switch");
+    modeText = body.querySelector(".mode-text");
+    console.log(sidebarBtn);
+  
+  sidebarBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("close");
+  });
+  
+  
+  modeSwitch.addEventListener("click", () => {
+    body.classList.toggle("dark");
+  
+    if (body.classList.contains("dark")) {
+      modeText.innerText = "Light mode";
+    } else {
+      modeText.innerText = "Dark mode";
+    }
+  });
+  
            // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
             //M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'));
             // Se inicializa el componente Sidenav para que funcione la navegación lateral.

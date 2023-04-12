@@ -20,7 +20,7 @@ const OPTIONS = {
 //Constante para establecer la modal de guardar.
 //const SAVE_MODAL = M.Modal.getInstance(document.getElementById('save-modal'));
 
-const SAVE_MODAL = document.getElementById('add-modal');
+const SAVE_MODAL = bootstrap.getIntance(document.getElementById('add-modal')); 
 
 /*//////////// 
 const myModal = document.getElementById('myModal')
