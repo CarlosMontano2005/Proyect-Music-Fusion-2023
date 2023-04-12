@@ -9,6 +9,7 @@ class Cliente extends ClienteQueries
 {
     //declaracion de atributos 
     protected $id = null;
+    
     protected $nombre_cliente = null;
     protected $apellido_cliente = null;
     protected $correo_cliente = null;

@@ -80,11 +80,7 @@
           </div>
           <div class="modal-body">
             <form class="row g-3" id="save-form">
-              <div class="col-md-12">
-                <p>ID</p>
-                <input type="number" class="form-control validate" placeholder="id" aria-label="id"
-                  id="id" name="id" required>
-              </div>
+              
               <div class="col-md-12">
                 <p>Nombre</p>
                 <input input id="nombre" type="text" name="nombre"  class="form-control validate" placeholder="Nombre" aria-label="First name" required>
@@ -93,10 +89,16 @@
                 <p>Imagen</p>
                 <input id="archivo" name="archivo"  type="file" accept=".jpg, .png" class="form-control validate" placeholder="Formatos JPG y PNG" aria-label="First name">
               </div>
+              <div class="col-md-12 invisible">
+                <p>ID</p>
+                <input type="number" class="form-control validate" placeholder="id" aria-label="id"
+                  id="id" name="id" required>
+              </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Acción</button>
               <button type="submit" onclick="succesEdit()" class="btn btn-primary">Guardar Acción</button>
             </div> 
+            
           </form>
         </div>
       </div>
