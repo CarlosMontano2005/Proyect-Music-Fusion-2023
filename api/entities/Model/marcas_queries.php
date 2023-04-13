@@ -29,7 +29,7 @@ class MarcasQueries
     public function readAll()
     {
         $sql = 'SELECT id_marca_producto, nombre_marca, logo_marca
-        FROM marcas ORDER BY  (id_marca_producto) asc ';
+        FROM marcas ORDER BY  (id_marca_producto) asc';
         return Database::getRows($sql);
     }
 
@@ -37,7 +37,7 @@ class MarcasQueries
     {
         $sql = 'SELECT id_marca_producto, nombre_marca, logo_marca
         FROM marcas
-        WHERE id_marca_producto = ?';
+        WHERE id_marca_producto = ?';   
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }

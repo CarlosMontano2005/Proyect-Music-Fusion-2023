@@ -9,15 +9,8 @@ const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
-// Constante tipo objeto para establecer las opciones del componente Modal.
-const OPTIONS = {
-    dismissible: false
-}
-// Se inicializa el componente Modal para que funcionen las cajas de diálogo.
-//M.Modal.init(document.querySelectorAll('.modal'), OPTIONS);
 // Constante para establecer la modal de guardar.
-//const SAVE_MODAL = M.Modal.getInstance(document.getElementById('save-modal'));
-const SAVE_MODAL = document.getElementById('add-modal');
+const SAVE_MODAL = new bootstrap.Modal(document.getElementById('add-modal'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -50,7 +43,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
         // Se cierra la caja de diálogo.
-        SAVE_MODAL.close();
+        SAVE_MODAL.hide();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -79,7 +72,7 @@ async function fillTable(form = null) {
             TBODY_ROWS.innerHTML += `
                 <tr>
                     <td>${row.id_marca_producto}</td>
-                    <td><img src="${SERVER_URL}img/dashboard/marcas/${row.logo_marca}" height="100"></td>
+                    <td><img src="${SERVER_URL}img/marcas/${row.logo_marca}" height="100"></td>
                     <td>${row.nombre_marca}</td>
                     <td>
                         <button  onclick="openUpdate(${row.id_marca_producto})" class="button_edit button-modal" type="button" data-bs-toggle="modal"  data-tooltip="Actualizar"
@@ -108,7 +101,7 @@ async function fillTable(form = null) {
 */
 function openCreate() {
     // Se abre la caja de diálogo que contiene el formulario.
-    //SAVE_MODAL.open();
+    //SAVE_MODAL.show();
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Se asigna título a la caja de diálogo.
@@ -116,7 +109,7 @@ function openCreate() {
 
     MODAL_TITLE.textContent = 'Crear marca';
     // Se establece el campo de archivo como obligatorio.
-    document.getElementById('archivo').required = true;
+   // document.getElementById('archivo').required = true;
 }
 
 /*

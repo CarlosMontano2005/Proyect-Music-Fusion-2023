@@ -11,7 +11,7 @@ class Marcas extends MarcasQueries
     protected $nombre = null;
     protected $imagen = null;
     //protected $descripcion = null;
-    protected $ruta = '../../img/dashboard/marcas/';
+    protected $ruta = '../../img/marcas/';
 
     /*
     *   Métodos para validar y asignar valores de los atributos.

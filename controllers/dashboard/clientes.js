@@ -11,16 +11,9 @@ const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
-// Constante tipo objeto para establecer las opciones del componente Modal.
-const OPTIONS = {
-    dismissible: false
-}
-// Inicialización del componente Modal para que funcionen las cajas de diálogo.
-//M.Modal.init(document.querySelectorAll('.modal'), OPTIONS);
-//Constante para establecer la modal de guardar.
-//const SAVE_MODAL = M.Modal.getInstance(document.getElementById('save-modal'));
 
-const SAVE_MODAL =  document.getElementById('add-modal');
+// Constante para establecer la modal de guardar.
+const SAVE_MODAL = new bootstrap.Modal(document.getElementById('add-modal'));
 
 /*//////////// 
 const myModal = document.getElementById('myModal')
@@ -65,7 +58,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
         // Se cierra la caja de diálogo.
-        SAVE_MODAL.close();
+        SAVE_MODAL.hide();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
