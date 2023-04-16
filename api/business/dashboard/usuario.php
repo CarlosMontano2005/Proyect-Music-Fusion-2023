@@ -183,7 +183,7 @@ if (isset($_GET['action'])) {
                     elseif (!is_uploaded_file($_FILES['foto']['tmp_name'])) {
                         if ($usuario->updateRow($data['foto'])) {
                             $result['status'] = 1;
-                            $result['message'] = 'Marca modificada correctamente';
+                            $result['message'] = 'Usuario modificado correctamente';
                         } else {
                             $result['exception'] = Database::getException();
                         }
