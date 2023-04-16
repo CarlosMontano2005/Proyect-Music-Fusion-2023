@@ -128,6 +128,11 @@ if (isset($_GET['action'])) {
                     }
                     elseif (!$usuario->setId_estado_usuario($_POST['Estado_usuario'])) {
                         $result['exception'] = 'Estado de usuario incorrecto';
+                    }
+                    elseif (!is_uploaded_file($_FILES['foto']['tmp_name'])) {
+                        $result['exception'] = 'Seleccione una imagen';
+                    } elseif (!$usuario->setFoto_Usuario($_FILES['foto'])) {
+                        $result['exception'] = Validator::getFileError();
                     }    
                     elseif ($usuario->createRow()) {
                         $result['status'] = 1;
@@ -174,7 +179,24 @@ if (isset($_GET['action'])) {
                     } 
                     elseif (!$usuario->setId_estado_usuario($_POST['Estado_usuario'])) {
                         $result['exception'] = 'Estado de usuario incorrecto';
-                    } 
+                    }
+                    elseif (!is_uploaded_file($_FILES['foto']['tmp_name'])) {
+                        if ($usuario->updateRow($data['foto'])) {
+                            $result['status'] = 1;
+                            $result['message'] = 'Marca modificada correctamente';
+                        } else {
+                            $result['exception'] = Database::getException();
+                        }
+                    } elseif (!$usuario->setFoto_Usuario($_FILES['foto'])) {
+                        $result['exception'] = Validator::getFileError();
+                    } elseif ($usuario->updateRow($data['foto'])) {
+                        $result['status'] = 1;
+                        if (Validator::saveFile($_FILES['foto'], $usuario->getRuta(), $usuario->getFoto_Usuario())) {
+                            $result['message'] = 'Usuario modificado correctamente';
+                        } else {
+                            $result['message'] = 'Usuario modificado pero no se guardó la imagen';
+                        } 
+                    }    
                     elseif ($usuario->updateRow()) {
                         $result['status'] = 1;
                         $result['message'] = 'Usuario modificado correctamente';

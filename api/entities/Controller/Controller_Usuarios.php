@@ -16,6 +16,8 @@ class ControllerUsuarios extends ModelUsuarios
     protected $telefono = null;
     protected $id_tipo_usuario = null;
     protected $id_estado_usuario = null;
+    protected $foto = null;
+    protected $ruta = '../../img/people/';
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -112,6 +114,16 @@ class ControllerUsuarios extends ModelUsuarios
         }
     }
 
+    public function setFoto_Usuario($file)
+    {
+        if (Validator::validateImageFile($file, 500, 500)) {
+            $this->foto = Validator::getFileName();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -158,5 +170,15 @@ class ControllerUsuarios extends ModelUsuarios
     public function getId_estado_usuario(){
 
         return $this->id_estado_usuario;
+    }
+
+    public function getFoto_Usuario(){
+
+        return $this->foto;
+    }
+
+    public function getRuta()
+    {
+        return $this->ruta;
     }
 }  

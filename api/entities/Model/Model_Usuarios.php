@@ -36,7 +36,7 @@ class ModelUsuarios
     
     public function searchRows($value)
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, clave_usuario, telefono_usuario 
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, clave_usuario, telefono_usuario, id_tipo_usuario, id_estado_usuario, alias_usuario, foto
         FROM usuarios INNER JOIN tipos_usuarios USING(id_tipo_usuario)
                 WHERE nombre_usuario ILIKE ? OR apellido_usuario ILIKE ?
                 ORDER BY nombre_usuario';
@@ -46,7 +46,7 @@ class ModelUsuarios
 
     public function readAll()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, telefono_usuario, id_tipo_usuario, id_estado_usuario
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, clave_usuario, telefono_usuario, id_tipo_usuario, id_estado_usuario, alias_usuario, foto
                 FROM usuarios INNER JOIN tipos_usuarios USING(id_tipo_usuario)
                 ORDER BY nombre_usuario asc';
         return Database::getRows($sql);
@@ -54,7 +54,7 @@ class ModelUsuarios
 
     public function readOne()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, telefono_usuario, id_tipo_usuario, id_estado_usuario
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, clave_usuario, telefono_usuario, id_tipo_usuario, id_estado_usuario, alias_usuario, foto
                 FROM usuarios INNER JOIN tipos_usuarios USING(id_tipo_usuario)
                 WHERE id_usuario = ?';
         $params = array($this->id_usuario);
@@ -63,18 +63,18 @@ class ModelUsuarios
 
     public function createRow()
     {
-        $sql = 'INSERT INTO usuarios(nombre_usuario, apellido_usuario, correo_usuario, alias_usuario, clave_usuario, telefono_usuario, id_tipo_usuario, id_estado_usuario)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre, $this->apellido, $this->correo, $this->alias, $this->clave, $this->telefono, $this->id_tipo_usuario, $this->id_estado_usuario);
+        $sql = 'INSERT INTO usuarios(nombre_usuario, apellido_usuario, correo_usuario, clave_usuario, telefono_usuario, id_tipo_usuario, id_estado_usuario, alias_usuario, foto)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombre, $this->apellido, $this->correo, $this->clave, $this->telefono, $this->id_tipo_usuario, $this->id_estado_usuario, $this->alias, $this->foto);
         return Database::executeRow($sql, $params);
     }
 
     public function updateRow()
     {
         $sql = 'UPDATE usuarios 
-                SET nombre_usuario = ?, apellido_usuario = ?, correo_usuario = ?, telefono_usuario = ?, id_tipo_usuario = ?, id_estado_usuario  = ?
+                SET nombre_usuario = ?, apellido_usuario = ?, correo_usuario = ?, telefono_usuario = ?, id_tipo_usuario = ?, id_estado_usuario  = ?, foto = ?
                 WHERE id_usuario = ?';
-        $params = array($this->nombre, $this->apellido, $this->correo, $this->telefono, $this->id_tipo_usuario, $this->id_estado_usuario, $this->id_usuario);
+        $params = array($this->nombre, $this->apellido, $this->correo, $this->telefono, $this->id_tipo_usuario, $this->id_estado_usuario, $this->foto, $this->id_usuario);
         return Database::executeRow($sql, $params);
     }
 

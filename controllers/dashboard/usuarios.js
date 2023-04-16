@@ -101,6 +101,7 @@ async function fillTable(form = null) {
                     <td>${row.telefono_usuario}</td>
                     <td>${row.id_tipo_usuario}</td>
                     <td>${row.id_estado_usuario}</td>
+                    <td><img src="${SERVER_URL}img/people/${row.foto}" height="100"></td>
                     <td class="td-button">
                         <button  onclick="openUpdate(${row.id_usuario})" class="button_edit button-modal" type="button" data-bs-toggle="modal"  data-tooltip="Actualizar"
                         data-bs-target="#add-modal"><i class='bx bxs-edit'  style="color: white;"></i></button>
@@ -149,6 +150,7 @@ function openCreate() {
     document.getElementById('telefono_usuario').required = true;
     document.getElementById('Tipo_usuario').required = true;
     document.getElementById('Estado_usuario').required = true;
+    document.getElementById('foto').required = true;
     console.log("proceso de abrir modal agregar");
 }
 
@@ -187,6 +189,7 @@ async function openUpdate(id) {
         document.getElementById('telefono_usuario').value = JSON.dataset.telefono_usuario;
         fillSelect(TIPO_USUARIO_API, 'readAll', 'Tipo_usuario', JSON.dataset.id_tipo_usuario);
         fillSelect(ESTADO_USUARIO_API, 'readAll', 'Estado_usuario', JSON.dataset.id_estado_usuario);
+        document.getElementById('foto').required = false;
         console.log("proceso abri caja modal de actualizar");//mensaje 
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
         //M.updateTextFields();
@@ -221,28 +224,12 @@ async function openDelete(id) {
         }
     }
 }
-/*
-//hora y saludo
-// Método manejador de eventos para cuando el documento ha cargado.
-document.addEventListener('DOMContentLoaded', () => {
-    // Se define un objeto con la fecha y hora actual.
-    let today = new Date();
-    // Se define una variable con el número de horas transcurridas en el día.
-    let hour = today.getHours();
-    // Se define una variable para guardar un saludo.
-    let greeting = '';
-    // Dependiendo del número de horas transcurridas en el día, se asigna un saludo para el usuario.
-    if (hour < 12) {
-        greeting = 'Buenos días';
-    } else if (hour < 19) {
-        greeting = 'Buenas tardes';
-    } else if (hour <= 23) {
-        greeting = 'Buenas noches';
-    }
-    // Se muestra un saludo en la página web.
-    document.getElementById('greeting').textContent = greeting;
-    // Se llaman a la funciones que generan los gráficos en la página web.
-    //graficoBarrasCategorias();
-    //graficoPastelCategorias();
-});
-*/
+
+function openReport(id) {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/dashboard/usuario.php`);
+    // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
+    PATH.searchParams.append('id_usuario', id);
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(PATH.href);
+}
