@@ -1,25 +1,19 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/Model/clientes_queries.php');
+require_once('../../entities/Model/Model_detalles_pedidos_queries.php');
 
 /*
 *	Clase para manejar la transferencia de datos de la entidad Clientes.
 */
-class Cliente extends ClienteQueries
+class Detalles_Pedidos extends Detalles_Pedidos_Queries
 {
     //declaracion de atributos 
     protected $id = null;
     
-    protected $nombre_cliente = null;
-    protected $apellido_cliente = null;
-    protected $correo_cliente = null;
-    protected $fecha_nacimiento = null;
-    protected $dui_cliente = null;
-    protected $id_genero = null;
-    protected $telefono_cliente = null;
-    protected $clave  = null;
-    protected $estado  = null;
-    protected $direccion_cliente  = null;
+    protected $id_pedido = null;
+    protected $id_producto = null;
+    protected $cantidad_producto = null;
+    protected $precio_detalle_producto = null;
     //protected $ruta = '../../images/productos/';
     
     /*
@@ -34,103 +28,46 @@ class Cliente extends ClienteQueries
             return false;
         }
     }
-    public function setNombre($value)
+    public function setId_Pedido($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 50)) {
-            $this->nombre_cliente = $value;
+        if (Validator::validateNaturalNumber($value, 1, 50)) {
+            $this->id_pedido = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setApellido($value)
+    public function setId_Producto($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 50)) {
-            $this->apellido_cliente = $value;
+        if (Validator::validateNaturalNumber($value, 1, 50)) {
+            $this->id_producto = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setId_genero($value)
+    public function setCantidad_Producto($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->id_genero = $value;
+        if (Validator::validateNaturalNumber($value, 1, 50)) {
+            $this->cantidad_producto = $value;
             return true;
         } else {
             return false;
         }
     }
-    public function setCorreo($value)
+    public function setPrecio_detalle_Producto($value)
     {
-        if (Validator::validateEmail($value)) {
-            $this->correo_cliente = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setTelefono($value)
-    {
-        if (Validator::validatePhone($value)) {
-            $this->telefono_cliente = $value;
+        if (Validator::validateMoney($value)) {
+            $this->precio_detalle_producto = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setDUI($value)
-    {
-        if (Validator::validateDUI($value)) {
-            $this->dui_cliente = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
 
-    public function setNacimiento($value)
-    {
-        if (Validator::validateDate($value)) {
-            $this->fecha_nacimiento = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
 
-    public function setDireccion($value)
-    {
-        if (Validator::validateString($value, 1, 200)) {
-            $this->direccion_cliente = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setClave($value)
-    {
-        if (Validator::validatePassword($value)) {
-            $this->clave = password_hash($value, PASSWORD_DEFAULT);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setEstado($value)
-    {
-        if (Validator::validateBoolean($value)) {
-            $this->estado = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
+   
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -138,52 +75,22 @@ class Cliente extends ClienteQueries
     {
         return $this->id;
     }
-    public function getId_genero()
+    public function getId_Pedido()
     {
-        return $this->id_genero;
+        return $this->id_pedido;
     }
-    public function getNombres()
+    public function getId_Producto()
     {
-        return $this->nombre_cliente;
+        return $this->id_producto;
     }
-
-    public function getApellidos()
+    public function getCantidad_Producto()
     {
-        return $this->apellido_cliente;
+        return $this->cantidad_producto;
     }
-
-    public function getCorreo()
+    public function getPrecio_detalle_Producto()
     {
-        return $this->correo_cliente;
+        return $this->precio_detalle_producto;
     }
 
-    public function getTelefono()
-    {
-        return $this->telefono_cliente;
-    }
-
-    public function getDUI()
-    {
-        return $this->dui_cliente;
-    }
-
-    public function getNacimiento()
-    {
-        return $this->fecha_nacimiento;
-    }
-
-    public function getDireccion()
-    {
-        return $this->direccion_cliente;
-    }
-
-    public function getClave()
-    {
-        return $this->clave;
-    }
-
-    public function getEstado()
-    {
-        return $this->estado;
-    }
+    
 }
