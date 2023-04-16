@@ -4,7 +4,7 @@ require_once('../../helpers/report.php');
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
 // Se verifica si existe el parámetro id en la url, de lo contrario se direcciona a la página web principal.
-if (isset($_GET['id_categoria'])) {
+if (isset($_GET['id_marca_producto'])) {
     require_once('../../entities/dto/categoria.php');
     require_once('../../entities/dto/producto.php');
     // Se instancia el módelo Categorias para procesar los datos.

@@ -3,33 +3,33 @@ require_once('../../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad PRODUCTO.
 */
-class ClienteQueries
+class Detalles_Pedidos_Queries
 {
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, fecha_nacimiento, dui, genero, telefono_cliente, estado, direccion_cliente
-        FROM clientes INNER JOIN generos USING(id_genero) 
-                WHERE nombre_cliente ILIKE ? OR apellido_cliente ILIKE ? OR correo_cliente ILIKE ? OR dui ILIKE ?
-                ORDER BY nombre_cliente';
-        $params = array("%$value%", "%$value%","%$value%", "%$value%");
+        $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_producto, precio_detalle_producto
+        FROM detalles_pedidos INNER JOIN productos USING(id_producto)
+     WHERE  cast(id_pedido as varchar) ILIKE ? OR nombre_producto ILIKE ?
+                 ORDER BY id_pedido';
+        $params = array( "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, fecha_nacimiento, genero, telefono_cliente,dui,  estado, direccion_cliente
-        FROM clientes INNER JOIN generos USING(id_genero) ORDER BY  (id_cliente) asc ';
+        $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_producto, precio_detalle_producto
+        FROM detalles_pedidos INNER JOIN productos USING(id_producto) ORDER BY (id_pedido) ;';
         return Database::getRows($sql);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, fecha_nacimiento, dui, genero, telefono_cliente, estado, direccion_cliente
-        FROM clientes INNER JOIN generos USING(id_genero) 
-                WHERE id_cliente = ?';
+        $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_producto, precio_detalle_producto
+        FROM detalles_pedidos INNER JOIN productos USING(id_producto) ORDER BY (id_detalle_pedido)  
+        WHERE id_detalle_pedido = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
