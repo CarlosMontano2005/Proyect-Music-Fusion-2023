@@ -5,22 +5,22 @@ require_once('../../helpers/report.php');
 $pdf = new Report;
 // Se verifica si existe el parámetro id en la url, de lo contrario se direcciona a la página web principal.
 if (isset($_GET['id_marca_producto'])) {
-    require_once('../../entities/dto/categoria.php');
-    require_once('../../entities/dto/producto.php');
-    // Se instancia el módelo Categorias para procesar los datos.
-    $categoria = new Categoria;
+    require_once('../../entities/Controller/marcas_dto.php');//marca
+    require_once('../../entities/Controller/producto.php');//producto
+    // Se instancia el módelo Marcas para procesar los datos.
+    $marca = new Marcas;
     // Se verifica si el parámetro es un valor correcto, de lo contrario se direcciona a la página web principal.
-    if ($categoria->setId($_GET['id_categoria'])) {
-        // Se verifica si la categoría del parámetro existe, de lo contrario se direcciona a la página web principal.
-        if ($rowCategoria = $categoria->readOne()) {
+    if ($marca->setId($_GET['id_marca_producto'])) {
+        // Se verifica si la marca  del parámetro existe, de lo contrario se direcciona a la página web principal.
+        if ($rowMarca = $marca->readOne()) {
             // Se inicia el reporte con el encabezado del documento.
-            $pdf->startReport('Productos de la categoría '.$rowCategoria['nombre_categoria']);
+            $pdf->startReport('Productos de la marca  '.$rowMarca['nombre_marca']);
             // Se instancia el módelo Productos para procesar los datos.
             $producto = new Producto;
-            // Se establece la categoría, de lo contrario se direcciona a la página web principal.
-            if ($producto->setCategoria($rowCategoria['id_categoria'])) {
+            // Se establece la marca , de lo contrario se direcciona a la página web principal.
+            if ($producto->setMarca($rowMarca['id_marca_producto'])) {
                 // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
-                if ($dataProductos = $producto->productosCategoria()) {
+                if ($dataProductos = $producto->productosMarca()) {
                     // Se establece un color de relleno para los encabezados.
                     $pdf->setFillColor(225);
                     // Se establece la fuente para los encabezados.
@@ -40,10 +40,10 @@ if (isset($_GET['id_marca_producto'])) {
                         $pdf->cell(30, 10, $estado, 1, 1);
                     }
                 } else {
-                    $pdf->cell(0, 10, $pdf->encodeString('No hay productos para esta categoría'), 1, 1);
+                    $pdf->cell(0, 10, $pdf->encodeString('No hay productos para esta marca '), 1, 1);
                 }
                 // Se llama implícitamente al método footer() y se envía el documento al navegador web.
-                $pdf->output('I', 'categoria.pdf');
+                $pdf->output('I', 'marcas_productos.pdf');
             } else {
                 header('location:'.$pdf::CLIENT_URL);
             }
