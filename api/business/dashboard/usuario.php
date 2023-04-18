@@ -233,22 +233,44 @@ if (isset($_GET['action'])) {
                 break;
             case 'signup':
                 $_POST = Validator::validateForm($_POST);
-                if (!$usuario->setNombres($_POST['nombres'])) {
-                    $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
+                if (!$usuario->setNombre_Usuario($_POST['nombre_usuario'])) {
+                    $result['exception'] = 'Nombres incorrecto';
+                } elseif (!$usuario->setApellido_Usuario($_POST[''])) {
                     $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$usuario->setCorreo($_POST['correo'])) {
+                } elseif (!$usuario->setCorreo_Usuario($_POST['correo_usuario'])) {
                     $result['exception'] = 'Correo incorrecto';
-                } elseif (!$usuario->setAlias($_POST['usuario'])) {
+                }elseif (!$usuario->setAlias_Usuario($_POST['alias_usuario'])) {
                     $result['exception'] = 'Alias incorrecto';
-                } elseif ($_POST['codigo'] != $_POST['confirmar']) {
+                } elseif (!$usuario->setTelefono_Usuario($_POST['telefono_usuario'])) {
+                    $result['exception'] = 'Telefono incorrecto';
+                } elseif (!isset($_POST['Tipo_usuario'])) {
+                    $result['exception'] = 'Seleccione una tipo de usuario';
+                }elseif (!$usuario->setId_tipo_usuario($_POST['Tipo_usuario'])) {
+                    $result['exception'] = 'Tipo de usuario incorrecto';
+                }elseif (!isset($_POST['Estado_usuario'])) {
+                    $result['exception'] = 'Seleccione un estado del usuario';
+                } elseif (!$usuario->setId_estado_usuario($_POST['Estado_usuario'])) {
+                    $result['exception'] = 'Estado de usuario incorrecto';
+                }
+                elseif ($_POST['codigo'] != $_POST['confirmar']) {
                     $result['exception'] = 'Claves diferentes';
                 } elseif (!$usuario->setClave($_POST['codigo'])) {
                     $result['exception'] = Validator::getPasswordError();
-                } elseif ($usuario->createRow()) {
+                } 
+                elseif (!is_uploaded_file($_FILES['foto']['tmp_name'])) {
+                    $result['exception'] = 'Seleccione una imagen';
+                } elseif (!$usuario->setFoto_Usuario($_FILES['foto'])) {
+                    $result['exception'] = Validator::getFileError();
+                }  
+                elseif ($usuario->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Usuario registrado correctamente';
-                } else {
+                    if (Validator::saveFile($_FILES['archivo'], $usuario->getRuta(), $usuario->getImagen())) {
+                        $result['message'] = 'Primer Usuario creada correctamente';
+                    } else {
+                        $result['message'] = 'Primer Usuario creada pero no se guardó la imagen';
+                    }
+                } 
+                else {
                     $result['exception'] = Database::getException();
                 }
                 break;
