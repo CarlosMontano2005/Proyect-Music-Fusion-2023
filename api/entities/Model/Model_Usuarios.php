@@ -49,7 +49,7 @@ class ModelUsuarios
     {
         $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, clave_usuario, telefono_usuario, id_tipo_usuario, id_estado_usuario, alias_usuario, foto
                 FROM usuarios INNER JOIN tipos_usuarios USING(id_tipo_usuario)
-                ORDER BY nombre_usuario asc';
+                ORDER BY (id_usuario) asc';
         return Database::getRows($sql);
     }
 
