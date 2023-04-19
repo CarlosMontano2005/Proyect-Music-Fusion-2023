@@ -235,7 +235,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setNombre_Usuario($_POST['nombre_usuario'])) {
                     $result['exception'] = 'Nombres incorrecto';
-                } elseif (!$usuario->setApellido_Usuario($_POST[''])) {
+                } elseif (!$usuario->setApellido_Usuario($_POST['apellido_usuario'])) {
                     $result['exception'] = 'Apellidos incorrectos';
                 } elseif (!$usuario->setCorreo_Usuario($_POST['correo_usuario'])) {
                     $result['exception'] = 'Correo incorrecto';
@@ -254,7 +254,7 @@ if (isset($_GET['action'])) {
                 }
                 elseif ($_POST['codigo'] != $_POST['confirmar']) {
                     $result['exception'] = 'Claves diferentes';
-                } elseif (!$usuario->setClave($_POST['codigo'])) {
+                } elseif (!$usuario->setClave_Usuario($_POST['codigo'])) {
                     $result['exception'] = Validator::getPasswordError();
                 } 
                 elseif (!is_uploaded_file($_FILES['foto']['tmp_name'])) {
@@ -264,7 +264,7 @@ if (isset($_GET['action'])) {
                 }  
                 elseif ($usuario->createRow()) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $usuario->getRuta(), $usuario->getImagen())) {
+                    if (Validator::saveFile($_FILES['foto'], $usuario->getRuta(), $usuario->getFoto_Usuario())) {
                         $result['message'] = 'Primer Usuario creada correctamente';
                     } else {
                         $result['message'] = 'Primer Usuario creada pero no se guardó la imagen';

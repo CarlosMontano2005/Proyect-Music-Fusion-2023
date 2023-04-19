@@ -15,6 +15,12 @@ class ModelTipoUsuarios
         FROM tipos_usuarios';
         return Database::getRows($sql);
     }
+    public function firstuse()
+    {
+        $sql = 'SELECT id_tipo_usuario, tipo_usuario
+        FROM tipos_usuarios WHERE  tipo_usuario.model LIKE  '%Administrador%'';
+        return Database::getRows($sql);
+    }
 
     public function readOne()
     {

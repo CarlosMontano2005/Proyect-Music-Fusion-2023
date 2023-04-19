@@ -23,7 +23,18 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            
+                
+            case 'firstuse':
+                if ($result['dataset'] = $TipoUsuario->firstuse()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
+                
             case 'readOne':
                 if (!$tipo_usuario->setId($_POST['id'])) {
                     $result['exception'] = 'Usuario incorrecto';
@@ -35,6 +46,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Usuario inexistente';
                 }
                 break;
+                
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

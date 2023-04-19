@@ -15,6 +15,12 @@ class ModelEstadoUsuarios
         FROM estados_usuarios';
         return Database::getRows($sql);
     }
+    public function firstuse()
+    {
+        $sql = 'SELECT id_estado_usuario, estado_usuario
+        FROM estados_usuarios WHERE id_estado_usuario = 1';
+        return Database::getRows($sql);
+    }
 
     public function readOne()
     {
