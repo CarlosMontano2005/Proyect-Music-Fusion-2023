@@ -41,4 +41,18 @@ LOGIN_FORM.addEventListener('submit', async (event) => {
     }
 });
 
+verClave = document.getElementById("ver-clave");
+InputClaveText = document.getElementById("clave");
+checklabel = document.querySelector(".form-check-label");
 
+verClave.addEventListener("click", function() {
+    if(InputClaveText.type == "password")
+    {
+        InputClaveText.type = "text";
+        checklabel.innerText = "Ocultar Clave";
+    }
+    else{
+        InputClaveText.type = "password";
+        checklabel.innerText = "Monstrar Clave";
+    }
+});

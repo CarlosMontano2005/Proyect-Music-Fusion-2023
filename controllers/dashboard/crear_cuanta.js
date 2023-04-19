@@ -52,4 +52,34 @@ function openCreate() {
 }
 
 
+verClaveReperit = document.getElementById("ver-repetir-clave");
+InputClaveTextConfirmar = document.getElementById("confirmar");
+checklabelRepetir = document.querySelector(".check-label-repeti-clave");
 
+verClaveReperit.addEventListener("click", function() {
+    if(InputClaveTextConfirmar.type == "password")
+    {
+        InputClaveTextConfirmar.type = "text";
+        checklabelRepetir.innerText = "Ocultar Clave";
+    }
+    else{
+        InputClaveTextConfirmar.type = "password";
+        checklabelRepetir.innerText = "Monstrar Clave";
+    }
+});
+
+verClave = document.getElementById("ver-clave");
+InputClaveText = document.getElementById("codigo");
+checklabelClave = document.querySelector(".label-check-clave");
+
+verClave.addEventListener("click", function() {
+    if(InputClaveText.type == "password")
+    {
+        InputClaveText.type = "text";
+        checklabelClave.innerText = "Ocultar Clave";
+    }
+    else{
+        InputClaveText.type = "password";
+        checklabelClave.innerText = "Monstrar Clave";
+    }
+});
