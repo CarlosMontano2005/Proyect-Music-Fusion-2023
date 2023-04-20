@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Usuarios</title>
-  <link rel="stylesheet" href="../../resources/css/dashboard/style_usuario.css">
+  <title>Productos</title>
+  <link rel="stylesheet" href="../../resources/css/dashboard/style_productos.css">
   <!-- Llamada de archivo como icono -->
   <link type="image/png" rel="icon" href="../../img/logos/logo.png">
   <!-- Boxiocns CDN Link -->
@@ -61,11 +61,11 @@
           <option value="3">Three</option>
         </select>
       </form>
-      <!--Agregar Usuario -->
+      <!--Agregar Producto -->
       <div class="btn-agregar">
         <button type="button" class="button-modal" data-bs-toggle="modal" onclick="openCreate()" data-bs-target="#add-modal">
           <i class='bx bxs-alarm-add'></i>
-          Agregar Usuario
+          Agregar Producto
         </button>
       </div>
     </div>
@@ -84,49 +84,49 @@
               <div class="invisible">
                 <p>ID</p>
                 <input type="number" class="form-control validate" placeholder="id" aria-label="id"
-                  id="id_usuario" name="id_usuario" required>
+                  id="id_producto" name="id_producto" required>
               </div>
               <div class="col-md-4">
-                <p>Nombres</p>
+                <p>Nombre del producto</p>
                 <input type="text" class="form-control validate" placeholder="Nombres" aria-label="Los Nombres"
-                  id="nombre_usuario" name="nombre_usuario" required>
+                  id="nombre_producto" name="nombre_producto" required>
               </div>
               <div class="col-md-4">
-                <p>Apellidos</p>
-                <input type="text" class="form-control validate" placeholder="Apellidos" aria-label="Los Apellidos"
-                  id="apellido_usuario" name="apellido_usuario" required>
+                <p>Marca</p>
+                <select class="form-select" id="Marca_Producto" name="Marca_Producto">
+                  <option selected>Seleccionar</option>
+                
+                </select>
               </div>
               <div class="col-md-4">
-                <p>Correo</p>
-                <input id="correo_usuario" type="email" name="correo_usuario" class="form-control validate"
-                  placeholder="correo@local.com" aria-label="aqui correo" required>
+                <p>Precio</p>
+                <input id="precio_producto" type="number" name="precio_producto" class="form-control validate"
+                  placeholder="Precio" step="0.01" required>
               </div>
               <div class="col-md-4">
-                <p>Alias</p>
-                <input type="text" class="form-control validate" placeholder="Alias" aria-label="Los Apellidos"
-                  id="alias_usuario" name="alias_usuario" required>
-              </div>
-              <div class="col-md-4">
-                <p>contraseña</p>
-                <input type="password" id="clave_usuario" name="clave_usuario" class="form-control validate" 
-                  placeholder="contraseña" >
-              </div>
-              <div class="col-md-4">
-                <p>Telefono</p>
-                <input type="tel" id="telefono_usuario" name="telefono_usuario" class="form-control validate" required
-                  placeholder="0000-0000">
-              </div>
-              <div class="col-md-4">
-                <p>Tipo de Usuario</p>
-                <select class="form-select" id="Tipo_usuario" name="Tipo_usuario">
+                <p>Categoria</p>
+                <select class="form-select" id="categoria" name="categoria">
                   <option selected>Seleccionar</option>
                 
                 </select>
                 
               </div>
               <div class="col-md-4">
-                <p>Estado del Usuario</p>
-                <select class="form-select" id="Estado_usuario" name="Estado_usuario">
+                <p>Descripción</p>
+                <input type="text" id="descripcion" name="descripcion" class="form-control validate" 
+                  placeholder="Descripción" >
+              </div>
+              <div class="col-md-4">
+                <p>Estado del producto</p>
+                <select class="form-select" id="id_estado_producto" name="id_estado_producto">
+                  <option selected>Seleccionar</option>
+                
+                </select>
+                
+              </div>
+              <div class="col-md-4">
+                <p>Usuario</p>
+                <select class="form-select" id="usuario" name="usuario">
                   <option selected>Seleccionar</option>
                 
                 </select>
@@ -148,7 +148,7 @@
       </div>
     </div>
     </div>
-    <h3 id="records">Administrar Usuarios</h3>
+    <h3 id="records">Administrar Productos</h3>
     </div>
     <div class="header_fixed">
       <div class="table-responsive">
@@ -158,18 +158,19 @@
             <tr>
               <th>No.</th>
               <th>Nombres</th>
-              <th>Apellidos</th>
-              <th>Correo</th>
-              <th>Alias</th>
-              <th>Telefono</th>
-              <th>Tipo Usuario</th>
-              <th>Estado Usuario</th>
+              <th>Marca</th>
+              <th>Precio</th>
+              <th>Categoria</th>
+              <th>Descripción</th>
+              <th>Estado del producto</th>
               <th>Imagen</th>
+              <th>Usuario</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody id="tbody-rows">
             <tr>
+              <td></td>
               <td></td>
               <td></td>
               <td></td>
@@ -210,7 +211,7 @@
    <script src="../../resources/js/dashboard/menu.js"></script>
    <!--f<script src="../../resources/js/dashboard/mod_oscuro.js"></script>-->
    <!--funcione llamar al controlador -->
-   <script src="../../controllers/dashboard/usuarios.js"></script>
+   <script src="../../controllers/dashboard/productos.js"></script>
    <!-- js del cliente -->
   
   <!--controlador-->
