@@ -9,8 +9,14 @@
   
 body {
   font-family: arial;
-  background: rgb(81, 78, 233);
   background: linear-gradient(90deg, rgba(81, 78, 233, 1) 10%, rgba(164,52,244,1) 48%, rgba(228,33,253,1) 100%);
+  animation: cambiarColor 10s ease infinite;
+}
+
+@keyframes cambiarColor{
+  0%{background-position: 0 50%;}
+  50%{background-position: 100% 50%;}
+  100%{background-position: 0 50%;}
 }
 .img-pregunta{
   display: flex;
@@ -76,7 +82,7 @@ text-align: center;
   margin-top:-120px;
 }
 
-.btn_primary{
+.btn_continuar{
   display: flex;
   justify-content: center;
   border: none;
@@ -98,7 +104,12 @@ text-align: center;
   transition: 0.5s;
   background: #514ee9;
 }
-
+.cont-btn-continuar{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 @media only screen and (max-width: 600px) {
   .cont-login{
     margin-top: 40px;
@@ -163,7 +174,7 @@ text-align: center;
     text-decoration: none;
   }
 
-  .btn_primary{
+  .btn_continuar{
 
     margin-top: 30px;
   }
