@@ -14,12 +14,16 @@ class ModelUsuarios
         $params = array($alias);
         if ($data = Database::getRow($sql, $params)) {
             $this->id_usuario = $data['id_usuario'];
-            $this->foto = $data['foto'];
             $this->alias = $alias;
             return true;
         } else {
             return false;
         }
+    }
+    public function dataUser()
+    {
+        $sql = 'SELECT * FROM usuarios';
+        return Database::getRows($sql);
     }
 
     public function checkPassword($password)
