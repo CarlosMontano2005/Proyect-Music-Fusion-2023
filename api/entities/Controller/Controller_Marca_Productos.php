@@ -1,6 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/Model/Model_Marca_Productos.php');
+require_once('../../entities/Model/Model_Marca_Producto.php');
 
 /*
 *	Clase para manejar la transferencia de datos de la entidad generos.

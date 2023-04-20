@@ -24,7 +24,7 @@ class ModelProductos
     {
         $sql = 'SELECT id_producto, nombre_producto, id_marca_producto, precio_producto, id_categoria_producto, descripcion, id_estado_producto, imagen_producto, id_usuario
                 FROM productos INNER JOIN marcas USING(id_marca_producto)
-                ORDER BY nombre_producto asc';
+                ORDER BY (id_producto) asc';
         return Database::getRows($sql);
     }
 
