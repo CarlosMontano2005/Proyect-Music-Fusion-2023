@@ -86,6 +86,7 @@ async function fillTable(form = null) {
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
     const JSON = await dataFetch(USUARIO_API, action, form);
+    
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.

@@ -142,7 +142,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <!-- -->
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="../../img/people/charlie.jpg" alt="profileImg">
+                        
+                        <!--<img src="../../img/people/charlie.jpg" alt="profileImg"> -->
+                        <img src="${SERVER_URL}img/people/${JSON.foto}" alt="profileImg"> 
                     </div>
                     <div class="name-job">
                         <div class="profile_name">${JSON.username}</div>
