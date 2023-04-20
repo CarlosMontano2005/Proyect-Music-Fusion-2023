@@ -98,12 +98,12 @@ async function fillTable(form = null) {
                 <tr>
                     <td>${row.id_producto}</td>
                     <td>${row.nombre_producto}</td>
-                    <td>${row.id_marca_producto}</td>
+                    <td>${row.nombre_marca}</td>
                     <td>${row.precio_producto}</td>
-                    <td>${row.id_categoria_producto}</td>
+                    <td>${row.nombre_categoria}</td>
                     <td>${row.descripcion}</td>
-                    <td>${row.id_estado_producto}</td>
-                    <td>${row.id_usuario}</td>
+                    <td>${row.estado_producto}</td>
+                    <td>${row.nombre_usuario}</td>
                     <td><img src="${SERVER_URL}img/people/${row.foto}" height="100"></td>
                     <td class="td-button">
                         <button  onclick="openUpdate(${row.id_producto})" class="button_edit button-modal" type="button" data-bs-toggle="modal"  data-tooltip="Actualizar"

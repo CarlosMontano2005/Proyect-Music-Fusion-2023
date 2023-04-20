@@ -86,7 +86,6 @@ async function fillTable(form = null) {
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
     const JSON = await dataFetch(USUARIO_API, action, form);
-    
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
@@ -100,8 +99,8 @@ async function fillTable(form = null) {
                     <td>${row.correo_usuario}</td>
                     <td>${row.alias_usuario}</td>
                     <td>${row.telefono_usuario}</td>
-                    <td>${row.id_tipo_usuario}</td>
-                    <td>${row.id_estado_usuario}</td>
+                    <td>${row.tipo_usuario}</td>
+                    <td>${row.estado_usuario}</td>
                     <td><img src="${SERVER_URL}img/people/${row.foto}" height="100"></td>
                     <td class="td-button">
                         <button  onclick="openUpdate(${row.id_usuario})" class="button_edit button-modal" type="button" data-bs-toggle="modal"  data-tooltip="Actualizar"

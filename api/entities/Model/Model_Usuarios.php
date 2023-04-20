@@ -42,26 +42,29 @@ class ModelUsuarios
     
     public function searchRows($value)
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, clave_usuario, telefono_usuario, id_tipo_usuario, id_estado_usuario, alias_usuario, foto
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, telefono_usuario, id_tipo_usuario, tipo_usuario, id_estado_usuario, estado_usuario, alias_usuario, foto
         FROM usuarios INNER JOIN tipos_usuarios USING(id_tipo_usuario)
-                WHERE nombre_usuario ILIKE ? OR apellido_usuario ILIKE ?
-                ORDER BY nombre_usuario';
+        INNER JOIN estados_usuarios using (id_estado_usuario)
+        WHERE nombre_usuario ILIKE ? OR apellido_usuario ILIKE ?
+        ORDER BY nombre_usuario';
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, clave_usuario, telefono_usuario, id_tipo_usuario, id_estado_usuario, alias_usuario, foto
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, telefono_usuario, id_tipo_usuario, tipo_usuario, id_estado_usuario, estado_usuario, alias_usuario, foto
                 FROM usuarios INNER JOIN tipos_usuarios USING(id_tipo_usuario)
+                INNER JOIN estados_usuarios using (id_estado_usuario)
                 ORDER BY (id_usuario) asc';
         return Database::getRows($sql);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, clave_usuario, telefono_usuario, id_tipo_usuario, id_estado_usuario, alias_usuario, foto
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, telefono_usuario, id_tipo_usuario, tipo_usuario, id_estado_usuario, estado_usuario, alias_usuario, foto
                 FROM usuarios INNER JOIN tipos_usuarios USING(id_tipo_usuario)
+                INNER JOIN estados_usuarios using (id_estado_usuario)
                 WHERE id_usuario = ?';
         $params = array($this->id_usuario);
         return Database::getRow($sql, $params);
