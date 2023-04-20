@@ -10,7 +10,7 @@
       href="../../resources/css/public/style_crear_cuenta.css"
     />
     <!-- Llamada de archivo como icono -->
-    <link type="image/png" rel="icon" href="/img/logos/logo.png" />
+    <link type="image/png" rel="icon" href="../../img/logos/logo.png" />
     <!-- Boxiocns CDN Link -->
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
@@ -47,7 +47,8 @@
               <input
                 type="text"
                 class="form-control validate"
-                id="nombres"
+                id="nombre_usuario"
+                name="nombre_usuario"
                 placeholder="Nombres Completo"
                 required
               />
@@ -59,8 +60,8 @@
               <input
                 type="text"
                 class="form-control validate"
-                id="apellidos"
-                name="apellidos"
+                id="apellido_usuario"
+                name="apellido_usuario"
                 placeholder="Apellidos Completo"
                 required
               />
@@ -71,9 +72,9 @@
               >
               <input
                 type="email"
-                id="correo"
-                name="correo"
-                class="form-control"
+                id="correo_usuario"
+                name="correo_usuario"
+                class="form-control validate"
                 id="formGroupExampleInput"
                 placeholder="correo@local.com"
                 required
@@ -85,9 +86,9 @@
               >
               <input
                 type="tel"
-                class="form-control"
-                id="telefono"
-                name="telefono"
+                class="form-control validate"
+                id="telefono_usuario"
+                name="telefono_usuario"
                 placeholder="0000-0000"
                 required
               />
@@ -98,9 +99,9 @@
               >
               <input
                 type="text"
-                class="form-control"
-                id="alias"
-                name="alias"
+                class="form-control validate"
+                id="alias_usuario"
+                name="alias_usuario"
                 placeholder="Alias"
                 required
               />
@@ -110,7 +111,8 @@
                 >foto</label
               >
               <input
-                type="file"
+                name="foto"  
+                type="file" 
                 id="foto"
                 class="form-control"
                 accept="image/png,image/jpeg"
@@ -128,7 +130,8 @@
               <input
                 type="password"
                 class="form-control validate"
-                id="clave"
+                name="codigo"
+                id="codigo"
                 placeholder="contraseña"
                 required
               />
@@ -137,9 +140,10 @@
                 type="checkbox"
                 value=""
                 id="ver-clave"
+                checked
               />
-              <label class="form-check-label" for="ver-clave"
-                >ver contraseña</label
+              <label class="label-check-clave" for="clave"
+                >Monstrar Clave</label
               >
             </div>
             
@@ -148,11 +152,11 @@
                 >Repetir Contraseña</label
               >
               <input
-                type="password"
+                id="confirmar" 
+                type="password" 
+                name="confirmar"
                 class="form-control validate"
-                id="autoSizingInputGroup"
                 placeholder="repetir contraseña"
-                name="repetir-clave"
                 required
               />
               <input
@@ -160,9 +164,10 @@
                 type="checkbox"
                 value=""
                 id="ver-repetir-clave"
+                checked
               />
-              <label class="form-check-label" for="ver-repetir-clave"
-                >ver contraseña</label
+              <label class="check-label-repeti-clave" for="repetir-clave"
+                >Monstrar Clave</label
               >
             </div>
             <div class="col-auto">
@@ -171,7 +176,7 @@
               >
               <select
                 class="form-select validate"
-                id="estado"
+                id="Estado_usuario" name="Estado_usuario"
                 aria-label="estado usuario"
               >
                 <option selected>Estado</option>
@@ -182,7 +187,7 @@
               <label for="formGroupExampleInput" class="form-label">Tipo</label>
               <select
                 class="form-select validate"
-                id="tipo"
+                id="Tipo_usuario" name="Tipo_usuario"
                 aria-label="tipo usuario"
               >
                 <option selected>Tipo</option>
@@ -197,7 +202,7 @@
               <input
                 type="checkbox"
                 class="form-check-input"
-                id="condicion" name="condicion" required/>
+                id="condicion" name="condicion" required>
             </div>
             <div class="content-btn">
                 <button type="submit" data-tooltip="Guardar">crear cuenta</button>
@@ -211,21 +216,18 @@
       <!-- logo esquina -->
       <div class="img-logo-min">
         <img
-          src="/img/logos/logo_blanco_horizontal.png"
+          src="../../img/logos/logo_blanco_horizontal.png"
           alt="logo-blancohorizontal"
         />
       </div>
     </section>
     <div></div>
-    <!--mensajes-->
-  <script type="text/javascript" src="/js/sweetalert.min.js"></script>
-  <!--boostrap-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
-    <!--controlador-->
-    <script type="text/javascript" src="/controllers/components.js"></script>
-    <script src="../../controllers/dashboard/index.js"></script>
+    <script src="../../js/sweetalert.min.js"></script>
     <script src="../../controllers/components.js"></script>
+    <script src="../../controllers/dashboard/crear_cuanta.js"></script>
+  
   </body>
 </html>

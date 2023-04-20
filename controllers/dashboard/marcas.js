@@ -78,7 +78,7 @@ async function fillTable(form = null) {
                         <button  onclick="openUpdate(${row.id_marca_producto})" class="button_edit button-modal" type="button" data-bs-toggle="modal"  data-tooltip="Actualizar"
                         data-bs-target="#add-modal"><i class='bx bxs-edit'  style="color: white;"></i></button>
                         <button onclick="openDelete(${row.id_marca_producto})" class="button_delet" data-tooltip="Eliminar"><i class='bx bx-trash'></i></button>
-                        <button onclick="openUpdate(${row.id_marca_producto})" class="button_updet"><i class='bx bx-refresh'></i></button>
+                        <button onclick="openReport(${row.id_marca_producto})" class="button_updet"><i class='bx bx-file' ></i></button>
                     </td>
                 </tr>
             `;

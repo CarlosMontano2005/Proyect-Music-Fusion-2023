@@ -4,53 +4,55 @@ require_once('../../entities/Model/Model_Usuarios.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad USUARIO.
 */
-class Usuario extends UsuarioQueries
+class ControllerUsuarios extends ModelUsuarios
 {
     // Declaración de atributos (propiedades).
-    protected $id = null;
-    protected $nombres = null;
-    protected $apellidos = null;
+    protected $id_usuario = null;
+    protected $nombre = null;
+    protected $apellido = null;
     protected $correo = null;
     protected $alias = null;
     protected $clave = null;
     protected $telefono = null;
     protected $id_tipo_usuario = null;
     protected $id_estado_usuario = null;
+    protected $foto = null;
+    protected $ruta = '../../img/people/';
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
     */
-    public function setId($value)
+    public function setId_Usuario($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->id = $value;
+            $this->id_usuario = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setNombres($value)
+    public function setNombre_Usuario($value)
     {
         if (Validator::validateAlphabetic($value, 1, 50)) {
-            $this->nombres = $value;
+            $this->nombre = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setApellidos($value)
+    public function setApellido_Usuario($value)
     {
         if (Validator::validateAlphabetic($value, 1, 50)) {
-            $this->apellidos = $value;
+            $this->apellido = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setCorreo($value)
+    public function setCorreo_Usuario($value)
     {
         if (Validator::validateEmail($value)) {
             $this->correo = $value;
@@ -60,7 +62,7 @@ class Usuario extends UsuarioQueries
         }
     }
 
-    public function setAlias($value)
+    public function setAlias_Usuario($value)
     {
         if (Validator::validateAlphanumeric($value, 1, 50)) {
             $this->alias = $value;
@@ -70,7 +72,7 @@ class Usuario extends UsuarioQueries
         }
     }
 
-    public function setClave($value)
+    public function setClave_Usuario($value)
     {
         if (Validator::validatePassword($value)) {
             $this->clave = password_hash($value, PASSWORD_DEFAULT);
@@ -80,7 +82,7 @@ class Usuario extends UsuarioQueries
         }
     }
 
-    public function setTelefono($value){
+    public function setTelefono_Usuario($value){
 
         if(validator::validatePhone($value)){
             $this->telefono = $value;
@@ -112,51 +114,71 @@ class Usuario extends UsuarioQueries
         }
     }
 
+    public function setFoto_Usuario($file)
+    {
+        if (Validator::validateImageFile($file, 500, 500)) {
+            $this->foto = Validator::getFileName();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Métodos para obtener valores de los atributos.
     */
-    public function getId()
+    public function getId_Usuario()
     {
-        return $this->id;
+        return $this->id_usuario;
     }
 
-    public function getNombres()
+    public function getNombre_Usuario()
     {
-        return $this->nombres;
+        return $this->nombre;
     }
 
-    public function getApellidos()
+    public function getApellido_Usuario()
     {
-        return $this->apellidos;
+        return $this->apellido;
     }
 
-    public function getCorreo()
+    public function getCorreo_Usuario()
     {
         return $this->correo;
     }
 
-    public function getAlias()
+    public function getAlias_Usuario()
     {
         return $this->alias;
     }
 
-    public function getClave()
+    public function getClave_Usuario()
     {
         return $this->clave;
     }
 
-    public function getTelefono(){
+    public function getTelefono_Usuario(){
 
-        return $this ->telefono;
+        return $this->telefono;
     }
 
     public function getId_tipo_usuario(){
 
-        return $this ->id_tipo_usuario;
+        return $this->id_tipo_usuario;
     }
 
     public function getId_estado_usuario(){
 
-        return $this ->id_estado_usuario;
+        return $this->id_estado_usuario;
+    }
+
+    public function getFoto_Usuario(){
+
+        return $this->foto;
+    }
+
+    public function getRuta()
+    {
+        return $this->ruta;
     }
 }  

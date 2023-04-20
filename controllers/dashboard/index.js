@@ -20,24 +20,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Se muestra el formulario para registrar el primer usuario.
         /*document.getElementById('signup-container').classList.remove('hide');*/
         sweetAlert(4, JSON.exception, true,'crear_cuenta.html');
+        //sweetAlert(4, JSON.exception, true);
     }
 });
-
-// Método manejador de eventos para cuando se envía el formulario de registro del primer usuario.
-/*SIGNUP_FORM.addEventListener('submit', async (event) => {
-    // Se evita recargar la página web después de enviar el formulario.
-    event.preventDefault();
-    // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(SIGNUP_FORM);
-    // Petición para registrar el primer usuario del sitio privado.
-    const JSON = await dataFetch(USER_API, 'signup', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (JSON.status) {
-        sweetAlert(1, JSON.message, true, 'crear_cuenta.html');
-    } else {
-        sweetAlert(2, JSON.exception, false);
-    }
-});*/
 
 
 // Método manejador de eventos para cuando se envía el formulario de inicio de sesión.
@@ -56,4 +41,18 @@ LOGIN_FORM.addEventListener('submit', async (event) => {
     }
 });
 
+verClave = document.getElementById("ver-clave");
+InputClaveText = document.getElementById("clave");
+checklabel = document.querySelector(".form-check-label");
 
+verClave.addEventListener("click", function() {
+    if(InputClaveText.type == "password")
+    {
+        InputClaveText.type = "text";
+        checklabel.innerText = "Ocultar Clave";
+    }
+    else{
+        InputClaveText.type = "password";
+        checklabel.innerText = "Monstrar Clave";
+    }
+});

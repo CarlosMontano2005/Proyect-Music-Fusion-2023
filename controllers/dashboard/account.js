@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <i class='bx bx-menu' id="btn"></i>
         <!--comentario 15/02/2023-->
         <span class="text">Dashboard</span>
-        <label class="info" id="greeting"></label>
+        <label class="info"  id="greeting">saludo</label>
     </div>
     <div class="bottom-content">
         <div class="nav-barra-time">
@@ -43,7 +43,31 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <span class="switch"></span>
             </div>
         </li>
-    </div>`;
+    </div>`
+    
+  //Método manejador de eventos para cuando el documento ha cargado.
+document.addEventListener('DOMContentLoaded', () => {
+    // Se define un objeto con la fecha y hora actual.
+    let today = new Date();
+    // Se define una variable con el número de horas transcurridas en el día.
+    let hour = today.getHours();
+    // Se define una variable para guardar un saludo.
+    let greeting = '';
+    // Dependiendo del número de horas transcurridas en el día, se asigna un saludo para el usuario.
+    if (hour < 12) {
+        greeting = 'Buenos días';
+    } else if (hour < 19) {
+        greeting = 'Buenas tardes';
+    } else if (hour <= 23) {
+        greeting = 'Buenas noches';
+    }
+    // Se muestra un saludo en la página web.
+    document.getElementById('greeting').textContent = greeting;
+    // Se llaman a la funciones que generan los gráficos en la página web.
+    //graficoBarrasCategorias();
+    //graficoPastelCategorias();
+});
+    ;
             NAV.innerHTML = `<div class="logo-details">
             <img src="../../img/logos/logo_blanco_horizontal.png" alt="logo">
         </div>
@@ -118,7 +142,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <!-- -->
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="../../img/people/charlie.jpg" alt="profileImg">
+                        
+                        <!--<img src="../../img/people/charlie.jpg" alt="profileImg"> -->
+                        <img src="${SERVER_URL}img/people/${JSON.foto}" alt="profileImg"> 
                     </div>
                     <div class="name-job">
                         <div class="profile_name">${JSON.username}</div>
@@ -163,6 +189,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       modeText.innerText = "Dark mode";
     }
   });
+
+
   
            // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
             //M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'));

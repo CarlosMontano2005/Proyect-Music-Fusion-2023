@@ -34,35 +34,36 @@
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label label-pass">Password</label>
-          <input name="clave" type="password" required class="form-control" id="clave">
+          <input name="clave" type="password" required class="form-control" id="clave" class="validate" required>
         </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input " id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Mostrar clave</label>
+        <div class="mb-3 form-check" >
+          <input type="checkbox" class="form-check-input" id="ver-clave" checked>
+          <label class="form-check-label" for="exampleCheck1" >Mostrar clave</label>
         </div>
       </div>
-      <button type="submit" class="btn_primary"
-        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+      <div class="cont-btn-continuar">
+        <button type="submit" class="btn_continuar">
         Continuar
       </button>
       <div class="form-text-preguntas">
         <a href="/views/dashboard/recuperacion.html">¿Ha olvidado su contraseña?</a>
-        <a href="#">¿Todavia no es miembro? Crea una cuenta</a>
       </div>
+      </div>
+      
     </div>
   </form>
   <div class="img-logo-min">
     <img src="../../img/logos/logo_blanco_horizontal.png" alt="logo-blancohorizontal">
   </div>
     <!-- Script libreria sweetslert mensajes bonitoss-->
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
   <script src="../../js/sweetalert.min.js"></script>
   <script src="../../controllers/components.js"></script>
   <script src="../../controllers/dashboard/account.js"></script>
   <script src="../../controllers/dashboard/index.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-    crossorigin="anonymous"></script>
+  
 </body>
 
 </html>
