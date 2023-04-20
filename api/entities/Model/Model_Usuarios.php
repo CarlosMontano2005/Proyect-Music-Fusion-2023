@@ -10,10 +10,11 @@ class ModelUsuarios
     */
     public function checkUser($alias)
     {
-        $sql = 'SELECT id_usuario FROM usuarios WHERE alias_usuario = ?';
+        $sql = 'SELECT id_usuario, foto FROM usuarios WHERE alias_usuario = ?';
         $params = array($alias);
         if ($data = Database::getRow($sql, $params)) {
             $this->id_usuario = $data['id_usuario'];
+            $this->foto = $data['foto'];
             $this->alias = $alias;
             return true;
         } else {
