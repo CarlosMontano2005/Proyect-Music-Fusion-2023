@@ -5,15 +5,15 @@ const CLIENTES_API = 'business/dashboard/clientes.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
-//const SAVE_FORM = document.getElementById('save-form');
+const SAVE_FORM = document.getElementById('save-form');
 // Constante para establecer el título de la modal.
-//const MODAL_TITLE = document.getElementById('modal-title');
+const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
 
 // Constante para establecer la modal de guardar.
-//const SAVE_MODAL = new bootstrap.Modal(document.getElementById('add-modal'));
+const SAVE_MODAL = new bootstrap.Modal(document.getElementById('add-modal'));
 
 /*//////////// 
 const myModal = document.getElementById('myModal')

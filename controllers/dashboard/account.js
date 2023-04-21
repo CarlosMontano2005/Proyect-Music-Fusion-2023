@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se verifica si el usuario está autenticado, de lo contrario se envía a iniciar sesión.
     if (JSON.session) {
         // Se comprueba si existe un alias definido para el usuario, de lo contrario se muestra un mensaje con la excepción.
-       if (JSON.status) {
-        HEADER.innerHTML = `
+        if (JSON.status) {
+            HEADER.innerHTML = `
         
         <div class="home-content">
         <i class='bx bx-menu' id="btn"></i>
@@ -44,30 +44,30 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
         </li>
     </div>`
-    
-  //Método manejador de eventos para cuando el documento ha cargado.
-document.addEventListener('DOMContentLoaded', () => {
-    // Se define un objeto con la fecha y hora actual.
-    let today = new Date();
-    // Se define una variable con el número de horas transcurridas en el día.
-    let hour = today.getHours();
-    // Se define una variable para guardar un saludo.
-    let greeting = '';
-    // Dependiendo del número de horas transcurridas en el día, se asigna un saludo para el usuario.
-    if (hour < 12) {
-        greeting = 'Buenos días';
-    } else if (hour < 19) {
-        greeting = 'Buenas tardes';
-    } else if (hour <= 23) {
-        greeting = 'Buenas noches';
-    }
-    // Se muestra un saludo en la página web.
-    document.getElementById('greeting').textContent = greeting;
-    // Se llaman a la funciones que generan los gráficos en la página web.
-    //graficoBarrasCategorias();
-    //graficoPastelCategorias();
-});
-    ;
+
+            //Método manejador de eventos para cuando el documento ha cargado.
+            document.addEventListener('DOMContentLoaded', () => {
+                // Se define un objeto con la fecha y hora actual.
+                let today = new Date();
+                // Se define una variable con el número de horas transcurridas en el día.
+                let hour = today.getHours();
+                // Se define una variable para guardar un saludo.
+                let greeting = '';
+                // Dependiendo del número de horas transcurridas en el día, se asigna un saludo para el usuario.
+                if (hour < 12) {
+                    greeting = 'Buenos días';
+                } else if (hour < 19) {
+                    greeting = 'Buenas tardes';
+                } else if (hour <= 23) {
+                    greeting = 'Buenas noches';
+                }
+                // Se muestra un saludo en la página web.
+                document.getElementById('greeting').textContent = greeting;
+                // Se llaman a la funciones que generan los gráficos en la página web.
+                //graficoBarrasCategorias();
+                //graficoPastelCategorias();
+            });
+            ;
             NAV.innerHTML = `<div class="logo-details">
             <img src="../../img/logos/logo_blanco_horizontal.png" alt="logo">
         </div>
@@ -156,52 +156,52 @@ document.addEventListener('DOMContentLoaded', () => {
         </ul>
         
         `;
-           
-            
-  let arrow = document.querySelectorAll(".arrow");
-  for (var i = 0; i < arrow.length; i++) {
-    arrow[i].addEventListener("click", (e) => {
-      let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-      arrowParent.classList.toggle("showMenu");
-    });
-  }
-    var sidebarBtn = document.querySelector(".bx-menu");
-    var sidebar = document.querySelector(".sidebar");
-    const body = document.querySelector('body');
-  
-    toggle = body.querySelector(".toggle");
-    searchBtn = body.querySelector(".search-box"),
-    modeSwitch = body.querySelector(".toggle-switch");
-    modeText = body.querySelector(".mode-text");
-    console.log(sidebarBtn);
-  
-  sidebarBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
-  });
-  
-  
-  modeSwitch.addEventListener("click", () => {
-    body.classList.toggle("dark");
-  
-    if (body.classList.contains("dark")) {
-      modeText.innerText = "Light mode";
-    } else {
-      modeText.innerText = "Dark mode";
-    }
-  });
 
 
-  
-           // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
+            let arrow = document.querySelectorAll(".arrow");
+            for (var i = 0; i < arrow.length; i++) {
+                arrow[i].addEventListener("click", (e) => {
+                    let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+                    arrowParent.classList.toggle("showMenu");
+                });
+            }
+            var sidebarBtn = document.querySelector(".bx-menu");
+            var sidebar = document.querySelector(".sidebar");
+            const body = document.querySelector('body');
+
+            toggle = body.querySelector(".toggle");
+            searchBtn = body.querySelector(".search-box"),
+                modeSwitch = body.querySelector(".toggle-switch");
+            modeText = body.querySelector(".mode-text");
+            console.log(sidebarBtn);
+
+            sidebarBtn.addEventListener("click", () => {
+                sidebar.classList.toggle("close");
+            });
+
+
+            modeSwitch.addEventListener("click", () => {
+                body.classList.toggle("dark");
+
+                if (body.classList.contains("dark")) {
+                    modeText.innerText = "Light mode";
+                } else {
+                    modeText.innerText = "Dark mode";
+                }
+            });
+
+
+
+            // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
             //M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'));
             // Se inicializa el componente Sidenav para que funcione la navegación lateral.
-           // M.Sidenav.init(document.querySelectorAll('.sidenav'));
+            // M.Sidenav.init(document.querySelectorAll('.sidenav'));
         } else {
             sweetAlert(3, JSON.exception, false, 'index.html');
         }
     } else {
         // Se comprueba si la página web es la principal, de lo contrario se direcciona a iniciar sesión.
-       if (location.pathname == '/proyect-music-fusion-2023/views/dashboard/index.html') {
+        if (location.pathname == '/Proyect-Music-Fusion-2023/views/dashboard/index.html') {
             /* HEADER.innerHTML = `
                 <div class="navbar-fixed">
                     <nav>
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;*/
             // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-           // M.Tooltip.init(document.querySelectorAll('.tooltipped'));
+            // M.Tooltip.init(document.querySelectorAll('.tooltipped'));
         } else {
             location.href = 'index.html';
         }

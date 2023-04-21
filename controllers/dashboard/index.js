@@ -14,13 +14,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         location.href = 'dashboard.html';
     } else if (JSON.status) {
         // Se muestra el formulario para iniciar sesión.
-        /*document.getElementById('login-container').classList.remove('hide');*/
-        sweetAlert(4, JSON.message, true);
+        sweetAlert(4, JSON.message, false);
     } else {
         // Se muestra el formulario para registrar el primer usuario.
-        /*document.getElementById('signup-container').classList.remove('hide');*/
-        sweetAlert(4, JSON.exception, true,'crear_cuenta.html');
-        //sweetAlert(4, JSON.exception, true);
+        sweetAlert(4, JSON.exception, false, 'crear_cuenta.html');
     }
 });
 
