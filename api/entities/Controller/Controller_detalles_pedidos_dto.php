@@ -9,7 +9,6 @@ class Detalles_Pedidos extends Detalles_Pedidos_Queries
 {
     //declaracion de atributos 
     protected $id = null;
-    
     protected $id_pedido = null;
     protected $id_producto = null;
     protected $cantidad_producto = null;

@@ -36,15 +36,109 @@
         <input type="search" id="search" name="search" placeholder="Buscar" data-tooltip="Buscar" required />
         
       </form>
-      <!--Agregar Detalles pedidos 
+      <!--Agregar Detalles pedidos -->
       <div class="btn-agregar">
-        <button type="button" class="button-modal" data-bs-toggle="modal" onclick="openCreate()" data-bs-target="#add-modal">
+        <button type="button" class="button-modal" data-bs-toggle="modal" onclick="openCreate()" data-bs-target="#add-modal-detalle">
           <i class='bx bxs-alarm-add'></i>
           Agregar 
         </button>
-      </div>-->
+      </div>
     </div>
-  
+    <!-- Modal para ver el detalle del producto-->
+    <div class="modal fade" id="add-modal-detalle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modal-title"></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3" id="save-form">
+              <div class="col-md-6">
+                <p>ID del Pedido</p>
+                <input type="number" class="form-control validate" placeholder="id" aria-label="id"
+                  id="id_detalle" name="id_detalle" required>
+              </div>
+              <div class="col-md-6">
+                <p>Producto</p>
+                <select class="form-select" id="id_Producto" name="id_Producto">
+                  <option selected>Seleccionar</option>
+                
+                </select>
+              </div>
+              <div class="col-md-12">
+                <p>Cantidad</p>
+                <input type="number" class="form-control validate" placeholder="0" aria-label="id"
+                  id="cantidad" name="cantidad" required>
+              </div>
+              <div class="col-md-12">
+                <p>Precio</p>
+                <input type="number" class="form-control validate" placeholder="00.00" aria-label="id"
+                  id="precio_detalle" name="precio_detalle" required>
+              </div>
+              <div class="col-md-12 invisible">
+                <p>ID</p>
+                <input type="number" class="form-control validate" placeholder="id" aria-label="id"
+                  id="id" name="id" required>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Acción</button>
+              <button type="submit" class="btn btn-primary">Guardar Acción</button>
+            </div> 
+            
+          </form>
+        </div>
+      </div>
+      </div>
+    </div>
+     <!-- Modal para ver comentarios-->
+     <div class="modal fade" id="add-modal-comentario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modal-title"></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3" id="save-form">
+              <div class="col-md-6">
+                <p>ID Detalle del Pedido</p>
+                <input type="number" class="form-control validate" placeholder="id" aria-label="id"
+                  id="id_detalle" name="id_detalle" required>
+              </div>
+              <div class="col-md-6">
+                <p>Calificaciòn</p>
+                <input type="number" class="form-control validate" placeholder="5" aria-label="id"
+                  id="calificacion" name="calificacion" required>
+              </div>
+              <div class="col-md-12">
+                <p>Comentario</p>
+                <textarea class="form-control" placeholder="Comentarios" id="calificacion" name="calificacion" style="height: 100px"></textarea>
+              </div>
+              <div class="col-md-6">
+                <p>Estado del comentario</p>
+                <input class="form-check-input" name="estado_comentario"  type="checkbox" id="estado_comentario" >
+              <label class="form-check-label" for="estado">Activo</label>
+              </div>
+              <div class="col-md-6">
+                <p>Fecha del comentario</p>
+                <input type="date" id="fecha_comentario" name="fecha_comentario" class="form-control validate" required>
+              </div>
+              <div class="col-md-12 invisible">
+                <p>ID</p>
+                <input type="number" class="form-control validate" placeholder="id" aria-label="id"
+                  id="id" name="id" required>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Acción</button>
+              <button type="submit" class="btn btn-primary">Guardar Acción</button>
+            </div> 
+            
+          </form>
+        </div>
+      </div>
+      </div>
+    </div>
     <h3 id="records">Administrar Detalles del Pedido</h3>
     <div class="header_fixed">
       <div class="table-responsive">
@@ -66,7 +160,7 @@
               <td>19/02/2021</td>
               <td>Avenida Masferrer Norte 11A, San Salvador
                 Las Cumbres Pupuseria, dirección</td>
-              <td cl ass="td-button">
+              <td class="td-button">
                 <!--Boton VER DETALLES PEDIDOS-->
                 <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal"
                   data-bs-target="#Edit"><i class='bx bx-download' ></i></button>

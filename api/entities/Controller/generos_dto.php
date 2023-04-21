@@ -8,7 +8,7 @@ require_once('../../entities/Model/generos_queries.php');
 class Genero extends GenerosQueries
 {
     //declaracion de atributos 
-    protected $id = null;
+    protected $id_genero = null;
     protected $genero = null;
     //protected $ruta = '../../images/productos/';
     
@@ -18,7 +18,7 @@ class Genero extends GenerosQueries
     public function setId($value)
     {
         if(Validator::validateNaturalNumber($value)) {
-            $this->id = $value;
+            $this->id_genero = $value;
             return true;
         } else {
             return false;
