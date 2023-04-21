@@ -57,9 +57,9 @@ class ModelProductos
     public function updateRow()
     {
         $sql = 'UPDATE productos 
-                SET nombre_producto = ?, id_marca_producto = ?, precio_producto = ?, id_categoria_producto = ?, descripcion = ?, id_estado_producto = ?, Imagen_producto= ?, id_usuario = ?
+                SET nombre_producto = ?, id_marca_producto = ?, precio_producto = ?, id_categoria_producto = ?, descripcion = ?, id_estado_producto = ?, id_usuario = ?, imagen_producto = ?
                 WHERE id_producto = ?';
-        $params = array($this->nombre_producto, $this->id_marca_producto, $this->precio_producto, $this->id_categoria_producto, $this->descripcion, $this->id_estado_producto, $this->imagen, $this->id_usuario, $this->id_producto);
+        $params = array($this->nombre_producto, $this->id_marca_producto, $this->precio_producto, $this->id_categoria_producto, $this->descripcion, $this->id_estado_producto, $this->id_usuario, $this->imagen, $this->id_producto);
         return Database::executeRow($sql, $params);
     }
 

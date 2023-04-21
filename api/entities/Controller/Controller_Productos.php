@@ -138,7 +138,7 @@ class ControllerProductos extends ModelProductos
 
     public function getImagen()
     {
-        return $this->id_imagen;
+        return $this->imagen;
     }
 
     public function getId_Marca_Producto()
