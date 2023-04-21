@@ -133,12 +133,14 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Seleccione una imagen';
                     } elseif (!$usuario->setFoto_Usuario($_FILES['foto'])) {
                         $result['exception'] = Validator::getFileError();
-                    }    
-                    elseif ($usuario->createRow()) {
+                    } elseif ($usuario->createRow()) {
                         $result['status'] = 1;
-                        $result['message'] = 'Usuario creado correctamente';
-                    }
-                    else {
+                        if (Validator::saveFile($_FILES['foto'], $usuario->getRuta(), $usuario->getFoto_Usuario())) {
+                            $result['message'] = 'Usuario creado correctamente';
+                        } else {
+                            $result['message'] = 'Usuario creado pero no se guardó la imagen';
+                        }
+                    } else {
                         $result['exception'] = Database::getException();;
                     }
                     break;

@@ -104,7 +104,7 @@ async function fillTable(form = null) {
                     <td>${row.descripcion}</td>
                     <td>${row.estado_producto}</td>
                     <td>${row.nombre_usuario}</td>
-                    <td><img src="${SERVER_URL}img/people/${row.foto}" height="100"></td>
+                    <td><img src="${SERVER_URL}img/productos/${row.imagen_producto}" height="100"></td>
                     <td class="td-button">
                         <button  onclick="openUpdate(${row.id_producto})" class="button_edit button-modal" type="button" data-bs-toggle="modal"  data-tooltip="Actualizar"
                         data-bs-target="#add-modal"><i class='bx bxs-edit'  style="color: white;"></i></button>
@@ -230,9 +230,9 @@ async function openDelete(id) {
 
 function openReport(id) {
     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
-    const PATH = new URL(`${SERVER_URL}reports/dashboard/usuario.php`);
+    const PATH = new URL(`${SERVER_URL}reports/dashboard/Productos.php`);
     // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
-    PATH.searchParams.append('id_usuario', id);
+    PATH.searchParams.append('id_producto', id);
     // Se abre el reporte en una nueva pestaña del navegador web.
     window.open(PATH.href);
 }
