@@ -8,7 +8,7 @@ if (isset($_GET['action'])) {
     // Se instancia la clase correspondiente.
     $usuario = new ControllerUsuarios;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
-    $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null, 'userfoto' => null);
+    $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if (isset($_SESSION['id_usuario'])) {
         $result['session'] = 1;
@@ -18,7 +18,6 @@ if (isset($_GET['action'])) {
                 if (isset($_SESSION['alias_usuario'])) {
                     $result['status'] = 1;
                     $result['username'] = $_SESSION['alias_usuario'];
-                    $result['userfoto'] = ['foto'];
                 } else {
                     $result['exception'] = 'Alias de usuario indefinido';
                 }
@@ -134,12 +133,14 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Seleccione una imagen';
                     } elseif (!$usuario->setFoto_Usuario($_FILES['foto'])) {
                         $result['exception'] = Validator::getFileError();
-                    }    
-                    elseif ($usuario->createRow()) {
+                    } elseif ($usuario->createRow()) {
                         $result['status'] = 1;
-                        $result['message'] = 'Usuario creado correctamente';
-                    }
-                    else {
+                        if (Validator::saveFile($_FILES['foto'], $usuario->getRuta(), $usuario->getFoto_Usuario())) {
+                            $result['message'] = 'Usuario creado correctamente';
+                        } else {
+                            $result['message'] = 'Usuario creado pero no se guardó la imagen';
+                        }
+                    } else {
                         $result['exception'] = Database::getException();;
                     }
                     break;

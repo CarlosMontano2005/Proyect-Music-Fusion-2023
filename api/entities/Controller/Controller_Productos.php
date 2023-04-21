@@ -1,6 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/Model/Model_Usuarios.php');
+require_once('../../entities/Model/Model_Productos.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad USUARIO.
 */
@@ -138,7 +138,7 @@ class ControllerProductos extends ModelProductos
 
     public function getImagen()
     {
-        return $this->id_imagen;
+        return $this->imagen;
     }
 
     public function getId_Marca_Producto()
