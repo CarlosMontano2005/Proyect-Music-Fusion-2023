@@ -35,10 +35,7 @@
 
       </div>
     </div>
-    <div class="Titulo">
-      <!-- Button trigger modal -->
-      <h3>Pedidos</h3>
-    </div>
+    <h3 id="records">Pedidos</h3>
     <div class="header_fixed">
       <div table-responsive>
         <table>
@@ -48,10 +45,12 @@
               <th>Estado</th>
               <th>Fecha</th>
               <th>Dirección</th>
+              <th>Cliente</th>
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="tbody-rows">
+            
             <tr>
               <td>1</td>
               <td>En Camino</td>
@@ -62,13 +61,8 @@
                 <!--Boton VER DETALLES PEDIDOS-->
                 <button class="button_edit" type="button" class="button-modal" data-bs-toggle="modal"
                   data-bs-target="#Edit"><i class='bx bx-show'></i></button>
-  
-  
               </td>
             </tr>
-  
-  
-  
   
           </tbody>
         </table>
@@ -87,7 +81,7 @@
   <script src="../../resources/js/dashboard/menu.js"></script>
   <!--f<script src="../../resources/js/dashboard/mod_oscuro.js"></script>-->
   <!--funcione llamar al controlador -->
-  <script src="../../controllers/dashboard/marcas.js"></script> 
+  <script src="../../controllers/dashboard/pedidos.js"></script> 
 
 </body>
 
