@@ -3,7 +3,7 @@ require_once('../../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad PRODUCTO.
 */
-class Detalles_Pedidos_Queries
+class Valoraciones_Queries
 {
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
@@ -28,17 +28,8 @@ class Detalles_Pedidos_Queries
     public function readOne()
     {
         $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_producto, precio_detalle_producto
-        FROM detalles_pedidos INNER JOIN productos USING(id_producto)   
-        WHERE id_detalle_pedido = ?';
-        $params = array($this->id);
-        return Database::getRow($sql, $params);
-    }
-    
-    public function readOneValoracion()
-    {
-        $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_producto, precio_detalle_producto
         FROM detalles_pedidos INNER JOIN productos USING(id_producto) WHERE id_detalle_pedido = ?';
-        $params = array($this->id);
+        $params = array($this->Id_detalle_pedido);
         return Database::getRow($sql, $params);
     }
 

@@ -38,12 +38,15 @@
       </form>
       <!--Agregar Detalles pedidos -->
       <div class="btn-agregar">
-        <button type="button" class="button-modal" data-bs-toggle="modal" onclick="openCreate()" data-bs-target="#add-modal-detalle">
+        <button type="button" class="button-modal" data-bs-toggle="modal" onclick="openCreate()" data-bs-target="#add-modal-valoracion">
           <i class='bx bxs-alarm-add'></i>
           Agregar 
         </button>
       </div>
     </div>
+
+    
+
     <!-- Modal para ver el detalle del producto-->
     <div class="modal fade" id="add-modal-detalle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -57,7 +60,7 @@
               <div class="col-md-6">
                 <p>ID del Pedido</p>
                 <input type="number" class="form-control validate" placeholder="id" aria-label="id"
-                  id="id_detalle" name="id_detalle" required>
+                  id="id_pedido" name="id_pedido" required>
               </div>
               <div class="col-md-6">
                 <p>Producto</p>
@@ -79,7 +82,7 @@
               <div class="col-md-12 invisible">
                 <p>ID</p>
                 <input type="number" class="form-control validate" placeholder="id" aria-label="id"
-                  id="id" name="id" required>
+                  id="id_detalle_pedido" name="id_detalle_pedido" required>
               </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Acción</button>
@@ -91,8 +94,8 @@
       </div>
       </div>
     </div>
-     <!-- Modal para ver comentarios-->
-     <div class="modal fade" id="add-modal-comentario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <!-- Modal para ver valoracion
+     <div class="modal fade" id="add-modal-valoracion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -113,7 +116,7 @@
               </div>
               <div class="col-md-12">
                 <p>Comentario</p>
-                <textarea class="form-control" placeholder="Comentarios" id="calificacion" name="calificacion" style="height: 100px"></textarea>
+                <textarea class="form-control" placeholder="Comentarios" id="comentario" name="comentario" style="height: 100px"></textarea>
               </div>
               <div class="col-md-6">
                 <p>Estado del comentario</p>
@@ -127,7 +130,7 @@
               <div class="col-md-12 invisible">
                 <p>ID</p>
                 <input type="number" class="form-control validate" placeholder="id" aria-label="id"
-                  id="id" name="id" required>
+                  id="id_valoracion" name="id_valoracion" required>
               </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Acción</button>
@@ -138,7 +141,7 @@
         </div>
       </div>
       </div>
-    </div>
+    </div>-->
     <h3 id="records">Administrar Detalles del Pedido</h3>
     <div class="header_fixed">
       <div class="table-responsive">

@@ -1,11 +1,11 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/Model/Model_detalles_pedidos_queries.php');
+require_once('../../entities/Model/Model_Valoraciones_queries.php');
 
 /*
 *	Clase para manejar la transferencia de datos de la entidad Clientes.
 */
-class Detalles_Pedidos extends Detalles_Pedidos_Queries
+class Valoraciones_Controller extends Valoraciones_Queries
 {
     //declaracion de atributos 
     protected $id = null;

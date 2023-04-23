@@ -1,12 +1,12 @@
 <?php
-require_once('../../entities/Controller/Controller_detalles_pedidos_dto.php');
+require_once('../../entities/Controller/Controller_Valoraciones_dto.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $det_pedidos = new Detalles_Pedidos;
+    $valoraciones = new Valoraciones_Controller;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -73,42 +73,31 @@ if (isset($_GET['action'])) {
                 } 
                 elseif ($det_pedidos->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Detalle Pedido creado correctamente';
+                    $result['message'] = 'Valoracion creado correctamente';
                 }
                 else {
                     $result['exception'] = Database::getException();;
                 }
                 break;
             case 'readOne':
-                if (!$det_pedidos->setId($_POST['id'])) {
-                    $result['exception'] = 'Detalle Pedido incorrecto';
+                if (!$det_pedidos->setId_DetallePedido($_POST['Id_detalle_pedido'])) {
+                    $result['exception'] = 'Valoracion incorrecto';
                 } elseif ($result['dataset'] = $det_pedidos->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Detalle Pedido inexistente';
-                }
-                break;
-            case 'readOneValoracion':
-                if (!$det_pedidos->setId($_POST['id'])) {
-                    $result['exception'] = 'Valoracion del Pedido incorrecto';
-                } elseif ($result['dataset'] = $det_pedidos->readOneValoracion()) {
-                    $result['status'] = 1;
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'Valoracion del Pedido inexistente';
+                    $result['exception'] = 'Valoracion inexistente';
                 }
                 break;
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$det_pedidos->setId($_POST['id'])) {
                     
-                    $result['exception'] = 'Detalle Pedido incorrecto';
+                    $result['exception'] = 'Valoracion incorrecto';
                 } 
                 elseif (!$data = $det_pedidos->readOne()) {
-                    $result['exception'] = 'Detalle Pedido inexistente';
+                    $result['exception'] = 'Valoracion inexistente';
                 } 
                 elseif (!$det_pedidos->setNombre($_POST['nombres'])) {
                     $result['exception'] = 'Nombres incorrecto';
@@ -142,33 +131,33 @@ if (isset($_GET['action'])) {
                 }
                 elseif ($det_pedidos->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Detalle Pedido modificado correctamente';
+                    $result['message'] = 'Valoracion modificado correctamente';
                 } 
                 else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'delete':
-                if (!$det_pedidos->setId($_POST['id_cliente'])) {
-                    $result['exception'] = 'Detalle Pedido incorrecto';
+                if (!$det_pedidos->setId($_POST['id_Valoracion'])) {
+                    $result['exception'] = 'Valoracion incorrecto';
                 } 
                 elseif ($det_pedidos->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Detalle Pedido eliminado correctamente';
+                    $result['message'] = 'Valoracion eliminado correctamente';
                 }
                 else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'cantidadDetallePedidoCategoria':
-                if ($result['dataset'] = $det_pedidos->cantidadDetallePedidoCategoria()) {
+            case 'cantidadValoracionsCategoria':
+                if ($result['dataset'] = $det_pedidos->cantidadValoracionsCategoria()) {
                     $result['status'] = 1;
                 } else {
                     $result['exception'] = 'No hay datos disponibles';
                 }
                 break;
-            case 'porcentajeDetallePedidoCategoria':
-                if ($result['dataset'] = $det_pedidos->porcentajeDetallePedidoCategoria()) {
+            case 'porcentajeValoracionsCategoria':
+                if ($result['dataset'] = $det_pedidos->porcentajeValoracionsCategoria()) {
                     $result['status'] = 1;
                 } else {
                     $result['exception'] = 'No hay datos disponibles';
