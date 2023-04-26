@@ -78,6 +78,9 @@ SAVE_FORM.addEventListener('submit', async (event) => {
 *   Parámetros: form (objeto opcional con los datos de búsqueda).
 *   Retorno: ninguno.
 */
+
+
+
 async function fillTable(form = null) {
     // Se inicializa el contenido de la tabla.
     TBODY_ROWS.innerHTML = '';

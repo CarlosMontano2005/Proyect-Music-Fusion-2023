@@ -1,4 +1,3 @@
-/* Google Fonts Import Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 *{
   margin: 0;
@@ -463,7 +462,9 @@ body.dark .switch::before{
 }
 
 /*barra de busqueda*/
-
+.box-text{
+  border-radius: 20px;
+}
 .buscar {
     padding: 15px;
     padding-left: 0;
@@ -505,8 +506,9 @@ body.dark .switch::before{
 
 /*Modal*/
 .modal-body, .modal-header, .modal-footer{
-    background: var(--body-color);
+  background: var(--body-color);
 }
+
 .btn-agregar{
     display: flex;
     align-items: center;
@@ -537,6 +539,7 @@ text-align: left;
 table {
     width: 100%;
     border-collapse: collapse;
+    
 }
 
 .header_fixed {
@@ -650,6 +653,7 @@ td button {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 30px;
 }
+
 
 /***/
 
