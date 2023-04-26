@@ -57,10 +57,10 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
         // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
         /*($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;*/
 
-        $sql = 'UPDATE clientes
-        SET  nombre_cliente=?, apellido_cliente=?, correo_cliente=?, fecha_nacimiento=?, dui=?, id_genero=?, telefono_cliente=?, clave=?, estado=?, direccion_cliente=?
-        WHERE id_cliente=?';
-        $params = array($this->nombre_cliente, $this->apellido_cliente, $this->correo_cliente, $this->fecha_nacimiento, $this->dui_cliente, $this->id_genero, $this->telefono_cliente, $this->clave,$this->estado,$this->direccion_cliente, $this->id);
+        $sql = 'UPDATE detalles_pedidos
+        SET id_pedido=?, id_producto=?, cantidad_producto=?, precio_detalle_producto=?
+        WHERE id_detalle_pedido =?;';
+        $params = array($this->id_pedido, $this->id_producto, $this->cantidad_producto, $this->precio_detalle_producto, $this->id);
         return Database::executeRow($sql, $params);
     }
 

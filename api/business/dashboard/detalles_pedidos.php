@@ -103,43 +103,25 @@ if (isset($_GET['action'])) {
                 break;
             case 'update':
                 $_POST = Validator::validateForm($_POST);
-                if (!$det_pedidos->setId($_POST['id'])) {
+                if (!$det_pedidos->setId($_POST['id_detalle_pedido'])) {
                     
                     $result['exception'] = 'Detalle Pedido incorrecto';
                 } 
                 elseif (!$data = $det_pedidos->readOne()) {
                     $result['exception'] = 'Detalle Pedido inexistente';
                 } 
-                elseif (!$det_pedidos->setNombre($_POST['nombres'])) {
-                    $result['exception'] = 'Nombres incorrecto';
+                elseif (!$det_pedidos->setId_Pedido($_POST['id_pedido'])) {
+                    $result['exception'] = 'Id del pedido incorrecto';
                 } 
-                elseif(!$det_pedidos->setClave($_POST['clave'])){
-                    $result['exception'] = 'Clave incorrecto';
+                elseif(!$det_pedidos->setCantidad_Producto($_POST['cantidad'])){
+                    $result['exception'] = 'Cantidad del detalle del pedido incorrecto';
                 }
-                elseif (!$det_pedidos->setApellido($_POST['apellidos'])) {
-                    $result['exception'] = 'Apellidos incorrecta';
+                elseif (!$det_pedidos->setId_Producto($_POST['id_Producto'])) {
+                    $result['exception'] = 'Producto incorrecta';
                 } 
-                elseif (!$det_pedidos->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
+                elseif (!$det_pedidos->setPrecio_detalle_Producto($_POST['precio_detalle'])) {
+                    $result['exception'] = 'Precio incorrecto';
                 } 
-                elseif (!$det_pedidos->setId_genero($_POST['generos'])) {
-                    $result['exception'] = 'Seleccione un sexo';
-                } 
-                elseif (!$det_pedidos->setEstado(isset($_POST['estado']) ? 1 : 0)) {
-                    $result['exception'] = 'Estado incorrecto';
-                } 
-                elseif (!$det_pedidos->setNacimiento($_POST['nacimiento'])) {
-                    $result['exception'] = 'Fecha incorrecto';
-                } 
-                elseif (!$det_pedidos->setTelefono($_POST['telefono'])) {
-                    $result['exception'] = 'Telefono incorrecto';
-                } 
-                elseif(!$det_pedidos->setDUI($_POST['dui'])){
-                    $result['exception'] = 'DUI incorrecto';
-                }
-                elseif(!$det_pedidos->setDireccion($_POST['direccion'])){
-                    $result['exception'] = 'Dirección incorrecto';
-                }
                 elseif ($det_pedidos->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Detalle Pedido modificado correctamente';

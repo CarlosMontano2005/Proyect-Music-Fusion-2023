@@ -10,26 +10,33 @@ class Valoraciones_Queries
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_producto, precio_detalle_producto
-        FROM detalles_pedidos INNER JOIN productos USING(id_producto)
-     WHERE  cast(id_pedido as varchar) ILIKE ? OR nombre_producto ILIKE ?
-                 ORDER BY id_pedido';
+        $sql = 'SELECT  val.id_valoracion, pr.nombre_producto, val.calificacion_producto, val.comentario_producto, 
+        val.fecha_comentario, val.estado_comentario
+            FROM valoraciones val, detalles_pedidos dtp, productos pr 
+            WHERE val.id_detalle_pedido = dtp.id_detalle_pedido AND 
+            dtp.id_producto = pr.id_producto AND   cast(val.id_valoracion as varchar) ILIKE ?
+			or pr.nombre_producto ILIKE ? GROUP BY  val.id_valoracion,pr.nombre_producto
+ORDER BY  COUNT(val.id_valoracion) ASC;' ;
         $params = array( "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_producto, precio_detalle_producto
-        FROM detalles_pedidos INNER JOIN productos USING(id_producto) ORDER BY (id_pedido) ;';
+        $sql = 'SELECT  val.id_valoracion, pr.nombre_producto, val.calificacion_producto, val.comentario_producto, 
+        val.fecha_comentario, val.estado_comentario
+            FROM valoraciones val, detalles_pedidos dtp, productos pr 
+            WHERE val.id_detalle_pedido = dtp.id_detalle_pedido AND 
+            dtp.id_producto = pr.id_producto;';
         return Database::getRows($sql);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_producto, precio_detalle_producto
-        FROM detalles_pedidos INNER JOIN productos USING(id_producto) WHERE id_detalle_pedido = ?';
-        $params = array($this->Id_detalle_pedido);
+        $sql = 'SELECT id_valoracion, id_detalle_pedido, calificacion_producto, comentario_producto, 
+        fecha_comentario, estado_comentario
+            FROM valoraciones WHERE id_valoracion = ?;';
+        $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 
@@ -48,10 +55,10 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
         // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
         /*($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;*/
 
-        $sql = 'UPDATE clientes
-        SET  nombre_cliente=?, apellido_cliente=?, correo_cliente=?, fecha_nacimiento=?, dui=?, id_genero=?, telefono_cliente=?, clave=?, estado=?, direccion_cliente=?
-        WHERE id_cliente=?';
-        $params = array($this->nombre_cliente, $this->apellido_cliente, $this->correo_cliente, $this->fecha_nacimiento, $this->dui_cliente, $this->id_genero, $this->telefono_cliente, $this->clave,$this->estado,$this->direccion_cliente, $this->id);
+        $sql = 'UPDATE valoraciones
+        SET id_detalle_pedido=?, calificacion_producto=?, comentario_producto=?, fecha_comentario=?, estado_comentario=?
+        WHERE id_valoracion=?;';
+        $params = array($this->Id_detalle_pedido, $this->calificacion_producto, $this->comentario_producto, $this->fecha_comentario, $this->estado_comentario, $this->id);
         return Database::executeRow($sql, $params);
     }
 

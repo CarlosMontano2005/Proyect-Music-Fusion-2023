@@ -14,7 +14,7 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'readAll':
-                if ($result['dataset'] = $det_pedidos->readAll()) {
+                if ($result['dataset'] = $valoraciones->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
@@ -27,7 +27,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $det_pedidos->searchRows($_POST['search'])) {
+                } elseif ($result['dataset'] = $valoraciones->searchRows($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -38,40 +38,40 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$det_pedidos->setNombre($_POST['nombres'])) {
+                if (!$valoraciones->setNombre($_POST['nombres'])) {
                     $result['exception'] = 'Nombres incorrecto';
                 } 
-                elseif (!$det_pedidos->setApellido($_POST['apellidos'])) {
+                elseif (!$valoraciones->setApellido($_POST['apellidos'])) {
                     $result['exception'] = 'Apellidos incorrecta';
                 } 
                 elseif (!isset($_POST['generos'])) {
                     $result['exception'] = 'Seleccione  un sexo';
                 }
-                elseif (!$det_pedidos->setId_genero($_POST['generos'])) {
+                elseif (!$valoraciones->setId_genero($_POST['generos'])) {
                     $result['exception'] = 'Sexo incorrecta';
                 } 
-                elseif (!$det_pedidos->setCorreo($_POST['correo'])) {
+                elseif (!$valoraciones->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo incorrecto';
                 } 
-                elseif (!$det_pedidos->setTelefono($_POST['telefono'])) {
+                elseif (!$valoraciones->setTelefono($_POST['telefono'])) {
                     $result['exception'] = 'Telefono incorrecto';
                 } 
-                elseif (!$det_pedidos->setDUI($_POST['dui'])) {
+                elseif (!$valoraciones->setDUI($_POST['dui'])) {
                     $result['exception'] = 'DUI incorrecto';
                 } 
-                elseif (!$det_pedidos->setDireccion($_POST['direccion'])) {
+                elseif (!$valoraciones->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Dirección incorrecto';
                 } 
-                elseif (!$det_pedidos->setNacimiento($_POST['nacimiento'])) {
+                elseif (!$valoraciones->setNacimiento($_POST['nacimiento'])) {
                     $result['exception'] = 'Nacimiento incorrecto';
                 } 
-                elseif (!$det_pedidos->setEstado(isset($_POST['estado']) ? 1 : 0)) {
+                elseif (!$valoraciones->setEstado(isset($_POST['estado']) ? 1 : 0)) {
                     $result['exception'] = 'Estado incorrecto';
                 } 
-                elseif (!$det_pedidos->setClave($_POST['clave'])) {
+                elseif (!$valoraciones->setClave($_POST['clave'])) {
                     $result['exception'] = 'Clave incorrecta';
                 } 
-                elseif ($det_pedidos->createRow()) {
+                elseif ($valoraciones->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Valoracion creado correctamente';
                 }
@@ -80,9 +80,9 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$det_pedidos->setId_DetallePedido($_POST['Id_detalle_pedido'])) {
+                if (!$valoraciones->setId($_POST['id'])) {
                     $result['exception'] = 'Valoracion incorrecto';
-                } elseif ($result['dataset'] = $det_pedidos->readOne()) {
+                } elseif ($result['dataset'] = $valoraciones->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -92,44 +92,30 @@ if (isset($_GET['action'])) {
                 break;
             case 'update':
                 $_POST = Validator::validateForm($_POST);
-                if (!$det_pedidos->setId($_POST['id'])) {
+                if (!$valoraciones->setId($_POST['id_valoracion'])) {
                     
                     $result['exception'] = 'Valoracion incorrecto';
                 } 
-                elseif (!$data = $det_pedidos->readOne()) {
+                elseif (!$data = $valoraciones->readOne()) {
                     $result['exception'] = 'Valoracion inexistente';
                 } 
-                elseif (!$det_pedidos->setNombre($_POST['nombres'])) {
-                    $result['exception'] = 'Nombres incorrecto';
+                elseif (!$valoraciones->setId_DetallePedido($_POST['id_detalle'])) {
+                    $result['exception'] = 'Id del detalle pedido incorrecto';
                 } 
-                elseif(!$det_pedidos->setClave($_POST['clave'])){
-                    $result['exception'] = 'Clave incorrecto';
+                elseif(!$valoraciones->setCalificacion_Producto($_POST['calificacion'])){
+                    $result['exception'] = 'Calificación incorrecto';
                 }
-                elseif (!$det_pedidos->setApellido($_POST['apellidos'])) {
-                    $result['exception'] = 'Apellidos incorrecta';
+                elseif (!$valoraciones->setFecha_Comentario($_POST['fecha_comentario'])) {
+                    $result['exception'] = 'Fecha incorrecta';
                 } 
-                elseif (!$det_pedidos->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
+                elseif (!$valoraciones->setComentarioProducto($_POST['comentario'])) {
+                    $result['exception'] = 'Comentario incorrecto';
                 } 
-                elseif (!$det_pedidos->setId_genero($_POST['generos'])) {
-                    $result['exception'] = 'Seleccione un sexo';
-                } 
-                elseif (!$det_pedidos->setEstado(isset($_POST['estado']) ? 1 : 0)) {
+                
+                elseif (!$valoraciones->setEstado(isset($_POST['estado_comentario']) ? 1 : 0)) {
                     $result['exception'] = 'Estado incorrecto';
                 } 
-                elseif (!$det_pedidos->setNacimiento($_POST['nacimiento'])) {
-                    $result['exception'] = 'Fecha incorrecto';
-                } 
-                elseif (!$det_pedidos->setTelefono($_POST['telefono'])) {
-                    $result['exception'] = 'Telefono incorrecto';
-                } 
-                elseif(!$det_pedidos->setDUI($_POST['dui'])){
-                    $result['exception'] = 'DUI incorrecto';
-                }
-                elseif(!$det_pedidos->setDireccion($_POST['direccion'])){
-                    $result['exception'] = 'Dirección incorrecto';
-                }
-                elseif ($det_pedidos->updateRow()) {
+                elseif ($valoraciones->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Valoracion modificado correctamente';
                 } 
@@ -138,10 +124,10 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'delete':
-                if (!$det_pedidos->setId($_POST['id_Valoracion'])) {
+                if (!$valoraciones->setId($_POST['id_Valoracion'])) {
                     $result['exception'] = 'Valoracion incorrecto';
                 } 
-                elseif ($det_pedidos->deleteRow()) {
+                elseif ($valoraciones->deleteRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Valoracion eliminado correctamente';
                 }
@@ -150,14 +136,14 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'cantidadValoracionsCategoria':
-                if ($result['dataset'] = $det_pedidos->cantidadValoracionsCategoria()) {
+                if ($result['dataset'] = $valoraciones->cantidadValoracionsCategoria()) {
                     $result['status'] = 1;
                 } else {
                     $result['exception'] = 'No hay datos disponibles';
                 }
                 break;
             case 'porcentajeValoracionsCategoria':
-                if ($result['dataset'] = $det_pedidos->porcentajeValoracionsCategoria()) {
+                if ($result['dataset'] = $valoraciones->porcentajeValoracionsCategoria()) {
                     $result['status'] = 1;
                 } else {
                     $result['exception'] = 'No hay datos disponibles';

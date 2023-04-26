@@ -99,7 +99,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Pedidos</a></li>
                     <li><a href="../../views/dashboard/pedidos.html">Pedidos</a></li>
-                    <li><a href="../../views/dashboard/detalles_pedidos.html">Detalles Pedidost</a></li>
+                    <li><a href="../../views/dashboard/detalles_pedidos.html">Detalles Pedidos</a></li>
+                    <li><a href="../../views/dashboard/valoraciones_pedidos.html">Valoraciones</a></li>
                 </ul>
             </li>
 
