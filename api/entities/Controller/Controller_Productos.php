@@ -16,6 +16,8 @@ class ControllerProductos extends ModelProductos
     protected $id_categoria_producto = null;
     protected $id_estado_producto = null;
     protected $id_usuario = null;
+    protected $cantidad_producto = null;
+    protected $fecha_compra = null;
     protected $ruta = '../../img/productos/';
 
     /*
@@ -66,6 +68,26 @@ class ControllerProductos extends ModelProductos
     {
         if (Validator::validateImageFile($file, 500, 500)) {
             $this->imagen = Validator::getFileName();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setCantidad_Producto($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->cantidad_producto = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setFecha_Compra($value)
+    {
+        if (Validator::validateDate($value)) {
+            $this->fecha_compra = $value;
             return true;
         } else {
             return false;
@@ -139,6 +161,16 @@ class ControllerProductos extends ModelProductos
     public function getImagen()
     {
         return $this->imagen;
+    }
+
+    public function getCantidad_Producto()
+    {
+        return $this->cantidad_producto;
+    }
+
+    public function getFecha_Compra()
+    {
+        return $this->fecha_compra;
     }
 
     public function getId_Marca_Producto()
