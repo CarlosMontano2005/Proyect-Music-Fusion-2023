@@ -24,15 +24,82 @@
   <header class="home-section nav-barra">
      
   </header>
+ 
+
   <main class="main home-section">
-    <div class="">
-      <div class="buscar">
-        <div class="btn">
-          <i class='bx bx-search'></i>
+    
+    <div class="contenedor-elemntos-scrud">
+      <form class="buscar" id="search-form" >
+        <div class="btn" onclick="">
+          <button class="btn button" type="submit" data-tooltip="Buscar">
+            <i class='bx bx-search'></i>
+          </button>
+          
         </div>
-        <input type="text" placeholder="Buscar" required />
+        <input type="search" id="search" name="search" placeholder="Buscar" data-tooltip="Buscar" required />
+        <select class="box-text col-2" aria-label="Default select example">
+          <option selected>Categoria</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </form>
+      <!--Agregar Pedido -->
+      <div class="btn-agregar">
+        <button type="button" class="button-modal" data-bs-toggle="modal" onclick="openCreate()" data-bs-target="#add-modal">
+          <i class='bx bxs-alarm-add'></i>
+          Agregar Pedido
+        </button>
+      </div>
+    </div>
 
-
+    <!-- Modal para agregar y actualizar mas el id=add-modal -->
+    <div class="modal fade" data-bs-backdrop="static" id="add-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modal-title"></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3" id="save-form">
+              <div class="col-md-12">
+                <p>Cliente</p>
+                <select class="form-select" id="cliente" name="cliente">
+                  <option selected>Seleccionar</option>
+                
+                </select>
+                
+              </div>
+              <div class="col-md-12">
+                <p>Dirección</p>
+                <textarea class="form-control" placeholder="Dirección" id="direccion" name="direccion" style="height: 100px"></textarea>
+              </div>
+              <div class="col-md-6">
+                <p>Estado del pedido</p>
+                <select class="form-select" id="estado_pedido" name="estado_pedido">
+                  <option selected>Seleccionar</option>
+                
+                </select>
+                
+              </div>
+              <div class="col-md-6">
+                <p>Fecha del pedido</p>
+                <input type="date" id="fecha_pedido" name="fecha_pedido" class="form-control validate" required>
+              </div>
+              <div class="col-md-12 visibility">
+                <p>ID</p>
+                <input type="number" class="form-control validate" placeholder="id" aria-label="id"
+                  id="id" name="id" required>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Acción</button>
+              <button type="submit" class="btn btn-primary">Guardar Acción</button>
+            </div> 
+            
+          </form>
+        </div>
+      </div>
       </div>
     </div>
     <h3 id="records">Pedidos</h3>
@@ -74,11 +141,11 @@
   crossorigin="anonymous"></script>
   <!--mensajes bonitos-->
   <script src="../../js/sweetalert.min.js"></script>
+  <script src="../../resources/js/dashboard/menu.js"></script>
   <!--llamar el menu y controlador -->
   <script src="../../controllers/components.js"></script>
   <script src="../../controllers/dashboard/account.js"></script>
   <!--funcione el desplegar menu y color oscuro-->
-  <script src="../../resources/js/dashboard/menu.js"></script>
   <!--f<script src="../../resources/js/dashboard/mod_oscuro.js"></script>-->
   <!--funcione llamar al controlador -->
   <script src="../../controllers/dashboard/pedidos.js"></script> 

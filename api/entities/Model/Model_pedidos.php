@@ -20,17 +20,33 @@ class ModelPedidos
 
     public function readAll()
     {
-        $sql = 'SELECT id_pedido, estado_pedido, fecha_pedido, direccion_pedido, id_cliente
-        FROM pedidos INNER JOIN estado_pedidos USING(id_estado_pedido) ORDER BY (id_pedido);';
+        $sql = 'SELECT id_pedido, estado_pedido, fecha_pedido, direccion_pedido, nombre_cliente
+        FROM pedidos INNER JOIN estado_pedidos USING(id_estado_pedido)
+		INNER JOIN clientes USING(id_cliente) 
+		ORDER BY (id_pedido);';
+        return Database::getRows($sql);
+    }
+
+    public function readAllEstadoPedido()
+    {
+        $sql = 'SELECT id_estado_pedido, estado_pedido
+        FROM estado_pedidos;';
+        return Database::getRows($sql);
+    }
+    public function readAllClientes()
+    {
+        $sql = 'SELECT id_cliente,nombre_cliente, apellido_cliente, correo_cliente, fecha_nacimiento, dui, id_genero, telefono_cliente, clave, estado, direccion_cliente
+        FROM clientes;';
         return Database::getRows($sql);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_producto, precio_detalle_producto
-        FROM detalles_pedidos INNER JOIN productos USING(id_producto) ORDER BY (id_detalle_pedido)  
-        WHERE id_detalle_pedido = ?';
-        $params = array($this->id);
+        $sql = 'SELECT id_pedido, estado_pedido, fecha_pedido, direccion_pedido, nombre_cliente
+        FROM pedidos INNER JOIN estado_pedidos USING(id_estado_pedido)
+		INNER JOIN clientes USING(id_cliente) 
+		WHERE id_pedido = ?';
+        $params = array($this->id_pedido);
         return Database::getRow($sql, $params);
     }
 
