@@ -155,52 +155,52 @@ document.addEventListener('DOMContentLoaded', async () => {
         </ul>
         
         `;
-           
-            
-  let arrow = document.querySelectorAll(".arrow");
-  for (var i = 0; i < arrow.length; i++) {
-    arrow[i].addEventListener("click", (e) => {
-      let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-      arrowParent.classList.toggle("showMenu");
-    });
-  }
-    var sidebarBtn = document.querySelector(".bx-menu");
-    var sidebar = document.querySelector(".sidebar");
-    const body = document.querySelector('body');
-  
-    toggle = body.querySelector(".toggle");
-    searchBtn = body.querySelector(".search-box"),
-    modeSwitch = body.querySelector(".toggle-switch");
-    modeText = body.querySelector(".mode-text");
-    console.log(sidebarBtn);
-  
-  sidebarBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
-  });
-  
-  
-  modeSwitch.addEventListener("click", () => {
-    body.classList.toggle("dark");
-  
-    if (body.classList.contains("dark")) {
-      modeText.innerText = "Light mode";
-    } else {
-      modeText.innerText = "Dark mode";
-    }
-  });
 
 
-  
-           // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
+            let arrow = document.querySelectorAll(".arrow");
+            for (var i = 0; i < arrow.length; i++) {
+                arrow[i].addEventListener("click", (e) => {
+                    let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+                    arrowParent.classList.toggle("showMenu");
+                });
+            }
+            var sidebarBtn = document.querySelector(".bx-menu");
+            var sidebar = document.querySelector(".sidebar");
+            const body = document.querySelector('body');
+
+            toggle = body.querySelector(".toggle");
+            searchBtn = body.querySelector(".search-box"),
+                modeSwitch = body.querySelector(".toggle-switch");
+            modeText = body.querySelector(".mode-text");
+            console.log(sidebarBtn);
+
+            sidebarBtn.addEventListener("click", () => {
+                sidebar.classList.toggle("close");
+            });
+
+
+            modeSwitch.addEventListener("click", () => {
+                body.classList.toggle("dark");
+
+                if (body.classList.contains("dark")) {
+                    modeText.innerText = "Light mode";
+                } else {
+                    modeText.innerText = "Dark mode";
+                }
+            });
+
+
+
+            // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
             //M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'));
             // Se inicializa el componente Sidenav para que funcione la navegación lateral.
-           // M.Sidenav.init(document.querySelectorAll('.sidenav'));
+            // M.Sidenav.init(document.querySelectorAll('.sidenav'));
         } else {
             sweetAlert(3, JSON.exception, false, 'index.html');
         }
     } else {
         // Se comprueba si la página web es la principal, de lo contrario se direcciona a iniciar sesión.
-       if (location.pathname == '/proyect-music-fusion-2023/views/dashboard/index.html') {
+        if (location.pathname == '/Proyect-Music-Fusion-2023/views/dashboard/index.html') {
             /* HEADER.innerHTML = `
                 <div class="navbar-fixed">
                     <nav>
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>
             `;*/
             // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-           // M.Tooltip.init(document.querySelectorAll('.tooltipped'));
+            // M.Tooltip.init(document.querySelectorAll('.tooltipped'));
         } else {
             location.href = 'index.html';
         }

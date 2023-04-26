@@ -70,12 +70,19 @@ if (isset($_GET['action'])) {
                 }  
                 elseif (!$producto->setId_Usuario($_POST['usuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
-                } 
+                }
                 elseif (!is_uploaded_file($_FILES['foto']['tmp_name'])) {
                     $result['exception'] = 'Seleccione una imagen';
                 } elseif (!$producto->setImagen($_FILES['foto'])) {
                     $result['exception'] = Validator::getFileError();
-                } elseif ($producto->createRow()) {
+                }
+                elseif (!$producto->setCantidad_Producto($_POST['cantidad'])) {
+                    $result['exception'] = 'Cantidad incorrecta';
+                }
+                elseif (!$producto->setFecha_Compra($_POST['fecha'])) {
+                    $result['exception'] = 'Fecha incorrecta';
+                } 
+                elseif ($producto->createRow()) {
                     $result['status'] = 1;
                     if (Validator::saveFile($_FILES['foto'], $producto->getRuta(), $producto->getImagen())) {
                         $result['message'] = 'Producto creado correctamente';
@@ -97,7 +104,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto inexistente';
                 }
                 break;
-                case 'update':
+            case 'update':
                     $_POST = Validator::validateForm($_POST);
                     if (!$producto->setId_Producto($_POST['id_producto'])) {
                         
@@ -127,31 +134,32 @@ if (isset($_GET['action'])) {
                     elseif (!$producto->setId_Usuario($_POST['usuario'])) {
                         $result['exception'] = 'Usuario incorrecto';
                     }
+                    elseif (!$producto->setCantidad_Producto($_POST['cantidad'])) {
+                        $result['exception'] = 'Cantidad incorrecta';
+                    }
+                    elseif (!$producto->setFecha_Compra($_POST['fecha'])) {
+                        $result['exception'] = 'Fecha incorrecta';
+                    }
                     elseif (!is_uploaded_file($_FILES['foto']['tmp_name'])) {
-                        if ($producto->updateRow($data['foto'])) {
+                        if ($producto->updateRow($data['imagen_producto'])) {
                             $result['status'] = 1;
                             $result['message'] = 'Producto modificado correctamente';
                         } else {
                             $result['exception'] = Database::getException();
                         }
-                    } elseif (!$producto->setImagen($_FILES['foto'])) {
+                    } 
+                    elseif (!$producto->setImagen($_FILES['foto'])) {
                         $result['exception'] = Validator::getFileError();
-                    } elseif ($producto->updateRow($data['imagen_producto'])) {
+                    } 
+                    elseif ($producto->updateRow($data['imagen_producto'])) {
                         $result['status'] = 1;
                         if (Validator::saveFile($_FILES['foto'], $producto->getRuta(), $producto->getImagen())) {
                             $result['message'] = 'Producto modificado correctamente';
                         } else {
                             $result['message'] = 'Producto modificado pero no se guardó la imagen';
                         } 
-                    }    
-                    elseif ($producto->updateRow()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Producto modificado correctamente';
-                    } 
-                    else {
-                        $result['exception'] = Database::getException();
                     }
-                    break;
+            break;
             case 'delete':
                 if (!$producto->setId_Producto($_POST['id_producto'])) {
                     $result['exception'] = 'Producto incorrecto';
