@@ -12,7 +12,7 @@ class GenerosQueries
     public function readAll()
     {
         $sql = 'SELECT id_genero, genero
-        FROM public.generos';
+        FROM generos';
         return Database::getRows($sql);
     }
 
@@ -21,7 +21,7 @@ class GenerosQueries
         $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, fecha_nacimiento, dui, genero, telefono_cliente, estado, direccion_cliente
         FROM clientes INNER JOIN generos USING(id_genero) 
                 WHERE id_cliente = ?';
-        $params = array($this->id);
+        $params = array($this->id_genero);
         return Database::getRow($sql, $params);
     }
 }

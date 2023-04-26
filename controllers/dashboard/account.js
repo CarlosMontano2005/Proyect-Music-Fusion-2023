@@ -19,14 +19,33 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se verifica si el usuario está autenticado, de lo contrario se envía a iniciar sesión.
     if (JSON.session) {
         // Se comprueba si existe un alias definido para el usuario, de lo contrario se muestra un mensaje con la excepción.
-        if (JSON.status) {
-            HEADER.innerHTML = `
-        
+       if (JSON.status) {
+          //Método manejador de eventos para cuando el documento ha cargado.
+          document.addEventListener('DOMContentLoaded', () => {
+            // Se define un objeto con la fecha y hora actual.
+            let today = new Date();
+            // Se define una variable con el número de horas transcurridas en el día.
+            let hour = today.getHours();
+            // Se define una variable para guardar un saludo.
+            let greeting = '';
+            // Dependiendo del número de horas transcurridas en el día, se asigna un saludo para el usuario.
+            if (hour < 12) {
+                greeting = 'Buenos días';
+            } else if (hour < 19) {
+                greeting = 'Buenas tardes';
+            } else if (hour <= 23) {
+                greeting = 'Buenas noches';
+            }
+            // Se muestra un saludo en la página web.
+            document.getElementById('greeting').textContent = greeting;
+            // Se llaman a la funciones que generan los gráficos en la página web.
+        });
+        HEADER.innerHTML = `
         <div class="home-content">
         <i class='bx bx-menu' id="btn"></i>
         <!--comentario 15/02/2023-->
         <span class="text">Dashboard</span>
-        <label class="info"  id="greeting">saludo</label>
+        <label class="info" id="greeting">saludo</label>
     </div>
     <div class="bottom-content">
         <div class="nav-barra-time">
@@ -44,30 +63,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
         </li>
     </div>`
+    
 
-            //Método manejador de eventos para cuando el documento ha cargado.
-            document.addEventListener('DOMContentLoaded', () => {
-                // Se define un objeto con la fecha y hora actual.
-                let today = new Date();
-                // Se define una variable con el número de horas transcurridas en el día.
-                let hour = today.getHours();
-                // Se define una variable para guardar un saludo.
-                let greeting = '';
-                // Dependiendo del número de horas transcurridas en el día, se asigna un saludo para el usuario.
-                if (hour < 12) {
-                    greeting = 'Buenos días';
-                } else if (hour < 19) {
-                    greeting = 'Buenas tardes';
-                } else if (hour <= 23) {
-                    greeting = 'Buenas noches';
-                }
-                // Se muestra un saludo en la página web.
-                document.getElementById('greeting').textContent = greeting;
-                // Se llaman a la funciones que generan los gráficos en la página web.
-                //graficoBarrasCategorias();
-                //graficoPastelCategorias();
-            });
-            ;
+    ;
             NAV.innerHTML = `<div class="logo-details">
             <img src="../../img/logos/logo_blanco_horizontal.png" alt="logo">
         </div>
@@ -101,7 +99,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Pedidos</a></li>
                     <li><a href="../../views/dashboard/pedidos.html">Pedidos</a></li>
-                    <li><a href="../../views/dashboard/detalles_pedidos.html">Detalles Pedidost</a></li>
+                    <li><a href="../../views/dashboard/detalles_pedidos.html">Detalles Pedidos</a></li>
+                    <li><a href="../../views/dashboard/valoraciones_pedidos.html">Valoraciones</a></li>
                 </ul>
             </li>
 

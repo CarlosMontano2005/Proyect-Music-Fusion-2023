@@ -73,7 +73,7 @@ if (isset($_GET['action'])) {
                 } 
                 elseif ($det_pedidos->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Cliente creado correctamente';
+                    $result['message'] = 'Detalle Pedido creado correctamente';
                 }
                 else {
                     $result['exception'] = Database::getException();;
@@ -81,57 +81,50 @@ if (isset($_GET['action'])) {
                 break;
             case 'readOne':
                 if (!$det_pedidos->setId($_POST['id'])) {
-                    $result['exception'] = 'Cliente incorrecto';
+                    $result['exception'] = 'Detalle Pedido incorrecto';
                 } elseif ($result['dataset'] = $det_pedidos->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Cliente inexistente';
+                    $result['exception'] = 'Detalle Pedido inexistente';
+                }
+                break;
+            case 'readOneValoracion':
+                if (!$det_pedidos->setId($_POST['id'])) {
+                    $result['exception'] = 'Valoracion del Pedido incorrecto';
+                } elseif ($result['dataset'] = $det_pedidos->readOneValoracion()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'Valoracion del Pedido inexistente';
                 }
                 break;
             case 'update':
                 $_POST = Validator::validateForm($_POST);
-                if (!$det_pedidos->setId($_POST['id'])) {
+                if (!$det_pedidos->setId($_POST['id_detalle_pedido'])) {
                     
-                    $result['exception'] = 'Cliente incorrecto';
+                    $result['exception'] = 'Detalle Pedido incorrecto';
                 } 
                 elseif (!$data = $det_pedidos->readOne()) {
-                    $result['exception'] = 'Cliente inexistente';
+                    $result['exception'] = 'Detalle Pedido inexistente';
                 } 
-                elseif (!$det_pedidos->setNombre($_POST['nombres'])) {
-                    $result['exception'] = 'Nombres incorrecto';
+                elseif (!$det_pedidos->setId_Pedido($_POST['id_pedido'])) {
+                    $result['exception'] = 'Id del pedido incorrecto';
                 } 
-                elseif(!$det_pedidos->setClave($_POST['clave'])){
-                    $result['exception'] = 'Clave incorrecto';
+                elseif(!$det_pedidos->setCantidad_Producto($_POST['cantidad'])){
+                    $result['exception'] = 'Cantidad del detalle del pedido incorrecto';
                 }
-                elseif (!$det_pedidos->setApellido($_POST['apellidos'])) {
-                    $result['exception'] = 'Apellidos incorrecta';
+                elseif (!$det_pedidos->setId_Producto($_POST['id_Producto'])) {
+                    $result['exception'] = 'Producto incorrecta';
                 } 
-                elseif (!$det_pedidos->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
+                elseif (!$det_pedidos->setPrecio_detalle_Producto($_POST['precio_detalle'])) {
+                    $result['exception'] = 'Precio incorrecto';
                 } 
-                elseif (!$det_pedidos->setId_genero($_POST['generos'])) {
-                    $result['exception'] = 'Seleccione un sexo';
-                } 
-                elseif (!$det_pedidos->setEstado(isset($_POST['estado']) ? 1 : 0)) {
-                    $result['exception'] = 'Estado incorrecto';
-                } 
-                elseif (!$det_pedidos->setNacimiento($_POST['nacimiento'])) {
-                    $result['exception'] = 'Fecha incorrecto';
-                } 
-                elseif (!$det_pedidos->setTelefono($_POST['telefono'])) {
-                    $result['exception'] = 'Telefono incorrecto';
-                } 
-                elseif(!$det_pedidos->setDUI($_POST['dui'])){
-                    $result['exception'] = 'DUI incorrecto';
-                }
-                elseif(!$det_pedidos->setDireccion($_POST['direccion'])){
-                    $result['exception'] = 'Dirección incorrecto';
-                }
                 elseif ($det_pedidos->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Cliente modificado correctamente';
+                    $result['message'] = 'Detalle Pedido modificado correctamente';
                 } 
                 else {
                     $result['exception'] = Database::getException();
@@ -139,25 +132,25 @@ if (isset($_GET['action'])) {
                 break;
             case 'delete':
                 if (!$det_pedidos->setId($_POST['id_cliente'])) {
-                    $result['exception'] = 'Cliente incorrecto';
+                    $result['exception'] = 'Detalle Pedido incorrecto';
                 } 
                 elseif ($det_pedidos->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Cliente eliminado correctamente';
+                    $result['message'] = 'Detalle Pedido eliminado correctamente';
                 }
                 else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'cantidadClientesCategoria':
-                if ($result['dataset'] = $det_pedidos->cantidadClientesCategoria()) {
+            case 'cantidadDetallePedidoCategoria':
+                if ($result['dataset'] = $det_pedidos->cantidadDetallePedidoCategoria()) {
                     $result['status'] = 1;
                 } else {
                     $result['exception'] = 'No hay datos disponibles';
                 }
                 break;
-            case 'porcentajeClientesCategoria':
-                if ($result['dataset'] = $det_pedidos->porcentajeClientesCategoria()) {
+            case 'porcentajeDetallePedidoCategoria':
+                if ($result['dataset'] = $det_pedidos->porcentajeDetallePedidoCategoria()) {
                     $result['status'] = 1;
                 } else {
                     $result['exception'] = 'No hay datos disponibles';

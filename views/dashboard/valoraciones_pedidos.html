@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title> Clientes</title>
+  <title> Valoraciones</title>
   <link rel="stylesheet" href="../../resources/css/dashboard/style_cliente.css">
   <!-- Llamada de archivo como icono -->
   <link type="image/png" rel="icon" href="../../img/logos/logo.png">
@@ -61,97 +61,64 @@
           <option value="3">Three</option>
         </select>
       </form>
-      <!--Agregar Marca -->
+      <!--Agregar Valoracions -->
       <div class="btn-agregar">
-        <button type="button" class="button-modal" data-bs-toggle="modal" onclick="openCreate()" data-bs-target="#add-modal">
+        <button type="button" class="button-modal" data-bs-toggle="modal" onclick="openCreate()" data-bs-target="#add-modal-valoracion">
           <i class='bx bxs-alarm-add'></i>
-          Agregar Cliente
+          Agregar Valoracion
         </button>
       </div>
     </div>
 
-    <!-- Modal para agregar y actualizar mas el id=add-modal -->
-    <div class="modal fade " data-bs-backdrop="static" id="add-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <!--Titulo del modal id= modal-tile-->
-            <h1 class="modal-title fs-5" id="modal-title"></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form class="row g-3" id="save-form">
-              <div class="col-md-4 invisible">
-                <p>ID</p>
-                <input type="number" class="form-control validate" placeholder="id" aria-label="id"
-                  id="id" name="id" required>
-              </div>
-              <div class="col-md-4">
-                <p>contraseña</p>
-                <input type="password" id="clave" name="clave" class="form-control validate" 
-                  placeholder="contraseña" >
-              </div>
-              <div class="col-md-4">
-                <p>Nombres</p>
-                <input type="text" class="form-control validate" placeholder="Nombres" aria-label="Los Nombres"
-                  id="nombres" name="nombres" required>
-              </div>
-              <div class="col-md-4">
-                <p>Apellidos</p>
-                <input type="text" class="form-control validate" placeholder="Apellidos" aria-label="Los Apellidos"
-                  id="apellidos" name="apellidos" required>
-              </div>
-              <div class="col-md-4">
-                <p>Correo</p>
-                <input id="correo" type="email" name="correo" class="form-control validate"
-                  placeholder="correo@local.com" aria-label="aqui correo" required>
-              </div>
-              <div class="col-md-4">
-                <p>Fecha de nacimiento</p>
-                <input type="date" id="nacimiento" name="nacimiento" class="form-control validate" required>
-              </div>
-              <div class="col-md-4">
-                <p>Sexo</p>
-                <select class="form-select" id="generos" name="generos">
-                  <option selected>Seleccionar</option>
-                
-                </select>
-                
-              </div>
-              <div class="col-md-4">
-                <p>Telefono</p>
-                <input type="tel" id="telefono" name="telefono" class="form-control validate" required
-                  placeholder="0000-0000">
-              </div>
-              <div class="col-md-4">
-                <p>DUI</p>
-                <input type="text" id="dui" name="dui" class="form-control validate" required
-                  placeholder="000000000-0">
-              </div>
-              <div class="col-md-4">
-                <p>Estado del cliente</p>
-                <input class="form-check-input" name="estado"  type="checkbox" id="estado" >
-              <label class="form-check-label" for="estado">Activo</label>
-              </div>
-              <div class="col-md-8">
-                <p>Dirección</p>
-                <input type="text" id="direccion" name="direccion" class="form-control validate" required
-                placeholder="Direccion">
-              </div>
+      <!-- Modal para ver valoracion-->
+      <div class="modal fade" data-bs-backdrop="static" id="add-modal-valoracion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="modal-title"></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form class="row g-3" id="save-form">
+                <div class="col-md-6">
+                  <p>ID Detalle del Pedido</p>
+                  <input type="number" class="form-control validate" placeholder="id" aria-label="id"
+                    id="id_detalle" name="id_detalle" required>
+                </div>
+                <div class="col-md-6">
+                  <p>Calificaciòn</p>
+                  <input type="number" class="form-control validate" placeholder="5" aria-label="id"
+                    id="calificacion" name="calificacion" required>
+                </div>
+                <div class="col-md-12">
+                  <p>Comentario</p>
+                  <textarea class="form-control" placeholder="Comentarios" id="comentario" name="comentario" style="height: 100px"></textarea>
+                </div>
+                <div class="col-md-6">
+                  <p>Estado del comentario</p>
+                  <input class="form-check-input" name="estado_comentario"  type="checkbox" id="estado_comentario" >
+                <label class="form-check-label" for="estado">Activo</label>
+                </div>
+                <div class="col-md-6">
+                  <p>Fecha del comentario</p>
+                  <input type="date" id="fecha_comentario" name="fecha_comentario" class="form-control validate" required>
+                </div>
+                <div class="col-md-12 invisible">
+                  <p>ID</p>
+                  <input type="number" class="form-control validate" placeholder="id" aria-label="id"
+                    id="id_valoracion" name="id_valoracion" required>
+                </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Acción</button>
-                <button type="submit" class="btn btn-primary" data-tooltip="Guardar">Guardar Acción</button>
-                <button type="reset" class="btn btn-secondary" data-tooltip="Limpiar">Limpiar Campos</button>
-              </div>
+                <button type="submit" class="btn btn-primary">Guardar Acción</button>
+              </div> 
+              
             </form>
           </div>
-          
         </div>
-        
+        </div>
       </div>
-    </div>
-    </div>
-    <h3 id="records">Administrar Cliente</h3>
+    <h3 id="records">Administrar Valoracion</h3>
     </div>
     <div class="header_fixed">
       <div class="table-responsive">
@@ -160,15 +127,11 @@
             <tr id="records"></tr>
             <tr>
               <th>No.</th>
-              <th>Nombres</th>
-              <th>Apellidos</th>
-              <th>Correo</th>
-              <th>Fecha Nacimiento</th>
-              <th>Sexo</th>
-              <th>Telefono</th>
-              <th>DUI</th>
+              <th>ID. Del Pedido</th>
+              <th>Calificaciòn</th>
+              <th>Comentario</th>
+              <th>Fecha</th>
               <th>Estado</th>
-              <th>Direccion</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -210,8 +173,8 @@
  
    <!--f<script src="../../resources/js/dashboard/mod_oscuro.js"></script>-->
    <!--funcione llamar al controlador -->
-   <script src="../../controllers/dashboard/clientes.js"></script>
-   <!-- js del cliente -->
+   <script src="../../controllers/dashboard/valoraciones.js"></script>
+   <!-- js del valoraciones -->
 
   <!--controlador-->
  
