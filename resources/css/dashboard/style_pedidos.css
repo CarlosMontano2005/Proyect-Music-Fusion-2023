@@ -10,9 +10,11 @@
 body{
   overflow: hidden;
 }
+
 main{
   overflow: scroll;
 }
+
 .home-section::-webkit-scrollbar {
   width: 10px;
 }
@@ -23,9 +25,6 @@ main{
 
 .home-section::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-#active-btn{
-  background: var(--primary-color);
 }
 .sidebar{
   position: fixed;
@@ -82,6 +81,23 @@ body.dark{
   --car-calculo-4-backgroud-color:#242526;
 }
 
+#active-btn{
+  background: var(--primary-color);
+}
+
+/*.home-section{
+  position: relative;
+  background: var(--nav-color);
+  transition: all 0.5s ease;
+  overflow:scroll;
+
+}*/
+
+
+.box-text{
+  border-radius: 20px;
+}
+
 .sidebar  .logo-details{
   display: flex;
   align-items: center;
@@ -96,6 +112,8 @@ body.dark{
 
 .sidebar.close{
   width: 78px;
+  opacity: 100%;
+  transition: all 0.5s ease;
 }
 .sidebar .logo-details{
   height: 80px;
@@ -326,10 +344,6 @@ body.dark{
   font-size: 26px;
   font-weight: 600;
 }
-#active-btn{
-  background: var(--primary-color);
-}
-
 
 
 /**/
@@ -442,17 +456,26 @@ body.dark .switch::before{
   background-color: var(--body-color);
   color: var(--main-text-color); 
 }
+/*Contendor elementos scrud*/
+.contenedor-elemntos-scrud{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+    padding-left: 0;
+}
 
 /*barra de busqueda*/
 
 .buscar {
-  padding-top: 100px;
     padding: 15px;
     padding-left: 0;
+    width: 70%;
   }
   
   .buscar input {
-    width: 30%;
+    width: 50%;
     height: 40px;
     padding: 0 20px;
     font-size: 18px;
@@ -473,6 +496,10 @@ body.dark .switch::before{
     
   }
   
+  .buscar select{
+    width: 35%;
+    height: 40px;
+  }
   
   .Titulo{
 
@@ -481,12 +508,22 @@ body.dark .switch::before{
   }
 
 /*Modal*/
+.modal-body, .modal-header, .modal-footer{
+    background: var(--body-color);
+}
+.btn-agregar{
+    display: flex;
+    align-items: center;
+}
 
 .button-modal{
-  margin-left: 85%;
+    
+  margin-left: 0;
   border: none;
-  background-color: white;
+  background-color: var(--body-color);
   color: #3D54E7;
+
+  
 }
 
 .modal-body p{
@@ -504,7 +541,6 @@ text-align: left;
 table {
     width: 100%;
     border-collapse: collapse;
-    
 }
 
 .header_fixed {
@@ -523,6 +559,8 @@ table {
     background-color: var(--body-color);
     color: var(--main-text-color);
     font-size: 15px;
+    text-align: center;
+    
 }
 
 th,
@@ -530,7 +568,9 @@ td {
     border-bottom: 1px solid #fff;
     padding: 10px 20px;
     font-size: 14px;
-    
+    text-align: center;
+    align-items: center;
+    color: var(--main-text-color);
 }
 
 td img {
@@ -571,8 +611,10 @@ td button {
 }
 .td-button{
   display: flex;
+  margin: 30px;
   flex-direction: row;
-  align-content: center;
+  justify-content: center;
+  border: none;
   
 }
 .button_delet {
@@ -584,6 +626,21 @@ td button {
 }
 .button_updet{
   background-color: #695CFE;
+}
+.td-estado{
+}
+.td-estado-usuario{
+  height: 20px;
+  width: 20px;
+}
+#estado-bloqueado{
+  background: #EB1D36;
+}
+#estado-activo{
+  background: #54B435;
+}
+#estado-ocupado{
+  background: #3C79F5;
 }
 ::-webkit-scrollbar {
     width: 10px;
@@ -625,9 +682,62 @@ td button {
   .home-section{
     left: 240px;
     width: calc(100% - 240px);
+    
   }
   .sidebar.close ~ .home-section{
     left: 78px;
     width: calc(100% - 78px);
   }
+  .nav-barra{
+    height: 50px;
+  }
+  .home-content {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  .bottom-content .mode .mode-text{
+    font-size: 0;
+  }
+  .bottom-content .mode .sun-moon{
+    width: 15px;
+    height: 20px;
+    
+  }
+  .bottom-content .mode .sun-moon .sun{
+    position: fixed;
+  }
+  .bottom-content .mode .sun-moon .moon{
+    position: fixed;
+  }
+    /*Contendor elementos scrud*/
+  .contenedor-elemntos-scrud{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    padding-left: 0;
+  }
+  .buscar {
+    padding-left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+  .buscar input, .buscar select{
+    width: 100%;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 30px;
+  } 
+
+  ::-webkit-scrollbar-thumb {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 30px;
+  } 
 }

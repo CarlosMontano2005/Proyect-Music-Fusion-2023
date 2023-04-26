@@ -38,18 +38,19 @@
       </form>
       <!--Agregar Detalles pedidos -->
       <div class="btn-agregar">
-        <button type="button" class="button-modal" data-bs-toggle="modal" onclick="openCreate()" data-bs-target="#add-modal-detalle">
+        <button type="button" class="button-modal" data-bs-toggle="modal" onclick="openCreate()" data-bs-target="#add-modal-valoracion">
           <i class='bx bxs-alarm-add'></i>
           Agregar 
         </button>
       </div>
     </div>
-    <!-- Modal para ver el detalle del producto-->
-    <div class="modal fade" id="add-modal-detalle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+
+    <!--MODAL PARA DOS MODALES
+    <div class="modal fade" id="add-modal-detalle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="modal-title"></h1>
+            <h1 class="modal-title fs-5" id="modal-title">Modal 1</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -57,7 +58,7 @@
               <div class="col-md-6">
                 <p>ID del Pedido</p>
                 <input type="number" class="form-control validate" placeholder="id" aria-label="id"
-                  id="id_detalle" name="id_detalle" required>
+                  id="id_pedido" name="id_pedido" required>
               </div>
               <div class="col-md-6">
                 <p>Producto</p>
@@ -79,28 +80,28 @@
               <div class="col-md-12 invisible">
                 <p>ID</p>
                 <input type="number" class="form-control validate" placeholder="id" aria-label="id"
-                  id="id" name="id" required>
+                  id="id_detalle_pedido" name="id_detalle_pedido" required>
               </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Acción</button>
               <button type="submit" class="btn btn-primary">Guardar Acción</button>
+              <button type="button" class="btn btn-primary" data-bs-target="#modal-valoraciones" data-bs-toggle="modal">Open second modal</button>
             </div> 
             
           </form>
+          </div>
         </div>
       </div>
-      </div>
     </div>
-     <!-- Modal para ver comentarios-->
-     <div class="modal fade" id="add-modal-comentario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+    <div class="modal fade" id="modal-valoraciones" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="modal-title"></h1>
+            <h1 class="modal-title fs-5" id="modal-title-2">Modal 2</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form class="row g-3" id="save-form">
+            <form class="row g-3" id="save-form-2">
               <div class="col-md-6">
                 <p>ID Detalle del Pedido</p>
                 <input type="number" class="form-control validate" placeholder="id" aria-label="id"
@@ -113,7 +114,7 @@
               </div>
               <div class="col-md-12">
                 <p>Comentario</p>
-                <textarea class="form-control" placeholder="Comentarios" id="calificacion" name="calificacion" style="height: 100px"></textarea>
+                <textarea class="form-control" placeholder="Comentarios" id="comentario" name="comentario" style="height: 100px"></textarea>
               </div>
               <div class="col-md-6">
                 <p>Estado del comentario</p>
@@ -127,7 +128,58 @@
               <div class="col-md-12 invisible">
                 <p>ID</p>
                 <input type="number" class="form-control validate" placeholder="id" aria-label="id"
-                  id="id" name="id" required>
+                  id="id_valoracion" name="id_valoracion" required>
+              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Acción</button>
+              <button type="submit" class="btn btn-primary">Guardar Acción</button>
+              <button type="button" class="btn btn-primary" data-bs-target="#add-modal-detalle" data-bs-toggle="modal">Back to first</button>
+           
+            </div> 
+            
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" data-bs-target="#add-modal-detalle" data-bs-toggle="modal">Open first modal</button>-->
+
+    <!-- Modal para ver el detalle del producto data-bs-backdrop="static"-->
+    <div class="modal fade" id="add-modal-detalle"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+      <div class="modal-dialog" >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modal-title"></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+        <div class="modal-body">
+            <form class="row g-3" id="save-form">
+              <div class="col-md-6">
+                <p>ID del Pedido</p>
+                <input type="number" class="form-control validate" placeholder="id" aria-label="id"
+                  id="id_pedido" name="id_pedido" required>
+              </div>
+              <div class="col-md-6">
+                <p>Producto</p>
+                <select class="form-select" id="id_Producto" name="id_Producto">
+                  <option selected>Seleccionar</option>
+                
+                </select>
+              </div>
+              <div class="col-md-12">
+                <p>Cantidad</p>
+                <input type="number" class="form-control validate" placeholder="0" aria-label="id"
+                  id="cantidad" name="cantidad" required>
+              </div>
+              <div class="col-md-12">
+                <p>Precio</p>
+                <input type="number" class="form-control validate" placeholder="00.00" aria-label="id"
+                  id="precio_detalle" name="precio_detalle" required>
+              </div>
+              <div class="col-md-12 invisible">
+                <p>ID</p>
+                <input type="number" class="form-control validate" placeholder="id" aria-label="id"
+                  id="id_detalle_pedido" name="id_detalle_pedido" required>
               </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Acción</button>
@@ -139,6 +191,7 @@
       </div>
       </div>
     </div>
+   
     <h3 id="records">Administrar Detalles del Pedido</h3>
     <div class="header_fixed">
       <div class="table-responsive">

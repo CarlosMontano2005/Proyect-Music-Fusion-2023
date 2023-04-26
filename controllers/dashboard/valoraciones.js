@@ -1,5 +1,4 @@
 // Constante para completar la ruta de la API.
-const DET_PEDIDOS_API = 'business/dashboard/detalles_pedidos.php';
 const VALORACION_API = 'business/dashboard/detalles_Valoraciones.php';
 const PRODUCTO = 'business/dashboard/Productos.php';
 
@@ -15,7 +14,7 @@ const RECORDS = document.getElementById('records');
 
 // Constante para establecer la modal de guardar.
 //const SAVE_MODAL = new bootstrap.Modal(document.getElementById('add-modal-detalle'));
-const SAVE_MODAL = new bootstrap.Modal(document.getElementById('add-modal-detalle'));
+const SAVE_MODAL = new bootstrap.Modal(document.getElementById('add-modal-valoracion'));
 
 /*//////////// 
 const myModal = document.getElementById('myModal')
@@ -49,17 +48,19 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     event.preventDefault();
     
     // Se verifica la acción a realizar.
-    (document.getElementById('id_detalle_pedido').value) ? action = 'update' : action = 'create';
-    console.log(document.getElementById('id_detalle_pedido').value);//id que se toma y ver en consola 
+    (document.getElementById('id_valoracion').value) ? action = 'update' : action = 'create';
+    console.log(document.getElementById('id_valoracion').value);//id que se toma y ver en consola 
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(DET_PEDIDOS_API, action, FORM);
+    const JSON = await dataFetch(VALORACION_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     console.log("proceso submit");
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
+        // Se cierra la caja de diálogo.
+        SAVE_MODAL.hide();
         // Se cierra la caja de diálogo.
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
@@ -80,7 +81,7 @@ async function fillTable(form = null) {
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(DET_PEDIDOS_API, action, form);
+    const JSON = await dataFetch(VALORACION_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
@@ -88,14 +89,15 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML +=  `
                 <tr>
-                    <td>${row.id_detalle_pedido}</td>
-                    <td>${row.id_pedido}</td>
+                    <td>${row.id_valoracion}</td>
                     <td>${row.nombre_producto}</td>
-                    <td>${row.cantidad_producto}</td>
-                    <td>${row.precio_detalle_producto}</td>
+                    <td>${row.calificacion_producto}</td>
+                    <td>${row.comentario_producto}</td>
+                    <td>${row.fecha_comentario}</td>
+                    <td>${row.estado_comentario}</td>
                     <td class="td-button">
-                        <button onclick="openUpdate(${row.id_detalle_pedido})"  class="button_edit" data-bs-toggle="modal" data-bs-target="#add-modal-detalle" ><i class='bx bx-edit' ></i></button>
-                        <button onclick="openReport(${row.id_marca_producto})" class="button_updet"><i class='bx bx-file' ></i></button>
+                        <button onclick="openUpdate(${row.id_valoracion})"  class="button_edit" data-bs-toggle="modal" data-bs-target="#add-modal-valoracion" ><i class='bx bx-edit' ></i></button>
+                        <button onclick="openReport(${row.id_valoracion})" class="button_updet"><i class='bx bx-file' ></i></button>
                     </td>
                 </tr>
                 `;
@@ -120,7 +122,7 @@ async function openUpdate(id) {
     const FORM = new FormData();
     FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(DET_PEDIDOS_API, 'readOne', FORM);
+    const JSON = await dataFetch(VALORACION_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -136,17 +138,8 @@ async function openUpdate(id) {
     
         document.getElementById('confirmar').disabled = true;*/
         // Se inicializan los campos del formulario.
-        document.getElementById('id_detalle_pedido').value = JSON.dataset.id_detalle_pedido;
-        document.getElementById('id_pedido').value = JSON.dataset.id_pedido;
-        document.getElementById('cantidad').value = JSON.dataset.cantidad_producto;
-        document.getElementById('precio_detalle').value = JSON.dataset.precio_detalle_producto;
-        fillSelect(PRODUCTO, 'readAll', 'id_Producto', JSON.dataset.id_producto);
-        console.log("proceso abri caja modal de actualizar");//mensaje 
-        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-        //M.updateTextFields();
- /*
-        document.getElementById('id_valoracion').value = JSON.dataset.id;
-        document.getElementById('id_detalle').value = JSON.dataset.Id_detalle_pedido;
+        document.getElementById('id_valoracion').value = JSON.dataset.id_valoracion;
+        document.getElementById('id_detalle').value = JSON.dataset.id_detalle_pedido;
         document.getElementById('calificacion').value = JSON.dataset.calificacion_producto;
         document.getElementById('comentario').value = JSON.dataset.comentario_producto;
         document.getElementById('fecha_comentario').value = JSON.dataset.fecha_comentario;
@@ -154,7 +147,7 @@ async function openUpdate(id) {
             document.getElementById('estado_comentario').checked = true;
         } else {
             document.getElementById('estado_comentario').checked = false;
-        }*/
+        }
     } else {
         sweetAlert(2, JSON.exception, false);
     }

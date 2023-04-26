@@ -12,7 +12,7 @@ class GenerosQueries
     public function readAll()
     {
         $sql = 'SELECT id_genero, genero
-        FROM public.generos';
+        FROM generos';
         return Database::getRows($sql);
     }
 

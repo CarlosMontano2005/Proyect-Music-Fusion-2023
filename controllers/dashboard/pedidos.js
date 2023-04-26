@@ -5,15 +5,15 @@ const CLIENTES_API = 'business/dashboard/clientes.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
-//const SAVE_FORM = document.getElementById('save-form');
+const SAVE_FORM = document.getElementById('save-form');
 // Constante para establecer el título de la modal.
-//const MODAL_TITLE = document.getElementById('modal-title');
+const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
 
 // Constante para establecer la modal de guardar.
-//const SAVE_MODAL = new bootstrap.Modal(document.getElementById('add-modal'));
+const SAVE_MODAL = new bootstrap.Modal(document.getElementById('add-modal'));
 
 /*//////////// 
 const myModal = document.getElementById('myModal')
@@ -87,15 +87,15 @@ async function fillTable(form = null) {
             TBODY_ROWS.innerHTML +=  `
                 <tr>
                     <td>${row.id_pedido}</td>
-                    <td>${row.id_estado_pedido}</td>
+                    <td>${row.estado_pedido}</td>
                     <td>${row.fecha_pedido}</td>
                     <td>${row.direccion_pedido}</td>
-                    <td>${row.id_cliente}</td>
+                    <td>${row.nombre_cliente}</td>
                     <td class="td-button">
-                        <button  onclick="openUpdate(${row.id_cliente})" class="button_edit button-modal" type="button" data-bs-toggle="modal"  data-tooltip="Actualizar"
+                        <button  onclick="openUpdate(${row.id_pedido})" class="button_edit button-modal" type="button" data-bs-toggle="modal"  data-tooltip="Actualizar"
                         data-bs-target="#add-modal"><i class='bx bxs-edit'  style="color: white;"></i></button>
-                        <button onclick="openDelete(${row.id_cliente})" class="button_delet" data-tooltip="Eliminar"><i class='bx bx-trash'></i></button>
-                        <button onclick="openUpdate(${row.id_cliente})" class="button_updet"><i class='bx bx-refresh'></i></button>
+                        <button onclick="openDelete(${row.id_pedido})" class="button_delet" data-tooltip="Eliminar"><i class='bx bx-trash'></i></button>
+                        <button onclick="openUpdate(${row.id_pedido})" class="button_updet"><i class='bx bx-refresh'></i></button>
                     </td>
                 </tr>
                 `;
@@ -160,7 +160,7 @@ async function openUpdate(id) {
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
-        MODAL_TITLE.textContent = 'Actualizar Cliente';
+        MODAL_TITLE.textContent = 'Actualizar de pedido';
         // Se deshabilitan los campos necesarios.
      //  document.getElementById('id').disabled = true;
       // document.getElementById('clave').disabled = true;
@@ -168,22 +168,14 @@ async function openUpdate(id) {
     
         document.getElementById('confirmar').disabled = true;*/
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.id_cliente;
-        document.getElementById('nombres').value = JSON.dataset.nombre_cliente;
-        document.getElementById('apellidos').value = JSON.dataset.apellido_cliente;
-        document.getElementById('correo').value = JSON.dataset.correo_cliente;
-        document.getElementById('nacimiento').value = JSON.dataset.fecha_nacimiento;
-        document.getElementById('dui').value = JSON.dataset.dui;
-        document.getElementById('clave').value = JSON.dataset.clave
-        fillSelect(CLIENTES_API, 'readAll', 'generos', JSON.dataset.id_genero);
+
+        document.getElementById('direccion').value = JSON.dataset.direccion_pedido;
+        document.getElementById('fecha_pedido').value = JSON.dataset.fecha_pedido;
+        fillSelect(PEDIDOS_API, 'readAllClientes', 'cliente', JSON.dataset.nombre_cliente);
+        fillSelect(PEDIDOS_API, 'readAllEstadoPedido', 'estado_pedido', JSON.dataset.estado_pedido);
+        document.getElementById('id').value = JSON.dataset.id_pedido;
         
-        document.getElementById('telefono').value = JSON.dataset.telefono_cliente;
-        document.getElementById('direccion').value = JSON.dataset.direccion_cliente;
-        if (JSON.dataset.estado) {
-            document.getElementById('estado').checked = true;
-        } else {
-            document.getElementById('estado').checked = false;
-        }
+        
         console.log("proceso abri caja modal de actualizar");//mensaje 
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
         //M.updateTextFields();

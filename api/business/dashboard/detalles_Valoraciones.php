@@ -1,12 +1,12 @@
 <?php
-require_once('../../entities/Controller/Controller_pedidos.php');
+require_once('../../entities/Controller/Controller_Valoraciones_dto.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $pedidos = new ControllerPedidos;
+    $valoraciones = new Valoraciones_Controller;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -14,7 +14,7 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'readAll':
-                if ($result['dataset'] = $pedidos->readAll()) {
+                if ($result['dataset'] = $valoraciones->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
@@ -23,31 +23,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            case 'readAllEstadoPedido':
-                if ($result['dataset'] = $pedidos->readAllEstadoPedido()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados estado pedidos';
-                }
-                break;
-            case 'readAllClientes':
-                if ($result['dataset'] = $pedidos->readAllClientes()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados de clientes';
-                }
-                break;
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $pedidos->searchRows($_POST['search'])) {
+                } elseif ($result['dataset'] = $valoraciones->searchRows($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -58,126 +38,112 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$pedidos->setNombre($_POST['nombres'])) {
+                if (!$valoraciones->setNombre($_POST['nombres'])) {
                     $result['exception'] = 'Nombres incorrecto';
                 } 
-                elseif (!$pedidos->setApellido($_POST['apellidos'])) {
+                elseif (!$valoraciones->setApellido($_POST['apellidos'])) {
                     $result['exception'] = 'Apellidos incorrecta';
                 } 
                 elseif (!isset($_POST['generos'])) {
                     $result['exception'] = 'Seleccione  un sexo';
                 }
-                elseif (!$pedidos->setId_genero($_POST['generos'])) {
+                elseif (!$valoraciones->setId_genero($_POST['generos'])) {
                     $result['exception'] = 'Sexo incorrecta';
                 } 
-                elseif (!$pedidos->setCorreo($_POST['correo'])) {
+                elseif (!$valoraciones->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo incorrecto';
                 } 
-                elseif (!$pedidos->setTelefono($_POST['telefono'])) {
+                elseif (!$valoraciones->setTelefono($_POST['telefono'])) {
                     $result['exception'] = 'Telefono incorrecto';
                 } 
-                elseif (!$pedidos->setDUI($_POST['dui'])) {
+                elseif (!$valoraciones->setDUI($_POST['dui'])) {
                     $result['exception'] = 'DUI incorrecto';
                 } 
-                elseif (!$pedidos->setDireccion($_POST['direccion'])) {
+                elseif (!$valoraciones->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Dirección incorrecto';
                 } 
-                elseif (!$pedidos->setNacimiento($_POST['nacimiento'])) {
+                elseif (!$valoraciones->setNacimiento($_POST['nacimiento'])) {
                     $result['exception'] = 'Nacimiento incorrecto';
                 } 
-                elseif (!$pedidos->setEstado(isset($_POST['estado']) ? 1 : 0)) {
+                elseif (!$valoraciones->setEstado(isset($_POST['estado']) ? 1 : 0)) {
                     $result['exception'] = 'Estado incorrecto';
                 } 
-                elseif (!$pedidos->setClave($_POST['clave'])) {
+                elseif (!$valoraciones->setClave($_POST['clave'])) {
                     $result['exception'] = 'Clave incorrecta';
                 } 
-                elseif ($pedidos->createRow()) {
+                elseif ($valoraciones->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Pedido creado correctamente';
+                    $result['message'] = 'Valoracion creado correctamente';
                 }
                 else {
                     $result['exception'] = Database::getException();;
                 }
                 break;
             case 'readOne':
-                if (!$pedidos->setId_Pedido($_POST['id'])) {
-                    $result['exception'] = 'Pedido incorrecto';
-                } elseif ($result['dataset'] = $pedidos->readOne()) {
+                if (!$valoraciones->setId($_POST['id'])) {
+                    $result['exception'] = 'Valoracion incorrecto';
+                } elseif ($result['dataset'] = $valoraciones->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Pedido inexistente';
+                    $result['exception'] = 'Valoracion inexistente';
                 }
                 break;
             case 'update':
                 $_POST = Validator::validateForm($_POST);
-                if (!$pedidos->setId($_POST['id'])) {
+                if (!$valoraciones->setId($_POST['id_valoracion'])) {
                     
-                    $result['exception'] = 'Pedido incorrecto';
+                    $result['exception'] = 'Valoracion incorrecto';
                 } 
-                elseif (!$data = $pedidos->readOne()) {
-                    $result['exception'] = 'Pedido inexistente';
+                elseif (!$data = $valoraciones->readOne()) {
+                    $result['exception'] = 'Valoracion inexistente';
                 } 
-                elseif (!$pedidos->setNombre($_POST['nombres'])) {
-                    $result['exception'] = 'Nombres incorrecto';
+                elseif (!$valoraciones->setId_DetallePedido($_POST['id_detalle'])) {
+                    $result['exception'] = 'Id del detalle pedido incorrecto';
                 } 
-                elseif(!$pedidos->setClave($_POST['clave'])){
-                    $result['exception'] = 'Clave incorrecto';
+                elseif(!$valoraciones->setCalificacion_Producto($_POST['calificacion'])){
+                    $result['exception'] = 'Calificación incorrecto';
                 }
-                elseif (!$pedidos->setApellido($_POST['apellidos'])) {
-                    $result['exception'] = 'Apellidos incorrecta';
+                elseif (!$valoraciones->setFecha_Comentario($_POST['fecha_comentario'])) {
+                    $result['exception'] = 'Fecha incorrecta';
                 } 
-                elseif (!$pedidos->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
+                elseif (!$valoraciones->setComentarioProducto($_POST['comentario'])) {
+                    $result['exception'] = 'Comentario incorrecto';
                 } 
-                elseif (!$pedidos->setId_genero($_POST['generos'])) {
-                    $result['exception'] = 'Seleccione un sexo';
-                } 
-                elseif (!$pedidos->setEstado(isset($_POST['estado']) ? 1 : 0)) {
+                
+                elseif (!$valoraciones->setEstado(isset($_POST['estado_comentario']) ? 1 : 0)) {
                     $result['exception'] = 'Estado incorrecto';
                 } 
-                elseif (!$pedidos->setNacimiento($_POST['nacimiento'])) {
-                    $result['exception'] = 'Fecha incorrecto';
-                } 
-                elseif (!$pedidos->setTelefono($_POST['telefono'])) {
-                    $result['exception'] = 'Telefono incorrecto';
-                } 
-                elseif(!$pedidos->setDUI($_POST['dui'])){
-                    $result['exception'] = 'DUI incorrecto';
-                }
-                elseif(!$pedidos->setDireccion($_POST['direccion'])){
-                    $result['exception'] = 'Dirección incorrecto';
-                }
-                elseif ($pedidos->updateRow()) {
+                elseif ($valoraciones->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Pedido modificado correctamente';
+                    $result['message'] = 'Valoracion modificado correctamente';
                 } 
                 else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'delete':
-                if (!$pedidos->setId($_POST['id_cliente'])) {
-                    $result['exception'] = 'Pedido incorrecto';
+                if (!$valoraciones->setId($_POST['id_Valoracion'])) {
+                    $result['exception'] = 'Valoracion incorrecto';
                 } 
-                elseif ($pedidos->deleteRow()) {
+                elseif ($valoraciones->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Pedido eliminado correctamente';
+                    $result['message'] = 'Valoracion eliminado correctamente';
                 }
                 else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'cantidadClientesCategoria':
-                if ($result['dataset'] = $pedidos->cantidadClientesCategoria()) {
+            case 'cantidadValoracionsCategoria':
+                if ($result['dataset'] = $valoraciones->cantidadValoracionsCategoria()) {
                     $result['status'] = 1;
                 } else {
                     $result['exception'] = 'No hay datos disponibles';
                 }
                 break;
-            case 'porcentajeClientesCategoria':
-                if ($result['dataset'] = $pedidos->porcentajeClientesCategoria()) {
+            case 'porcentajeValoracionsCategoria':
+                if ($result['dataset'] = $valoraciones->porcentajeValoracionsCategoria()) {
                     $result['status'] = 1;
                 } else {
                     $result['exception'] = 'No hay datos disponibles';
