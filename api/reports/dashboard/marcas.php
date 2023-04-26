@@ -5,7 +5,7 @@ require_once('../../helpers/report.php');
 $pdf = new Report;
 // Se verifica si existe el parámetro id en la url, de lo contrario se direcciona a la página web principal.
 if (isset($_GET['id_marca_producto'])) {
-    require_once('../../entities/Controller/marcas_dto.php');//marca
+    require_once('../../entities/Controller/Controller_Marcas_dto.php');//marca
     require_once('../../entities/Controller/producto.php');//producto
     // Se instancia el módelo Marcas para procesar los datos.
     $marca = new Marcas;
