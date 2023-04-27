@@ -160,7 +160,7 @@ async function openUpdate(id) {
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
         MODAL_TITLE.textContent = 'Actualizar de pedido';
-        // Se deshabilitan los campos necesarios.
+        // Se deshabilitan los campos ne    cesarios.
      //  document.getElementById('id').disabled = true;
       // document.getElementById('clave').disabled = true;
        /*  document.getElementById('clave').disabled = true;
@@ -170,8 +170,8 @@ async function openUpdate(id) {
 
         document.getElementById('direccion').value = JSON.dataset.direccion_pedido;
         document.getElementById('fecha_pedido').value = JSON.dataset.fecha_pedido;
-        fillSelect(PEDIDOS_API, 'readAllClientes', 'cliente', JSON.dataset.nombre_cliente);
-        fillSelect(PEDIDOS_API, 'readAllEstadoPedido', 'estado_pedido', JSON.dataset.estado_pedido);
+        fillSelect(PEDIDOS_API, 'readAllClientes', 'cliente', JSON.dataset.id_cliente);
+        fillSelect(PEDIDOS_API, 'readAllEstadoPedido', 'estado_pedido', JSON.dataset.id_estado_usuario);
         document.getElementById('id').value = JSON.dataset.id_pedido;
         
         

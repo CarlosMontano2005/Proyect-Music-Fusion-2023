@@ -4,5 +4,5 @@
 define('SERVER', 'localhost');
 define('DATABASE', 'music_fusion_db');
 define('USERNAME', 'postgres');
-define('PASSWORD', '1234');
+define('PASSWORD', '123');
 ?>

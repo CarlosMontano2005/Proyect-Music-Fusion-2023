@@ -54,12 +54,7 @@
           
         </div>
         <input type="search" id="search" name="search" placeholder="Buscar" data-tooltip="Buscar" required />
-        <select class="box-text col-2" aria-label="Default select example">
-          <option selected>Categoria</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+
       </form>
       <!--Agregar Producto -->
       <div class="btn-agregar">
@@ -71,7 +66,7 @@
     </div>
 
     <!-- Modal para agregar y actualizar mas el id=add-modal -->
-    <div class="modal fade " id="add-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade " id="add-modal" data-bs-backdrop="static"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
@@ -81,11 +76,6 @@
           </div>
           <div class="modal-body">
             <form class="row g-3" id="save-form">
-              <div class="invisible">
-                <p>ID</p>
-                <input type="number" class="form-control validate" placeholder="id" aria-label="id"
-                  id="id_producto" name="id_producto" required>
-              </div>
               <div class="col-md-4">
                 <p>Nombre del producto</p>
                 <input type="text" class="form-control validate" placeholder="Nombres" aria-label="Los Nombres"
@@ -138,13 +128,16 @@
                 <p>Usuario</p>
                 <select class="form-select" id="usuario" name="usuario">
                   <option selected>Seleccionar</option>
-                
                 </select>
-                
               </div>
               <div class="col-md-12">
                 <p>Imagen</p>
                 <input id="foto" name="foto"  type="file" accept=".jpg, .png" class="form-control validate" placeholder="Formatos JPG y PNG" aria-label="First name">
+              </div>
+              <div class="invisible">
+                <p>ID</p>
+                <input type="number" class="form-control validate" placeholder="id" aria-label="id"
+                  id="id_producto" name="id_producto" required>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Acción</button>

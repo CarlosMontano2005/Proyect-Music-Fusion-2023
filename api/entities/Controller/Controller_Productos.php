@@ -56,7 +56,7 @@ class ControllerProductos extends ModelProductos
 
     public function setDescripcion_Producto($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 50)) {
+        if (Validator::validateAlphanumeric($value, 1, 500)) {
             $this->descripcion = $value;
             return true;
         } else {
