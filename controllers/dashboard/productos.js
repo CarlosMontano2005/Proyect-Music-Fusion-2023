@@ -24,7 +24,7 @@ const OPTIONS = {
 //Constante para establecer la modal de guardar.
 //const SAVE_MODAL = M.Modal.getInstance(document.getElementById('save-modal'));
 
-const SAVE_MODAL = document.getElementById('add-modal');
+const SAVE_MODAL = new bootstrap.Modal(document.getElementById('add-modal'));
 
 /*//////////// 
 const myModal = document.getElementById('myModal')
@@ -70,6 +70,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
         // Se cierra la caja de diálogo.
+        SAVE_MODAL.hide();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
