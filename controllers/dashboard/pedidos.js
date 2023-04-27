@@ -94,7 +94,6 @@ async function fillTable(form = null) {
                     <td class="td-button">
                         <button  onclick="openUpdate(${row.id_pedido})" class="button_edit button-modal" type="button" data-bs-toggle="modal"  data-tooltip="Actualizar"
                         data-bs-target="#add-modal"><i class='bx bxs-edit'  style="color: white;"></i></button>
-                        <button onclick="openDelete(${row.id_pedido})" class="button_delet" data-tooltip="Eliminar"><i class='bx bx-trash'></i></button>
                         <button onclick="openUpdate(${row.id_pedido})" class="button_updet"><i class='bx bx-refresh'></i></button>
                     </td>
                 </tr>

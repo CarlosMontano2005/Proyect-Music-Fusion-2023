@@ -10,10 +10,11 @@ class ModelPedidos
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_producto, precio_detalle_producto
-        FROM detalles_pedidos INNER JOIN productos USING(id_producto)
-     WHERE  cast(id_pedido as varchar) ILIKE ? OR nombre_producto ILIKE ?
-                 ORDER BY id_pedido';
+        $sql = 'SELECT id_pedido, estado_pedido, fecha_pedido, direccion_pedido, nombre_cliente
+        FROM pedidos INNER JOIN estado_pedidos USING(id_estado_pedido)
+		INNER JOIN clientes USING(id_cliente)   
+		WHERE  cast(id_pedido as varchar) ILIKE ? OR nombre_cliente ILIKE ?
+		ORDER BY (id_pedido);';
         $params = array( "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
@@ -65,10 +66,10 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
         // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
         /*($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;*/
 
-        $sql = 'UPDATE clientes
-        SET  nombre_cliente=?, apellido_cliente=?, correo_cliente=?, fecha_nacimiento=?, dui=?, id_genero=?, telefono_cliente=?, clave=?, estado=?, direccion_cliente=?
-        WHERE id_cliente=?';
-        $params = array($this->nombre_cliente, $this->apellido_cliente, $this->correo_cliente, $this->fecha_nacimiento, $this->dui_cliente, $this->id_genero, $this->telefono_cliente, $this->clave,$this->estado,$this->direccion_cliente, $this->id);
+        $sql = 'UPDATE pedidos
+        SET fecha_pedido=?, direccion_pedido=?, id_cliente=?, id_estado_pedido=?
+	    WHERE id_pedido=?';
+        $params = array($this->fecha_pedido, $this->direccion_pedido, $this->id_cliente, $this->id_estado_pedido, $this->id_pedido);
         return Database::executeRow($sql, $params);
     }
 

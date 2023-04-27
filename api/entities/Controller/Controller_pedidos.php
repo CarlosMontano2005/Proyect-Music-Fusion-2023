@@ -39,8 +39,8 @@ class ControllerPedidos extends ModelPedidos
 
     public function setDireccion_Pedido($value)
     {
-        if (Validator::validateAlphabetic($value)) {
-            $this->direccion_pedido = $value; 
+        if (Validator::validateString($value, 1, 200)) {
+            $this->direccion_pedido = $value;
             return true;
         } else {
             return false;
@@ -49,7 +49,7 @@ class ControllerPedidos extends ModelPedidos
 
     public function setId_Cliente($value)
     {
-        if (Validator::validateNaturalNumbre($value)) {
+        if (Validator::validateNaturalNumber($value)) {
             $this->id_cliente = $value;
             return true;
         } else {

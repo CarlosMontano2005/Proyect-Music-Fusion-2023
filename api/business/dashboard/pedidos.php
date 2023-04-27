@@ -112,53 +112,35 @@ if (isset($_GET['action'])) {
                 break;
             case 'update':
                 $_POST = Validator::validateForm($_POST);
-                if (!$pedidos->setId($_POST['id'])) {
+                if (!$pedidos->setId_Pedido($_POST['id'])) {
                     
                     $result['exception'] = 'Pedido incorrecto';
                 } 
                 elseif (!$data = $pedidos->readOne()) {
                     $result['exception'] = 'Pedido inexistente';
                 } 
-                elseif (!$pedidos->setNombre($_POST['nombres'])) {
-                    $result['exception'] = 'Nombres incorrecto';
+                elseif (!$pedidos->setFecha_Pedido($_POST['fecha_pedido'])) {
+                    $result['exception'] = 'fecha incorrecto';
                 } 
-                elseif(!$pedidos->setClave($_POST['clave'])){
-                    $result['exception'] = 'Clave incorrecto';
+                elseif(!$pedidos->setDireccion_Pedido($_POST['direccion'])){
+                    $result['exception'] = 'Direccion incorrecta';
                 }
-                elseif (!$pedidos->setApellido($_POST['apellidos'])) {
-                    $result['exception'] = 'Apellidos incorrecta';
+                elseif (!$pedidos->setId_Cliente($_POST['cliente'])) {
+                    $result['exception'] = 'Seleccione un cliente';
                 } 
-                elseif (!$pedidos->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
+                elseif (!$pedidos->setId_Estado_Pedido($_POST['estado_pedido'])) {
+                    $result['exception'] = 'Seleccione un estado del pedido';
                 } 
-                elseif (!$pedidos->setId_genero($_POST['generos'])) {
-                    $result['exception'] = 'Seleccione un sexo';
-                } 
-                elseif (!$pedidos->setEstado(isset($_POST['estado']) ? 1 : 0)) {
-                    $result['exception'] = 'Estado incorrecto';
-                } 
-                elseif (!$pedidos->setNacimiento($_POST['nacimiento'])) {
-                    $result['exception'] = 'Fecha incorrecto';
-                } 
-                elseif (!$pedidos->setTelefono($_POST['telefono'])) {
-                    $result['exception'] = 'Telefono incorrecto';
-                } 
-                elseif(!$pedidos->setDUI($_POST['dui'])){
-                    $result['exception'] = 'DUI incorrecto';
-                }
-                elseif(!$pedidos->setDireccion($_POST['direccion'])){
-                    $result['exception'] = 'Dirección incorrecto';
-                }
                 elseif ($pedidos->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Pedido modificado correctamente';
                 } 
                 else {
-                    $result['exception'] = Database::getException();
+                    $result['exception'] =  Database::getException();
                 }
                 break;
             case 'delete':
-                if (!$pedidos->setId($_POST['id_cliente'])) {
+                if (!$pedidos->setId($_POST['id_pedido'])) {
                     $result['exception'] = 'Pedido incorrecto';
                 } 
                 elseif ($pedidos->deleteRow()) {
