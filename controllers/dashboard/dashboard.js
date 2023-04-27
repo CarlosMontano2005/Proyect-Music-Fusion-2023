@@ -99,9 +99,9 @@ async function fillTable(form = null) {
                 <tr>
                     <td>${row.id_producto}</td>
                     <td>${row.nombre_producto}</td>
-                    <td>${row.descripcion}</td>
                     <td>${row.precio_producto}</td>
                     <td>${row.nombre_marca}</td>
+                    <td>${row.descripcion}</td>
                     <td><img src="${SERVER_URL}img/productos/${row.imagen_producto}" height="100"></td>
                 </tr>
                 `;
