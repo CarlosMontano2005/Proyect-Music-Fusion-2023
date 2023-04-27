@@ -1,6 +1,6 @@
 // Constante para completar la ruta de la API.
 const PRODUCTO_API = 'business/dashboard/Productos.php';
-const USUARIO_API = 'business/dashboard/usuario.php';
+const USUARIO_API = 'business/dashboard/Usuario.php';
 
 const MARCA_PRODUCTO_API = 'business/dashboard/Marca_Producto.php';
 const CATEGORIA_PRODUCTO_API = 'business/dashboard/Categoria_Producto.php';

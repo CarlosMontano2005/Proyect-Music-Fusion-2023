@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const USUARIO_API = 'business/dashboard/usuario.php';
+const USUARIO_API = 'business/dashboard/Usuario.php';
 
 const TIPO_USUARIO_API = 'business/dashboard/Tipo_Usuarios.php';
 const ESTADO_USUARIO_API = 'business/dashboard/Estado_Usuarios.php';

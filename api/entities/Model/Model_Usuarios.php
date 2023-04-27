@@ -40,6 +40,8 @@ class ModelUsuarios
         }
     }
     
+    //Metodo de busqueda
+
     public function searchRows($value)
     {
         $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, telefono_usuario, id_tipo_usuario, tipo_usuario, id_estado_usuario, estado_usuario, alias_usuario, foto
@@ -50,6 +52,8 @@ class ModelUsuarios
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
+
+    //Metodos para leer los datos
 
     public function readAll()
     {
@@ -70,6 +74,8 @@ class ModelUsuarios
         return Database::getRow($sql, $params);
     }
 
+    //Metodo para crear 
+
     public function createRow()
     {
         $sql = 'INSERT INTO usuarios(nombre_usuario, apellido_usuario, correo_usuario, clave_usuario, telefono_usuario, id_tipo_usuario, id_estado_usuario, alias_usuario, foto)
@@ -77,6 +83,8 @@ class ModelUsuarios
         $params = array($this->nombre, $this->apellido, $this->correo, $this->clave, $this->telefono, $this->id_tipo_usuario, $this->id_estado_usuario, $this->alias, $this->foto);
         return Database::executeRow($sql, $params);
     }
+
+    //Metodo para actualizar
 
     public function updateRow($current_image)
     {
@@ -89,6 +97,8 @@ class ModelUsuarios
         $params = array($this->nombre, $this->apellido, $this->correo, $this->telefono, $this->id_tipo_usuario, $this->id_estado_usuario, $this->foto, $this->id_usuario);
         return Database::executeRow($sql, $params);
     }
+
+    //Metodo para eliminar
 
     public function deleteRow()
     {

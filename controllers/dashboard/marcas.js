@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const MARCAS_API = 'business/dashboard/marcas.php';
+const MARCAS_API = 'business/dashboard/Marcas.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
