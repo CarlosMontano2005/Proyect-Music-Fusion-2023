@@ -1,6 +1,6 @@
 // Constante para completar la ruta de la API.
-const DET_PEDIDOS_API = 'business/dashboard/detalles_pedidos.php';
-const VALORACION_API = 'business/dashboard/detalles_Valoraciones.php';
+const DET_PEDIDOS_API = 'business/dashboard/Detalles_Pedidos.php';
+const VALORACION_API = 'business/dashboard/Detalles_Valoraciones.php';
 const PRODUCTO = 'business/dashboard/Productos.php';
 
 // Constante para establecer el formulario de buscar.
