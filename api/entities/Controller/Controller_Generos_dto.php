@@ -39,7 +39,7 @@ class Genero extends GenerosQueries
     */
     public function getId()
     {
-        return $this->id;
+        return $this->id_genero;
     }
     
     public function getGeneros()
