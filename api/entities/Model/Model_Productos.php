@@ -12,7 +12,7 @@ class ModelProductos
     
     public function searchRows($value)
     {
-        $sql = 'SELECT id_producto, nombre_producto, id_marca_producto, nombre_marca, precio_producto, id_categoria_producto, nombre_categoria, descripcion, id_estado_producto, estado_producto, imagen_producto, id_usuario, nombre_usuario
+        $sql = 'SELECT id_producto, nombre_producto, id_marca_producto, nombre_marca, precio_producto, id_categoria_producto, nombre_categoria, descripcion, id_estado_producto, estado_producto, imagen_producto, id_usuario, nombre_usuario, cantidad_producto, fecha_compra
         FROM productos INNER JOIN marcas USING(id_marca_producto)
         INNER JOIN estados_productos using (id_estado_producto)
         INNER JOIN categorias using (id_categoria_producto)
@@ -25,7 +25,7 @@ class ModelProductos
 
     public function readAll()
     {
-        $sql = 'SELECT id_producto, nombre_producto, id_marca_producto, nombre_marca, precio_producto, id_categoria_producto, nombre_categoria, descripcion, id_estado_producto, estado_producto, imagen_producto, id_usuario, nombre_usuario
+        $sql = 'SELECT id_producto, nombre_producto, id_marca_producto, nombre_marca, precio_producto, id_categoria_producto, nombre_categoria, descripcion, id_estado_producto, estado_producto, imagen_producto, id_usuario, nombre_usuario, cantidad_producto, fecha_compra
                 FROM productos INNER JOIN marcas USING(id_marca_producto)
 				INNER JOIN estados_productos using (id_estado_producto)
                 INNER JOIN categorias using (id_categoria_producto)
@@ -36,7 +36,7 @@ class ModelProductos
 
     public function readOne()
     {
-        $sql = 'SELECT id_producto, nombre_producto, id_marca_producto, nombre_marca, precio_producto, id_categoria_producto, nombre_categoria, descripcion, id_estado_producto, estado_producto, imagen_producto, id_usuario, nombre_usuario
+        $sql = 'SELECT id_producto, nombre_producto, id_marca_producto, nombre_marca, precio_producto, id_categoria_producto, nombre_categoria, descripcion, id_estado_producto, estado_producto, imagen_producto, id_usuario, nombre_usuario, cantidad_producto, fecha_compra
                 FROM productos INNER JOIN marcas USING(id_marca_producto)
                 INNER JOIN estados_productos using (id_estado_producto)
                 INNER JOIN categorias using (id_categoria_producto)
@@ -48,18 +48,18 @@ class ModelProductos
 
     public function createRow()
     {
-        $sql = 'INSERT INTO productos(nombre_producto, id_marca_producto, precio_producto, id_categoria_producto, descripcion, id_estado_producto, imagen_producto, id_usuario)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre_producto, $this->id_marca_producto, $this->precio_producto, $this->id_categoria_producto, $this->descripcion, $this->id_estado_producto, $this->imagen, $this->id_usuario);
+        $sql = 'INSERT INTO productos(nombre_producto, id_marca_producto, precio_producto, id_categoria_producto, descripcion, id_estado_producto, imagen_producto, id_usuario, cantidad_producto, fecha_compra)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombre_producto, $this->id_marca_producto, $this->precio_producto, $this->id_categoria_producto, $this->descripcion, $this->id_estado_producto, $this->imagen, $this->id_usuario, $this->cantidad_producto, $this->fecha_compra);
         return Database::executeRow($sql, $params);
     }
 
     public function updateRow()
     {
         $sql = 'UPDATE productos 
-                SET nombre_producto = ?, id_marca_producto = ?, precio_producto = ?, id_categoria_producto = ?, descripcion = ?, id_estado_producto = ?, id_usuario = ?, imagen_producto = ?
+                SET nombre_producto = ?, id_marca_producto = ?, precio_producto = ?, id_categoria_producto = ?, descripcion = ?, id_estado_producto = ?, id_usuario = ?, imagen_producto = ?, cantidad_producto = ?, fecha_compra = ?
                 WHERE id_producto = ?';
-        $params = array($this->nombre_producto, $this->id_marca_producto, $this->precio_producto, $this->id_categoria_producto, $this->descripcion, $this->id_estado_producto, $this->id_usuario, $this->imagen, $this->id_producto);
+        $params = array($this->nombre_producto, $this->id_marca_producto, $this->precio_producto, $this->id_categoria_producto, $this->descripcion, $this->id_estado_producto, $this->id_usuario, $this->imagen, $this->cantidad_producto, $this->fecha_compra, $this->id_producto);
         return Database::executeRow($sql, $params);
     }
 

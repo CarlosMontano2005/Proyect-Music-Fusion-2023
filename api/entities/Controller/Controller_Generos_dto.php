@@ -1,6 +1,6 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/Model/generos_queries.php');
+require_once('../../entities/Model/Model_Generos_queries.php');
 
 /*
 *	Clase para manejar la transferencia de datos de la entidad generos.

@@ -63,6 +63,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
     const JSON = await dataFetch(PRODUCTO_API, action, FORM);
+    // Si se realiza la accion se cierra el modal automaticamente
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     console.log("proceso submit");
     if (JSON.status) {
@@ -102,6 +103,8 @@ async function fillTable(form = null) {
                     <td>${row.precio_producto}</td>
                     <td>${row.nombre_categoria}</td>
                     <td>${row.descripcion}</td>
+                    <td>${row.cantidad_producto}</td>
+                    <td>${row.fecha_compra}</td>
                     <td>${row.estado_producto}</td>
                     <td>${row.nombre_usuario}</td>
                     <td><img src="${SERVER_URL}img/productos/${row.imagen_producto}" height="100"></td>
@@ -152,6 +155,8 @@ function openCreate() {
     document.getElementById('precio_producto').required = true;
     document.getElementById('categoria').required = true;
     document.getElementById('descripcion').required = true;
+    document.getElementById('cantidad').required = true;
+    document.getElementById('fecha').required = true;
     document.getElementById('id_estado_producto').required = true;
     document.getElementById('usuario').required = true;
     document.getElementById('foto').required = true;
@@ -193,6 +198,8 @@ async function openUpdate(id) {
         fillSelect(ESTADO_PRODUCTO_API, 'readAll', 'id_estado_producto', JSON.dataset.id_estado_producto);
         fillSelect(USUARIO_PRODUCTO_API, 'readAll', 'usuario', JSON.dataset.id_usuario);
         document.getElementById('foto').required = false;
+        document.getElementById('cantidad').value = JSON.dataset.cantidad_producto;
+        document.getElementById('fecha').value = JSON.dataset.fecha_compra;
         console.log("proceso abri caja modal de actualizar");//mensaje 
         // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
         //M.updateTextFields();
