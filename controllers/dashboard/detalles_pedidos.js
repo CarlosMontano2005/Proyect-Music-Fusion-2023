@@ -91,7 +91,7 @@ async function fillTable(form = null) {
                     <td>${row.id_detalle_pedido}</td>
                     <td>${row.id_pedido}</td>
                     <td>${row.nombre_producto}</td>
-                    <td>${row.cantidad_producto}</td>
+                    <td>${row.cantidad_detalle_producto}</td>
                     <td>${row.precio_detalle_producto}</td>
                     <td class="td-button">
                         <button onclick="openUpdate(${row.id_detalle_pedido})"  class="button_edit" data-bs-toggle="modal" data-bs-target="#add-modal-detalle" ><i class='bx bx-edit' ></i></button>
@@ -138,7 +138,7 @@ async function openUpdate(id) {
         // Se inicializan los campos del formulario.
         document.getElementById('id_detalle_pedido').value = JSON.dataset.id_detalle_pedido;
         document.getElementById('id_pedido').value = JSON.dataset.id_pedido;
-        document.getElementById('cantidad').value = JSON.dataset.cantidad_producto;
+        document.getElementById('cantidad').value = JSON.dataset.cantidad_detalle_producto;
         document.getElementById('precio_detalle').value = JSON.dataset.precio_detalle_producto;
         fillSelect(PRODUCTO, 'readAll', 'id_Producto', JSON.dataset.id_producto);
         console.log("proceso abri caja modal de actualizar");//mensaje 

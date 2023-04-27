@@ -17,7 +17,7 @@ class ModelProductos
         INNER JOIN estados_productos using (id_estado_producto)
         INNER JOIN categorias using (id_categoria_producto)
         INNER JOIN usuarios using (id_usuario)
-        WHERE nombre_producto ILIKE ? OR precio_producto ILIKE ?
+        WHERE nombre_producto ILIKE ? OR cast(precio_producto as varchar) ILIKE ?
         ORDER BY nombre_producto';
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);

@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     } else {
         // Se comprueba si la página web es la principal, de lo contrario se direcciona a iniciar sesión.
-        if (location.pathname == '/Proyect-Music-Fusion-2023/views/dashboard/index.html') {
+        if (location.pathname == '/proyect-music-fusion-2023/views/dashboard/index.html') {
             /* HEADER.innerHTML = `
                 <div class="navbar-fixed">
                     <nav>

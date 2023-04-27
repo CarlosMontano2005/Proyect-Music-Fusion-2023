@@ -10,7 +10,7 @@ class Detalles_Pedidos_Queries
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_producto, precio_detalle_producto
+        $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_detalle_producto, precio_detalle_producto
         FROM detalles_pedidos INNER JOIN productos USING(id_producto)
      WHERE  cast(id_pedido as varchar) ILIKE ? OR nombre_producto ILIKE ?
                  ORDER BY id_pedido';
@@ -20,14 +20,14 @@ class Detalles_Pedidos_Queries
 
     public function readAll()
     {
-        $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_producto, precio_detalle_producto
+        $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_detalle_producto, precio_detalle_producto
         FROM detalles_pedidos INNER JOIN productos USING(id_producto) ORDER BY (id_pedido) ;';
         return Database::getRows($sql);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_producto, precio_detalle_producto
+        $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_detalle_producto, precio_detalle_producto
         FROM detalles_pedidos INNER JOIN productos USING(id_producto)   
         WHERE id_detalle_pedido = ?';
         $params = array($this->id);
@@ -36,7 +36,7 @@ class Detalles_Pedidos_Queries
     
     public function readOneValoracion()
     {
-        $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_producto, precio_detalle_producto
+        $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_detalle_producto, precio_detalle_producto
         FROM detalles_pedidos INNER JOIN productos USING(id_producto) WHERE id_detalle_pedido = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
@@ -58,7 +58,7 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
         /*($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;*/
 
         $sql = 'UPDATE detalles_pedidos
-        SET id_pedido=?, id_producto=?, cantidad_producto=?, precio_detalle_producto=?
+        SET id_pedido=?, id_producto=?, cantidad_detalle_producto=?, precio_detalle_producto=?
         WHERE id_detalle_pedido =?;';
         $params = array($this->id_pedido, $this->id_producto, $this->cantidad_producto, $this->precio_detalle_producto, $this->id);
         return Database::executeRow($sql, $params);
