@@ -333,7 +333,7 @@ header .icons #menu-bars{
 }
 
 .menu .box-container .box .image .bx-left{
-    position:absolute;
+    position: absolute;
     top: 1.5rem;
     background: #eee;
     border-radius: 50%;
@@ -342,6 +342,7 @@ header .icons #menu-bars{
     line-height: 5rem;
     font-size: 2rem;
     color: var(--black);
+    text-align: center;
 }
 
 .menu .box-container .box .image .bx-left:hover{
@@ -387,7 +388,7 @@ header .icons #menu-bars{
 }
 
 .menu .box-container .box .bx-left{
-    right: -15rem;
+   right: -15rem;
 }
 
 .menu .box-container .box:hover .bx-left{
