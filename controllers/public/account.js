@@ -4,7 +4,7 @@
 */
 
 // Constante para completar la ruta de la API.
-const USER_API = 'business/public/cliente.php';
+const USER_API = 'business/public/clientes.php';
 // Constantes para establecer las etiquetas de encabezado y pie de la página web.
 const HEADER = document.querySelector('header');
 const FOOTER = document.querySelector('footer');
@@ -33,7 +33,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             <i class='bx bx-shopping-bag'></i>
             <a onclick="logOut()"><i class='bx bx-log-out'></i></a>    
         </div>
-        `;
+        `
+        ;
+        
     } else {
         HEADER.innerHTML = `
         <a href="#" class="logo"><i class="fas-fa-utensils"></i>Music Funsion</a>
@@ -44,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <a href="#accesorios">Accesorios</a>
             <a href="#acerca de">Acerca de</a>
             <a href="#tendencia">tendencia</a>
-            <a href="#orden">orden</a>
+            <a href="#orden">Ordenes</a>
         </nav>
 
         <div class="icons">
@@ -53,8 +55,71 @@ document.addEventListener('DOMContentLoaded', async () => {
             <i class='bx bx-shopping-bag'></i>
             <a href="../../views/public/login.html"><i class='bx bx-user' ></i></a>    
         </div>
-        `;
+        
+        `
+        ;
+        let menu = document.querySelector('#menu-bars');
+        let navbar = document.querySelector('.navbar');
+
+        menu.onclick = () =>{
+            menu.classList.toggle("menu-bars");
+            navbar.classList.toggle('active');
+        }
+
+        window.onscroll = () =>{
+            menu.classList.remove("bx bx-x");
+            navbar.classList.remove('active');
+        }
+
+        document.querySelector('#search-icon').onclick = () =>{
+            document.querySelector('#search-form').classList.toggle('active');
+        }
+
+        document.querySelector('#close').onclick = () =>{
+            document.querySelector('#search-form').classList.remove('active');
+        }
+
+        var swiper = new Swiper(".home-slider", {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+              delay: 3500,
+              disableOnInteraction: false,
+            },
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+            },
+            loop:true,
+          });
+
+          var swiper = new Swiper(".review-slider", {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+              delay: 7500,
+              disableOnInteraction: false,
+            },
+            loop:true,
+            breakpoints: {
+              0: {
+                slidesPerView: 1,
+              },
+              640: {
+                slidesPerView: 2,
+              },
+              768: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            },
+          });
+        
+        
     }
+    
     // Se establece el pie del encabezado.
     FOOTER.innerHTML = `
     <div class="container">
@@ -131,6 +196,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     </div>
   </div>
     `;
+    
     // Se inicializa el componente Sidenav para que funcione la navegación lateral.
     
 });
