@@ -55,73 +55,82 @@ document.addEventListener('DOMContentLoaded', async () => {
         </div>
         `;
     }
-    // Se define el componente Parallax.
-    const PARALLAX = `
-            <div class="parallax-container">
-                <div class="parallax">
-                    <img id="parallax" src='../../resources/img/parallax/'>
-                </div>
-            </div>
-        `;
-    // Se agrega el componente Parallax antes de la etiqueta footer.
-    FOOTER.insertAdjacentHTML('beforebegin', PARALLAX);
     // Se establece el pie del encabezado.
     FOOTER.innerHTML = `
-        <div class="container">
-            <div class="row">
-                <div class="col s12 m6 l6">
-                    <h5 class="white-text">Nosotros</h5>
-                    <p>
-                        <blockquote>
-                            <a href="#" class="white-text"><b>Misión</b></a>
-                            <span>|</span>
-                            <a href="#" class="white-text"><b>Visión</b></a>
-                            <span>|</span>
-                            <a href="#" class="white-text"><b>Valores</b></a>
-                        </blockquote>
-                        <blockquote>
-                            <a href="#" class="white-text"><b>Términos y condiciones</b></a>
-                        </blockquote>
-                    </p>
-                </div>
-                <div class="col s12 m6 l6">
-                    <h5 class="white-text">Contáctanos</h5>
-                    <p>
-                        <blockquote>
-                            <a href="https://www.facebook.com/" class="white-text" target="_blank"><b>facebook</b></a>
-                            <span>|</span>
-                            <a href="https://www.instagram.com/" class="white-text" target="_blank"><b>instagram</b></a>
-                            <span>|</span>
-                            <a href="https://www.youtube.com/" class="white-text" target="_blank"><b>youtube</b></a>
-                        </blockquote>
-                        <blockquote>
-                            <a href="mailto:dacasoft@outlook.com" class="white-text"><b>Correo electrónico</b></a>
-                            <span>|</span>
-                            <a href="https://api.whatsapp.com/" class="white-text" target="_blank"><b>WhatsApp</b></a>
-                        </blockquote>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container">
-                <span>© 2018-2023 Copyright CoffeeShop. Todos los derechos reservados.</span>
-                <span class="right">Diseñado con
-                    <a href="http://materializecss.com/" target="_blank">
-                        <img src="../../resources/img/materialize.png" height="20" style="vertical-align:middle" alt="Materialize">
-                    </a>
-                </span>
-            </div>
-        </div>
+    <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h6>MUSIC FUSION</h6>
+        <p class="text-justify">
+            Music Fusion © 2022 All Rights Reserved - Creado Estudiantes del Instituto Tecnico Ricaldone 
+        </p>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <h6>Socios</h6>
+        <ul class="footer-links">
+          <li><a href="http://scanfcode.com/category/c-language/">OMNI MUSIC</a></li>
+          <li>
+            <a href="http://scanfcode.com/category/front-end-development/"
+              >SUPERSONIDOS MUSIC</a
+            >
+          </li>
+          <li>
+            <a href="http://scanfcode.com/category/back-end-development/"
+              >PROAVANCE</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <h6>Patrocinadores</h6>
+        <ul class="footer-links">
+          
+          <li>
+            <a href="http://scanfcode.com/contribute-at-scanfcode/"
+              >COCACOLA</a
+            >
+          </li>
+          <li>
+            <a href="http://scanfcode.com/privacy-policy/"
+              >MUSIC LIC</a
+            >
+          </li>
+          <li><a href="http://scanfcode.com/sitemap/">SPOTIFY</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-6 col-xs-12">
+        <p class="copyright-text">
+          Music Fusion &copy; 2022 All Rights Reserved - Creado Estudiantes del Instituto Tecnico Ricaldone 
+          <a href="#">Music Fusion</a>.
+        </p>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <ul class="social-icons">
+          <li>
+            <a class="facebook" href="#"><i class='bx bxl-facebook'></i></a>
+          </li>
+          <li>
+            <a class="twitter" href="#"><i class='bx bxl-twitter' ></i></a>
+          </li>
+          <li>
+            <a class="spotify" href="#"><i class='bx bxl-spotify' ></i></a>
+          </li>
+          <li>
+            <a class="linkedin" href="#"><i class='bx bx-music' ></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
     `;
     // Se inicializa el componente Sidenav para que funcione la navegación lateral.
-    M.Sidenav.init(document.querySelectorAll('.sidenav'));
-    // Se declara e inicializa un arreglo con los nombres de las imagenes que se pueden utilizar en el efecto parallax.
-    const IMAGES = ['img01.jpg', 'img02.jpg', 'img03.jpg', 'img04.jpg', 'img05.jpg'];
-    // Se declara e inicializa una constante para obtener un elemento del arreglo de forma aleatoria.
-    const ELEMENT = Math.floor(Math.random() * IMAGES.length);
-    // Se asigna la imagen a la etiqueta img por medio del atributo src.
-    document.getElementById('parallax').src += IMAGES[ELEMENT];
-    // Se inicializa el efecto Parallax.
-    M.Parallax.init(document.querySelectorAll('.parallax'));
+    
 });
