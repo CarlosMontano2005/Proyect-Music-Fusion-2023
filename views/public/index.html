@@ -20,8 +20,12 @@
       href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
     />
     <!--BOOSTRAP-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
   </head>
 
   <body>
@@ -41,23 +45,12 @@
         <i class="bx bx-menu" id="menu-bars"></i>
         <i class="bx bx-search-alt-2" id="search-icon"></i>
         <i class="bx bx-shopping-bag"></i>
-        <a href="../../views/public/login.html"
-          ><i class='bx bx-user'></i></a>
+        <a href="../../views/public/login.html"><i class="bx bx-user"></i></a>
       </div>
     </header>
     <!-- header section ends -->
 
     <!-- search form -->
-    <form action="" id="search-form">
-      <input
-        type="search"
-        placeholder="Search here..."
-        name=""
-        id="search-box"
-      />
-      <label for="search-box" class="bx bx-search-alt-2"></label>
-      <i class="bx bx-x" id="close"></i>
-    </form>
 
     <!--home section starts-->
 
@@ -125,72 +118,25 @@
     <!-- intruments section starts -->
 
     <section class="dishes" id="dishes">
-      <h3 class="sub-heading">our dishes</h3>
-      <h1 class="heading">popular dishes</h1>
+      <h3 class="sub-heading">Categorias de Instrumentos</h3>
+      <h1 class="heading" id="title">Categorias de Instrumentos</h1>
 
-      <div class="box-container">
+      <div class="box-container" id="categorias">
         <div class="box">
           <i class="bx bx-shopping-bag bx-left"></i>
           <i class="bx bx-show-alt"></i>
           <img src="../../img/productos/bateria-negra.png" alt="" />
-          <h3>tasty food</h3>
+          <h3>Nombre de la Categoria</h3>
           <div class="stars">
+            <!--Valoracion con estrella-->
             <i class="bx bxs-star"></i>
             <i class="bx bxs-star"></i>
             <i class="bx bxs-star"></i>
             <i class="bx bxs-star"></i>
             <i class="bx bxs-star-half"></i>
           </div>
-          <span>$69.99</span>
-          <a href="#" class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-          <i class="bx bx-shopping-bag bx-left"></i>
-          <i class="bx bx-show-alt"></i>
-          <img src="../../img/productos/bateria-negra.png" alt="" />
-          <h3>tasty food</h3>
-          <div class="stars">
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star-half"></i>
-          </div>
-          <span>$69.99</span>
-          <a href="#" class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-          <i class="bx bx-shopping-bag bx-left"></i>
-          <i class="bx bx-show-alt"></i>
-          <img src="../../img/productos/bateria-negra.png" alt="" />
-          <h3>tasty food</h3>
-          <div class="stars">
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star-half"></i>
-          </div>
-          <span>$69.99</span>
-          <a href="#" class="btn">add to cart</a>
-        </div>
-
-        <div class="box">
-          <i class="bx bx-shopping-bag bx-left"></i>
-          <i class="bx bx-show-alt"></i>
-          <img src="../../img/productos/bateria-negra.png" alt="" />
-          <h3>tasty food</h3>
-          <div class="stars">
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star-half"></i>
-          </div>
-          <span>$69.99</span>
-          <a href="#" class="btn">add to cart</a>
+          <!--<span>$69.99</span>-->
+          <a href="#" class="btn">Ver Instrumentos</a>
         </div>
 
         <div class="box">
@@ -280,14 +226,17 @@
     <!-- menu section starts -->
 
     <section class="menu" id="menu">
-      <h3 class="sub-heading">our menu</h3>
-      <h1 class="heading">today's spaciality</h1>
+      <h3 class="sub-heading">Titulo</h3>
+      <h1 class="heading">Titulo</h1>
 
       <div class="box-container">
         <div class="box">
           <div class="image">
-            <img src="../../img/public/guitarra.png" alt="" />
-            <a href="#" class="bx bx-shopping-bag bx-left"></a>
+            <img
+              src="${SERVER_URL}img/categorias/${row.imagen_categoria}"
+              alt="imagen-categoria"
+            />
+            <a href="${url}" class="bx bx-shopping-bag bx-left"></a>
           </div>
           <div class="content">
             <div class="stars">
@@ -297,10 +246,10 @@
               <i class="bx bxs-star"></i>
               <i class="bx bxs-star-half"></i>
             </div>
-            <h3>esta cambiar</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipsicing elit</p>
-            <a href="#" class="btn">add to cart</a>
-            <span class="price">$12.99</span>
+            <h3>${row.nombre_categoria}</h3>
+            <p>${row.descripcion_categoria}</p>
+            <a href="${url}" class="btn">Ver Instrumentos</a>
+            <!-- <span class="price">$12.99</span>-->
           </div>
         </div>
         <div class="box">
@@ -666,14 +615,19 @@
           <div class="col-sm-12 col-md-6">
             <h6>MUSIC FUSION</h6>
             <p class="text-justify">
-                Music Fusion © 2022 All Rights Reserved - Creado Estudiantes del Instituto Tecnico Ricaldone 
+              Music Fusion © 2022 All Rights Reserved - Creado Estudiantes del
+              Instituto Tecnico Ricaldone
             </p>
           </div>
 
           <div class="col-xs-6 col-md-3">
             <h6>Socios</h6>
             <ul class="footer-links">
-              <li><a href="http://scanfcode.com/category/c-language/">OMNI MUSIC</a></li>
+              <li>
+                <a href="http://scanfcode.com/category/c-language/"
+                  >OMNI MUSIC</a
+                >
+              </li>
               <li>
                 <a href="http://scanfcode.com/category/front-end-development/"
                   >SUPERSONIDOS MUSIC</a
@@ -690,16 +644,13 @@
           <div class="col-xs-6 col-md-3">
             <h6>Patrocinadores</h6>
             <ul class="footer-links">
-              
               <li>
                 <a href="http://scanfcode.com/contribute-at-scanfcode/"
                   >COCACOLA</a
                 >
               </li>
               <li>
-                <a href="http://scanfcode.com/privacy-policy/"
-                  >MUSIC LIC</a
-                >
+                <a href="http://scanfcode.com/privacy-policy/">MUSIC LIC</a>
               </li>
               <li><a href="http://scanfcode.com/sitemap/">SPOTIFY</a></li>
             </ul>
@@ -711,7 +662,8 @@
         <div class="row">
           <div class="col-md-8 col-sm-6 col-xs-12">
             <p class="copyright-text">
-              Music Fusion &copy; 2022 All Rights Reserved - Creado Estudiantes del Instituto Tecnico Ricaldone 
+              Music Fusion &copy; 2022 All Rights Reserved - Creado Estudiantes
+              del Instituto Tecnico Ricaldone
               <a href="#">Music Fusion</a>.
             </p>
           </div>
@@ -719,16 +671,16 @@
           <div class="col-md-4 col-sm-6 col-xs-12">
             <ul class="social-icons">
               <li>
-                <a class="facebook" href="#"><i class='bx bxl-facebook'></i></a>
+                <a class="facebook" href="#"><i class="bx bxl-facebook"></i></a>
               </li>
               <li>
-                <a class="twitter" href="#"><i class='bx bxl-twitter' ></i></a>
+                <a class="twitter" href="#"><i class="bx bxl-twitter"></i></a>
               </li>
               <li>
-                <a class="spotify" href="#"><i class='bx bxl-spotify' ></i></a>
+                <a class="spotify" href="#"><i class="bx bxl-spotify"></i></a>
               </li>
               <li>
-                <a class="linkedin" href="#"><i class='bx bx-music' ></i></a>
+                <a class="linkedin" href="#"><i class="bx bx-music"></i></a>
               </li>
             </ul>
           </div>
@@ -737,16 +689,16 @@
     </footer>
     <!--order section ends-->
     <!--BOOSTRAP-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-    crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="../../js/sweetalert.min.js"></script>
     <script src="../../controllers/components.js"></script>
     <script src="../../controllers/public/account.js"></script>
     <script src="../../controllers/public/index.js"></script>
-    <script src="../../resources/js/public/script.js"></script>
-    
   </body>
 </html>

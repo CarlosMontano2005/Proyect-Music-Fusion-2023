@@ -33,6 +33,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             <i class='bx bx-shopping-bag'></i>
             <a onclick="logOut()"><i class='bx bx-log-out'></i></a>    
         </div>
+
+        
         `
         ;
         
@@ -55,7 +57,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             <i class='bx bx-shopping-bag'></i>
             <a href="../../views/public/login.html"><i class='bx bx-user' ></i></a>    
         </div>
-        
+        <form action="" id="search-form">
+      <input
+        type="search"
+        placeholder="Search here..."
+        name=""
+        id="search-box"
+      />
+      <label for="search-box" class="bx bx-search-alt-2"></label>
+      <i class="bx bx-x abrir-search" id="close"></i>
+    </form>
         `
         ;
         let menu = document.querySelector('#menu-bars');
@@ -67,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         window.onscroll = () =>{
-            menu.classList.remove("bx bx-x");
+            menu.classList.remove("abrir-search");
             navbar.classList.remove('active');
         }
 

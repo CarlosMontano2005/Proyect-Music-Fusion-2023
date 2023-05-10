@@ -11,17 +11,23 @@ class ModelCategoriaProductos
 
     public function readAll()
     {
-        $sql = 'SELECT id_categoria_producto, nombre_categoria
+        $sql = 'SELECT id_categoria_producto, nombre_categoria, descripcion_categoria, imagen_categoria
         FROM categorias';
         return Database::getRows($sql);
     }
-
     public function readOne()
+    {
+        $sql = 'SELECT id_categoria_producto, nombre_categoria, descripcion_categoria, imagen_categoria
+        FROM public.categorias WHERE id_categoria_producto = ?';
+        $params = array($this->id_categoria_producto);
+        return Database::getRow($sql, $params);
+    }
+    /*public function readOne()
     {
         $sql = 'SELECT id_producto, nombre_producto, id_marca_producto, precio_producto, id_categoria_producto, descripcion, id_estado_producto, imagen_producto, id_usuario
         FROM productos INNER JOIN categorias USING(id_categoria_producto)
         WHERE id_producto = ?';
         $params = array($this->id_producto);
         return Database::getRow($sql, $params);
-    }
+    }*/
 }
