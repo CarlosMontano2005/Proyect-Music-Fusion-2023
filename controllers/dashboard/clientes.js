@@ -174,13 +174,13 @@ async function openUpdate(id) {
         document.getElementById('confirmar').disabled = true;*/
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.id_cliente;
+        fillSelect(GENERO_API, 'readAll', 'generos', JSON.dataset.id_genero);
         document.getElementById('nombres').value = JSON.dataset.nombre_cliente;
         document.getElementById('apellidos').value = JSON.dataset.apellido_cliente;
         document.getElementById('correo').value = JSON.dataset.correo_cliente;
         document.getElementById('nacimiento').value = JSON.dataset.fecha_nacimiento;
         document.getElementById('dui').value = JSON.dataset.dui;
         document.getElementById('clave').value = JSON.dataset.clave
-        fillSelect(GENERO_API, 'readAll', 'generos', JSON.dataset.id_genero);
         
         document.getElementById('telefono').value = JSON.dataset.telefono_cliente;
         document.getElementById('direccion').value = JSON.dataset.direccion_cliente;

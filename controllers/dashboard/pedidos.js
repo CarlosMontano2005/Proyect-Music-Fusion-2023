@@ -168,11 +168,11 @@ async function openUpdate(id) {
         document.getElementById('confirmar').disabled = true;*/
         // Se inicializan los campos del formulario.
 
-        document.getElementById('direccion').value = JSON.dataset.direccion_pedido;
-        document.getElementById('fecha_pedido').value = JSON.dataset.fecha_pedido;
+        document.getElementById('id').value = JSON.dataset.id_pedido;
         fillSelect(PEDIDOS_API, 'readAllClientes', 'cliente', JSON.dataset.id_cliente);
         fillSelect(PEDIDOS_API, 'readAllEstadoPedido', 'estado_pedido', JSON.dataset.id_estado_usuario);
-        document.getElementById('id').value = JSON.dataset.id_pedido;
+        document.getElementById('direccion').value = JSON.dataset.direccion_pedido;
+        document.getElementById('fecha_pedido').value = JSON.dataset.fecha_pedido;
         
         
         console.log("proceso abri caja modal de actualizar");//mensaje 
@@ -180,7 +180,7 @@ async function openUpdate(id) {
         //M.updateTextFields();
     } else {
         sweetAlert(2, JSON.exception, false);
-    }
+    }s
 }
 
 /*

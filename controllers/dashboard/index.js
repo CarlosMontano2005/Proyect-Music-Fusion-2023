@@ -37,8 +37,10 @@ LOGIN_FORM.addEventListener('submit', async (event) => {
         sweetAlert(2, JSON.exception, false);
     }
 });
-
+//comando para ver contraseñas 
+//id del boton ver clave
 verClave = document.getElementById("ver-clave");
+//campo de la clave 
 InputClaveText = document.getElementById("clave");
 checklabel = document.querySelector(".form-check-label");
 
@@ -52,4 +54,12 @@ verClave.addEventListener("click", function() {
         InputClaveText.type = "password";
         checklabel.innerText = "Monstrar Clave";
     }
+});
+
+//comando para ver mensaje de pregunta
+
+preguntaClick = document.getElementById('pregunta');
+
+preguntaClick.addEventListener("click", function() {
+    swal("Este es el login", "Debes de iniciar sesión con tus credenciales y tu contraseña asignadas", "info");
 });
