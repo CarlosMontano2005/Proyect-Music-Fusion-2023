@@ -143,22 +143,21 @@ if (isset($_GET['action'])) {
                     elseif (!is_uploaded_file($_FILES['foto']['tmp_name'])) {
                         if ($producto->updateRow($data['imagen_producto'])) {
                             $result['status'] = 1;
-                            $result['message'] = 'Producto modificado correctamente';
+                            $result['message'] = 'Producto modificada correctamente';
                         } else {
                             $result['exception'] = Database::getException();
                         }
-                    } 
-                    elseif (!$producto->setImagen($_FILES['foto'])) {
+                    } elseif (!$producto->setImagen($_FILES['foto'])) {
                         $result['exception'] = Validator::getFileError();
-                    } 
-                    elseif ($producto->updateRow($data['imagen_producto'])) {
+                    } elseif ($producto->updateRow($data['logo_marca'])) {
                         $result['status'] = 1;
-                        if (Validator::saveFile($_FILES['foto'], $producto->getRuta(), $producto->getImagen())) {
-                            $result['message'] = 'Producto modificado correctamente';
+                        if (Validator::saveFile($_FILES['archivo'], $producto->getRuta(), $producto->getImagen())) {
+                            $result['message'] = 'Producto modificada correctamente';
                         } else {
-                            $result['message'] = 'Producto modificado pero no se guardó la imagen';
-                        } 
+                            $result['message'] = 'Producto modificada pero no se guardó la imagen';
+                        }
                     }
+                    
             break;
             case 'delete':
                 if (!$producto->setId_Producto($_POST['id_producto'])) {
