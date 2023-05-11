@@ -226,17 +226,18 @@
     <!-- menu section starts -->
 
     <section class="menu" id="menu">
-      <h3 class="sub-heading">Titulo</h3>
-      <h1 class="heading">Titulo</h1>
+      <h3 class="sub-heading">Productos</h3>
+      <h1 class="heading">Intrumentos Musicales</h1>
 
-      <div class="box-container">
+      <div class="box-container" id="productos">
         <div class="box">
           <div class="image">
             <img
-              src="${SERVER_URL}img/categorias/${row.imagen_categoria}"
+              src="${SERVER_URL}img/productos/${row.imagen_producto}"
               alt="imagen-categoria"
             />
-            <a href="${url}" class="bx bx-shopping-bag bx-left"></a>
+            <a href="detail.html?id=${row.id_producto}"
+            class="bx bx-shopping-bag bx-left"></a>
           </div>
           <div class="content">
             <div class="stars">
@@ -246,10 +247,10 @@
               <i class="bx bxs-star"></i>
               <i class="bx bxs-star-half"></i>
             </div>
-            <h3>${row.nombre_categoria}</h3>
-            <p>${row.descripcion_categoria}</p>
-            <a href="${url}" class="btn">Ver Instrumentos</a>
-            <!-- <span class="price">$12.99</span>-->
+            <h3>${row.nombre_producto}</h3>
+            <p>${row.nombre_categoria}</p>
+            <a href="detail.html?id=${row.id_producto}" class="btn">Ver Detalle</a>
+            <span class="price">Precio(US$) ${row.precio_producto}</span>
           </div>
         </div>
         <div class="box">

@@ -128,9 +128,9 @@ if (isset($_GET['action'])) {
                     elseif (!$producto->setDescripcion_Producto($_POST['descripcion'])) {
                         $result['exception'] = 'Descripcion incorrecta';
                     } 
-                    elseif (!$producto->setId_Estado_Producto($_POST['id_estado_producto'])) {
+                    elseif (!$producto->setId_Estado_Producto(isset($_POST['id_estado_producto']) ? 1 : 0)) {
                         $result['exception'] = 'Estado incorrecto';
-                    }
+                    } 
                     elseif (!$producto->setId_Usuario($_POST['usuario'])) {
                         $result['exception'] = 'Usuario incorrecto';
                     }

@@ -159,6 +159,7 @@ function openCreate() {
     document.getElementById('cantidad').required = true;
     document.getElementById('fecha').required = true;
     document.getElementById('id_estado_producto').required = true;
+    
     document.getElementById('usuario').required = true;
     document.getElementById('foto').required = true;
     console.log("proceso de abrir modal agregar");
@@ -196,7 +197,11 @@ async function openUpdate(id) {
         document.getElementById('descripcion').value = JSON.dataset.descripcion;
         fillSelect(MARCA_PRODUCTO_API, 'readAll', 'Marca_Producto', JSON.dataset.id_marca_producto);
         fillSelect(CATEGORIA_PRODUCTO_API, 'readAll', 'categoria', JSON.dataset.id_categoria_producto);
-        fillSelect(ESTADO_PRODUCTO_API, 'readAll', 'id_estado_producto', JSON.dataset.id_estado_producto);
+        if (JSON.dataset.estado_producto) {
+            document.getElementById('id_estado_producto').checked = true;
+        } else {
+            document.getElementById('id_estado_producto').checked = false;
+        }
         fillSelect(USUARIO_PRODUCTO_API, 'readAll', 'usuario', JSON.dataset.id_usuario);
         document.getElementById('foto').required = false;
         document.getElementById('cantidad').value = JSON.dataset.cantidad_producto;

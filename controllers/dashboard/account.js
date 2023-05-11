@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             toggle = body.querySelector(".toggle");
             searchBtn = body.querySelector(".search-box"),
-                modeSwitch = body.querySelector(".toggle-switch");
+            modeSwitch = body.querySelector(".toggle-switch");
             modeText = body.querySelector(".mode-text");
             console.log(sidebarBtn);
 

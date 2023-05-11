@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se comprueba si el usuario está autenticado para establecer el encabezado respectivo.
     if (JSON.session) {
         HEADER.innerHTML = `
-        <a href="#" class="logo"><i class="fas-fa-utensils"></i>Music Funsion</a>
+        <a href="#" class="logo"><i class="fas-fa-utensils"></i>Music Fusion</a>
 
         <nav class="navbar">
             <a class="active" href="#inicio">Inicio</a>
@@ -37,18 +37,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         `
         ;
+      
         
     } else {
         HEADER.innerHTML = `
-        <a href="#" class="logo"><i class="fas-fa-utensils"></i>Music Funsion</a>
+        <a href="#" class="logo"><i class="fas-fa-utensils"></i>Music Fusion</a>
 
         <nav class="navbar">
-            <a class="active" href="#inicio">Inicio</a>
-            <a href="#intrumentos">Instrumentos</a>
-            <a href="#accesorios">Accesorios</a>
-            <a href="#acerca de">Acerca de</a>
-            <a href="#tendencia">tendencia</a>
-            <a href="#orden">Ordenes</a>
+            <a class="" id="a_inicio" href="../../views/public/index.html">Inicio</a>
+            <a class="" id="a_instrumentos" href="#intrumentos">Instrumentos</a>
+            <a class="" id="a_acerca_de" href="#acerca de">Acerca de</a>
+            <a class="" id="a_tendencia" href="#tendencia">tendencia</a>
+            <a class="" id="a_ordenes" href="#orden">Ordenes</a>
         </nav>
 
         <div class="icons">
@@ -69,6 +69,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     </form>
         `
         ;
+        
+
+      
+        /**********************/
         let menu = document.querySelector('#menu-bars');
         let navbar = document.querySelector('.navbar');
 
@@ -127,6 +131,8 @@ document.addEventListener('DOMContentLoaded', async () => {
               },
             },
           });
+
+          
         
         
     }

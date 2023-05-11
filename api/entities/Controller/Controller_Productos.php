@@ -66,7 +66,7 @@ class ControllerProductos extends ModelProductos
 
     public function setImagen($file)
     {
-        if (Validator::validateImageFile($file, 500, 500)) {
+        if (Validator::validateImageFile($file, 1200, 1200)) {
             $this->imagen = Validator::getFileName();
             return true;
         } else {
@@ -106,7 +106,7 @@ class ControllerProductos extends ModelProductos
 
     public function setId_Categoria_Producto($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateBoolean($value)) {
             $this->id_categoria_producto = $value;
             return true;
         } else {
@@ -116,7 +116,7 @@ class ControllerProductos extends ModelProductos
 
     public function setId_Estado_Producto($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateBoolean($value)) {
             $this->id_estado_producto = $value;
             return true;
         } else {

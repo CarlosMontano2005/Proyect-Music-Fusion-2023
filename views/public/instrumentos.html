@@ -19,6 +19,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
     />
+    
     <!--BOOSTRAP-->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -29,8 +30,122 @@
   </head>
   <body>
     <header></header>
-    <footer>
-      <!--BOOSTRAP-->
+    <section class="home" id="home">
+        
+        <div class="swiper mySwiper home-slider">
+          <div class="swiper-wrapper wrapper">
+            <div class="swiper-slide slide">
+              <div class="content">
+                <span>Todo lo que necesitas en musica</span>
+                <h3>Guitarras</h3>
+                <p>Especial del mes de las guitarras</p>
+                <a href="#" class="btn">Comprar</a>
+              </div>
+              <div class="image">
+                <img
+                  src="../../img/picture/guitarras-hombre-saltando.com.png"
+                  alt=""
+                />
+              </div>
+            </div>
+  
+            <div class="swiper-slide slide">
+              <div class="content">
+                <span>our special dish</span>
+                <h3>fried chicken</h3>
+                <p>
+                  Lorem impus dolor sit amet consectetur adipisicing elit. Sit
+                  natus dolor cumque?
+                </p>
+                <a href="#" class="btn">order now</a>
+              </div>
+              <div class="image">
+                <img
+                  src="../../img/picture/guitarras-hombre-saltando.com.png"
+                  alt=""
+                />
+              </div>
+            </div>
+  
+            <div class="swiper-slide slide">
+              <div class="content">
+                <span>our special dish</span>
+                <h3>hot pizza</h3>
+                <p>
+                  Lorem impus dolor sit amet consectetur adipisicing elit. Sit
+                  natus dolor cumque?
+                </p>
+                <a href="#" class="btn">order now</a>
+              </div>
+              <div class="image">
+                <img
+                  src="../../img/picture/guitarras-hombre-saltando.com.png"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+  
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+    <section class="dishes" id="dishes">
+        <h3 class="sub-heading">Categorias de Instrumentos</h3>
+        <h1 class="heading" id="title">Categorias de Instrumentos</h1>
+        <div class="box-container" id="productos">
+          <div class="box">
+            <a href="detail.html?id=${row.id_producto}"><i class="bx bx-shopping-bag bx-left"></i></a>
+            
+            <i class="bx bx-show-alt"></i>
+            <img src="${SERVER_URL}img/producto/${row.imagen_producto}" alt="producto" />
+            <h3>${row.nombre_producto}</h3>
+            <div class="stars">
+              <!--Valoracion con estrella-->
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star-half"></i>
+            </div>
+            <span>Precio(US$) ${row.precio_producto}</span>
+            <a href="detail.html?id=${row.id_producto}" class="btn">Ver Detalle</a>
+          </div>
+  
+          <div class="box">
+            <i class="bx bx-shopping-bag bx-left"></i>
+            <i class="bx bx-show-alt"></i>
+            <img src="../../img/productos/bateria-negra.png" alt="" />
+            <h3>tasty food</h3>
+            <div class="stars">
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star-half"></i>
+            </div>
+            <span>$69.99</span>
+            <a href="#" class="btn">add to cart</a>
+          </div>
+  
+          <div class="box">
+            <i class="bx bx-shopping-bag bx-left"></i>
+            <i class="bx bx-show-alt"></i>
+            <img src="../../img/productos/bateria-negra.png" alt="" />
+            <h3>tasty food</h3>
+            <div class="stars">
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star"></i>
+              <i class="bx bxs-star-half"></i>
+            </div>
+            <span>$69.99</span>
+            <a href="#" class="btn">add to cart</a>
+          </div>
+        </div>
+      </section>
+    <footer class="site-footer"></footer> 
+     <!--BOOSTRAP-->
       <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
@@ -41,8 +156,6 @@
       <script src="../../js/sweetalert.min.js"></script>
       <script src="../../controllers/components.js"></script>
       <script src="../../controllers/public/account.js"></script>
-      <script src="../../controllers/public/index.js"></script>
-      <script src="../../resources/js/public/script.js"></script>
-    </footer>
+      <script src="../../controllers/public/instrumentos.js"></script>
   </body>
 </html>
