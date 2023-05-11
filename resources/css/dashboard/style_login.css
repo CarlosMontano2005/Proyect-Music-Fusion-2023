@@ -7,7 +7,7 @@
   font-family: 'Poppins', sans-serif;
 }
   
-body {
+/*body {
   font-family: arial;
   background: linear-gradient(90deg, rgba(81, 78, 233, 1) 10%, rgba(164,52,244,1) 48%, rgba(228,33,253,1) 100%);
   animation: cambiarColor 10s ease infinite;
@@ -17,7 +17,29 @@ body {
   0%{background-position: 0 50%;}
   50%{background-position: 100% 50%;}
   100%{background-position: 0 50%;}
+}*/
+
+body{
+  background: linear-gradient(90deg, rgba(81, 78, 233, 1) 10%, rgba(164,52,244,1) 48%, rgba(228,33,253,1) 100%);
+
+    background-size: 400%, 400%;
+    animation: gradient 10s ease infinite;
+    height: 100vh;
+} 
+
+
+@keyframes gradient {
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
 }
+
 .img-pregunta{
   display: flex;
   justify-content: flex-end;

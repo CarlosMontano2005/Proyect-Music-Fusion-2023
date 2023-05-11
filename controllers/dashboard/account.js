@@ -230,7 +230,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
             // M.Tooltip.init(document.querySelectorAll('.tooltipped'));
         } else {
-            location.href = 'index.html';
+            //CREO QUE ES EL PROBLEMA DE LA PAGINA CUANDO RECARGA EN EL LOGIN
+            location.href = '/Proyect-Music-Fusion-2023/views/dashboard/index.html';
         }
     }
 });
