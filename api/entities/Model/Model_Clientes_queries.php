@@ -8,6 +8,7 @@ class ClienteQueries
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
+    
     public function searchRows($value)
     {
         $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, correo_cliente, fecha_nacimiento, dui, genero, telefono_cliente, estado, direccion_cliente
@@ -92,7 +93,43 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
                 GROUP BY nombre_categoria ORDER BY porcentaje DESC';
         return Database::getRows($sql);
     }
+    /**
+     * 
+     * Metodo del login
+     */
 
+     public function checkUser($correo_cliente)
+    {
+        $sql = 'SELECT id_cliente, estado FROM clientes WHERE correo_cliente = ?';
+        $params = array($correo_cliente);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id = $data['id_cliente'];
+            $this->estado = $data['estado'];
+            $this->correo_cliente = $correo_cliente;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function dataUser()
+    {
+        $sql = 'SELECT * FROM clientes';
+        return Database::getRows($sql);
+    }
+
+    public function checkPassword($password)
+    {
+        $sql = 'SELECT clave FROM clientes WHERE id_cliente = ?';
+        $params = array($this->id);
+        $data = Database::getRow($sql, $params);
+        // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
+        //if ($password == $data['clave_usuario']) {
+        if (password_verify($password , $data['clave'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     /*
     *   Métodos para generar reportes.
     */

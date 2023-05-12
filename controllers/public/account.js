@@ -217,3 +217,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se inicializa el componente Sidenav para que funcione la navegación lateral.
     
 });
+
+
