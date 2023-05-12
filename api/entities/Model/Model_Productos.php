@@ -60,7 +60,7 @@ class ModelProductos
     {
         $sql = 'INSERT INTO productos(nombre_producto, id_marca_producto, precio_producto, id_categoria_producto, descripcion, imagen_producto, id_usuario, cantidad_producto, fecha_compra)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre_producto, $this->id_marca_producto, $this->precio_producto, $this->id_categoria_producto, $this->descripcion, $this->imagen, $this->id_usuario, $this->cantidad_producto, $this->fecha_compra);
+        $params = array($this->nombre_producto, $this->id_marca_producto, $this->precio_producto, $this->id_categoria_producto, $this->descripcion, $this->imagen, $_SESSION['id_usuario'], $this->cantidad_producto, $this->fecha_compra);
         return Database::executeRow($sql, $params);
     }
     
@@ -69,9 +69,9 @@ class ModelProductos
         ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
         $sql = 'UPDATE productos
                 SET nombre_producto=?, id_marca_producto=?, precio_producto=?, id_categoria_producto=?, 
-                descripcion=?, id_usuario=?,  imagen_producto=?, cantidad_producto=?, fecha_compra=?,estado_producto=?
+                descripcion=?,  imagen_producto=?, cantidad_producto=?, fecha_compra=?,estado_producto=?
                 WHERE  id_producto=?';
-        $params = array($this->nombre_producto, $this->id_marca_producto, $this->precio_producto, $this->id_categoria_producto, $this->descripcion, $this->id_usuario, $this->imagen, $this->cantidad_producto, $this->fecha_compra, $this->id_estado_producto, $this->id_producto);
+        $params = array($this->nombre_producto, $this->id_marca_producto, $this->precio_producto, $this->id_categoria_producto, $this->descripcion, $this->imagen, $this->cantidad_producto, $this->fecha_compra, $this->id_estado_producto, $this->id_producto);
         return Database::executeRow($sql, $params);
     }
 

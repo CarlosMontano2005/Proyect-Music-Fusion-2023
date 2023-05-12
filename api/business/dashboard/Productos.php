@@ -65,12 +65,7 @@ if (isset($_GET['action'])) {
                 elseif (!$producto->setId_Estado_Producto($_POST['id_estado_producto'])) {
                     $result['exception'] = 'Estado incorrecto';
                 }
-                elseif (!isset($_POST['usuario'])) {
-                    $result['exception'] = 'Seleccione un usuario';
-                }  
-                elseif (!$producto->setId_Usuario($_POST['usuario'])) {
-                    $result['exception'] = 'Usuario incorrecto';
-                }
+               
                 elseif (!is_uploaded_file($_FILES['foto']['tmp_name'])) {
                     $result['exception'] = 'Seleccione una imagen';
                 } elseif (!$producto->setImagen($_FILES['foto'])) {
@@ -131,9 +126,6 @@ if (isset($_GET['action'])) {
                     elseif (!$producto->setId_Estado_Producto(isset($_POST['id_estado_producto']) ? 1 : 0)) {
                         $result['exception'] = 'Estado incorrecto';
                     } 
-                    elseif (!$producto->setId_Usuario($_POST['usuario'])) {
-                        $result['exception'] = 'Usuario incorrecto';
-                    }
                     elseif (!$producto->setCantidad_Producto($_POST['cantidad'])) {
                         $result['exception'] = 'Cantidad incorrecta';
                     }

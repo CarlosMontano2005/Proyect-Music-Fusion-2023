@@ -95,6 +95,7 @@ async function fillTable(form = null) {
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
         JSON.dataset.forEach(row => {
+        (row.estado_producto) ? estado = 'bx bxs-check-square' : estado = 'bx bx-checkbox-minus';
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML +=  `
                 <tr>
@@ -106,7 +107,7 @@ async function fillTable(form = null) {
                     <td>${row.descripcion}</td>
                     <td>${row.cantidad_producto}</td>
                     <td>${row.fecha_compra}</td>
-                    <td>${row.estado_producto}</td>
+                    <td><i class="${estado}"></i></td>
                     <td>${row.nombre_usuario}</td>
                     <td><img src="${SERVER_URL}img/productos/${row.imagen_producto}" height="100"></td>
                     <td class="td-button">
@@ -148,7 +149,6 @@ function openCreate() {
     fillSelect(MARCA_PRODUCTO_API, 'readAll', 'Marca_Producto');
     fillSelect(CATEGORIA_PRODUCTO_API, 'readAll', 'categoria');
     fillSelect(ESTADO_PRODUCTO_API, 'readAll', 'id_estado_producto');
-    fillSelect(USUARIO_PRODUCTO_API, 'readAll', 'usuario');
     /*campos obligatorios*/
     document.getElementById('id_producto').required = false;
     document.getElementById('nombre_producto').required = true;
@@ -202,7 +202,6 @@ async function openUpdate(id) {
         } else {
             document.getElementById('id_estado_producto').checked = false;
         }
-        fillSelect(USUARIO_PRODUCTO_API, 'readAll', 'usuario', JSON.dataset.id_usuario);
         document.getElementById('foto').required = false;
         document.getElementById('cantidad').value = JSON.dataset.cantidad_producto;
         document.getElementById('fecha').value = JSON.dataset.fecha_compra;

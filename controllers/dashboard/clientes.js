@@ -83,6 +83,8 @@ async function fillTable(form = null) {
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
         JSON.dataset.forEach(row => {
+            (row.estado) ? estado = 'bx bxs-check-square' : estado = 'bx bx-checkbox-minus';
+           
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML +=  `
                 <tr>
@@ -94,7 +96,13 @@ async function fillTable(form = null) {
                     <td>${row.genero}</td>
                     <td>${row.telefono_cliente}</td>
                     <td>${row.dui}</td>
-                    <td>${row.estado}</td>
+                    <td>    
+                        <label class="container-cheacked">
+                        <input type="checkbox" checked="checked" id="checkedId"  class="checkedId">
+                        <div class="checkmark"></div>
+                        </label>
+                        ${row.estado}
+                    </td>
                     <td>${row.direccion_cliente}</td>
                     <td class="td-button">
                         <button  onclick="openUpdate(${row.id_cliente})" class="button_edit button-modal" type="button" data-bs-toggle="modal"  data-tooltip="Actualizar"
@@ -104,6 +112,7 @@ async function fillTable(form = null) {
                     </td>
                 </tr>
                 `;
+                
         });
         // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
        //M.Tooltip.init(document.querySelectorAll('.tooltipped'));
