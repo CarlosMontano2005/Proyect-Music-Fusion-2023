@@ -58,8 +58,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
             <span class="mode-text text">Modo Dark</span>
 
-            <div class="toggle-switch">
-                <span class="switch"></span>
+            <div class="switch">
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider toggle-switch"></span>
+                </label>
             </div>
         </li>
     </div>`
