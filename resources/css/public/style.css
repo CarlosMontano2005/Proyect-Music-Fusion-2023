@@ -805,6 +805,114 @@ header .icons #menu-bars{
 {
   background-color:#1DB954 
 }
+
+/*pagina de detalles */
+    /*imagen flotante*/
+.contenedor-detalle {
+    background: #fff;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 15px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+}
+.titulo-detalle{
+    text-align: center;
+    color: var(--purple);
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    text-transform: uppercase;
+}  
+.descripcion-detalle{
+    font-size: 1.5rem;
+    text-align: center;
+}
+.img-galeria{
+    object-fit: cover;
+    width: 100%;
+    display: block;
+    /* margin-bottom: 15px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .5);*/
+    cursor: pointer;
+}
+
+.imagen-flotante{
+    position: fixed;
+    background: rgba(0, 0, 0, .6);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(100%);
+    transition: transform .2s ease-in-out;
+    z-index: 1000;
+}
+
+.show{
+    transform: translate(0);
+}
+
+.agregar-imagen{
+    object-fit: cover;
+    width: 60%;
+    border-radius: 10px;
+    transform: scale(0);
+    transition: transform .3s .2s;
+}
+
+.showImage{
+    transform: scale(1);
+}
+
+.close{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    cursor: pointer;
+    font-size: 25px;
+    color: white;
+}
+    /****/
+    .text-detalle .stars{
+        text-align: center;
+        padding: 1rem 0;
+    }
+    
+    .text-detalle .stars i{
+        font-size: 1.7rem;
+        color: var(--purple);
+    }
+    .precio_detalle{
+        font-size: 1.5rem;
+        text-align: center;
+        font-weight: bold;
+    }
+    .text-detalle form{
+        text-align: center;
+    }
+    .text-detalle form button{
+        background: #eceeef;
+        font-size: 1.5rem;
+    }
+    .text-detalle form label{
+        padding: 0.5rem 0;
+        font-size: 1.5rem;
+        color: var(--light-color);
+    }
+    .text-detalle form input{
+        background: #eee;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-size: 1.6rem;
+    color: var(--black);
+    text-transform: none;
+    margin-bottom: 1rem;
+    }
+    
+
 @media (max-width:767px)
 {
   .social-icons li.title

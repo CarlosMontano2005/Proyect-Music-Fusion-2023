@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Se crean y concatenan las tarjetas con los datos de cada producto.
             PRODUCTOS.innerHTML += `
             <div class="box">
-                <a href="detail.html?id=${row.id_producto}"><i class="bx bx-shopping-bag bx-left"></i></a>
+                <a href="detalles.html?id=${row.id_producto}"><i class="bx bx-shopping-bag bx-left"></i></a>
                 
                 <i class="bx bx-show-alt"></i>
                 <img src="${SERVER_URL}img/productos/${row.imagen_producto}" alt="producto" />
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <i class="bx bxs-star-half"></i>
                 </div>
                 <span>Precio(US$) ${row.precio_producto}</span>
-                <a href="detail.html?id=${row.id_producto}" class="btn">Ver Detalle</a>
+                <a href="detalles.html?id=${row.id_producto}" class="btn">Ver Detalle</a>
           </div>
             `;
         });

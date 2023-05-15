@@ -59,10 +59,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="box">
           <div class="image">
             <img
-              src="${SERVER_URL}img/productos/${row.imagen_producto}"
+            src="${SERVER_URL}img/productos/${row.imagen_producto}"
               alt="imagen-categoria"
             />
-            <a href="detail.html?id=${row.id_producto}"class="bx bx-shopping-bag bx-left"></a>
+            <a href="detalles.html?id=${row.id_producto}" class="bx bx-shopping-bag bx-left"></a>
           </div>
           <div class="content">
             <div class="stars">
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
             <h3>${row.nombre_producto}</h3>
             <p>${row.nombre_categoria}</p>
-            <a href="detail.html?id=${row.id_producto}" class="btn">Ver Detalle</a>
+            <a href="detalles.html?id=${row.id_producto}"  class="btn">Ver Detalle</a>
             <span class="price">Precio(US$) ${row.precio_producto}</span>
           </div>
         </div>

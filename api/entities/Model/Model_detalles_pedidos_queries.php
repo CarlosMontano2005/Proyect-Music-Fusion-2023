@@ -63,7 +63,45 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
         $params = array($this->id_pedido, $this->id_producto, $this->cantidad_producto, $this->precio_detalle_producto, $this->id);
         return Database::executeRow($sql, $params);
     }
+    public function startOrder()
+    {
+        $sql = 'SELECT id_pedido
+                FROM pedidos
+                WHERE id_estado_pedido = 4 AND id_cliente = ?';
+        $params = array($_SESSION['id_cliente']);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id_pedido = $data['id_pedido'];
+            return true;
+        } else {
+            $sql = 'INSERT INTO pedidos(direccion_pedido, id_cliente)
+                    VALUES((SELECT direccion_cliente FROM clientes WHERE id_cliente = ?), ?)';
+            $params = array($_SESSION['id_cliente'], $_SESSION['id_cliente']);
+            // Se obtiene el ultimo valor insertado en la llave primaria de la tabla pedidos.
+            if ($this->id_pedido = Database::getLastRow($sql, $params)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    public function readOrderDetail()
+    {
+        $sql = 'SELECT id_detalle_pedido, nombre_producto, detalles_pedidos.precio_detalle_producto, detalles_pedidos.cantidad_detalle_producto
+                    FROM pedidos INNER JOIN detalles_pedidos USING(id_pedido) INNER JOIN productos USING(id_producto)
+                    WHERE id_pedido = ?	';
+        $params = array($this->id_pedido);
+        return Database::getRows($sql, $params);
+    }
 
+
+    public function createDetail()
+    {
+        // Se realiza una subconsulta para obtener el precio del producto.
+        $sql = 'INSERT INTO detalles_pedidos(id_producto, precio_detalle_producto, cantidad_detalle_producto, id_pedido)
+                VALUES(?, (SELECT precio_producto FROM productos WHERE id_producto = ?), ?, ?)';
+        $params = array($this->id_producto, $this->id_producto, $this->cantidad_producto, $this->id_pedido);
+        return Database::executeRow($sql, $params);
+    }
     public function deleteRow()
     {
         $sql = 'DELETE FROM clientes
@@ -81,7 +119,7 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
-
+    
     /*
     *   Métodos para generar gráficas.
     */

@@ -19,12 +19,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         <a href="#" class="logo"><i class="fas-fa-utensils"></i>Music Fusion</a>
 
         <nav class="navbar">
-            <a class="active" href="#inicio">Inicio</a>
-            <a href="#intrumentos">Instrumentos</a>
-            <a href="#accesorios">Accesorios</a>
-            <a href="#acerca de">Acerca de</a>
-            <a href="#tendencia">tendencia</a>
-            <a href="#orden">orden</a>
+        <a class="" id="a_inicio" href="../../views/public/index.html">Inicio</a>
+        <a class="" id="a_instrumentos" href="#intrumentos">Instrumentos</a>
+        <a class="" id="a_acerca_de" href="#acerca de">Acerca de</a>
+        <a class="" id="a_tendencia" href="#tendencia">tendencia</a>
+        <a class="" id="a_ordenes" href="#orden">Ordenes</a>
         </nav>
 
         <div class="icons">
@@ -33,46 +32,18 @@ document.addEventListener('DOMContentLoaded', async () => {
             <i class='bx bx-shopping-bag'></i>
             <a onclick="logOut()"><i class='bx bx-log-out'></i></a>    
         </div>
-
-        
-        `
-        ;
-      
-        
-    } else {
-        HEADER.innerHTML = `
-        <a href="#" class="logo"><i class="fas-fa-utensils"></i>Music Fusion</a>
-
-        <nav class="navbar">
-            <a class="" id="a_inicio" href="../../views/public/index.html">Inicio</a>
-            <a class="" id="a_instrumentos" href="#intrumentos">Instrumentos</a>
-            <a class="" id="a_acerca_de" href="#acerca de">Acerca de</a>
-            <a class="" id="a_tendencia" href="#tendencia">tendencia</a>
-            <a class="" id="a_ordenes" href="#orden">Ordenes</a>
-        </nav>
-
-        <div class="icons">
-            <i class='bx bx-menu' id="menu-bars"></i>
-            <i class='bx bx-search-alt-2' id="search-icon"></i>
-            <i class='bx bx-shopping-bag'></i>
-            <a href="../../views/public/login.html"><i class='bx bx-user' ></i></a>    
-        </div>
         <form action="" id="search-form">
-      <input
-        type="search"
-        placeholder="Search here..."
-        name=""
-        id="search-box"
-      />
-      <label for="search-box" class="bx bx-search-alt-2"></label>
-      <i class="bx bx-x abrir-search" id="close"></i>
-    </form>
-        `
-        ;
+        <input
+          type="search"
+          placeholder="Search here..."
+          name=""
+          id="search-box"
+        />
+        <label for="search-box" class="bx bx-search-alt-2"></label>
+        <i class="bx bx-x abrir-search" id="close"></i>
+      </form>
         
-
-      
-        /**********************/
+        `/**********************/
         let menu = document.querySelector('#menu-bars');
         let navbar = document.querySelector('.navbar');
 
@@ -133,6 +104,104 @@ document.addEventListener('DOMContentLoaded', async () => {
           });
 
           
+        
+        ;
+      
+        
+    } else {
+        HEADER.innerHTML = `
+        <a href="#" class="logo"><i class="fas-fa-utensils"></i>Music Fusion</a>
+
+        <nav class="navbar">
+            <a class="" id="a_inicio" href="../../views/public/index.html">Inicio</a>
+            <a class="" id="a_instrumentos" href="#intrumentos">Instrumentos</a>
+            <a class="" id="a_acerca_de" href="#acerca de">Acerca de</a>
+            <a class="" id="a_tendencia" href="#tendencia">tendencia</a>
+            <a class="" id="a_ordenes" href="#orden">Ordenes</a>
+        </nav>
+
+        <div class="icons">
+            <i class='bx bx-menu' id="menu-bars"></i>
+            <i class='bx bx-search-alt-2' id="search-icon"></i>
+            <i class='bx bx-shopping-bag'></i>
+            <a href="../../views/public/login.html"><i class='bx bx-user' ></i></a>    
+        </div>
+        <form action="" id="search-form">
+      <input
+        type="search"
+        placeholder="Search here..."
+        name=""
+        id="search-box"
+      />
+      <label for="search-box" class="bx bx-search-alt-2"></label>
+      <i class="bx bx-x abrir-search" id="close"></i>
+    </form>
+        `/**********************/
+        let menu = document.querySelector('#menu-bars');
+        let navbar = document.querySelector('.navbar');
+
+        menu.onclick = () =>{
+            menu.classList.toggle("menu-bars");
+            navbar.classList.toggle('active');
+        }
+
+        window.onscroll = () =>{
+            menu.classList.remove("abrir-search");
+            navbar.classList.remove('active');
+        }
+
+        document.querySelector('#search-icon').onclick = () =>{
+            document.querySelector('#search-form').classList.toggle('active');
+        }
+
+        document.querySelector('#close').onclick = () =>{
+            document.querySelector('#search-form').classList.remove('active');
+        }
+
+        var swiper = new Swiper(".home-slider", {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+              delay: 3500,
+              disableOnInteraction: false,
+            },
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+            },
+            loop:true,
+          });
+
+          var swiper = new Swiper(".review-slider", {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+              delay: 7500,
+              disableOnInteraction: false,
+            },
+            loop:true,
+            breakpoints: {
+              0: {
+                slidesPerView: 1,
+              },
+              640: {
+                slidesPerView: 2,
+              },
+              768: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            },
+          });
+
+          
+        
+        ;
+        
+
+      
         
         
     }

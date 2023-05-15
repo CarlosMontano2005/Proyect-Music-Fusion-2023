@@ -111,8 +111,9 @@ async function fillTable(form = null) {
                         <button onclick="openUpdate(${row.id_cliente})" class="button_updet"><i class='bx bx-refresh'></i></button>
                     </td>
                 </tr>
-                `;
-                
+                `
+                ;
+                (row.estado) ?  document.getElementById("checkedId").checked = true : document.getElementById("checkedId").checked  = false;
         });
         // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
        //M.Tooltip.init(document.querySelectorAll('.tooltipped'));
