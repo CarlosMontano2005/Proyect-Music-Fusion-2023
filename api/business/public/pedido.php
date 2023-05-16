@@ -20,7 +20,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al obtener el pedido';
                 } elseif (!$pedido->getId_Producto($_POST['id_producto'])) {
                     $result['exception'] = 'Producto incorrecto';
-                } elseif (!$pedido->getCantidad_Producto($_POST['cantidad'])) {
+                } elseif (!$pedido->getCantidad_Producto($_POST['cantidad_detalle_producto'])) {
                     $result['exception'] = 'Cantidad incorrecta';
                 } elseif ($pedido->createDetail()) {
                     $result['status'] = 1;
@@ -41,11 +41,12 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No tiene productos en el carrito';
                 }
                 break;
+            // Caso para actualizar la cantidad de un producto agregado al carrito de compras.
             case 'updateDetail':
                 $_POST = Validator::validateForm($_POST);
-                if (!$pedido->getId($_POST['id_detalle'])) {
+                if (!$pedido->getId($_POST['id_detalle_pedido'])) {
                     $result['exception'] = 'Detalle incorrecto';
-                } elseif (!$pedido->getCantidad_Producto($_POST['cantidad'])) {
+                } elseif (!$pedido->getCantidad_Producto($_POST['cantidad_detalle_producto'])) {
                     $result['exception'] = 'Cantidad incorrecta';
                 } elseif ($pedido->updateDetail()) {
                     $result['status'] = 1;
@@ -54,8 +55,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al modificar la cantidad';
                 }
                 break;
+                //Para mover un producto y quitar un producto que se encuentra en el carrito
             case 'deleteDetail':
-                if (!$pedido->getId($_POST['id_detalle'])) {
+                if (!$pedido->getId($_POST['id_detalle_pedido'])) {
                     $result['exception'] = 'Detalle incorrecto';
                 } elseif ($pedido->deleteDetail()) {
                     $result['status'] = 1;
@@ -64,7 +66,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al remover el producto';
                 }
                 break;
+                //caso para finalizar el pedido
             case 'finishOrder':
+                //mandar a llamar la accion para finalizar el pedido
                 if ($pedido->finishOrder()) {
                     $result['status'] = 1;
                     $result['message'] = 'Pedido finalizado correctamente';

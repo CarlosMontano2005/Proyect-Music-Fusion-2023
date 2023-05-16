@@ -93,7 +93,37 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
         return Database::getRows($sql, $params);
     }
 
-
+     // Método para finalizar un pedido por parte del cliente.
+     public function finishOrder()
+     {
+         // Se establece la zona horaria local para obtener la fecha del servidor.
+         date_default_timezone_set('America/El_Salvador');
+         $date = date('Y-m-d');
+         $this->estado = 1;
+         $sql = 'UPDATE pedidos
+                    SET id_estado_pedido = ?, fecha_pedido = ?
+                    WHERE id_pedido = ?';
+         $params = array($this->estado, $date, $_SESSION['id_pedido']);
+         return Database::executeRow($sql, $params);
+     }
+ 
+    // Método para eliminar un producto que se encuentra en el carrito de compras.
+    public function deleteDetail()
+    {
+        $sql = 'DELETE FROM detalles_pedidos
+                        WHERE id_detalle_pedido = ? AND id_pedido = ?';
+        $params = array($this->id, $_SESSION['id_pedido']);
+        return Database::executeRow($sql, $params);
+    }
+     // Método para actualizar la cantidad de un producto agregado al carrito de compras.
+     public function updateDetail()
+     {
+         $sql = 'UPDATE detalles_pedidos
+                    SET cantidad_detalle_producto = ?
+                    WHERE id_detalle_pedido = ? AND id_pedido = ?';
+         $params = array($this->cantidad_producto, $this->id, $_SESSION['id_pedido']);
+         return Database::executeRow($sql, $params);
+     }
     public function createDetail()
     {
         // Se realiza una subconsulta para obtener el precio del producto.

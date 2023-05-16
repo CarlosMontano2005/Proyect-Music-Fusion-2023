@@ -93,8 +93,7 @@
       <h1 class="heading" id="title">Detalles del Intrumento</h1>
       
       <div class="contenedor-detalle row">
-          <input type="number" class="form-control validate invisible" placeholder="id" aria-label="id"
-          id="id_producto" name="id_producto">
+         
         <div class="contenedor-galeria col">
           <img
             src="../../img/productos/batería baja.png"
@@ -121,7 +120,9 @@
             <i class="bx bxs-star"></i>
             <i class="bx bxs-star-half"></i>
           </div>
-          <form action="">
+          <form action="" id="shopping-form">
+            <input type="number" class="form-control validate invisible" placeholder="id" aria-label="id"
+            id="id_producto" name="id_producto">
             <label for="cantidad col-2">Cantidad</label>
             <input
               type="number"
@@ -131,7 +132,7 @@
               class="validate col-10"
               required
             />
-            <button class="btn button col-12" type="submit">
+            <button class="btn button col-12" type="submit" data-tooltip="Agregar">
               <i class='bx bx-cart-add' ></i>
               Agregar al carrito
             </button>
