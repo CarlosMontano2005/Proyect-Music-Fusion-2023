@@ -911,8 +911,145 @@ header .icons #menu-bars{
     text-transform: none;
     margin-bottom: 1rem;
     }
-    
+ /*Modal*/
+.modal-body, .modal-header, .modal-footer{
+    background: var(--body-color);
+    font-size: 15px;
+}
+.btn-agregar{
+    display: flex;
+    align-items: center;
+}
 
+.button-modal{
+    
+  margin-left: 0;
+  border: none;
+  background-color: var(--body-color);
+  color: #3D54E7;
+
+  
+}
+
+.modal-body p{
+text-align: left;
+
+}
+
+/*tablaaaa*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
+
+
+
+table {
+    width: 100%;
+}
+
+.header_fixed {
+    max-height: 100vh;
+    width: 100%;
+    overflow: auto;
+    box-shadow: 10px;
+    border: 1px solid #CCCCCC;
+    border-radius: 25px;
+    margin-bottom: 150px;
+}
+
+.header_fixed thead th {
+    position: sticky;
+    top: 0;
+    background-color: var(--body-color);
+    color: var(--main-text-color);
+    font-size: 15px;
+    text-align: center;
+    justify-content: center;
+}
+
+th,
+td {
+    border-bottom: 1px solid #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+    text-align: center;
+    align-items: center;
+    color: var(--main-text-color);
+    
+}
+
+.img-td{
+  height: 150px;
+  width: 200px;
+  object-fit:cover;
+}
+td img {
+  height: 150px;
+  width: 100px;
+  border: 5px solid #fff;
+  object-fit:contain;
+  border-radius: 16px;
+  margin: 0 14px 0 12px;
+  transition: all 0.5s ease;
+}
+td img:hover{
+  border: solid #3D54E7;
+}
+
+tr:nth-child(even) {
+    background-color: var(--body-color);
+}
+
+tr:nth-child(odd) {
+    background-color: var(--body-color);
+}
+
+tr:hover td {
+    color: #8886FF;
+    cursor: pointer;
+    background-color: var(--body-color);
+}
+
+td button {
+    border: none;
+    padding: 7px 10px;
+    margin: 3px;
+    border-radius: 5px;
+    color: #e6e7e8;
+   
+   
+}
+.td-button{
+  display: flex;
+  margin: 30px;
+  flex-direction: row;
+  justify-content: center;
+  border: none;
+  
+}
+.button_delet {
+  background-color: #fb2e2e;
+}
+
+.button_edit {
+  background-color: #3D54E7;
+}
+.button_updet{
+  background-color: #695CFE;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+}
 @media (max-width:767px)
 {
   .social-icons li.title

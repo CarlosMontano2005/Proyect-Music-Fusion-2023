@@ -86,7 +86,8 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
     }
     public function readOrderDetail()
     {
-        $sql = 'SELECT id_detalle_pedido, nombre_producto, detalles_pedidos.precio_detalle_producto, detalles_pedidos.cantidad_detalle_producto
+        $sql = 'SELECT ROW_NUMBER() OVER(
+            ORDER BY id_detalle_pedido, nombre_producto) AS fila, id_detalle_pedido, nombre_producto, imagen_producto,detalles_pedidos.precio_detalle_producto, detalles_pedidos.cantidad_detalle_producto
                     FROM pedidos INNER JOIN detalles_pedidos USING(id_pedido) INNER JOIN productos USING(id_producto)
                     WHERE id_pedido = ?	';
         $params = array($this->id_pedido);

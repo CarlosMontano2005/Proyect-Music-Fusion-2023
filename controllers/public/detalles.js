@@ -1,6 +1,6 @@
 // Constantes para completar la ruta de la API.
 const PRODUCTO_API = 'business/public/productos.php';
-const PEDIDO_API = 'business/public/pedido.php';
+const PEDIDO_API = 'business/public/pedidos.php';
 // Constante tipo objeto para obtener los parámetros disponibles en la URL.
 const PARAMS = new URLSearchParams(location.search);
 // Constante para establecer el formulario de agregar un producto al carrito de compras.
@@ -41,7 +41,7 @@ SHOPPING_FORM.addEventListener('submit', async (event) => {
     const JSON = await dataFetch(PEDIDO_API, 'createDetail', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se constata si el cliente ha iniciado sesión.
     if (JSON.status) {
-        sweetAlert(1, JSON.message, true, 'cart.html');
+        sweetAlert(1, JSON.message, true, 'carrito.html');
     } else if (JSON.session) {
         sweetAlert(2, JSON.exception, false);
     } else {

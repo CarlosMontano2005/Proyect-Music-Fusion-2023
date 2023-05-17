@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="image/png" rel="icon" href="../../img/logos/logo.png" />
+    <title>Detalles - Detalles del Instrumento</title>
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../resources/css/public/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+
+    <!--BOOSTRAP-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header></header>
+    <section class="home" id="home">
+      <div class="swiper mySwiper home-slider">
+        <div class="swiper-wrapper wrapper">
+          <div class="swiper-slide slide">
+            <div class="content">
+              <span>Carrito de Compras</span>
+              <h3>Carrito</h3>
+              <p>Especial del mes de las guitarras</p>
+              <a href="#" class="btn">Comprar</a>
+            </div>
+            <div class="image">
+              <img
+                src="../../img/picture/guitarras-hombre-saltando.com.png"
+                alt=""
+              />
+            </div>
+          </div>
+
+          <div class="swiper-slide slide">
+            <div class="content">
+              <span>our special dish</span>
+              <h3>fried chicken</h3>
+              <p>
+                Lorem impus dolor sit amet consectetur adipisicing elit. Sit
+                natus dolor cumque?
+              </p>
+              <a href="#" class="btn">order now</a>
+            </div>
+            <div class="image">
+              <img
+                src="../../img/picture/guitarras-hombre-saltando.com.png"
+                alt=""
+              />
+            </div>
+          </div>
+
+          <div class="swiper-slide slide">
+            <div class="content">
+              <span>our special dish</span>
+              <h3>hot pizza</h3>
+              <p>
+                Lorem impus dolor sit amet consectetur adipisicing elit. Sit
+                natus dolor cumque?
+              </p>
+              <a href="#" class="btn">order now</a>
+            </div>
+            <div class="image">
+              <img
+                src="../../img/picture/guitarras-hombre-saltando.com.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+    <div
+      class="modal fade"
+      id="add-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modal-title"></h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3" id="save-form">
+              <div class="col-md-12">
+                <p>Cantidad</p>
+                <input
+                  type="number"
+                  id="cantidad"
+                  name="cantidad"
+                  min="1"
+                  class="validate"
+                  placeholder="0"
+                  required
+                />
+              </div>
+              <div class="col-md-12 invisible">
+                <p>ID</p>
+                <input
+                  type="number"
+                  class="form-control validate"
+                  placeholder="id"
+                  aria-label="id"
+                  id="id_detalle"
+                  name="id_detalle"
+                  required
+                />
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancelar Acción
+                </button>
+                <button type="submit" class="btn btn-primary">
+                  Guardar Acción
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="dishes" id="detalle">
+      <h3 class="sub-heading">Detalles del Intrumento</h3>
+      <h1 class="heading" id="title">Detalles del Intrumento</h1>
+
+      <div class="imagen-flotante">
+        <i class="bx bx-x close"></i>
+        <img src="imagenes/seis.jpg" alt="" class="agregar-imagen" />
+      </div>
+
+      <div class="header_fixed">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr id="records"></tr>
+              <tr>
+                <th>No.</th>
+                <th>IMAGEN</th>
+                <th>PRODUCTO</th>
+                <th>PRECIO (US$)</th>
+                <th>CANTIDAD</th>
+                <th>SUBTOTAL (US$)</th>
+                <th>ACCIONES</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-rows">
+              <tr>
+                <td>1</td>
+                <td class="contenedor-galeria img-td">
+                  <img
+                    class="img-galeria"
+                    id="imagen"
+                    src="${SERVER_URL}img/productos/${row.imagen_producto}"
+                  />
+                </td>
+                <td>nombre</td>
+                <td>precio</td>
+                <td class="td-contenedor-contador">cantidad</td>
+                <td>subtotal</td>
+                <td class="td-button">
+                  <!--Boton Editar-->
+                  <button
+                    onclick="openUpdate(${row.id_detalle_pedido}, ${row.cantidad_detalle_producto})"
+                    class="button_edit"
+                    class="button-modal"
+                    data-bs-toggle="modal"
+                    data-bs-target="#add-modal"
+                    data-tooltip="Actualizar"
+                  >
+                    <i class="bx bxs-edit-alt"></i>
+                  </button>
+                  <!--Boton Eliminar-->
+                  <button
+                    onclick="openDelete(${row.id_detalle_pedido})"
+                    class="button_delet"
+                    data-tooltip="Eliminar"
+                  >
+                    <i class="bx bx-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <p>TOTAL A PAGAR (US$) <b id="pago"></b></p>
+        </div>
+      </div>
+    </section>
+    <footer class="site-footer"></footer>
+    <!--BOOSTRAP-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="../../js/sweetalert.min.js"></script>
+    <script src="../../controllers/components.js"></script>
+    <script src="../../controllers/public/account.js"></script>
+    <script src="../../controllers/public/carrito.js"></script>
+    <script src="../../js/detalles.js"></script>
+  </body>
+</html>
