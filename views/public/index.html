@@ -228,7 +228,16 @@
     <section class="menu" id="menu">
       <h3 class="sub-heading">Productos</h3>
       <h1 class="heading">Intrumentos Musicales</h1>
+      <form class="buscar" id="search-product" >
+        <div class="btn" onclick="">
+          <button class="btn button" type="submit" data-tooltip="Buscar">
+            <i class='bx bx-search'></i>
+          </button>
+          
+        </div>
+        <input type="search" id="search" name="search" placeholder="Buscar" data-tooltip="Buscar" required />
 
+      </form>
       <div class="box-container" id="productos">
         <div class="box">
           <div class="image">
@@ -701,5 +710,6 @@
     <script src="../../controllers/components.js"></script>
     <script src="../../controllers/public/account.js"></script>
     <script src="../../controllers/public/index.js"></script>
+    <script src="../../controllers/public/Buscar.js"></script>
   </body>
 </html>
