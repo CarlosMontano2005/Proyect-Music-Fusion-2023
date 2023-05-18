@@ -73,8 +73,8 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
             $this->id_pedido = $data['id_pedido'];
             return true;
         } else {
-            $sql = 'INSERT INTO pedidos(direccion_pedido, id_cliente)
-                    VALUES((SELECT direccion_cliente FROM clientes WHERE id_cliente = ?), ?)';
+            $sql = 'INSERT INTO pedidos(direccion_pedido, id_cliente, fecha_pedido)
+            VALUES((SELECT direccion_cliente FROM clientes WHERE id_cliente = ?), ?, current_date)';
             $params = array($_SESSION['id_cliente'], $_SESSION['id_cliente']);
             // Se obtiene el ultimo valor insertado en la llave primaria de la tabla pedidos.
             if ($this->id_pedido = Database::getLastRow($sql, $params)) {
