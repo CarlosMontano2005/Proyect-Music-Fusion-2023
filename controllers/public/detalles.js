@@ -12,6 +12,7 @@ const SHOPPING_FORM = document.getElementById('shopping-form');
 document.addEventListener('DOMContentLoaded', async () => {
     // Constante tipo objeto con los datos del producto seleccionado.
     const FORM = new FormData();
+    //agarrar el formulado
     FORM.append('id_producto', PARAMS.get('id'));
     // Petición para solicitar los datos del producto seleccionado.
     const JSON = await dataFetch(PRODUCTO_API, 'readOne', FORM);

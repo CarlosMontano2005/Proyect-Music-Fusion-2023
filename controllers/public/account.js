@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         </nav>
 
         <div class="icons">
-            <i class='bx bx-menu' id="menu-bars"></i>
-            <i class='bx bx-search-alt-2' id="search-icon"></i>
-            <i class='bx bx-shopping-bag'></i>
+            <a class="" href="#"><i class='bx bx-menu' id="menu-bars"></i></a>
+            <a class="" href="#"> <i class='bx bx-search-alt-2' id="search-icon"></i></a>    
+            <a class=""  href="../../views/public/carrito.html"> <i class='bx bx-shopping-bag'></i></a>       
             <a onclick="logOut()"><i class='bx bx-log-out'></i></a>    
         </div>
         <form action="" id="search-form">
@@ -121,9 +121,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         </nav>
 
         <div class="icons">
-            <i class='bx bx-menu' id="menu-bars"></i>
-            <i class='bx bx-search-alt-2' id="search-icon"></i>
-            <i class='bx bx-shopping-bag'></i>
+            <a class="" href="#"><i class='bx bx-menu' id="menu-bars"></i></a>
+            <a class="" href="#"> <i class='bx bx-search-alt-2' id="search-icon"></i></a>    
+            <a class=""  href="../../views/public/carrito.html"> <i class='bx bx-shopping-bag'></i></a>       
             <a href="../../views/public/login.html"><i class='bx bx-user' ></i></a>    
         </div>
         <form action="" id="search-form">

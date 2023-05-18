@@ -63,9 +63,6 @@ class Detalles_Pedidos extends Detalles_Pedidos_Queries
             return false;
         }
     }
-
-
-
    
     /*
     *   Métodos para obtener valores de los atributos.

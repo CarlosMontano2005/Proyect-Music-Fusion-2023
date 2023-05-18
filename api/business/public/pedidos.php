@@ -18,9 +18,9 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$pedido->startOrder()) {
                     $result['exception'] = 'Ocurrió un problema al obtener el pedido';
-                } elseif (!$pedido->getId_Producto($_POST['id_producto'])) {
+                } elseif (!$pedido->setId_Producto($_POST['id_producto'])) {
                     $result['exception'] = 'Producto incorrecto';
-                } elseif (!$pedido->getCantidad_Producto($_POST['cantidad_detalle_producto'])) {
+                } elseif (!$pedido->setCantidad_Producto($_POST['cantidad'])) {
                     $result['exception'] = 'Cantidad incorrecta';
                 } elseif ($pedido->createDetail()) {
                     $result['status'] = 1;
