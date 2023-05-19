@@ -8,10 +8,8 @@ const TBODY_ROWS = document.getElementById('tbody-rows');
 const OPTIONS = {
     dismissible: false
 }
-// Se inicializa el componente Modal para que funcionen las cajas de diálogo.
-//M.Modal.init(document.querySelectorAll('.modal'), OPTIONS);
-// Constante para establecer la caja de diálogo de cambiar producto.
-//const ITEM_MODAL = M.Modal.getInstance(document.getElementById('item-modal'));
+// Constante para establecer el título de la modal.
+const MODAL_TITLE = document.getElementById('modal-title');
 // Constante para establecer la modal de guardar.
 const SAVE_MODAL = new bootstrap.Modal(document.getElementById('add-modal'));
 
@@ -34,7 +32,8 @@ ITEM_FORM.addEventListener('submit', async (event) => {
         // Se actualiza la tabla para visualizar los cambios.
         readOrderDetail();
         // Se cierra la caja de diálogo del formulario.
-        ITEM_MODAL.close();
+        //ITEM_MODAL.close();
+        SAVE_MODAL.hide();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -102,8 +101,9 @@ async function readOrderDetail() {
 */
 function openUpdate(id, quantity) {
     // Se abre la caja de diálogo que contiene el formulario.
-    ITEM_MODAL.open();
+    //ITEM_MODAL.open();
     // Se inicializan los campos del formulario con los datos del registro seleccionado.
+    MODAL_TITLE.textContent = 'Cambiar Cantidad';
     document.getElementById('id_detalle').value = id;
     document.getElementById('cantidad').value = quantity;
     // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.

@@ -44,9 +44,9 @@ if (isset($_GET['action'])) {
             // Caso para actualizar la cantidad de un producto agregado al carrito de compras.
             case 'updateDetail':
                 $_POST = Validator::validateForm($_POST);
-                if (!$pedido->getId($_POST['id_detalle_pedido'])) {
+                if (!$pedido->setId($_POST['id_detalle'])) {
                     $result['exception'] = 'Detalle incorrecto';
-                } elseif (!$pedido->getCantidad_Producto($_POST['cantidad_detalle_producto'])) {
+                } elseif (!$pedido->setCantidad_Producto($_POST['cantidad'])) {
                     $result['exception'] = 'Cantidad incorrecta';
                 } elseif ($pedido->updateDetail()) {
                     $result['status'] = 1;
@@ -57,7 +57,7 @@ if (isset($_GET['action'])) {
                 break;
                 //Para mover un producto y quitar un producto que se encuentra en el carrito
             case 'deleteDetail':
-                if (!$pedido->getId($_POST['id_detalle_pedido'])) {
+                if (!$pedido->setId($_POST['id_detalle'])) {
                     $result['exception'] = 'Detalle incorrecto';
                 } elseif ($pedido->deleteDetail()) {
                     $result['status'] = 1;
