@@ -113,6 +113,7 @@ ITEM_FORM.addEventListener('submit', async (event) => {
                 }else if(cantidadnueva == cantidadactual){
                     cantidadactualizar = cantidadactual;
                     console.log('cantidades igual que la nueva ' + cantidadactualizar);
+                    sweetAlert(3, 'Por favor aumente la cantidad de tu producto o disminuya la cantidad, no se detectan cambios');
                 }
             }
             else{
