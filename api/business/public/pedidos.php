@@ -102,9 +102,15 @@ if (isset($_GET['action'])) {
                 break;
                 //Para mover un producto y quitar un producto que se encuentra en el carrito
             case 'deleteDetail':
+                $_POST = Validator::validateForm($_POST);
                 if (!$pedido->setId($_POST['id_detalle'])) {
                     $result['exception'] = 'Detalle incorrecto';
-                } elseif ($pedido->deleteDetail()) {
+                }elseif (!$pedido->setId_Producto($_POST['id_producto'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                } elseif (!$pedido->setCantidad_Producto($_POST['cantidad'])) {
+                    $result['exception'] = 'Cantidad incorrecta';
+                }  
+                elseif ($pedido->deleteDetail()) {
                     $result['status'] = 1;
                     $result['message'] = 'Producto removido correctamente';
                 } else {

@@ -109,7 +109,7 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
                     SET id_estado_pedido = ?, fecha_pedido = ?
                     WHERE id_pedido = ?';
          $params = array($this->estado, $date, $_SESSION['id_pedido']);
-         if(Database::executeRow($sql, $params)){
+         if( Database::executeRow($sql, $params)){
             return true;
          }
          else{
@@ -124,7 +124,19 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
         $sql = 'DELETE FROM detalles_pedidos
                         WHERE id_detalle_pedido = ? AND id_pedido = ?';
         $params = array($this->id, $_SESSION['id_pedido']);
-        return Database::executeRow($sql, $params);
+        if($data = Database::executeRow($sql, $params)){
+            $sql = 'UPDATE productos
+            SET cantidad_producto = ((cantidad_producto + ?))
+            WHERE  Id_producto = ?;';
+            $params = array($this->cantidad_producto, $this->id_producto);
+             if($data = Database::executeRow($sql, $params)){
+                return true;
+            }
+        }
+        else{
+            return false;
+        }
+        ;
     }
      // Método para actualizar la cantidad de un producto agregado al carrito de compras.
      public function updateDetail()

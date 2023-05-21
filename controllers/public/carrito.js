@@ -168,7 +168,7 @@ async function readOrderDetail() {
                         <button onclick="openUpdate(${row.id_detalle_pedido}, ${row.cantidad_detalle_producto},${row.id_producto})" class="button_edit" class="button-modal" data-bs-toggle="modal"
                             data-bs-target="#add-modal"  data-tooltip="Actualizar"><i class='bx bxs-edit-alt'></i></button>
                         <!--Boton Eliminar-->
-                        <button onclick="openDelete(${row.id_detalle_pedido})" class="button_delet" data-tooltip="Eliminar"><i class='bx bx-trash'></i></button>
+                        <button onclick="openDelete(${row.id_detalle_pedido},${row.cantidad_detalle_producto},${row.id_producto})" class="button_delet" data-tooltip="Eliminar"><i class='bx bx-trash'></i></button>
                         </td>
                     </tr>
             `;
@@ -228,14 +228,17 @@ async function finishOrder() {
 *   Parámetros: id (identificador del producto).
 *   Retorno: ninguno.
 */
+
+
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
     const RESPONSE = await confirmAction('¿Está seguro de remover el producto?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define un objeto con los datos del producto seleccionado.
-        const FORM = new FormData();
-        FORM.append('id_detalle', id);
+        const FORM = new FormData(ITEM_FORM);
+        FORM.append('id_detalle',id);
+        console.log(FORM.append('id_detalle',id));
         // Petición para eliminar un producto del carrito de compras.
         const JSON = await dataFetch(PEDIDO_API, 'deleteDetail', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
