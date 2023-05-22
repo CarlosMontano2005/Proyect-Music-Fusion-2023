@@ -56,6 +56,29 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No tiene productos en el carrito';
                 }
                 break;
+            case 'readOrderDetailOrdenes':
+                $_POST = Validator::validateForm($_POST);
+                if (!$pedido->setId_Pedido($_POST['id_pedido'])) {
+                    $result['exception'] = 'id Pedido incorrecto';
+                } 
+                elseif ($result['dataset'] = $pedido->readOrderDetail()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No tiene detalles del producto';
+                }
+                break;
+            case 'readAllOrdenes':
+                if ($result['dataset'] = $pedido->readAllOrdenes()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                } elseif (Database::getException()) {
+                   $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
             //caso para restar la cantidad de la existencia al producto en el carrito
             case 'updateExistenciaResta':
                 $_POST = Validator::validateForm($_POST);

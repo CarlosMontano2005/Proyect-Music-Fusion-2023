@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <a class="" id="a_instrumentos" href="#intrumentos">Instrumentos</a>
         <a class="" id="a_acerca_de" href="#acerca de">Acerca de</a>
         <a class="" id="a_tendencia" href="#tendencia">tendencia</a>
-        <a class="" id="a_ordenes" href="#orden">Ordenes</a>
+        <a class="" id="a_ordenes" href="../../views/public/ordenes.html">Ordenes</a>
         </nav>
 
         <div class="icons">
@@ -117,7 +117,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             <a class="" id="a_instrumentos" href="#intrumentos">Instrumentos</a>
             <a class="" id="a_acerca_de" href="#acerca de">Acerca de</a>
             <a class="" id="a_tendencia" href="#tendencia">tendencia</a>
-            <a class="" id="a_ordenes" href="#orden">Ordenes</a>
         </nav>
 
         <div class="icons">

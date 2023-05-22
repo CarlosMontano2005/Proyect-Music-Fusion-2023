@@ -24,6 +24,16 @@ class Detalles_Pedidos_Queries
         FROM detalles_pedidos INNER JOIN productos USING(id_producto) ORDER BY (id_pedido) ;';
         return Database::getRows($sql);
     }
+    /**leer un dato para la taba de ordenes*/
+    public function readAllOrdenes()
+    {
+        $sql = 'SELECT id_pedido, estado_pedido, fecha_pedido, direccion_pedido, nombre_cliente,apellido_cliente
+        FROM pedidos INNER JOIN estado_pedidos USING(id_estado_pedido)
+		INNER JOIN clientes USING(id_cliente) 
+		 WHERE id_cliente = ?';
+        $params = array($_SESSION['id_cliente']);
+        return Database::getRows($sql, $params);
+    }
     /**leer un dato por medio de id */
     public function readOne()
     {
