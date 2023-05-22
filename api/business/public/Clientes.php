@@ -56,13 +56,17 @@ if (isset($_GET['action'])) {
                 if (!$captcha['success']) {
                     $result['recaptcha'] = 1;
                     $result['exception'] = 'No eres humano';
-                } elseif (!$cliente->setNombres($_POST['nombres'])) {
+                } elseif (!$cliente->setNombre($_POST['nombres'])) {
                     $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$cliente->setApellidos($_POST['apellidos'])) {
+                } elseif (!$cliente->setApellido($_POST['apellidos'])) {
                     $result['exception'] = 'Apellidos incorrectos';
                 } elseif (!$cliente->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo incorrecto';
-                } elseif (!$cliente->setDireccion($_POST['direccion'])) {
+                }elseif (!isset($_POST['generos'])) {
+                    $result['exception'] = 'Seleccione  un sexo';
+                }elseif (!$cliente->setId_genero($_POST['generos'])) {
+                    $result['exception'] = 'Sexo incorrecta';
+                }  elseif (!$cliente->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Dirección incorrecta';
                 } elseif (!$cliente->setDUI($_POST['dui'])) {
                     $result['exception'] = 'DUI incorrecto';
@@ -74,11 +78,21 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Claves diferentes';
                 } elseif (!$cliente->setClave($_POST['clave'])) {
                     $result['exception'] = Validator::getPasswordError();
-                } elseif ($cliente->createRow()) {
+                } elseif ($cliente->createRowCrearCuenta()) {
                     $result['status'] = 1;
                     $result['message'] = 'Cuenta registrada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
+                }
+                break;
+            case 'readAllGenero':
+                if ($result['dataset'] = $cliente->readAllGenero()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
                 }
                 break;
             case 'login':
