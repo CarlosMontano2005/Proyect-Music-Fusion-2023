@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Se crean y concatenan las tarjetas con los datos de cada categoría.
             CATEGORIAS.innerHTML += `
             <div class="box">
+          
             <div class="image">
               <img src="${SERVER_URL}img/categorias/${row.imagen_categoria}" alt="imagen-categoria"/>
               <a href="${url}" class="bx bx-shopping-bag bx-left"></a>
@@ -47,7 +48,8 @@ document.addEventListener('DOMContentLoaded', async () => {
               <!-- <span class="price">$12.99</span>-->
             </div>
           </div>
-            `;
+            
+          `;
         });
 
         // Se inicializa el contenedor de productos.
@@ -56,8 +58,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         JSON2.dataset.forEach(row => {
             // Se crean y concatenan las tarjetas con los datos de cada producto.
             PRODUCTOS.innerHTML += `
-            <div class="box">
+        <div class="box">
+        
           <div class="image">
+          <a href="#" class="bx bx-show-alt bx-left"></a>
             <img
             src="${SERVER_URL}img/productos/${row.imagen_producto}"
               alt="imagen-categoria"
