@@ -125,7 +125,7 @@ async function openComentario(id) {
     // Se abre la caja de diálogo que contiene el formulario.
     // SAVE_MODAL.open();
     // Se restauran los elementos del formulario.
-    //SAVE_FORM_COMENTARIO.reset();
+    SAVE_FORM_COMENTARIO.reset();
     // Se asigna título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Leer Comentarios';
     // Se inicializa el contenedor de categorías.
