@@ -11,7 +11,7 @@ searchForm.addEventListener('submit', (event) => {
   
   // Realizar la solicitud AJAX al servidor PHP
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '../../api/business/dashboard/Buscar.php');
+  xhr.open('POST', '../../api/business/public/Buscar.php');
   
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onload = function () {
