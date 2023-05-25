@@ -4,10 +4,21 @@ const PRODUCTO_API = 'business/public/productos.php';
 
 // Constante para establecer el contenedor de categorías.
 const CATEGORIAS = document.getElementById('categorias');
+//CONSTANTE DE BOTON inicio
 const A_INICIO = document.getElementById('a_inicio');
+//constante de producto id
 const PRODUCTOS = document.getElementById('productos');
+//constante de los elementos de la card id de otros comentarios
+const CARD_OTROS_COMENTARIOS = document.getElementById('card_otros_comentario');
+//constante de card de comentario propio
+const CARD_COMENTARIO_PROPIO = document.getElementById('card_comentario_propio');
+// Constante para establecer el formulario de guardar.
+const SAVE_FORM_COMENTARIO = document.getElementById('form-comentario');
+// Constante para establecer el título de la modal.
+const MODAL_TITLE = document.getElementById('modal-title');
+// Constante para establecer la modal de guardar.
+const SAVE_MODAL = new bootstrap.Modal(document.getElementById('modal-valoraciones'));
 
-// Constante tipo objeto para establecer las opciones del componente Slider.
 const OPTIONS = {
     height: 300
 }
@@ -29,6 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Se crean y concatenan las tarjetas con los datos de cada categoría.
             CATEGORIAS.innerHTML += `
             <div class="box">
+          
             <div class="image">
               <img src="${SERVER_URL}img/categorias/${row.imagen_categoria}" alt="imagen-categoria"/>
               <a href="${url}" class="bx bx-shopping-bag bx-left"></a>
@@ -47,7 +59,8 @@ document.addEventListener('DOMContentLoaded', async () => {
               <!-- <span class="price">$12.99</span>-->
             </div>
           </div>
-            `;
+            
+          `;
         });
 
         // Se inicializa el contenedor de productos.
@@ -56,8 +69,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         JSON2.dataset.forEach(row => {
             // Se crean y concatenan las tarjetas con los datos de cada producto.
             PRODUCTOS.innerHTML += `
-            <div class="box">
+        <div class="box">
+        
           <div class="image">
+          <a href="#" class="bx bx-show-alt bx-left"  data-bs-toggle="modal" onclick="openComentario(${row.id_producto})"
+          data-bs-target="#modal-valoraciones"></a>
             <img
             src="${SERVER_URL}img/productos/${row.imagen_producto}"
               alt="imagen-categoria"
@@ -87,3 +103,45 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('title').textContent = JSON.exception;
     }
 });
+
+
+/**
+*metodo del comentario
+*/
+/*
+*   Función asíncrona para preparar el formulario al momento de actualizar un registro.
+*   Parámetros: id (identificador del registro seleccionado).
+*   Retorno: ninguno.
+*/
+async function openComentario(id) {
+  // Se define una constante tipo objeto con los datos del registro seleccionado.
+  const FORM = new FormData();
+  FORM.append('id_producto', id);
+  console.log(FORM.append('id_producto', id));
+  // Petición para obtener los datos del registro solicitado.
+  const JSON = await dataFetch(PRODUCTO_API, 'readAllComentarios', FORM);
+  // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+  if (JSON.status) {
+    // Se abre la caja de diálogo que contiene el formulario.
+    // SAVE_MODAL.open();
+    // Se restauran los elementos del formulario.
+    SAVE_FORM_COMENTARIO.reset();
+    // Se asigna título a la caja de diálogo.
+    MODAL_TITLE.textContent = 'Leer Comentarios';
+    // Se inicializa el contenedor de categorías.
+    CARD_OTROS_COMENTARIOS.innerHTML = '';
+    // Se recorre el conjunto de registros fila por fila a través del objeto row.
+    JSON.dataset.forEach(row => {CARD_OTROS_COMENTARIOS.innerHTML += `
+    <div class="card mb-4">
+      <p id="nombre_otros_comentario">${row.cliente}</p>
+      <p id="fecha_otros_comentario">${row.fecha_comentario}</p>
+      <p id="otros_comentario">${row.comentario_producto}.</p>
+    </div>
+      `;
+    });
+    // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
+    //M.updateTextFields();
+  } else {
+      sweetAlert(2, JSON.exception, false);
+  }
+}

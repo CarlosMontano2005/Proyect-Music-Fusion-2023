@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('descripcion').textContent = JSON.dataset.descripcion;
         document.getElementById('precio').textContent = JSON.dataset.precio_producto;
         document.getElementById('id_producto').value = JSON.dataset.id_producto;
+        
     } else {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
         document.getElementById('title').textContent = JSON.exception;
@@ -38,14 +39,33 @@ SHOPPING_FORM.addEventListener('submit', async (event) => {
     event.preventDefault();
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SHOPPING_FORM);
-    // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(PEDIDO_API, 'createDetail', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se constata si el cliente ha iniciado sesión.
+    //verificar existencai
+    
+    const JSON = await dataFetch(PEDIDO_API, 'varlidarExistencia', FORM);
     if (JSON.status) {
-        sweetAlert(1, JSON.message, true, 'carrito.html');
+       
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se constata si el cliente ha iniciado sesión.
+        if (JSON.status) {
+            //Se verifica si la cantidad es menor a 0 y no sobrepasa la existencia
+            let existencia = 0;
+            existencia = JSON.dataset.resta_existencia;
+            //se validad la cantidad total si es mayor a 0 se puede ralizar el pedido   
+            //si es mayor a 0 significa que sobra existencia para seguir comprando          
+            if(existencia>0){
+                //Si es mayor se realiza la Petición para guardar los datos del formulario.
+                const JSON1 = await dataFetch(PEDIDO_API, 'createDetail', FORM);
+                if(JSON1.status){
+                    sweetAlert(1, JSON1.message, true, 'carrito.html');
+                }
+            }
+            else{
+                sweetAlert(2, 'Lo Sentimos, no tenemos tanta cantidad de este producto, por favor escriba una cantidad menor a la que pide ', false);
+            }
+    }
     } else if (JSON.session) {
         sweetAlert(2, JSON.exception, false);
     } else {
         sweetAlert(3, JSON.exception, true, 'login.html');
     }
+    
 });

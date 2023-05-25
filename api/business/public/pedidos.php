@@ -14,6 +14,21 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
+            /*crear producto al carrito */
+            case 'varlidarExistencia':
+                $_POST = Validator::validateForm($_POST);
+                if (!$pedido->setId_Producto($_POST['id_producto'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                } elseif (!$pedido->setCantidad_Producto($_POST['cantidad'])) {
+                    $result['exception'] = 'Cantidad incorrecta';
+                } elseif ($result['dataset'] = $pedido->varlidarExistencia()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Producto validado correctamente';
+                } 
+                else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
             case 'createDetail':
                 $_POST = Validator::validateForm($_POST);
                 if (!$pedido->startOrder()) {
@@ -41,12 +56,65 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No tiene productos en el carrito';
                 }
                 break;
+            case 'readOrderDetailOrdenes':
+                $_POST = Validator::validateForm($_POST);
+                if (!$pedido->setId_Pedido($_POST['id_pedido'])) {
+                    $result['exception'] = 'id Pedido incorrecto';
+                } 
+                elseif ($result['dataset'] = $pedido->readOrderDetail()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No tiene detalles del producto';
+                }
+                break;
+            case 'readAllOrdenes':
+                if ($result['dataset'] = $pedido->readAllOrdenes()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                } elseif (Database::getException()) {
+                   $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
+            //caso para restar la cantidad de la existencia al producto en el carrito
+            case 'updateExistenciaResta':
+                $_POST = Validator::validateForm($_POST);
+                if (!$pedido->setId_Producto($_POST['id_producto'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                } elseif (!$pedido->setCantidad_Producto($_POST['cantida_resta'])) {
+                    $result['exception'] = 'Cantidad incorrecta';
+                } elseif ($result['dataset'] =$pedido->updateCantidadAumentaCarrito()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Cantidad del producto autualizado correctamente';
+                } 
+                else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
+            case 'updateExistenciaSuma':
+                $_POST = Validator::validateForm($_POST);
+                if (!$pedido->setId_Producto($_POST['id_producto'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                } elseif (!$pedido->setCantidad_Producto($_POST['cantida_resta'])) {
+                    $result['exception'] = 'Cantidad incorrecta';
+                } elseif ($result['dataset'] =$pedido->updateCantidadRestaCarrito()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Cantidad del producto autualizado correctamente';
+                } 
+                else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
+            
             // Caso para actualizar la cantidad de un producto agregado al carrito de compras.
             case 'updateDetail':
                 $_POST = Validator::validateForm($_POST);
-                if (!$pedido->getId($_POST['id_detalle_pedido'])) {
+                if (!$pedido->setId($_POST['id_detalle'])) {
                     $result['exception'] = 'Detalle incorrecto';
-                } elseif (!$pedido->getCantidad_Producto($_POST['cantidad_detalle_producto'])) {
+                } elseif (!$pedido->setCantidad_Producto($_POST['cantidad'])) {
                     $result['exception'] = 'Cantidad incorrecta';
                 } elseif ($pedido->updateDetail()) {
                     $result['status'] = 1;
@@ -57,9 +125,15 @@ if (isset($_GET['action'])) {
                 break;
                 //Para mover un producto y quitar un producto que se encuentra en el carrito
             case 'deleteDetail':
-                if (!$pedido->getId($_POST['id_detalle_pedido'])) {
+                $_POST = Validator::validateForm($_POST);
+                if (!$pedido->setId($_POST['id_detalle'])) {
                     $result['exception'] = 'Detalle incorrecto';
-                } elseif ($pedido->deleteDetail()) {
+                }elseif (!$pedido->setId_Producto($_POST['id_producto'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                } elseif (!$pedido->setCantidad_Producto($_POST['cantidad'])) {
+                    $result['exception'] = 'Cantidad incorrecta';
+                }  
+                elseif ($pedido->deleteDetail()) {
                     $result['status'] = 1;
                     $result['message'] = 'Producto removido correctamente';
                 } else {

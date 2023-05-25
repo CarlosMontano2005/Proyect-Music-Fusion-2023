@@ -17,14 +17,24 @@ class Detalles_Pedidos_Queries
         $params = array( "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
-
+    /*Leer los datos */
     public function readAll()
     {
         $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_detalle_producto, precio_detalle_producto
         FROM detalles_pedidos INNER JOIN productos USING(id_producto) ORDER BY (id_pedido) ;';
         return Database::getRows($sql);
     }
-
+    /**leer un dato para la taba de ordenes*/
+    public function readAllOrdenes()
+    {
+        $sql = 'SELECT id_pedido, estado_pedido, fecha_pedido, direccion_pedido, nombre_cliente,apellido_cliente
+        FROM pedidos INNER JOIN estado_pedidos USING(id_estado_pedido)
+		INNER JOIN clientes USING(id_cliente) 
+		 WHERE id_cliente = ?';
+        $params = array($_SESSION['id_cliente']);
+        return Database::getRows($sql, $params);
+    }
+    /**leer un dato por medio de id */
     public function readOne()
     {
         $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_detalle_producto, precio_detalle_producto
@@ -33,7 +43,7 @@ class Detalles_Pedidos_Queries
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
-    
+    /*metodo de valoraciones */
     public function readOneValoracion()
     {
         $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_detalle_producto, precio_detalle_producto
@@ -41,7 +51,7 @@ class Detalles_Pedidos_Queries
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
-
+    /*agregar datos a la tabla */
     public function createRow()
     {
         $sql = 'INSERT INTO clientes(nombre_cliente, apellido_cliente, correo_cliente, 
@@ -51,7 +61,7 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
         $params = array($this->nombre_cliente, $this->apellido_cliente, $this->correo_cliente, $this->fecha_nacimiento, $this->dui_cliente, $this->id_genero, $this->telefono_cliente, $this->clave, $this->estado, $this->direccion_cliente);
         return Database::executeRow($sql, $params);
     }
-
+/*actualizar datos */
     public function updateRow()/*$current_image*/
     {
         // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
@@ -63,8 +73,10 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
         $params = array($this->id_pedido, $this->id_producto, $this->cantidad_producto, $this->precio_detalle_producto, $this->id);
         return Database::executeRow($sql, $params);
     }
+    /*agregar datos a la tabla del pedido para realizar un pedido ya sea nuevo o no */
     public function startOrder()
     {
+        /*VER SI HAY DATOS EN LAS TABLAS  con el id del cliente*/
         $sql = 'SELECT id_pedido
                 FROM pedidos
                 WHERE id_estado_pedido = 4 AND id_cliente = ?';
@@ -73,6 +85,7 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
             $this->id_pedido = $data['id_pedido'];
             return true;
         } else {
+            /*SI NO HAY DATOS QUE HAGA UNA INSERCION DE ELLOS */
             $sql = 'INSERT INTO pedidos(direccion_pedido, id_cliente, fecha_pedido)
             VALUES((SELECT direccion_cliente FROM clientes WHERE id_cliente = ?), ?, current_date)';
             $params = array($_SESSION['id_cliente'], $_SESSION['id_cliente']);
@@ -84,12 +97,13 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
             }
         }
     }
+    /*ver las ordenes en el carrito */
     public function readOrderDetail()
     {
         $sql = 'SELECT ROW_NUMBER() OVER(
-            ORDER BY id_detalle_pedido, nombre_producto) AS fila, id_detalle_pedido, nombre_producto, imagen_producto,detalles_pedidos.precio_detalle_producto, detalles_pedidos.cantidad_detalle_producto
+            ORDER BY id_detalle_pedido, nombre_producto) AS fila, id_detalle_pedido, id_producto,nombre_producto, imagen_producto,detalles_pedidos.precio_detalle_producto, detalles_pedidos.cantidad_detalle_producto
                     FROM pedidos INNER JOIN detalles_pedidos USING(id_pedido) INNER JOIN productos USING(id_producto)
-                    WHERE id_pedido = ?	';
+                    WHERE id_pedido = ?';
         $params = array($this->id_pedido);
         return Database::getRows($sql, $params);
     }
@@ -105,7 +119,13 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
                     SET id_estado_pedido = ?, fecha_pedido = ?
                     WHERE id_pedido = ?';
          $params = array($this->estado, $date, $_SESSION['id_pedido']);
-         return Database::executeRow($sql, $params);
+         if( Database::executeRow($sql, $params)){
+            return true;
+         }
+         else{
+            return false;
+         }
+         
      }
  
     // Método para eliminar un producto que se encuentra en el carrito de compras.
@@ -114,7 +134,19 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
         $sql = 'DELETE FROM detalles_pedidos
                         WHERE id_detalle_pedido = ? AND id_pedido = ?';
         $params = array($this->id, $_SESSION['id_pedido']);
-        return Database::executeRow($sql, $params);
+        if($data = Database::executeRow($sql, $params)){
+            $sql = 'UPDATE productos
+            SET cantidad_producto = ((cantidad_producto + ?))
+            WHERE  Id_producto = ?;';
+            $params = array($this->cantidad_producto, $this->id_producto);
+             if($data = Database::executeRow($sql, $params)){
+                return true;
+            }
+        }
+        else{
+            return false;
+        }
+        ;
     }
      // Método para actualizar la cantidad de un producto agregado al carrito de compras.
      public function updateDetail()
@@ -125,14 +157,89 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
          $params = array($this->cantidad_producto, $this->id, $_SESSION['id_pedido']);
          return Database::executeRow($sql, $params);
      }
+    //validar existencia de un producto
+    public function varlidarExistencia(){
+        //consulta para ver cuanto es el total de restar de existencia
+        $sql = 'SELECT (cantidad_producto - ?) as resta_existencia FROM productos WHERE Id_producto = ?;';
+        $params = array($this->cantidad_producto, $this->id_producto);
+        return  Database::getRow($sql, $params);
+    }
+    //metodo para restar la cantidad que se le aumenta en el carrito 
+    public function updateCantidadAumentaCarrito()/*$current_image*/
+    {
+         //consulta para ver cuanto es el total de aumentar la de existencia
+         $sql = 'SELECT (cantidad_producto - ?) as aumentar_existencia FROM productos WHERE Id_producto = ?;';
+         $params = array($this->cantidad_producto, $this->id_producto);
+         //si la consulta es correcta se actualizara los datos
+         if($data = Database::getRow($sql, $params)){
+            $this->cantidad_producto = $data['aumentar_existencia'];
+            $sql = 'UPDATE productos
+                    SET cantidad_producto = ?
+            WHERE id_producto = ?';
+            $params = array($this->cantidad_producto,  $this->id_producto);
+            if($data = Database::executeRow($sql, $params)){
+                return true;
+            }
+            
+         }
+         else{
+            return false;
+         }
+         
+    }
+    //metodo para restar la cantidad que se le aumenta en el carrito 
+    public function updateCantidadRestaCarrito()/*$current_image*/
+    {
+         //consulta para ver cuanto es el total de aumentar la de existencia
+         $sql = 'SELECT (cantidad_producto + ?) as aumentar_existencia FROM productos WHERE Id_producto = ?;';
+         $params = array($this->cantidad_producto, $this->id_producto);
+         //si la consulta es correcta se actualizara los datos
+         if($data = Database::getRow($sql, $params)){
+            $this->cantidad_producto = $data['aumentar_existencia'];
+            $sql = 'UPDATE productos
+                    SET cantidad_producto = ?
+            WHERE id_producto = ?';
+            $params = array($this->cantidad_producto,  $this->id_producto);
+            if($data = Database::executeRow($sql, $params)){
+                return true;
+            }
+            
+         }
+         else{
+            return false;
+         }
+         
+    }
+    /*Metodo para agregar cosas al carrito*/
     public function createDetail()
     {
         // Se realiza una subconsulta para obtener el precio del producto.
         $sql = 'INSERT INTO detalles_pedidos(id_producto, precio_detalle_producto, cantidad_detalle_producto, id_pedido)
                 VALUES(?, (SELECT precio_producto FROM productos WHERE id_producto = ?), ?, ?)';
         $params = array($this->id_producto, $this->id_producto, $this->cantidad_producto, $this->id_pedido);
-        return Database::executeRow($sql, $params);
+        /*se verifica para actulizar la existencia de productos  en producto */
+        if(Database::executeRow($sql, $params)){
+            //consulta para ver cuanto es el total de restar de existencia
+            $sql = 'SELECT (cantidad_producto - ?) as resta_existencia FROM productos WHERE Id_producto = ?;';
+            $params = array($this->cantidad_producto, $this->id_producto);
+            //se hace la actualizacion de la existencia en la tabla productos
+            if($data = Database::getRow($sql, $params)){
+                $this->cantidad_producto = $data['resta_existencia'];
+                // se hace la resta;
+                $sql = 'UPDATE productos
+                SET  cantidad_producto=?
+                WHERE Id_producto=?;';
+                $params = array($this->cantidad_producto,$this->id_producto);
+                if($data = Database::executeRow($sql, $params)){
+                    return true;
+                }
+            }
+            else{
+                return false;
+            }
+        }
     }
+    
     public function deleteRow()
     {
         $sql = 'DELETE FROM clientes

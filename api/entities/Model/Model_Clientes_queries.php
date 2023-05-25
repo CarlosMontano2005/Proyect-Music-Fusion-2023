@@ -34,7 +34,12 @@ class ClienteQueries
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
-
+    public function readAllGenero()
+    {
+        $sql = 'SELECT id_genero, genero
+        FROM generos';
+        return Database::getRows($sql);
+    }
     public function createRow()
     {
         $sql = 'INSERT INTO clientes(nombre_cliente, apellido_cliente, correo_cliente, 
@@ -42,6 +47,14 @@ class ClienteQueries
         estado, direccion_cliente)
 VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
         $params = array($this->nombre_cliente, $this->apellido_cliente, $this->correo_cliente, $this->fecha_nacimiento, $this->dui_cliente, $this->id_genero, $this->telefono_cliente, $this->clave, $this->estado, $this->direccion_cliente);
+        return Database::executeRow($sql, $params);
+    }
+    public function createRowCrearCuenta()
+    {
+        $sql = 'INSERT INTO clientes(nombre_cliente, apellido_cliente, correo_cliente, 
+        fecha_nacimiento, dui, id_genero, telefono_cliente, clave,direccion_cliente)
+VALUES (?,?,?,?,?, ?, ?,?, ?)';
+        $params = array($this->nombre_cliente, $this->apellido_cliente, $this->correo_cliente, $this->fecha_nacimiento, $this->dui_cliente, $this->id_genero, $this->telefono_cliente, $this->clave, $this->direccion_cliente);
         return Database::executeRow($sql, $params);
     }
 

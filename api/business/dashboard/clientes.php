@@ -72,7 +72,7 @@ if (isset($_GET['action'])) {
                 elseif (!$cliente->setClave($_POST['clave'])) {
                     $result['exception'] = 'Clave incorrecta';
                 } 
-                elseif ($cliente->createRow()) {
+                elseif ($cliente->createRowCrearCuenta()) {
                     $result['status'] = 1;
                     $result['message'] = 'Cliente creado correctamente';
                 }

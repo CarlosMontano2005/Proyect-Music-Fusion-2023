@@ -3,57 +3,58 @@ const searchForm = document.getElementById('search-product');
 const searchInput = document.getElementById('search');
 const productosContainer = document.getElementById('productos');
 
-// Agregar un evento de escucha al formulario de búsqueda
-searchForm.addEventListener('submit', (e) => {
-  e.preventDefault(); // Evitar el envío del formulario
+// Manejar el evento de envío del formulario
+searchForm.addEventListener('submit', (event) => {
+  event.preventDefault(); // Evitar el envío del formulario
   const searchTerm = searchInput.value.trim(); // Obtener el término de búsqueda
+
   
-  // Realizar la solicitud AJAX al servidor PHP para buscar productos
+  // Realizar la solicitud AJAX al servidor PHP
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '../../api/business/public/Buscar.php', true);
+  xhr.open('POST', '../../api/business/dashboard/Buscar.php');
+  
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
+  xhr.onload = function () {
+    if (xhr.status === 200) {
       const response = JSON.parse(xhr.responseText);
       if (response.status === 1) {
-        // Mostrar los productos encontrados en el contenedor
-        displayProductos(response.dataset);
+        // Limpiar los productos existentes en el contenedor
+        productosContainer.innerHTML = '';
+        
+        // Recorrer los datos de los productos y mostrarlos en el contenedor
+        response.dataset.forEach((producto) => {
+          const productoHTML = `
+            <div class="box">
+                <div class="image">
+                    <img src="${producto.imagen_producto}" alt="imagen-categoria" />
+                    <a href="detail.html?id=${producto.id_producto}" class="bx bx-shopping-bag bx-left"></a>
+                </div>
+                <div class="content">
+                    <div class="stars">
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star-half"></i>
+                    </div>
+                    <h3>${producto.nombre_producto}</h3>
+                    <p>${producto.nombre_categoria}</p>
+                    <a href="detail.html?id=${producto.id_producto}" class="btn">Ver Detalle</a>
+                    <span class="price">Precio(US$) ${producto.precio_producto}</span>
+                </div>
+            </div>
+          `;
+          productosContainer.innerHTML += productoHTML;
+        });
       } else {
-        // Mostrar un mensaje de error o vacío en el contenedor
-        productosContainer.innerHTML = 'No se encontraron productos.';
+        productosContainer.innerHTML = 'No se encontraron resultados';
       }
+    } else {
+      console.error('Error en la solicitud');
     }
   };
-  xhr.send('action=search&search=' + encodeURIComponent(searchTerm));
+  
+  const formData = new FormData();
+  formData.append('search', searchTerm);
+  xhr.send(formData);
 });
-
-// Función para mostrar los productos en el contenedor
-function displayProductos(productos) {
-  let html = '';
-  productos.forEach((producto) => {
-    html += `
-      <div class="box">
-        <div class="image">
-          <img src="${SERVER_URL}img/productos/${producto.imagen_producto}" alt="imagen-categoria" />
-          <a href="detail.html?id=${producto.id_producto}" class="bx bx-shopping-bag bx-left"></a>
-        </div>
-        <div class="content">
-          <div class="stars">
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star"></i>
-            <i class="bx bxs-star-half"></i>
-          </div>
-          <h3>${producto.nombre_producto}</h3>
-          <p>${producto.nombre_categoria}</p>
-          <a href="detail.html?id=${producto.id_producto}" class="btn">Ver Detalle</a>
-          <span class="price">Precio(US$) ${producto.precio_producto}</span>
-        </div>
-      </div>
-    `;
-  });
-
-  // Agregar el HTML al contenedor de productos
-  productosContainer.innerHTML = html;
-}

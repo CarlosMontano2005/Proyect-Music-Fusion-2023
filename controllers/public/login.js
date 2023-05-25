@@ -3,7 +3,21 @@ const USER_API = 'business/public/clientes.php';
 const SESSION_FORM = document.getElementById('session-form');
 // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
 //M.Tooltip.init(document.querySelectorAll('.tooltipped'));
+verClaveReperit = document.getElementById("ver-clave");
+InputClaveTextConfirmar = document.getElementById("clave");
+checklabelRepetir = document.querySelector(".check-label-clave");
 
+verClaveReperit.addEventListener("click", function() {
+    if(InputClaveTextConfirmar.type == "password")
+    {
+        InputClaveTextConfirmar.type = "text";
+        checklabelRepetir.innerText = "Ocultar Clave";
+    }
+    else{
+        InputClaveTextConfirmar.type = "password";
+        checklabelRepetir.innerText = "Monstrar Clave";
+    }
+});
 // Método manejador de eventos para cuando se envía el formulario de iniciar sesión.
 SESSION_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.

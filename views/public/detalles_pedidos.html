@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="image/png" rel="icon" href="../../img/logos/logo.png" />
+    <title>Ordenes - Detalles del Peido</title>
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../resources/css/public/style_detalles_pedidos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+    <!--BOOSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+</head>
+
+<body>
+    <header></header>
+    <section></section>
+    <section class="dishes" id="detalle">
+        <h3 class="sub-heading">Detalles del Pedido</h3>
+        <h1 class="heading" id="title">Detalles del Pedido</h1>
+
+        <div class="imagen-flotante">
+            <i class="bx bx-x close"></i>
+            <img src="imagenes/seis.jpg" alt="" class="agregar-imagen" />
+        </div>
+        <div class="">
+            <div class="card col-4">
+                <form action="" id="detalle-form">
+                    <h3 class="sub-heading">Detalles del Pedido</h3>
+                    <h1 class="heading" id="title">
+                        SubTotal
+                        <br />
+                        $<b id="pago">0.0</b>
+                    </h1>
+                    <hr />
+                    <p class="text">
+                        Nombres: <b for="" id="nombre">Nombre del Cliente</b>
+                    </p>
+                    <p class="text">
+                        Apellidos: <b for="" id="apellido">Apellido del Cliente</b>
+                    </p>
+
+                    <p class="text">
+                        Dirección:
+                        <b id="direccion">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint,
+                            repellat?</b>
+                    </p>
+
+                    <p class="text">No° Pedido: <b id="id_pedido"
+                        name="id_pedido">##</b></p>
+                    <button type="submit" class="btn btn-secondary">Finalizar</button>
+                </form>
+            </div>
+        </div>
+        <div class="header_fixed">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr id="records"></tr>
+                        <tr>
+                            <th>No.</th>
+                            <th>IMAGEN</th>
+                            <th>PRODUCTO</th>
+                            <th>PRECIO (US$)</th>
+                            <th>CANTIDAD</th>
+                            <th>SUBTOTAL (US$)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-rows">
+                        <tr>
+                            <td>1</td>
+                            <td class="contenedor-galeria img-td">
+                                <img class="img-galeria" id="imagen"
+                                    src="${SERVER_URL}img/productos/${row.imagen_producto}" />
+                            </td>
+                            <td>nombre</td>
+                            <td>precio</td>
+                            <td class="td-contenedor-contador">cantidad</td>
+                            <td>subtotal</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </section>
+    <footer class="site-footer"></footer>
+    <!--BOOSTRAP-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="../../js/sweetalert.min.js"></script>
+    <script src="../../controllers/components.js"></script>
+    <script src="../../controllers/public/account.js"></script>
+    <script src="../../controllers/public/detalles_pedidos.js"></script>
+    <script src="../../js/detalles.js"></script>
+</body>
+
+</html>

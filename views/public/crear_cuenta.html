@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crear Cuenta</title>
-    <link rel="stylesheet" href="/resources/css/public/style_crear_cuenta.css" />
+    <link rel="stylesheet" href="../../resources/css/public/style_crear_cuenta.css" />
     <!-- Llamada de archivo como icono -->
-    <link type="image/png" rel="icon" href="/img/logos/logo.png" />
+    <link type="image/png" rel="icon" href="../../img/logos/logo.png" />
     <!-- Boxiocns CDN Link -->
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
@@ -23,107 +23,104 @@
         <div class="titulo">
             <h1>Crear Cuenta</h1>
         </div>
-        <div class="content">
-             <!-- formulario -->
+        <form class="content" id="signup-form">
+            <!-- formulario -->
+            <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
             <div class="content-info">
                 <div class="content-text">
                     <div class="col-auto">
-                         <!-- formulario -->
+                        <!-- formulario -->
                         <label for="formGroupExampleInput" class="form-label">Nombres</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput"
-                            placeholder="Nombres Completo" />
+                        <input type="text" class="form-control validate" id="nombres" name="nombres"
+                            placeholder="Nombres Completo" required />
                     </div>
                     <div class="col-auto">
                         <label for="formGroupExampleInput" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput"
-                            placeholder="Apellidos Completo" />
+                        <input type="text" class="form-control validate" id="apellidos" name="apellidos"
+                            placeholder="Apellidos Completo" required />
+                    </div>
+                    
+                    <div class="col-auto">
+                        <label for="formGroupExampleInput" class="form-label validate">Telefono</label>
+                        <input type="tel" class="form-control validate" id="telefono" name="telefono"
+                            placeholder="0000-0000" required />
                     </div>
                     <div class="col-auto">
-                        <label for="formGroupExampleInput" class="form-label">DUI</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="12345678-9" />
+                        <label for="formGroupExampleInput" class="form-label validate">fecha de nacimiento</label>
+                        <input type="date" class="form-control validate" id="nacimiento" name="nacimiento"
+                            placeholder="Alias" required />
                     </div>
                     <div class="col-auto">
-                        <label for="formGroupExampleInput" class="form-label">Telefono</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="1234-1234" />
+                        <label for="formGroupExampleInput" class="form-label validate">DUI</label>
+                        <input type="text" id="dui" name="dui" placeholder="00000000-0" class="form-control validate" required>
                     </div>
                     <div class="col-auto">
-                        <label for="formGroupExampleInput" class="form-label">Fecha Nacimiento</label>
-                        <input type="date" id="date" class="form-control" />
-                    </div>
-                    <div class="col-auto">
-                        <label for="formGroupExampleInput" class="form-label">Sexo</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Sexo</option>
-                            <option value="1">Masculino</option>
-                            <option value="2">Femenino</option>
+                        <p>Sexo</p>
+                        <select class="form-select" id="generos" name="generos">
+                          <option selected>Seleccionar</option>
+                        
                         </select>
-                    </div>
+                        
+                      </div>
                 </div>
             </div>
             <div class="content-info">
                 <div class="content-text">
                     <div class="col-auto">
-                        <label for="formGroupExampleInput" class="form-label">Correo Electrónico</label>
-                        <div class="input-group">
-                            <div class="input-group-text">@</div>
-                            <input type="text" class="form-control" id="autoSizingInputGroup"
-                                placeholder="Correo@Electrónico.com" />
-                        </div>
+                        <label for="formGroupExampleInput" class="form-label validate">Dirección</label>
+                        <textarea  class="form-control validate" id="direccion" name="direccion" rows="1"></textarea>
+                        
+                    </div>
+                    <div class="col-auto">
+                        <label for="formGroupExampleInput" class="form-label validate">Correo</label>
+                        <input type="email" id="correo" name="correo" class="form-control validate"
+                            id="formGroupExampleInput" placeholder="correo@local.com" required />
                     </div>
                     <div class="col-auto">
                         <label for="formGroupExampleInput" class="form-label">Contraseña</label>
-                        <div class="input-group">
-                            <input type="password" class="form-control" id="autoSizingInputGroup"
-                                placeholder="contraseña" />
-                            <button type="submit" class="btn btn-primary">
-                                <i class="bx bx-show"></i>
-                            </button>
-                        </div>
+                        <input type="password" class="form-control validate" name="clave" id="clave"
+                            placeholder="contraseña" required />
+                        <input class="form-check-input" type="checkbox" value="" id="ver-clave" checked />
+                        <label class="label-check-clave" for="clave">Monstrar Clave</label>
                     </div>
+
                     <div class="col-auto">
                         <label for="formGroupExampleInput" class="form-label">Repetir Contraseña</label>
-                        <div class="input-group">
-                            <input type="password" class="form-control" id="autoSizingInputGroup"
-                                placeholder="contraseña" />
-                            <button type="submit" class="btn btn-primary">
-                                <i class="bx bx-show"></i>
-                            </button>
-                        </div>
+                        <input id="confirmar_clave" name="confirmar_clave"  type="password" class="form-control validate"
+                            placeholder="repetir contraseña" required />
+                        <input class="form-check-input" type="checkbox" value="" id="ver-repetir-clave" checked />
+                        <label class="check-label-repeti-clave" for="repetir-clave">Monstrar Clave</label>
                     </div>
                     <div class="content-terminos">
                         <p>
                             Marca para aceptar las condiciones de uso y el aviso de
                             privacidad
                         </p>
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                        <input type="checkbox" class="form-check-input" id="condicion" name="condicion" required />
                     </div>
                     <div class="content-btn">
-                        <a href="#">Crear</a>
+                        <button type="submit" data-tooltip="Guardar">crear cuenta</button>
                     </div>
                 </div>
             </div>
             <div class="content-img">
-                <img src="/img/picture/crear_cuenta.png" alt="crear_cuenta" />
+                <img src="../../img/picture/crear_cuenta.png" alt="crear_cuenta" />
             </div>
-        </div>
-         <!-- logo esquina -->
+        </form>
+        <!-- Importación de la librería para que funcione el reCAPTCHA. Para más información https://developers.google.com/recaptcha/docs/v3 -->
+        <script src="https://www.google.com/recaptcha/api.js?render=6LdBzLQUAAAAAJvH-aCUUJgliLOjLcmrHN06RFXT"></script>
+        <!-- logo esquina -->
         <div class="img-logo-min">
-            <img src="/img/logos/logo_blanco_horizontal.png" alt="logo-blancohorizontal" />
+            <img src="../../img/logos/logo_blanco_horizontal.png" alt="logo-blancohorizontal" />
         </div>
     </section>
     <div></div>
-     <!-- script js -->
-    <script src="/resources/js/dashboard/script_dashboard.js"></script>
-    <script src="/js/script_alert_delete.js"></script>
-    <script src="/js/script_aler_succes.js"></script>
-    <!-- Script libreria sweetslert -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
+    <script src="../../js/sweetalert.min.js"></script>
+    <script src="../../controllers/components.js"></script>
+    <script src="../../controllers/public/crear_cuenta.js"></script>
 </body>
 
 </html>
