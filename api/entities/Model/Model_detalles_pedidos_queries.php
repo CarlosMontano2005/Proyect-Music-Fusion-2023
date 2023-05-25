@@ -61,6 +61,7 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
         $params = array($this->nombre_cliente, $this->apellido_cliente, $this->correo_cliente, $this->fecha_nacimiento, $this->dui_cliente, $this->id_genero, $this->telefono_cliente, $this->clave, $this->estado, $this->direccion_cliente);
         return Database::executeRow($sql, $params);
     }
+    
 /*actualizar datos */
     public function updateRow()/*$current_image*/
     {

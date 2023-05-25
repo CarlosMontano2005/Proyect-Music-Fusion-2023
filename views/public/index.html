@@ -120,43 +120,62 @@
 
                         <div class="modal-body">
                             <div class="row">
-                            <form id="form-comentario">
-                                
-                                <div class="col-4 img-producto-comentario">
-                                    <img class="img" src="../../img/productos/bateria-negra.png" alt="producto" id="imagen_producto_comentario" />
-                                </div>
-                                <div class="col-8">
+                                <form id="form-comentario" method="post">
                                     <div class="mb-1">
-                                        <label for="exampleFormControlInput1" class="form-label" id="nombre_producto">Nombre del Producto</label>
+                                        <h1 for="exampleFormControlInput1" class="heading form-label"
+                                            id="nombre_producto" name="nombre_producto">
+                                            Nombre del Producto
+                                        </h1>
                                     </div>
-                                    <div class="mb-3">
-                                        <input id="toggle-heart" name="toggle-heart" type="checkbox" ><label for="toggle-heart" aria-label="like">❤<label for="#" id="cantidad_like" name="cantidad_like">10kk</label></label>
-                                        
+                                    <div class="col-4 img-producto-comentario">
+                                        <img class="img" src="../../img/productos/bateria-negra.png" alt="producto"
+                                            id="imagen_producto_comentario" />
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlTextarea1" class="form-label">Escribir comentario</label>
-                                        <textarea class="form-control" id="comentario" name="comentario"
-                                            rows="10"></textarea>
-                                        <button type="submit" class="btn">Subir Comentario</button>
+                                    <div class="col-8">
+                                        <div class="mb-3">
+                                            <input id="toggle-heart" name="toggle-heart" type="checkbox" /><label
+                                                for="toggle-heart" aria-label="like">❤<label for="#" id="cantidad_like"
+                                                    name="cantidad_like">10k</label></label>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label">Valoracion</label>
+                                            <input type="number" id="valoracion" name="valoracion" min="1"
+                                                max="5" /><label for="total_valoracion" id="total_valoracion"
+                                                name="total_valoracion">10k</label>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label">Escribir
+                                                comentario</label>
+                                            <textarea class="form-control" id="comentario" name="comentario"
+                                                rows="10"></textarea>
+                                                <button type="submit" class="btn btn-primary" data-tooltip="Guardar">Guardar Acción</button>
+                                        </div>
+                                        <div class="">
+                                            <p>ID invisible</p>
+                                            <input type="number" class="form-control validate" placeholder="id"
+                                                aria-label="id" id="id_producto" name="id_producto" required />
+                                        </div>
                                     </div>
-                                    <div class="">
-                                        <p>ID invisible</p>
-                                        <input type="number" class="form-control validate" placeholder="id" aria-label="id"
-                                          id="id_producto" name="id_producto" required>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
                             </div>
                             <div class="row">
                                 <div class="card mb-5" id="card_comentario_propio">
-                                    <p id="nombre_comentario_propio">carlos montano</p>
-                                    <p id="fecha_comentario_propio">19 de febrero de 2023</p>
-                                    <hr>
-                                    <p id="comentario_propio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste aliquam voluptate libero eaque. Dignissimos fugiat explicabo ea, maxime sint reiciendis autem, voluptas dolorem excepturi facilis blanditiis? Quibusdam assumenda saepe unde.</p>
-                                    <button type="submit" class="btn">Editar mi Comentario</button>
+                                    <!--
+                                    <div class="card mb-4">
+                                        <p id="nombre_comentario_propio"></p>
+                                        <p id="fecha_comentario_propio"></p>
+                                        <hr />
+                                        <p id="comentario_propio"></p>
+                                        <button type="submit" class="btn"></button>
+                                    </div>-->
                                 </div>
-                                <div  id="card_otros_comentario">
-                              
+                                <div id="card_otros_comentario">
+                                    <!--
+                                    <div class="card mb-4">
+                                        <p id="nombre_otros_comentario"></p>
+                                        <p id="fecha_otros_comentario"></p>
+                                        <p id="otros_comentario"></p>
+                                    </div>-->
                                 </div>
                             </div>
                         </div>
