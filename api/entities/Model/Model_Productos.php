@@ -22,6 +22,7 @@ class ModelProductos
         return Database::getRows($sql, $params);
     }
 
+
     public function readAll()
     {
         $sql = 'SELECT id_producto, nombre_producto, id_marca_producto, nombre_marca, precio_producto, id_categoria_producto, nombre_categoria, descripcion, estado_producto, imagen_producto, id_usuario, nombre_usuario, cantidad_producto, fecha_compra
