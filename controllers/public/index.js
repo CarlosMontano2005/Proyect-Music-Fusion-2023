@@ -22,7 +22,7 @@ const SAVE_MODAL = new bootstrap.Modal(document.getElementById('modal-valoracion
 const OPTIONS = {
     height: 300
 }
-// Se inicializa el componente Slider para que funcione el carrusel de imágenes.
+
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (JSON.status) {
         // Se inicializa el contenedor de categorías.
         CATEGORIAS.innerHTML = '';
+       
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
             // Se establece la página web de destino con los parámetros.
@@ -104,7 +105,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-
 /**
 *metodo del comentario
 */
@@ -117,31 +117,97 @@ async function openComentario(id) {
   // Se define una constante tipo objeto con los datos del registro seleccionado.
   const FORM = new FormData();
   FORM.append('id_producto', id);
-  console.log(FORM.append('id_producto', id));
   // Petición para obtener los datos del registro solicitado.
-  const JSON = await dataFetch(PRODUCTO_API, 'readAllComentarios', FORM);
+  const JSON = await dataFetch(PRODUCTO_API, 'readOne', FORM);
   // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
   if (JSON.status) {
-    // Se abre la caja de diálogo que contiene el formulario.
-    // SAVE_MODAL.open();
-    // Se restauran los elementos del formulario.
-    SAVE_FORM_COMENTARIO.reset();
     // Se asigna título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Leer Comentarios';
-    // Se inicializa el contenedor de categorías.
-    CARD_OTROS_COMENTARIOS.innerHTML = '';
-    // Se recorre el conjunto de registros fila por fila a través del objeto row.
-    JSON.dataset.forEach(row => {CARD_OTROS_COMENTARIOS.innerHTML += `
-    <div class="card mb-4">
-      <p id="nombre_otros_comentario">${row.cliente}</p>
-      <p id="fecha_otros_comentario">${row.fecha_comentario}</p>
-      <p id="otros_comentario">${row.comentario_producto}.</p>
-    </div>
-      `;
-    });
-    // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-    //M.updateTextFields();
+    // Se colocan los datos en la página web de acuerdo con el producto seleccionado previamente.
+    document.getElementById('imagen_producto_comentario').src = SERVER_URL.concat('img/productos/', JSON.dataset.imagen_producto);
+    document.getElementById('nombre_producto').textContent = JSON.dataset.nombre_producto; 
+    document.getElementById('id_producto').value = JSON.dataset.id_producto;   
+          // Petición para obtener los datos del registro solicitado.
+        const JSON2 = await dataFetch(PRODUCTO_API, 'readAllComentarios', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (JSON2.status) {
+         // Se restauran los elementos del formulario.
+            //SAVE_FORM_COMENTARIO.reset();
+            
+            // Se inicializa el contenedor .
+            CARD_OTROS_COMENTARIOS.innerHTML = '';
+            // Se colocan los datos en la página web de acuerdo con el producto seleccionado previamente.
+            // Se recorre el conjunto de registros fila por fila a través del objeto row.
+            JSON2.dataset.forEach(row => {CARD_OTROS_COMENTARIOS.innerHTML += `
+            <div class="card mb-4">
+              <p id="nombre_otros_comentario">${row.nombre_cliente}  ${row.apellido_cliente}</p>
+              <p id="fecha_otros_comentario">${row.fecha_comentario}</p>
+              <p id="otros_comentario">${row.comentario_producto}</p>
+            </div>
+              `;
+            });
+        } else {
+            sweetAlert(3, JSON2.exception, false);
+        }
+    //comentarios propios 
+    const JSON3 = await dataFetch(PRODUCTO_API, 'readPropioComentarios', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (JSON3.status) {
+      // Se restauran los elementos del formulario.
+         //SAVE_FORM_COMENTARIO.reset();
+        CARD_COMENTARIO_PROPIO.innerHTML = '';
+        JSON3.dataset.forEach(row => {CARD_OTROS_COMENTARIOS.innerHTML += `
+        <div class="card mb-4">
+            <p id="nombre_comentario_propio">${row.nombre_cliente}  ${row.apellido_cliente}</p>
+            <p id="fecha_comentario_propio">${row.fecha_comentario}</p>
+            <hr>
+            <p id="comentario_propio">${row.comentario_producto}</p>
+            <button type="submit" class="btn"></button>
+        </div>
+
+          `;
+        });
+      }
+        else {
+          sweetAlert(3, JSON3.exception, false);
+      }
+      //ver cuantos like y cuantos valoraciones tiene 
+      //like
+      const JSON4 = await dataFetch(PRODUCTO_API, 'ContarLikeProducto', FORM);
+      if (JSON4.status) {
+          document.getElementById('cantidad_like').textContent = JSON4.dataset.me_gusta;
+        }
+          else {
+            sweetAlert(3, JSON4.exception, false);
+        }
+      //ver cuantos like y cuantos valoraciones tiene 
+      //valoraciones
+      const JSON5 = await dataFetch(PRODUCTO_API, 'ContarValoracionesProducto', FORM);
+      if (JSON5.status) {
+          document.getElementById('total_valoracion').textContent = JSON5.dataset.valoracion;
+        }
+          else {
+            sweetAlert(3, JSON5.exception, false);
+        }
+
   } else {
       sweetAlert(2, JSON.exception, false);
   }
+  
+
+  //SUBmit
+SAVE_FORM_COMENTARIO.addEventListener('submit', async (event) => {
+   // Se evita recargar la página web después de enviar el formulario.
+   event.preventDefault();
+  const FORM = new FormData(SAVE_FORM_COMENTARIO  );
+  //verificar existencai
+  const JSON = await dataFetch(PRODUCTO_API, 'createRowComentario', FORM);
+  if (JSON.status) {
+      sweetAlert(1, JSON.message, true);
+  } else if (JSON.session) {
+      sweetAlert(2, JSON.exception, false);
+  } else {
+      sweetAlert(3, JSON.exception, true, 'login.html');
+  }
+});
 }

@@ -36,6 +36,19 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'Producto inexistente';
             }
             break;
+        case 'createRowComentario':
+            $_POST = Validator::validateForm($_POST);
+            if (!$producto->setId_Producto($_POST['id_producto'])) {
+                $result['exception'] = 'Producto incorrecto';
+            } elseif (!$producto->setDescripcion_Producto($_POST['comentario'])) {
+                $result['exception'] = 'Cantidad incorrecta';
+            } elseif ($producto->createRowComentario()) {
+                $result['status'] = 1;
+            $result['message'] = 'Comentario agregado correctamente';
+            } else {
+                $result['exception'] = Database::getException();
+            }
+            break;
         case 'readAllComentarios':
             if (!$producto->setId_Producto($_POST['id_producto'])) {
                 $result['exception'] = 'Producto incorrecto';
@@ -45,6 +58,39 @@ if (isset($_GET['action'])) {
                 $result['exception'] = Database::getException();
             } else {
                 $result['exception'] = 'Este producto aun no tiene comentario';
+            }
+            break;
+        case 'readPropioComentarios':
+            if (!$producto->setId_Producto($_POST['id_producto'])) {
+                $result['exception'] = 'Producto incorrecto';
+            } elseif ($result['dataset'] = $producto->readPropioComentarios()) {
+                $result['status'] = 1;
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'Este producto aun no tiene comentario tuyos';
+            }
+            break;
+        case 'ContarLikeProducto':
+            if (!$producto->setId_Producto($_POST['id_producto'])) {
+                $result['exception'] = 'Producto incorrecto';
+            } elseif ($result['dataset'] = $producto->ContarLikeProducto()) {
+                $result['status'] = 1;
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'Parece que no tiene este productos ningun like';
+            }
+            break;
+        case 'ContarValoracionesProducto':
+            if (!$producto->setId_Producto($_POST['id_producto'])) {
+                $result['exception'] = 'Producto incorrecto';
+            } elseif ($result['dataset'] = $producto->ContarValoracionesProducto()) {
+                $result['status'] = 1;
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'Parece que no tiene este productos ninguna valoracion';
             }
             break;
         case 'readAll':
@@ -85,15 +131,26 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto inexistente';
                 }
                 break;
-            case 'readAllComentarios':
+            case 'ContarLikeProducto':
                 if (!$producto->setId_Producto($_POST['id_producto'])) {
                     $result['exception'] = 'Producto incorrecto';
-                } elseif ($result['dataset'] = $producto->readAllComentarios()) {
+                } elseif ($result['dataset'] = $producto->ContarLikeProducto()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Este producto aun no tiene comentario';
+                    $result['exception'] = 'Parece que no tiene este productos ningun like';
+                }
+                break;
+            case 'ContarValoracionesProducto':
+                if (!$producto->setId_Producto($_POST['id_producto'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                } elseif ($result['dataset'] = $producto->ContarValoracionesProducto()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'Parece que no tiene este productos ninguna valoracion';
                 }
                 break;
             case 'readAll':

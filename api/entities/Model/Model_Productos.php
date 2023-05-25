@@ -58,7 +58,7 @@ class ModelProductos
     }
     public function readAllComentarios()
     {
-        $sql = 'SELECT CONCAT(nombre_cliente,apellido_cliente)cliente  ,nombre_producto, comentario_producto, fecha_comentario
+        $sql = 'SELECT nombre_cliente, apellido_cliente, nombre_producto, comentario_producto, fecha_comentario
                 FROM valoraciones 
                 INNER JOIN detalles_pedidos USING(id_detalle_pedido) 
                 INNER JOIN pedidos USING(id_pedido) 
@@ -70,12 +70,91 @@ class ModelProductos
         $params = array($this->id_producto);
         return Database::getRows($sql, $params);
     }
+    public function ContarValoracionesProducto()
+    {
+        $sql = 'SELECT SUM(calificacion_producto)valoracion
+                FROM valoraciones
+                INNER JOIN detalles_pedidos USING(id_detalle_pedido) 
+                INNER JOIN pedidos USING(id_pedido) 
+                INNER JOIN clientes USING(id_cliente) 
+                INNER JOIN productos USING(id_producto) 
+                WHERE id_producto = ?';
+        $params = array($this->id_producto);
+        return Database::getRow($sql, $params);
+    }
+    public function ContarLikeProducto()
+    {
+        $sql = 'SELECT COUNT(id_producto)me_gusta
+                FROM valoraciones
+                INNER JOIN detalles_pedidos USING(id_detalle_pedido) 
+                INNER JOIN pedidos USING(id_pedido) 
+                INNER JOIN clientes USING(id_cliente) 
+                INNER JOIN productos USING(id_producto) 
+                WHERE id_producto = ? AND me_gusta = true';
+        $params = array($this->id_producto);
+        return Database::getRow($sql, $params);
+    }
+    public function readPropioComentarios()
+    {
+        $sql = 'SELECT nombre_cliente, apellido_cliente, nombre_producto, comentario_producto, fecha_comentario
+                FROM valoraciones 
+                INNER JOIN detalles_pedidos USING(id_detalle_pedido) 
+                INNER JOIN pedidos USING(id_pedido) 
+                INNER JOIN clientes USING(id_cliente) 
+                INNER JOIN productos USING(id_producto) 
+                WHERE Id_cliente = ? and id_producto = ?
+                GROUP BY id_valoracion ,id_detalle_pedido, id_cliente,id_producto, nombre_producto, comentario_producto,
+                fecha_comentario, me_gusta, nombre_cliente,apellido_cliente';
+        $params = array($_SESSION['id_cliente'], $this->id_producto);
+        return Database::getRows($sql, $params);
+    }
     public function createRow()
     {
         $sql = 'INSERT INTO productos(nombre_producto, id_marca_producto, precio_producto, id_categoria_producto, descripcion, imagen_producto, id_usuario, cantidad_producto, fecha_compra)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->nombre_producto, $this->id_marca_producto, $this->precio_producto, $this->id_categoria_producto, $this->descripcion, $this->imagen, $_SESSION['id_usuario'], $this->cantidad_producto, $this->fecha_compra);
         return Database::executeRow($sql, $params);
+    }
+    public function createRowComentario()
+    {
+        //verificar si hay insercion
+        $sql = 'INSERT INTO valoraciones(id_detalle_pedido, comentario_producto, fecha_comentario)
+        VALUES((SELECT MAX(id_detalle_pedido)AS id_detalle_pedido FROM detalles_pedidos 
+        INNER JOIN pedidos USING(id_pedido) 
+        INNER JOIN estado_pedidos USING(id_estado_pedido) 
+        INNER JOIN clientes USING(id_cliente) 
+        INNER JOIN productos USING(id_producto) 
+        WHERE Id_cliente = ? and id_producto = ?), ?, current_date)';
+        $params = array($_SESSION['id_cliente'], $this->id_producto,$this->descripcion);
+        if(Database::executeRow($sql, $params)){
+            //si hay insercion que actualice los datos
+            $sql = 'UPDATE valoraciones
+            SET  id_detalle_pedido = 
+                    ((SELECT MAX(id_detalle_pedido)AS id_detalle_pedido FROM detalles_pedidos 
+                    INNER JOIN pedidos USING(id_pedido) 
+                    INNER JOIN estado_pedidos USING(id_estado_pedido) 
+                    INNER JOIN clientes USING(id_cliente) 
+                    INNER JOIN productos USING(id_producto) 
+                    WHERE Id_cliente = ? and id_producto = ?)),
+                     comentario_producto= ?, fecha_comentario = current_date
+                    WHERE id_valoracion = (SELECT MAX(id_valoracion)AS id_valoracion FROM valoraciones 
+                INNER JOIN detalles_pedidos USING(id_detalle_pedido)
+                    INNER JOIN pedidos USING(id_pedido) 
+                    INNER JOIN clientes USING(id_cliente) 
+                    INNER JOIN productos USING(id_producto) 
+                    WHERE Id_cliente = ? and id_producto = ?);';
+            $params = array($_SESSION['id_cliente'], $this->id_producto,$this->descripcion, $_SESSION['id_cliente'], $this->id_producto);
+             if(Database::executeRow($sql, $params)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
+        ;
     }
     
     public function updateRow($current_image)
