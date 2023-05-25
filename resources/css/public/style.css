@@ -1063,7 +1063,20 @@ text-align: left;
       box-shadow: 2.25rem*cos(-90deg)0.375rem*cos(-30deg) 2.25rem*sin(-90deg)0.375rem*sin(-30deg) 0 0rem #ff8080, 2.25rem*cos(-90deg)0.375rem*cos(150deg) 2.25rem*sin(-90deg)0.375rem*sin(150deg) 0 0rem #ffed80, 2.25rem*cos(-38.5714285714deg)0.375rem*cos(21.4285714286deg) 2.25rem*sin(-38.5714285714deg)0.375rem*sin(21.4285714286deg) 0 0rem #ffed80, 2.25rem*cos(-38.5714285714deg)0.375rem*cos(201.4285714286deg) 2.25rem*sin(-38.5714285714deg)0.375rem*sin(201.4285714286deg) 0 0rem #a4ff80, 2.25rem*cos(12.8571428571deg)0.375rem*cos(72.8571428571deg) 2.25rem*sin(12.8571428571deg)0.375rem*sin(72.8571428571deg) 0 0rem #a4ff80, 2.25rem*cos(12.8571428571deg)0.375rem*cos(252.8571428571deg) 2.25rem*sin(12.8571428571deg)0.375rem*sin(252.8571428571deg) 0 0rem #80ffc8, 2.25rem*cos(64.2857142857deg)0.375rem*cos(124.2857142857deg) 2.25rem*sin(64.2857142857deg)0.375rem*sin(124.2857142857deg) 0 0rem #80ffc8, 2.25rem*cos(64.2857142857deg)0.375rem*cos(304.2857142857deg) 2.25rem*sin(64.2857142857deg)0.375rem*sin(304.2857142857deg) 0 0rem #80c8ff, 2.25rem*cos(115.7142857143deg)0.375rem*cos(175.7142857143deg) 2.25rem*sin(115.7142857143deg)0.375rem*sin(175.7142857143deg) 0 0rem #80c8ff, 2.25rem*cos(115.7142857143deg)0.375rem*cos(355.7142857143deg) 2.25rem*sin(115.7142857143deg)0.375rem*sin(355.7142857143deg) 0 0rem #a480ff, 2.25rem*cos(167.1428571429deg)0.375rem*cos(227.1428571429deg) 2.25rem*sin(167.1428571429deg)0.375rem*sin(227.1428571429deg) 0 0rem #a480ff, 2.25rem*cos(167.1428571429deg)0.375rem*cos(407.1428571429deg) 2.25rem*sin(167.1428571429deg)0.375rem*sin(407.1428571429deg) 0 0rem #ff80ed, 2.25rem*cos(218.5714285714deg)0.375rem*cos(278.5714285714deg) 2.25rem*sin(218.5714285714deg)0.375rem*sin(278.5714285714deg) 0 0rem #ff80ed, 2.25rem*cos(218.5714285714deg)0.375rem*cos(458.5714285714deg) 2.25rem*sin(218.5714285714deg)0.375rem*sin(458.5714285714deg) 0 0rem #ff8080;
     }
   }
-  
+
+.img-producto-comentario {
+    height: 30rem;
+    width: 100%;
+    padding: 1.5rem;
+    overflow: hidden;
+    position: relative;
+}
+.img-producto-comentario img{
+    height: 100%;
+    width: 100%;
+    border-radius: 0.5rem;
+    object-fit: contain;
+}
 /*tablaaaa*/
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
@@ -1178,6 +1191,7 @@ td button {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 30px;
 }
+/*COMENTARIO MODAL*/
 @media (max-width:767px)
 {
   .social-icons li.title

@@ -55,7 +55,20 @@ class ModelProductos
         $params = array($this->id_producto);
         return Database::getRow($sql, $params);
     }
-
+    public function readAllComentarios()
+    {
+        $sql = 'SELECT CONCAT(nombre_cliente,apellido_cliente)cliente  ,nombre_producto, comentario_producto, fecha_comentario
+                FROM valoraciones 
+                INNER JOIN detalles_pedidos USING(id_detalle_pedido) 
+                INNER JOIN pedidos USING(id_pedido) 
+                INNER JOIN clientes USING(id_cliente) 
+                INNER JOIN productos USING(id_producto) 
+                WHERE  id_producto = ?
+                GROUP BY id_valoracion ,id_detalle_pedido, id_cliente,id_producto, nombre_producto, comentario_producto,
+                fecha_comentario, me_gusta, nombre_cliente,apellido_cliente';
+        $params = array($this->id_producto);
+        return Database::getRows($sql, $params);
+    }
     public function createRow()
     {
         $sql = 'INSERT INTO productos(nombre_producto, id_marca_producto, precio_producto, id_categoria_producto, descripcion, imagen_producto, id_usuario, cantidad_producto, fecha_compra)

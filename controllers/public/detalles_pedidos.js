@@ -9,6 +9,7 @@ const PARAMS = new URLSearchParams(location.search);
 // Constante para establecer el formulario de agregar un producto al carrito de compras.
 const SHOPPING_FORM = document.getElementById('detalle-form');
 // Constante tipo objeto para establecer las opciones del componente Modal.
+
 const OPTIONS = {
     dismissible: false
 }
