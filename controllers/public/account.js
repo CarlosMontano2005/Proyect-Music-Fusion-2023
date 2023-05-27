@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const JSON = await dataFetch(USER_API, 'getUser');
     // Se comprueba si el usuario está autenticado para establecer el encabezado respectivo.
     if (JSON.session) {
+      // Codigo del encabezado
         HEADER.innerHTML = `
         <a href="#" class="logo"><i class="fas-fa-utensils"></i>Music Fusion</a>
 
@@ -43,7 +44,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         <i class="bx bx-x abrir-search" id="close"></i>
       </form>
         
-        `/**********************/
+        `
+        // Evento click en el ícono del menú
         let menu = document.querySelector('#menu-bars');
         let navbar = document.querySelector('.navbar');
 
@@ -52,19 +54,23 @@ document.addEventListener('DOMContentLoaded', async () => {
             navbar.classList.toggle('active');
         }
 
+        // Evento scroll de la página
         window.onscroll = () =>{
             menu.classList.remove("abrir-search");
             navbar.classList.remove('active');
         }
 
+        // Evento click en el ícono de búsqueda
         document.querySelector('#search-icon').onclick = () =>{
             document.querySelector('#search-form').classList.toggle('active');
         }
 
+        // Evento click en el ícono para cerrar el formulario de búsqueda
         document.querySelector('#close').onclick = () =>{
             document.querySelector('#search-form').classList.remove('active');
         }
 
+        // Inicialización del componente Swiper para el slider de la página de inicio
         var swiper = new Swiper(".home-slider", {
             spaceBetween: 30,
             centeredSlides: true,
@@ -79,6 +85,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             loop:true,
           });
 
+          // Inicialización del componente Swiper para el slider de reviews
           var swiper = new Swiper(".review-slider", {
             spaceBetween: 30,
             centeredSlides: true,
@@ -109,6 +116,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       
         
     } else {
+      // Encabezado para usuario no autenticado
         HEADER.innerHTML = `
         <a href="#" class="logo"><i class="fas-fa-utensils"></i>Music Fusion</a>
 
@@ -135,7 +143,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       <label for="search-box" class="bx bx-search-alt-2"></label>
       <i class="bx bx-x abrir-search" id="close"></i>
     </form>
-        `/**********************/
+        `
+        // Evento click en el ícono del menú
         let menu = document.querySelector('#menu-bars');
         let navbar = document.querySelector('.navbar');
 
@@ -144,19 +153,25 @@ document.addEventListener('DOMContentLoaded', async () => {
             navbar.classList.toggle('active');
         }
 
+        // Evento scroll de la página
         window.onscroll = () =>{
             menu.classList.remove("abrir-search");
             navbar.classList.remove('active');
         }
 
+        // Evento click en el ícono de búsqueda
+
         document.querySelector('#search-icon').onclick = () =>{
             document.querySelector('#search-form').classList.toggle('active');
         }
+
+      // Evento click en el ícono para cerrar el formulario de búsqueda
 
         document.querySelector('#close').onclick = () =>{
             document.querySelector('#search-form').classList.remove('active');
         }
 
+        // Inicialización del componente Swiper para el slider de la página de inicio
         var swiper = new Swiper(".home-slider", {
             spaceBetween: 30,
             centeredSlides: true,
