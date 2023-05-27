@@ -1,10 +1,10 @@
 <?php
 require_once('../../entities/Controller/Controller_Usuarios.php');
-
+//bueno
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
-    session_start();
+    session_start();    
     // Se instancia la clase correspondiente.
     $usuario = new ControllerUsuarios;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.

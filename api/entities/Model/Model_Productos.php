@@ -57,7 +57,7 @@ class ModelProductos
     }
     public function readAllComentarios()
     {
-        $sql = 'SELECT nombre_cliente, apellido_cliente, nombre_producto, comentario_producto, fecha_comentario
+        $sql = 'SELECT nombre_cliente, apellido_cliente, nombre_producto, comentario_producto, fecha_comentario, me_gusta
                 FROM valoraciones 
                 INNER JOIN detalles_pedidos USING(id_detalle_pedido) 
                 INNER JOIN pedidos USING(id_pedido) 
@@ -156,6 +156,19 @@ class ModelProductos
         ;
     }
     
+    public function updateLike()
+    {   
+        $sql = 'UPDATE valoraciones
+                SET  me_gusta = true
+                        WHERE id_valoracion = (SELECT MAX(id_valoracion)AS id_valoracion FROM valoraciones 
+                    INNER JOIN detalles_pedidos USING(id_detalle_pedido)
+                        INNER JOIN pedidos USING(id_pedido) 
+                        INNER JOIN clientes USING(id_cliente) 
+                        INNER JOIN productos USING(id_producto) 
+                        WHERE Id_cliente = ? and id_producto = ?) ';
+        $params = array($_SESSION['id_cliente'], $this->id_producto);
+        return Database::executeRow($sql, $params);
+    }
     public function updateRow($current_image)
     {   
         ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;

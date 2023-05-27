@@ -194,15 +194,7 @@ document.addEventListener('DOMContentLoaded', async () => {
               },
             },
           });
-
-          
-        
-        ;
-        
-
-      
-        
-        
+        ;     
     }
     
     // Se establece el pie del encabezado.

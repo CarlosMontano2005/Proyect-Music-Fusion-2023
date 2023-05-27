@@ -17,6 +17,7 @@ class ControllerProductos extends ModelProductos
     protected $id_estado_producto = null;
     protected $id_usuario = null;
     protected $cantidad_producto = null;
+    protected $like = null;
     protected $fecha_compra = null;
     protected $ruta = '../../img/productos/';
 
@@ -133,7 +134,15 @@ class ControllerProductos extends ModelProductos
             return false;
         }
     }
-
+    public function setLike($value)
+    {
+        if (Validator::validateBoolean($value)) {
+            $this->like = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     /*
     *   Métodos para obtener valores de los atributos.
@@ -196,5 +205,9 @@ class ControllerProductos extends ModelProductos
     public function getRuta()
     {
         return $this->ruta;
+    }
+    public function getLike()
+    {
+        return $this->like;
     }
 }  
