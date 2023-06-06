@@ -108,7 +108,6 @@
         </button>
 
         <!-- Modal -->
-        <form class="row g-3" id="save-form">
             <div class="modal fade bd-example-modal-lg" id="modal-valoraciones" tabindex="-1"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog modal-lg modal-dialog-scrollable">
@@ -133,7 +132,7 @@
                                     </div>
                                     <div class="col-8">
                                         <div class="mb-3">
-                                            <input id="toggle-heart" name="toggle-heart" type="checkbox" /><label
+                                            <input id="toggle-heart" name="toggle-heart" type="checkbox" onclick="datLiike()"><label
                                                 for="toggle-heart" aria-label="like">❤<label for="#" id="cantidad_like"
                                                     name="cantidad_like">10k</label></label>
                                         </div>
@@ -183,14 +182,10 @@
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                 Cancelar Acción
                             </button>
-                            <button type="submit" class="btn btn-primary">
-                                Guardar Acción
-                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
         <h3 class="sub-heading">Categorias de Instrumentos</h3>
         <h1 class="heading" id="title">Categorias de Instrumentos</h1>
 
@@ -500,7 +495,14 @@
                     <span class="price">$12.99</span>
                 </div>
             </div>
-        </div>
+            <h3>delicious food</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipsicing elit</p>
+            <a href="#" class="btn">add to cart</a>
+            <span class="price">$12.99</span>
+          </div>
+        </div> 
+      </div>
+    </div>
     </section>
 
     <!-- menu section ends -->

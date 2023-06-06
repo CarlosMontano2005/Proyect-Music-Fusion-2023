@@ -1,7 +1,7 @@
 /*
 *   Controlador de uso general en las páginas web del sitio privado.
 *   Sirve para manejar las plantillas del encabezado y pie del documento.
-*/
+*/  
 
 // Constante para completar la ruta de la API.
 const USER_API = 'business/dashboard/usuario.php';
@@ -15,7 +15,7 @@ const FOOTER = document.querySelector('footer');
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
     // Petición para obtener en nombre del usuario que ha iniciado sesión.
-    const JSON = await dataFetch(USER_API, 'getUser');
+    const JSON = await dataFetch(USER_API, 'getUser', null);
     // Se verifica si el usuario está autenticado, de lo contrario se envía a iniciar sesión.
     if (JSON.session) {
         // Se comprueba si existe un alias definido para el usuario, de lo contrario se muestra un mensaje con la excepción.
@@ -205,8 +205,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Se comprueba si la página web es la principal, de lo contrario se direcciona a iniciar sesión.
         if (location.pathname == '/Proyect-Music-Fusion-2023/views/dashboard/index.html') {
             /* HEADER.innerHTML = `
-                <div class="navbar-fixed">
-                    <nav>
+                    <nav>                <div class="navbar-fixed">
+
                         <div class="nav-wrapper center-align">
                             <a href="index.html" class="brand-logo"><i class="material-icons">dashboard</i></a>
                         </div>

@@ -63,7 +63,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
     const JSON = await dataFetch(PRODUCTO_API, action, FORM);
-    // Si se realiza la accion se cierra el modal automaticamente
+    // Si se realiza la accfion se cierra el modal automaticamente
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     console.log("proceso submit");
     if (JSON.status) {

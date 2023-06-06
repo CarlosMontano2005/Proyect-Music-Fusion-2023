@@ -49,17 +49,25 @@ SHOPPING_FORM.addEventListener('submit', async (event) => {
             //Se verifica si la cantidad es menor a 0 y no sobrepasa la existencia
             let existencia = 0;
             existencia = JSON.dataset.resta_existencia;
+            let cantidad = document.getElementById('cantidad').value;
+            console.log(cantidad);
             //se validad la cantidad total si es mayor a 0 se puede ralizar el pedido   
             //si es mayor a 0 significa que sobra existencia para seguir comprando          
-            if(existencia>0){
-                //Si es mayor se realiza la Petición para guardar los datos del formulario.
-                const JSON1 = await dataFetch(PEDIDO_API, 'createDetail', FORM);
-                if(JSON1.status){
-                    sweetAlert(1, JSON1.message, true, 'carrito.html');
+            
+            if(cantidad>0){
+                if(existencia>0){
+                    //Si es mayor se realiza la Petición para guardar los datos del formulario.
+                    const JSON1 = await dataFetch(PEDIDO_API, 'createDetail', FORM);
+                    if(JSON1.status){
+                        sweetAlert(1, JSON1.message, false, 'carrito.html');
+                    }
+                }
+                else{
+                    sweetAlert(2, JSON1.message, false, 'carrito.html');
                 }
             }
             else{
-                sweetAlert(2, 'Lo Sentimos, no tenemos tanta cantidad de este producto, por favor escriba una cantidad menor a la que pide ', false);
+                sweetAlert(2, 'Lo Sentimos, no podemos agregar esa cantidad ', false);
             }
     }
     } else if (JSON.session) {

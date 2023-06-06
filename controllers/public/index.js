@@ -119,18 +119,26 @@ async function openComentario(id) {
   FORM.append('id_producto', id);
   // Petición para obtener los datos del registro solicitado.
   const JSON = await dataFetch(PRODUCTO_API, 'readOne', FORM);
+  
   // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
   if (JSON.status) {
+    
     // Se asigna título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Leer Comentarios';
     // Se colocan los datos en la página web de acuerdo con el producto seleccionado previamente.
     document.getElementById('imagen_producto_comentario').src = SERVER_URL.concat('img/productos/', JSON.dataset.imagen_producto);
     document.getElementById('nombre_producto').textContent = JSON.dataset.nombre_producto; 
     document.getElementById('id_producto').value = JSON.dataset.id_producto;   
+   
           // Petición para obtener los datos del registro solicitado.
         const JSON2 = await dataFetch(PRODUCTO_API, 'readAllComentarios', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON2.status) {
+          if (JSON2.dataset.me_gusta) {
+            document.getElementById('toggle-heart').checked = true;
+          } else {
+            document.getElementById('toggle-heart').checked = false;
+          }
          // Se restauran los elementos del formulario.
             //SAVE_FORM_COMENTARIO.reset();
             
@@ -199,7 +207,7 @@ async function openComentario(id) {
 SAVE_FORM_COMENTARIO.addEventListener('submit', async (event) => {
    // Se evita recargar la página web después de enviar el formulario.
    event.preventDefault();
-  const FORM = new FormData(SAVE_FORM_COMENTARIO  );
+  const FORM = new FormData(SAVE_FORM_COMENTARIO);
   //verificar existencai
   const JSON = await dataFetch(PRODUCTO_API, 'createRowComentario', FORM);
   if (JSON.status) {
@@ -210,4 +218,19 @@ SAVE_FORM_COMENTARIO.addEventListener('submit', async (event) => {
       sweetAlert(3, JSON.exception, true, 'login.html');
   }
 });
+}
+
+async function datLiike() {
+     // Se evita recargar la página web después de enviar el formulario.
+   const FORM = new FormData(SAVE_FORM_COMENTARIO);
+   //verificar existencai
+   const JSON = await dataFetch(PRODUCTO_API, 'updateLike', FORM);
+   if (JSON.status) {
+    
+       sweetAlert(1, JSON.message, true);
+   } else if (JSON.session) {
+       sweetAlert(2, JSON.exception, false);
+   } else {
+       sweetAlert(3, JSON.exception, true);
+   }
 }

@@ -49,6 +49,20 @@ if (isset($_GET['action'])) {
                 $result['exception'] = Database::getException();
             }
             break;
+        case 'updateLike':
+            $_POST = Validator::validateForm($_POST);
+            if (!$producto->setId_Producto($_POST['id_producto'])) {
+                $result['exception'] = 'Producto incorrecto';
+            }elseif (!$producto->setLike(isset($_POST['toggle-heart']) ? 1 : 0)) {
+                $result['exception'] = 'Like incorrecto';
+            }  
+            elseif ($producto->updateLike()) {
+                $result['status'] = 1;
+            $result['message'] = 'Like aptualizado correctamente';
+            } else {
+                $result['exception'] = Database::getException();
+            }
+            break;
         case 'readAllComentarios':
             if (!$producto->setId_Producto($_POST['id_producto'])) {
                 $result['exception'] = 'Producto incorrecto';
@@ -109,6 +123,17 @@ if (isset($_GET['action'])) {
     } else {
         // Se compara la acción a realizar cuando un cliente no ha iniciado sesión.
         switch ($_GET['action']) {
+            case 'readAllComentarios':
+                if (!$producto->setId_Producto($_POST['id_producto'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                } elseif ($result['dataset'] = $producto->readAllComentarios()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'Este producto aun no tiene comentario';
+                }
+                break;
             case 'readProductosCategoria':  
                 if (!$producto->setId_Producto($_POST['id_categoria'])) {
                     $result['exception'] = 'Categoría incorrecta';
@@ -131,6 +156,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto inexistente';
                 }
                 break;
+                
             case 'ContarLikeProducto':
                 if (!$producto->setId_Producto($_POST['id_producto'])) {
                     $result['exception'] = 'Producto incorrecto';
