@@ -157,6 +157,8 @@ function openCreate() {
     document.getElementById('Estado_usuario').required = true;
     document.getElementById('foto').required = true;
     console.log("proceso de abrir modal agregar");
+    //<td><img src="${SERVER_URL}img/people/${row.foto}" height="100"></td>
+
 }
 
 /*

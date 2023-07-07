@@ -202,10 +202,10 @@ if (isset($_GET['action'])) {
                             $result['message'] = 'Usuario modificado pero no se guardó la imagen';
                         } 
                     }    
-                    elseif ($usuario->updateRow()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Usuario modificado correctamente';
-                    } 
+                    // elseif ($usuario->updateRow()) {
+                    //     $result['status'] = 1;
+                    //     $result['message'] = 'Usuario modificado correctamente';
+                    // } 
                     else {
                         $result['exception'] = Database::getException();
                     }

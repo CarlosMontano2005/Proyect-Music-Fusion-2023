@@ -180,7 +180,7 @@ async function openUpdate(id) {
         //M.updateTextFields();
     } else {
         sweetAlert(2, JSON.exception, false);
-    }s
+    }
 }
 
 /*
