@@ -234,7 +234,7 @@ async function openDelete(id) {
 //#region reporte  de dato personal
 /*
  *   Función para abrir el reporte de productos por categoría.
- *   Parámetros: ninguno.
+ *   Parámetros: ninguno.W
  *   Retorno: ninguno.
  */
 function openReport() {

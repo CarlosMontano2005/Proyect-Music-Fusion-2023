@@ -44,8 +44,16 @@ class MarcasQueries
 
     public function updateRow($current_image)
     {
+        // // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
+        // ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
         // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
-        ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
+        if($this->imagen) {
+            if($current_image != 'default.jpg') {
+                Validator::deleteFile($this->getRuta(), $current_image);
+            }
+        } else {
+            $this->imagen = $current_image;
+        }
 
         $sql = 'UPDATE marcas
         SET   logo_marca=?, nombre_marca=?
