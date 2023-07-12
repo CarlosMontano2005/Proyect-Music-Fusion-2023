@@ -89,7 +89,13 @@ class ModelUsuarios
     public function updateRow($current_image)
     {
         // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
-        ($this->foto) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->foto = $current_image;
+        if($this->foto) {
+            if($current_image != 'default.jpg') {
+                Validator::deleteFile($this->getRuta(), $current_image);
+            }
+        } else {
+            $this->foto = $current_image;
+        }
 
         $sql = 'UPDATE usuarios 
                 SET nombre_usuario = ?, apellido_usuario = ?, correo_usuario = ?, telefono_usuario = ?, id_tipo_usuario = ?, id_estado_usuario  = ?, foto = ?
