@@ -244,6 +244,7 @@ function openReport() {
 	window.open(PATH.href);
 }
 //#endregion
+
 // function openReport(id) {
 //     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
 //     const PATH = new URL(`${SERVER_URL}reports/dashboard/usuario.php`);

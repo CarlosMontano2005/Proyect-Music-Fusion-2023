@@ -160,16 +160,34 @@ async function openUpdate(id) {
     }
 }
 
+
+//#region reporte  de dato personal
 /*
-*   Función para abrir el reporte del detalle del pedido de una categoría.
-*   Parámetros: id (identificador del registro seleccionado).
-*   Retorno: ninguno.
-*/
+ *   Función para abrir el reporte de productos por categoría.
+ *   Parámetros: ninguno.W
+ *   Retorno: ninguno.
+ */
+
+function openReport() {
+	// Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+	const PATH = new URL(`${SERVER_URL}reports/dashboard/detalle_pedido_reporte.php`);
+	// Se abre el reporte en una nueva pestaña del navegador web.
+	window.open(PATH.href);
+}
 function openReport(id) {
     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
-    const PATH = new URL(`${SERVER_URL}reports/dashboard/productos_categoria.php`);
+    const PATH = new URL(`${SERVER_URL}reports/dashboard/detalle_pedido_reporte.php`);
     // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
     PATH.searchParams.append('id_categoria', id);
     // Se abre el reporte en una nueva pestaña del navegador web.
     window.open(PATH.href);
 }
+// function openReport(id) {
+//     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+//     const PATH = new URL(`${SERVER_URL}reports/dashboard/detalle_pedido_reporte.php`);
+//     // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
+//     PATH.searchParams.append('id_categoria', id);
+//     // Se abre el reporte en una nueva pestaña del navegador web.
+//     window.open(PATH.href);
+// }
+//#endregion

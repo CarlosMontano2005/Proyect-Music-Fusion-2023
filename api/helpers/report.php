@@ -85,7 +85,8 @@ class Report extends FPDF
         // Se imprime una celda con el número de página.
         $this->cell(0, 10, $this->encodeString('Página ').$this->pageNo().'/{nb}', 0, 0, 'C');
         if (isset($_SESSION['id_usuario'])) {
-            // $this->cell(0, 10, $_SESSION['username'], 0, 1, 'C');
+            // $this->cell(0, 10, $_SESSION['username'], 0, 1, 'C'); ${JSON.username}
+
             $this->cell(0, 10, $_SESSION['id_usuario'], 0, 1, 'C');
         }
     }

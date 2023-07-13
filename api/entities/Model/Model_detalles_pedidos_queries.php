@@ -21,7 +21,7 @@ class Detalles_Pedidos_Queries
     public function readAll()
     {
         $sql = 'SELECT id_detalle_pedido, id_pedido, nombre_producto, cantidad_detalle_producto, precio_detalle_producto
-        FROM detalles_pedidos INNER JOIN productos USING(id_producto) ORDER BY (id_pedido) ;';
+        FROM detalles_pedidos INNER JOIN productos USING(id_producto)  ORDER BY (id_pedido)   asc ;';
         return Database::getRows($sql);
     }
     /**leer un dato para la taba de ordenes*/
@@ -102,7 +102,7 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
     public function readOrderDetail()
     {
         $sql = 'SELECT ROW_NUMBER() OVER(
-            ORDER BY id_detalle_pedido, nombre_producto) AS fila, id_detalle_pedido, id_producto,nombre_producto, imagen_producto,detalles_pedidos.precio_detalle_producto, detalles_pedidos.cantidad_detalle_producto
+            ORDER BY id_detalle_pedido, nombre_producto) AS fila, id_detalle_pedido, id_producto,nombre_producto, imagen_producto,detalles_pedidos.precio_detalle_producto, detalles_pedidos.cantidad_detalle_producto, fecha_pedido
                     FROM pedidos INNER JOIN detalles_pedidos USING(id_pedido) INNER JOIN productos USING(id_producto)
                     WHERE id_pedido = ?';
         $params = array($this->id_pedido);

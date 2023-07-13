@@ -35,27 +35,26 @@ if ($dataUsuario = $Usuario->readAll()) {
     $pdf->setFont('Times', '', 9);
    
     // Se recorren los registros fila por fila.
-    foreach ($dataUsuario as $rowUsuario) {
+    foreach ($dataUsuario as $rowCliente) {
         // Se imprime una celda con el nombre de la categoría.
-        // $pdf->cell(0, 10, $pdf->encodeString('Categoría: ' . $rowUsuario['nombre_categoria']), 1, 1, 'C', 1);
-        
-        $pdf->cell(33.375, 20, $rowUsuario['nombre_usuario'], 1, 0,'C');
-        $pdf->cell(33.375, 20, $rowUsuario['apellido_usuario'], 1, 0,'C');
-        $pdf->cell(33.375, 20, $rowUsuario['alias_usuario'], 1, 0,'C');
-        $pdf->cell(33.375, 20, $rowUsuario['telefono_usuario'], 1, 0,'C');
+        // $pdf->cell(0, 10, $pdf->encodeString('Categoría: ' . $rowCliente['nombre_categoria']), 1, 1, 'C', 1);
+        $pdf->cell(33.375, 20, $rowCliente['nombre_usuario'], 1, 0,'C');
+        $pdf->cell(33.375, 20, $rowCliente['apellido_usuario'], 1, 0,'C');
+        $pdf->cell(33.375, 20, $rowCliente['alias_usuario'], 1, 0,'C');
+        $pdf->cell(33.375, 20, $rowCliente['telefono_usuario'], 1, 0,'C');
         //(Ancho, Alto, Titulo, borde 1 - 0, salto de linea L-C-R, color de fondo 1-0)
-        $pdf->cell(33.375, 20, $rowUsuario['tipo_usuario'], 1, 0,'C');
-        // ($rowUsuario['id_estado_usuario']) ? $estado = 'Activo' : $estado = 'Inactivo';
-        $pdf->cell(33.375, 20, $rowUsuario['estado_usuario'], 1, 0,'C');
-        $pdf->cell(46.375, 20, $rowUsuario['correo_usuario'], 1, 0,'C');
+        $pdf->cell(33.375, 20, $rowCliente['tipo_usuario'], 1, 0,'C');
+        // ($rowCliente['id_estado_usuario']) ? $estado = 'Activo' : $estado = 'Inactivo';
+        $pdf->cell(33.375, 20, $rowCliente['estado_usuario'], 1, 0,'C');
+        $pdf->cell(46.375, 20, $rowCliente['correo_usuario'], 1, 0,'C');
         //${SERVER_URL}img/people/${row.foto}
         // $this->cell(0, 10, $this->encodeString('Página ').$this->pageNo().'/{nb}', 0, 0, 'C');
-        // $pdf->Image($pdf->encodeString('../../img/people/'.$rowUsuario['foto']), 30.375, 10, -300);
-        $pdf->cell(33.375, 1,$pdf->Image($pdf->encodeString('../../img/people/'.$rowUsuario['foto']),null,null,20.5,20), 0, 1, 'C');//indicar el 1,1 al final para que sea una sola fila cada dato 
+        // $pdf->Image($pdf->encodeString('../../img/people/'.$rowCliente['foto']), 30.375, 10, -300);
+        $pdf->cell(33.375, 1,$pdf->Image($pdf->encodeString('../../img/people/'.$rowCliente['foto']),null,null,20.5,20), 0, 1, 'C');//indicar el 1,1 al final para que sea una sola fila cada dato 
         // Se instancia el módelo Producto para procesar los datos.
     }
 } else {
     $pdf->cell(0, 10, $pdf->encodeString('No hay dato persona para mostrar'), 1, 1);
 }
 // Se llama implícitamente al método footer() y se envía el documento al navegador web.
-$pdf->output('I', 'productos.pdf');
+$pdf->output('I', 'usuarios.pdf');
