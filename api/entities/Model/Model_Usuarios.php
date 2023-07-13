@@ -32,7 +32,7 @@ class ModelUsuarios
         $params = array($this->id_usuario);
         $data = Database::getRow($sql, $params);
         // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
-        //if ($password == $data['clave_usuario']) {
+        // if ($password == $data['clave_usuario']) {
         if (password_verify($password , $data['clave_usuario'])) {
             return true;
         } else {
