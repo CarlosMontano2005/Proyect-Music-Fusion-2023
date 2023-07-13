@@ -28,6 +28,7 @@ myModal.addEventListener('shown.bs.modal', () => {
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
     fillTable();
+    graficoLineasClientesGeneros();
 });
 
 // Método manejador de eventos para cuando se envía el formulario de buscar.
@@ -38,6 +39,7 @@ SEARCH_FORM.addEventListener('submit', (event) => {
     const FORM = new FormData(SEARCH_FORM);
     // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
     fillTable(FORM);
+    
 });
 
 // Método manejador de eventos para cuando se envía el formulario de guardar.
@@ -270,5 +272,34 @@ function openReport() {
 	const PATH = new URL(`${SERVER_URL}reports/dashboard/cliente_reporte.php`);
 	// Se abre el reporte en una nueva pestaña del navegador web.
 	window.open(PATH.href);
+}
+//#endregion
+
+//#region grafica
+/*
+*   Función asíncrona para mostrar en un gráfico de lineas la cantidad de productos por categoría.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+async function graficoLineasClientesGeneros() {
+    // Petición para obtener los datos del gráfico.
+    const JSON = await dataFetch(CLIENTE_API, 'porcentajClienteGenero');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (JSON.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let genero = [];
+        let porcentajes = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        JSON.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            genero.push(row.genero);
+            porcentajes.push(row.porcentaje);
+        });
+        // Llamada a la función que genera y muestra un gráfico de lineas. Se encuentra en el archivo components.js
+        barGraph('ChartLinea', marca, porcentajes, 'Cantidad de Genero', 'Cantidad de clientes por genero');
+    } else {
+        document.getElementById('ChartLinea').remove();
+        console.log(JSON.exception);
+    }
 }
 //#endregion
