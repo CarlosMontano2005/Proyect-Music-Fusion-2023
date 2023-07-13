@@ -39,6 +39,7 @@ myModal.addEventListener('shown.bs.modal', () => {
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
     fillTable();
+    graficoBarrasMarca();
 });
 
 // Método manejador de eventos para cuando se envía el formulario de buscar.
@@ -232,3 +233,32 @@ function openReport(id) {
     // Se abre el reporte en una nueva pestaña del navegador web.
     window.open(PATH.href);
 }
+
+//#region grafica
+/*
+*   Función asíncrona para mostrar en un gráfico de barras la cantidad de productos por categoría.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+async function graficoBarrasMarca() {
+    // Petición para obtener los datos del gráfico.
+    const JSON = await dataFetch(PRODUCTO_API, 'porcentajeProductosMarcas');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (JSON.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let marca = [];
+        let porcentajes = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        JSON.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            marca.push(row.nombre_marca);
+            porcentajes.push(row.porcentaje);
+        });
+        // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
+        barGraph('ChartBarra', marca, porcentajes, 'Cantidad de productos', 'Cantidad de productos por marcas');
+    } else {
+        document.getElementById('ChartBarra').remove();
+        console.log(JSON.exception);
+    }
+}
+//#endregion
