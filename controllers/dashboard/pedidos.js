@@ -209,6 +209,13 @@ async function openDelete(id) {
         }
     }
 }
+
+function openReport() {
+	// Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+	const PATH = new URL(`${SERVER_URL}reports/dashboard/pedido_reporte.php`);
+	// Se abre el reporte en una nueva pestaña del navegador web.
+	window.open(PATH.href);
+}
 /*
 //hora y saludo
 // Método manejador de eventos para cuando el documento ha cargado.

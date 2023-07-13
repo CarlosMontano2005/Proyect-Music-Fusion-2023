@@ -95,9 +95,5 @@ class ControllerPedidos extends ModelPedidos
         return $this->id_estado_pedido;
     }
 
-    public function getId_Marca_Producto()
-    {
-        return $this->id_marca_producto;
-    }
 
 }  
