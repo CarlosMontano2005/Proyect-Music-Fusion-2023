@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
     fillTable();
     graficoBarrasMarca();
+    graficoPastelPedidos();
 });
 
 // // Método manejador de eventos para cuando se envía el formulario de buscar.
@@ -263,6 +264,8 @@ async function graficoBarrasMarca() {
     }
 }
 
+
+
 async function graficoPastelPedidos() {
     // Petición para obtener los datos del gráfico.
     const JSON = await dataFetch(PEDIDOS_API, 'porcentajePedidosEstado');
@@ -278,7 +281,7 @@ async function graficoPastelPedidos() {
             porcentajes.push(row.porcentaje);
         });
         // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-        pieGraph('ChartPie', estado, porcentajes, 'Cantidad de estados', 'Cantidad de pedidos por estado del pedido');
+        pieGraph('ChartPie', estado, porcentajes, 'Cantidad de pedidos', 'Cantidad de pedidos por estado');
     } else {
         document.getElementById('ChartPie').remove();
         console.log(JSON.exception);

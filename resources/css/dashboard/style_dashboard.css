@@ -244,6 +244,16 @@ body.dark{
   top: 50%;
   transform: translateY(-50%);
 }
+
+/* .grafica col-5{
+
+  width: 246px;
+  height: 123px;
+  display: block;
+  box-sizing: border-box;
+  
+} */
+
 .sidebar .profile-details{
   position: fixed;
   bottom: 0;
