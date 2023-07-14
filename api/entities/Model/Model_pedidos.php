@@ -129,4 +129,19 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
         $params = array($this->categoria);
         return Database::getRows($sql, $params);
     }
+
+    /*
+    *   Métodos para la grafica de pastel.
+    */
+
+    public function porcentajePedidosEstado()
+    {
+        $sql = 'SELECT estado_pedido, ROUND(
+            (COUNT(id_pedido) * 100.0 / (SELECT COUNT(id_pedido) FROM pedidos)), 2
+                                    ) porcentaje
+                        FROM pedidos
+                        INNER JOIN estado_pedidos USING(id_estado_pedido)
+                        GROUP BY estado_pedido ORDER BY porcentaje DESC';
+        return Database::getRows($sql);
+    }
 }
