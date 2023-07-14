@@ -1,6 +1,7 @@
 // Constante para completar la ruta de la API.
 const PRODUCTO_API = 'business/dashboard/Productos.php';
 const USUARIO_API = 'business/dashboard/usuario.php';
+const PEDIDOS_API = 'business/dashboard/pedidos.php';
 
 const MARCA_PRODUCTO_API = 'business/dashboard/Marca_Producto.php';
 const CATEGORIA_PRODUCTO_API = 'business/dashboard/Categoria_Producto.php';
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
     fillTable();
     graficoBarrasMarca();
+    graficoPastelPedidos();
 });
 
 // // Método manejador de eventos para cuando se envía el formulario de buscar.
@@ -258,6 +260,30 @@ async function graficoBarrasMarca() {
         barGraph('ChartBarra', marca, porcentajes, 'Cantidad de productos', 'Cantidad de productos por marcas');
     } else {
         document.getElementById('ChartBarra').remove();
+        console.log(JSON.exception);
+    }
+}
+
+
+
+async function graficoPastelPedidos() {
+    // Petición para obtener los datos del gráfico.
+    const JSON = await dataFetch(PEDIDOS_API, 'porcentajePedidosEstado');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (JSON.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let estado = [];
+        let porcentajes = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        JSON.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            estado.push(row.estado_pedido);
+            porcentajes.push(row.porcentaje);
+        });
+        // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
+        pieGraph('ChartPie', estado, porcentajes, 'Cantidad de pedidos', 'Cantidad de pedidos por estado');
+    } else {
+        document.getElementById('ChartPie').remove();
         console.log(JSON.exception);
     }
 }

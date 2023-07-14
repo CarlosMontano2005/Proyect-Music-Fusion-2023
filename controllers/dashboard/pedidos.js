@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const PEDIDOS_API = 'business/dashboard/Pedidos.php';
+const PEDIDOS_API = 'business/dashboard/pedidos.php';
 
 const CLIENTES_API = 'business/dashboard/clientes.php';
 // Constante para establecer el formulario de buscar.
@@ -215,6 +215,28 @@ function openReport() {
 	const PATH = new URL(`${SERVER_URL}reports/dashboard/pedido_reporte.php`);
 	// Se abre el reporte en una nueva pestaña del navegador web.
 	window.open(PATH.href);
+}
+
+async function graficoPastelPedidos() {
+    // Petición para obtener los datos del gráfico.
+    const JSON = await dataFetch(PEDIDOS_API, 'porcentajePedidosEstado');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (JSON.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let estado = [];
+        let porcentajes = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        JSON.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            estado.push(row.estado_pedido);
+            porcentajes.push(row.porcentaje);
+        });
+        // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
+        pieGraph('ChartPie', estado, porcentajes, 'Cantidad de estados', 'Cantidad de pedidos por estado del pedido');
+    } else {
+        document.getElementById('ChartPie').remove();
+        console.log(JSON.exception);
+    }
 }
 /*
 //hora y saludo
