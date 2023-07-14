@@ -296,7 +296,7 @@ async function graficoLineasClientesGeneros() {
             porcentajes.push(row.porcentaje);
         });
         // Llamada a la función que genera y muestra un gráfico de lineas. Se encuentra en el archivo components.js
-        barGraph('ChartLinea', genero, porcentajes, 'Cantidad de Genero', 'Cantidad de clientes por genero');
+        PolarArearaph('ChartLinea', genero, porcentajes, 'Cantidad de Genero', 'Cantidad de clientes por genero');
     } else {
         document.getElementById('ChartLinea').remove();
         console.log(JSON.exception);
