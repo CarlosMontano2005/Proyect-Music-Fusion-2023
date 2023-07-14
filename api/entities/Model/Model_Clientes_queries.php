@@ -155,4 +155,17 @@ VALUES (?,?,?,?,?, ?, ?,?, ?)';
         $params = array($this->categoria);
         return Database::getRows($sql, $params);
     }
+     /**
+     * grafica
+     */
+    public function porcentajeClienteGeneros()
+    {
+        $sql = 'SELECT generos.genero, ROUND(
+            (COUNT(id_cliente) * 100.0 / (SELECT COUNT(id_cliente) FROM clientes)), 2
+                                    ) porcentaje
+                        FROM clientes
+						INNER JOIN generos USING(id_genero)
+                        GROUP BY genero ORDER BY porcentaje  DESC';
+        return Database::getRows($sql);
+    }
 }

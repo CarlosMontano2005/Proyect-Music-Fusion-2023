@@ -43,41 +43,41 @@ document.addEventListener('DOMContentLoaded', () => {
     graficoBarrasMarca();
 });
 
-// Método manejador de eventos para cuando se envía el formulario de buscar.
-SEARCH_FORM.addEventListener('submit', (event) => {
-    // Se evita recargar la página web después de enviar el formulario.
-    event.preventDefault();
-    // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(SEARCH_FORM);
-    // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
-    fillTable(FORM);
-});
+// // Método manejador de eventos para cuando se envía el formulario de buscar.
+// SEARCH_FORM.addEventListener('submit', (event) => {
+//     // Se evita recargar la página web después de enviar el formulario.
+//     event.preventDefault();
+//     // Constante tipo objeto con los datos del formulario.
+//     const FORM = new FormData(SEARCH_FORM);
+//     // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
+//     fillTable(FORM);
+// });
 
 // Método manejador de eventos para cuando se envía el formulario de guardar.
-SAVE_FORM.addEventListener('submit', async (event) => {
-    // Se evita recargar la página web después de enviar el formulario.
-    event.preventDefault();
+// SAVE_FORM.addEventListener('submit', async (event) => {
+//     // Se evita recargar la página web después de enviar el formulario.
+//     event.preventDefault();
     
-    // Se verifica la acción a realizar.
-    (document.getElementById('id_producto').value) ? action = 'update' : action = 'create';
-    console.log(document.getElementById('id_producto').value);//id que se toma y ver en consola 
-    // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(SAVE_FORM);
-    // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(PRODUCTO_API, action, FORM);
-    // Si se realiza la accion se cierra el modal automaticamente
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    console.log("proceso submit");
-    if (JSON.status) {
-        // Se carga nuevamente la tabla para visualizar los cambios.
-        fillTable();
-        // Se cierra la caja de diálogo.
-        // Se muestra un mensaje de éxito.
-        sweetAlert(1, JSON.message, true);
-    } else {
-        sweetAlert(2, JSON.exception, false);
-    }
-}); 
+//     // Se verifica la acción a realizar.
+//     (document.getElementById('id_producto').value) ? action = 'update' : action = 'create';
+//     console.log(document.getElementById('id_producto').value);//id que se toma y ver en consola 
+//     // Constante tipo objeto con los datos del formulario.
+//     const FORM = new FormData(SAVE_FORM);
+//     // Petición para guardar los datos del formulario.
+//     const JSON = await dataFetch(PRODUCTO_API, action, FORM);
+//     // Si se realiza la accion se cierra el modal automaticamente
+//     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+//     console.log("proceso submit");
+//     if (JSON.status) {
+//         // Se carga nuevamente la tabla para visualizar los cambios.
+//         fillTable();
+//         // Se cierra la caja de diálogo.
+//         // Se muestra un mensaje de éxito.
+//         sweetAlert(1, JSON.message, true);
+//     } else {
+//         sweetAlert(2, JSON.exception, false);
+//     }
+// }); 
 
 /*
 *   Función asíncrona para llenar la tabla con los registros disponibles.
