@@ -201,5 +201,16 @@ class ModelProductos
                         GROUP BY nombre_marca ORDER BY porcentaje DESC';
         return Database::getRows($sql);
     }
+    /**
+     * grafica
+     */
+    public function CantidadProductosVendidos()
+    {
+        $sql = 'SELECT nombre_producto , sum(cantidad_detalle_producto)  as cantidad
+        FROM detalles_pedidos 
+        INNER JOIN productos USING(id_producto)
+        GROUP BY nombre_producto , cantidad_detalle_producto ORDER BY cantidad_detalle_producto DESC limit 5';
+        return Database::getRows($sql);
+    }
 
 } 

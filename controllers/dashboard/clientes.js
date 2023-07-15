@@ -283,7 +283,7 @@ function openReport() {
 */
 async function graficoLineasClientesGeneros() {
     // Petición para obtener los datos del gráfico.
-    const JSON = await dataFetch(CLIENTE_API, 'porcentajClienteGenero');
+    const JSON = await dataFetch(PRODUCTO_API, 'CantidadProductosVendidos');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
     if (JSON.status) {
         // Se declaran los arreglos para guardar los datos a graficar.
