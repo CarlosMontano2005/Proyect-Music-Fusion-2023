@@ -212,5 +212,17 @@ class ModelProductos
         GROUP BY nombre_producto , cantidad_detalle_producto ORDER BY cantidad_detalle_producto DESC limit 5';
         return Database::getRows($sql);
     }
+    /**
+     * grafica
+     */
+    public function PorcentajeProductosVendidos()
+    {
+        $sql = 'SELECT nombre_producto,
+        ROUND((sum(cantidad_detalle_producto) * 100.0 / (SELECT sum(cantidad_detalle_producto) FROM detalles_pedidos)), 2) porcentaje
+        FROM detalles_pedidos 
+        INNER JOIN productos USING(id_producto)
+         GROUP BY nombre_producto ORDER BY porcentaje DESC';
+        return Database::getRows($sql);
+    }
 
 } 
