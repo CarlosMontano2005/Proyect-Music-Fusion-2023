@@ -24,7 +24,7 @@ const OPTIONS = {
 //Constante para establecer la modal de guardar.
 //const SAVE_MODAL = M.Modal.getInstance(document.getElementById('save-modal'));
 
-const SAVE_MODAL = new bootstrap.Modal(document.getElementById('add-modal'));
+// const SAVE_MODAL = new bootstrap.Modal(document.getElementById('add-modal'));
 
 /*//////////// 
 const myModal = document.getElementById('myModal')
@@ -39,6 +39,7 @@ myModal.addEventListener('shown.bs.modal', () => {
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
     fillTable();
+    graficaLinealProductoMasVendido();
 });
 
 // Método manejador de eventos para cuando se envía el formulario de buscar.
@@ -248,3 +249,28 @@ function openReport(id) {
     // Se abre el reporte en una nueva pestaña del navegador web.
     window.open(PATH.href);
 }
+
+//#region grafica
+async function graficaLinealProductoMasVendido() {
+    // Petición para obtener los datos del gráfico.
+    const JSON = await dataFetch(PRODUCTO_API, 'CantidadProductosVendidos');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (JSON.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let Producto = [];
+        let Cantiadad = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        JSON.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            Producto.push(row.nombre_producto);
+            Cantiadad.push(row.cantidad);
+        });
+        // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
+        lineGraph('ChartLineal', Producto, Cantiadad, 'Cantidad de productos', 'Cantidad de productos mas vendidos');
+    } else {
+        document.getElementById('ChartLineal').remove();
+        console.log(JSON.exception);
+    }
+}
+
+//#endregion
