@@ -9,7 +9,6 @@ $pdf = new Report;
 
 // Se inicia el reporte con el encabezado del documento.
 $pdf->startReport('Datos Generales');
-// $pdf->cell(33.375, 10, $_SESSION['id_usuario'], 1, 0, 'C', 1); //(Ancho, Alto, Titulo, borde 1 - 0, salto de linea L-C-R, color de fondo 1-0)
 // Se instancia el módelo Categoría para obtener los datos.
 $Productos = new ControllerProductos;
 // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
