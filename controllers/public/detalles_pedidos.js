@@ -97,3 +97,21 @@ async function finishOrder() {
     }
 }
 
+//#region reporte  de dato personal
+/*
+*   Función para abrir el reporte de productos de una categoría.
+*   Parámetros: id (identificador del registro seleccionado).
+*   Retorno: ninguno.id
+*/
+function openReport() {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+	const PATH = new URL(`${SERVER_URL}reports/public/factura_pedido.php`);
+    // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
+    PATH.searchParams.append('id_pedido',  PARAMS.get('id'));
+    PATH.searchParams.append('nombre',  PARAMS.get('nombre'));
+    PATH.searchParams.append('apellido',  PARAMS.get('apellido'));
+    PATH.searchParams.append('direccion',  PARAMS.get('direccion'));
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(PATH.href);
+}
+//#endregion

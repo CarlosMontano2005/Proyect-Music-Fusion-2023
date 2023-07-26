@@ -172,7 +172,14 @@ class ModelProductos
     }
     public function updateRow($current_image)
     {   
-        ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
+        // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
+        if($this->imagen) {
+            if($current_image != 'default.png') {
+                Validator::deleteFile($this->getRuta(), $current_image);
+            }
+        } else {
+            $this->imagen = $current_image;
+        }
         $sql = 'UPDATE productos
                 SET nombre_producto=?, id_marca_producto=?, precio_producto=?, id_categoria_producto=?, 
                 descripcion=?,  imagen_producto=?, cantidad_producto=?, fecha_compra=?,estado_producto=?
