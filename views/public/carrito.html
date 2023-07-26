@@ -18,8 +18,8 @@
 </head>
 
 <body>
-  <header></header>
-  <section>
+  <main>
+     <section>
     <div class="modal fade" id="add-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -119,7 +119,15 @@
     <div class="button-finalizar-pedido">
       <a onclick="finishOrder()" class="btn" data-tooltip="Finalizar pedido">pagar</a>
     </div>
+    <div class="button-finalizar-pedido">
+      <button type="button" class="btn btn-info bx bx-download" onclick="openReport()">Descargar Factura</button>
+    </div>
   </section>
+  <script src="../../js/chart.min.js"></script>
+
+  </main>
+  <header></header>
+ 
   <footer class="site-footer"></footer>
   <!--BOOSTRAP-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
@@ -131,7 +139,10 @@
   <script src="../../controllers/components.js"></script>
   <script src="../../controllers/public/account.js"></script>
   <script src="../../controllers/public/carrito.js"></script>
-  <script src="../../js/detalles.js"></script>
+  <!-- <script src="../../js/detalles.js"></script> -->
+
+
+ 
 </body>
 
 </html>

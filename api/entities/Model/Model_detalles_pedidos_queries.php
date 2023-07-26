@@ -108,6 +108,16 @@ VALUES (?,?,?,?,?, ?, ?,?, ?, ?)';
         $params = array($this->id_pedido);
         return Database::getRows($sql, $params);
     }
+    /*ver las ordenes en el carrito */
+    public function readOrderDetailFactura()
+    {
+        $sql = 'SELECT ROW_NUMBER() OVER(
+            ORDER BY id_detalle_pedido, nombre_producto) AS fila, id_detalle_pedido, id_producto,nombre_producto, imagen_producto,detalles_pedidos.precio_detalle_producto, detalles_pedidos.cantidad_detalle_producto, fecha_pedido
+                    FROM pedidos INNER JOIN detalles_pedidos USING(id_pedido) INNER JOIN productos USING(id_producto)
+                    WHERE id_pedido = ?';
+        $params = array($_SESSION['id_pedido']);
+        return Database::getRows($sql, $params);
+    }
 
      // Método para finalizar un pedido por parte del cliente.
      public function finishOrder()

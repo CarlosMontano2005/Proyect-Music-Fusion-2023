@@ -215,6 +215,7 @@ async function finishOrder() {
         const JSON = await dataFetch(PEDIDO_API, 'finishOrder');
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
+            openReport();
             sweetAlert(1, JSON.message, true, 'index.html');
 
         } else {
@@ -251,3 +252,18 @@ async function openDelete(id) {
         }
     }
 }
+
+
+//#region reporte  de dato personal
+/*
+ *   Función para abrir el reporte de productos por categoría.
+ *   Parámetros: ninguno.W
+ *   Retorno: ninguno.
+ */
+function openReport() {
+	// Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+	const PATH = new URL(`${SERVER_URL}reports/public/factura_pedido_carrito.php`);
+	// Se abre el reporte en una nueva pestaña del navegador web.
+	window.open(PATH.href);
+}
+//#endregion
