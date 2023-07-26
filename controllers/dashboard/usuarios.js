@@ -238,18 +238,10 @@ async function openDelete(id) {
  *   Retorno: ninguno.
  */
 function openReport() {
-	// Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+http://your-server-url.com/	// Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
 	const PATH = new URL(`${SERVER_URL}reports/dashboard/usuario_reporte.php`);
 	// Se abre el reporte en una nueva pestaña del navegador web.
 	window.open(PATH.href);
 }
 //#endregion
 
-// function openReport(id) {
-//     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
-//     const PATH = new URL(`${SERVER_URL}reports/dashboard/usuario.php`);
-//     // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
-//     PATH.searchParams.append('id_usuario', id);
-//     // Se abre el reporte en una nueva pestaña del navegador web.
-//     window.open(PATH.href);
-// }

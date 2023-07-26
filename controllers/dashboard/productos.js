@@ -241,14 +241,28 @@ async function openDelete(id) {
     }
 }
 
-function openReport(id) {
-    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
-    const PATH = new URL(`${SERVER_URL}reports/dashboard/Productos.php`);
-    // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
-    PATH.searchParams.append('id_producto', id);
-    // Se abre el reporte en una nueva pestaña del navegador web.
-    window.open(PATH.href);
+// function openReport(id) {
+//     // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+//     const PATH = new URL(`${SERVER_URL}reports/dashboard/Productos.php`);
+//     // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
+//     PATH.searchParams.append('id_producto', id);
+//     // Se abre el reporte en una nueva pestaña del navegador web.
+//     window.open(PATH.href);
+// }
+
+//#region reporte  de dato personal
+/*
+ *   Función para abrir el reporte de productos por categoría.
+ *   Parámetros: ninguno.W
+ *   Retorno: ninguno.
+ */
+function openReport() {
+	// Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+	const PATH = new URL(`${SERVER_URL}reports/dashboard/producto_reporte.php`);
+	// Se abre el reporte en una nueva pestaña del navegador web.
+	window.open(PATH.href);
 }
+//#endregion
 
 //#region grafica
 async function graficaLinealProductoMasVendido() {
@@ -272,5 +286,7 @@ async function graficaLinealProductoMasVendido() {
         console.log(JSON.exception);
     }
 }
+
+
 
 //#endregion
