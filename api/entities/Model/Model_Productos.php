@@ -204,6 +204,19 @@ class ModelProductos
     /**
      * grafica
      */
+    public function porcentajeProductosCategoria()
+    {
+        $sql = 'SELECT nombre_categoria, ROUND(
+            (COUNT(id_producto) * 100.0 / (SELECT COUNT(id_producto) FROM productos)), 2
+                                    ) porcentaje
+                        FROM productos
+                        INNER JOIN categorias USING(id_categoria_producto)
+                        GROUP BY nombre_categoria ORDER BY porcentaje DESC';
+        return Database::getRows($sql);
+    }
+    /**
+     * grafica
+     */
     public function CantidadProductosVendidos()
     {
         $sql = 'SELECT nombre_producto , sum(cantidad_detalle_producto)  as cantidad

@@ -170,6 +170,13 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos disponibles';
                 }
                 break;
+            case 'porcentajeProductosCategoria':
+                if ($result['dataset'] = $producto->porcentajeProductosCategoria()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = 'No hay datos disponibles';
+                }
+                break;
             case 'CantidadProductosVendidos':
                 if ($result['dataset'] = $producto->CantidadProductosVendidos()) {
                     $result['status'] = 1;
