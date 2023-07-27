@@ -238,7 +238,7 @@ async function openDelete(id) {
  *   Retorno: ninguno.
  */
 function openReport() {
-	PATH = new URL(`${SERVER_URL}reports/dashboard/usuario_reporte.php`);
+	const PATH = new URL(`${SERVER_URL}reports/dashboard/usuario_reporte.php`);
 	// Se abre el reporte en una nueva pestaña del navegador web.
 	window.open(PATH.href);
 }

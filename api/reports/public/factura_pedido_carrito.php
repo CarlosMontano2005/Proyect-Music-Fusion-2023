@@ -62,8 +62,7 @@ if ($dataPedido = $pedidos->readOrderDetailFactura()) {
     $pdf->SetFillColor(202, 92, 245 );//color de fondo morado 
     // $pdf->cell(0, 10, 'Fecha del Pedido '.$rowPedido['fecha_pedido'], 1, 1,'C',1);
     $pdf->cell(0, 10, 'Total: $'.$total, 1, 1, 'C', 1);
-    // $pdf->cell(0, 5, 'Cliente: '.$_GET['nombre'].' '.$_GET['apellido'], 1, 1,'C');
-    // $pdf->MultiCell(0, 6, 'Direccion: '.$_GET['direccion'],1,'C');
+     
 
     // $pdf->cell(0, 5, 'Fecha/Hora: '.date('d-m-Y H:i:s'), 1, 1, 'C');
     $pdf->cell(0, 5, 'Fecha: '.date('d-m-Y'), 1, 1, 'C');

@@ -17,7 +17,7 @@ if ($dataValoraciones = $Valoraciones->readAll()) {
     //se aliniar horizontalmente con el comentado landscape -> $pdf->AddPage("landscape");
     $pdf->AddPage();
     // Se establece un color de relleno para los encabezados.
-    $pdf->setFillColor(175);
+    $pdf->SetFillColor(202, 92, 245 );
     // Se establece la fuente para los encabezados.
     $pdf->setFont('Times', 'B', 9);
     // Se imprimen las celdas con los encabezados. 126 ancho en vertical y 267 ancho en horizontal se divide en los 33.375 y se hace el calculo
