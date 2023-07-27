@@ -1,7 +1,7 @@
 
 // Constante para establecer el formulario de registro del primer usuario.
 const SIGNUP_FORM = document.getElementById('signup-form');
-const USER_API = 'business/dashboard/usuario.php';
+const USER_API = 'business/dashboard/Usuario.php';
 const TIPO_USUARIO_API = 'business/dashboard/Tipo_Usuarios.php';
 const ESTADO_USUARIO_API = 'business/dashboard/Estado_Usuarios.php';
 

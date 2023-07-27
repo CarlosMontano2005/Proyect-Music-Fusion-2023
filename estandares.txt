@@ -1,0 +1,11 @@
+estandares js:
+1.constantes
+2.variables
+3.punto y coma
+4.funciones
+5.funciones flecha
+
+estandares php:
+1.variables
+2.funciones
+3.clases (pasacal case)
